@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="pram"></div>
+		<div class="hash"></div>
+	</body>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script>
+		// --------------------------
+		// parameter
+		// --------------------------
+		// URLのパラメータを取得
+		const urlParam = location.search.substring(1);
+
+		// URLにパラメータが存在する場合
+		if (urlParam) {
+			// 「&」が含まれている場合は「&」で分割
+			const param = urlParam.split("&");
+
+			// パラメータを格納する用の配列を用意
+			const paramArray = [];
+
+			// 用意した配列にパラメータを格納
+			for (i = 0; i < param.length; i++) {
+				const paramItem = param[i].split("=");
+				paramArray[paramItem[0]] = paramItem[1];
+			}
+
+			// パラメータidがosakaかどうかを判断する
+			if (paramArray.id == "osaka") {
+				$(".pram").append("<p>大阪です</p>");
+			} else {
+				document.getElementsByClassName("pram")[0].innerHTML = "not Osaka";
+			}
+		}
+
+		// --------------------------
+		// anchor
+		// --------------------------
+		// URLのアンカー（#以降の部分）を取得
+		const urlHash = location.hash;
+
+		// URLにアンカーが存在する場合
+		if (urlHash) {
+			// アンカーが#osakaかどうかを判断する
+			if (urlHash == "#osaka") {
+				$(".hash").append("<p>#大阪です</p>");
+			} else {
+				document.getElementsByClassName("pram")[0].innerHTML = "# Not Osaka";
+			}
+		}
+	</script>
+</html>
