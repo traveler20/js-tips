@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.autoplay-slider {
+				display: flex;
+				min-width: 100%;
+				width: min-content;
+				animation: 20s linear infinite sliderAnimation;
+			}
+			.slide {
+				height: 200px;
+				width: 400px;
+				background: #3486eb;
+				border: 1px solid #000;
+				margin: 20px;
+				position: relative;
+			}
+			@keyframes sliderAnimation {
+				100% {
+					transform: translateX(-50%);
+				}
+			}
+		</style>
+		<!-- スライダー -->
+		<div class="row">
+			<h3>スライダー</h3>
+			<div class="autoplay-slider">
+				<div class="slide"><span>1</span></div>
+				<div class="slide"><span>2</span></div>
+				<div class="slide"><span>3</span></div>
+				<div class="slide"><span>4</span></div>
+				<div class="slide"><span>5</span></div>
+				<div class="slide"><span>6</span></div>
+				<div class="slide"><span>1</span></div>
+				<div class="slide"><span>2</span></div>
+				<div class="slide"><span>3</span></div>
+				<div class="slide"><span>4</span></div>
+				<div class="slide"><span>5</span></div>
+				<div class="slide"><span>6</span></div>
+			</div>
+		</div>
+	</body>
+</html>
