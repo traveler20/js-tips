@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.bf01 h3 {
+				background-color: rgba(255 255 255 / 0.2);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+			}
+			.bf02 h3 {
+				color: #111;
+				backdrop-filter: grayscale(100%);
+				-webkit-backdrop-filter: grayscale(100%);
+			}
+			.bf03 h3 {
+				color: #111;
+				backdrop-filter: sepia(100%);
+				-webkit-backdrop-filter: sepia(100%);
+			}
+			.bf04 h3 {
+				color: #111;
+				backdrop-filter: sepia(70%) contrast(230%) blur(5px);
+				-webkit-backdrop-filter: sepia(70%) contrast(230%) blur(5px);
+			}
+
+			.bf05 h3 {
+				backdrop-filter: brightness(160%);
+				-webkit-backdrop-filter: brightness(160%);
+			}
+			.bf06 h3 {
+				backdrop-filter: contrast(230%);
+				-webkit-backdrop-filter: contrast(230%);
+			}
+			.bf07 h3 {
+				backdrop-filter: invert(70%);
+				-webkit-backdrop-filter: invert(70%);
+			}
+			.bf08 h3 {
+				backdrop-filter: hue-rotate(180deg);
+				-webkit-backdrop-filter: hue-rotate(180deg);
+			}
+			.bf09 h3 {
+				backdrop-filter: saturate(230%);
+				-webkit-backdrop-filter: saturate(230%);
+			}
+
+			.backdropfilter {
+				display: grid;
+				place-items: center;
+				position: relative;
+				margin-bottom: 100px;
+				width: 100vw;
+			}
+
+			.backdropfilter img {
+				width: 100%;
+				height: auto;
+			}
+
+			.backdropfilter h3 {
+				display: grid;
+				place-items: center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 50%;
+				height: 100%;
+				font-size: 50px;
+				font-weight: 700;
+				text-align: center;
+			}
+
+			@media not all and (min-width: 568px) {
+				.backdropfilter {
+					margin-bottom: 50px;
+				}
+
+				.backdropfilter h3 {
+					font-size: 25px;
+				}
+			}
+		</style>
+
+		<div class="backdropfilter bf01">
+			<img
+				src="https://pulpxstyle.com/wp-main/common/codepen/post42-codepen02.jpg"
+				alt="pic"
+			/>
+			<h3>About</h3>
+		</div>
+
+		<div class="backdropfilter bf02">
+			<img
+				src="https://pulpxstyle.com/wp-main/common/codepen/post42-codepen02.jpg"
+				alt="pic"
+			/>
+			<h3>About</h3>
+		</div>
+
+		<div class="backdropfilter bf03">
+			<img
+				src="https://pulpxstyle.com/wp-main/common/codepen/post42-codepen02.jpg"
+				alt="pic"
+			/>
+			<h3>About</h3>
+		</div>
+
+		<div class="backdropfilter bf04">
+			<img
+				src="https://pulpxstyle.com/wp-main/common/codepen/post42-codepen02.jpg"
+				alt="pic"
+			/>
+			<h3>About</h3>
+		</div>
+
+		<div class="backdropfilter bf05">
+			<img
+				src="https://pulpxstyle.com/wp-main/common/codepen/post42-codepen02.jpg"
+				alt="pic"
+			/>
+			<h3>About</h3>
+		</div>
+	</body>
+</html>

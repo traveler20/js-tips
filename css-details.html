@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			details {
+				margin: 0 auto 20px;
+				width: 600px;
+				line-height: 1.4;
+			}
+
+			@media not all and (min-width: 578px) {
+				details {
+					width: 380px;
+				}
+			}
+
+			summary {
+				list-style: none;
+				position: relative;
+				padding: 20px 70px 20px 30px;
+				cursor: pointer;
+				background-color: #d8be39;
+			}
+
+			@media not all and (min-width: 768px) {
+				summary {
+					padding: 20px 50px 20px 20px;
+				}
+			}
+
+			summary::-webkit-details-marker {
+				display: none;
+			}
+
+			summary:hover,
+			details[open] summary {
+				background-color: #bc9e04;
+			}
+
+			summary::after {
+				content: "+";
+				position: absolute;
+				top: 50%;
+				right: 30px;
+				transform: translateY(-50%);
+				transition: transform 0.5s;
+				font-size: 30px;
+			}
+
+			details[open] summary::after {
+				transform: translateY(-50%) rotate(45deg);
+			}
+
+			.answer {
+				padding: 20px 30px;
+			}
+
+			@media not all and (min-width: 768px) {
+				summary::after {
+					right: 20px;
+					font-size: 20px;
+				}
+
+				.answer {
+					padding: 10px 20px;
+				}
+			}
+
+			details[open] .answer {
+				animation: fadein 0.5s ease;
+			}
+
+			@keyframes fadein {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+		</style>
+
+		<details>
+			<summary>
+				よくある質問はdetailsタグで実装しています。ここをクリックすると回答文が表示されます。
+			</summary>
+			<div class="answer">
+				<p>
+					summaryタグをクリックするとここが表示されます。JavaScriptは不要です。作業量がかなり減るので提案しやすいですね。
+				</p>
+			</div>
+		</details>
+		<details>
+			<summary>
+				よくある質問はdetailsタグで実装しています。ここをクリックすると回答文が表示されます。
+			</summary>
+			<div class="answer">
+				<p>
+					summaryタグをクリックするとここが表示されます。JavaScriptは不要です。作業量がかなり減るので提案しやすいですね。
+				</p>
+			</div>
+		</details>
+		<details>
+			<summary>
+				よくある質問はdetailsタグで実装しています。ここをクリックすると回答文が表示されます。
+			</summary>
+			<div class="answer">
+				<p>
+					summaryタグをクリックするとここが表示されます。JavaScriptは不要です。作業量がかなり減るので提案しやすいですね。
+				</p>
+			</div>
+		</details>
+		<details>
+			<summary>
+				よくある質問はdetailsタグで実装しています。ここをクリックすると回答文が表示されます。
+			</summary>
+			<div class="answer">
+				<p>
+					summaryタグをクリックするとここが表示されます。JavaScriptは不要です。作業量がかなり減るので提案しやすいですね。
+				</p>
+			</div>
+		</details>
+		<details>
+			<summary>
+				よくある質問はdetailsタグで実装しています。ここをクリックすると回答文が表示されます。
+			</summary>
+			<div class="answer">
+				<p>
+					summaryタグをクリックするとここが表示されます。JavaScriptは不要です。作業量がかなり減るので提案しやすいですね。
+				</p>
+			</div>
+		</details>
+		<details>
+			<summary>
+				よくある質問はdetailsタグで実装しています。ここをクリックすると回答文が表示されます。
+			</summary>
+			<div class="answer">
+				<p>
+					summaryタグをクリックするとここが表示されます。JavaScriptは不要です。作業量がかなり減るので提案しやすいですね。
+				</p>
+			</div>
+		</details>
+	</body>
+</html>

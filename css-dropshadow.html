@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.wrapper {
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.mr-2 {
+				margin-right: 2em;
+			}
+
+			.mb-1 {
+				margin-bottom: 1em;
+			}
+
+			.text-center {
+				text-align: center;
+			}
+
+			.box-shadow {
+				box-shadow: 2px 4px 8px #585858;
+			}
+
+			/* drop-shadow */
+			.drop-shadow {
+				filter: drop-shadow(2px 4px 8px #585858);
+			}
+
+			/* imageshadow */
+			.image_shadow img {
+				filter: drop-shadow(10px 10px 0 #c3a400);
+				width: 300px;
+				height: auto;
+			}
+
+			.image_shadow {
+				display: grid;
+				place-items: center;
+				height: 100vh;
+			}
+		</style>
+
+		<div class="wrapper">
+			<div class="mr-2">
+				<div class="mb-1 text-center">box-shadow</div>
+
+				<img
+					class="box-shadow"
+					src="https://markodenic.com/man_working.png"
+					alt="Image with box-shadow"
+				/>
+			</div>
+
+			<div>
+				<div class="mb-1 text-center">drop-shadow</div>
+
+				<img
+					class="drop-shadow"
+					src="https://markodenic.com/man_working.png"
+					alt="Image with drop-shadow"
+				/>
+			</div>
+		</div>
+
+		<div class="image_shadow">
+			<img
+				src="https://pulpxstyle.com/wp-main/common/codepen/post42-codepen03.png"
+				alt="pic"
+			/>
+		</div>
+	</body>
+</html>
