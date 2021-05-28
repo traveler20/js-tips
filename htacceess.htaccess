@@ -1,0 +1,21 @@
+# .htaccessの実行
+RewriteEngine on
+
+# https（SSL化）にリダイレクトさせる
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# www無しにリダイレクトさせる
+RewriteCond %{HTTP_HOST} ^(www.yurukei-career\.com)(:80)? [NC]
+RewriteRule ^(.*) https://yurukei-career.com/$1 [R=301,L]
+
+# www有りにリダイレクトさせる
+# RewriteCond %{HTTP_HOST} ^(yurukei-career\.com)(:80)? [NC]
+# RewriteRule ^(.*) https://www.yurukei-career.com/$1 [R=301,L]
+
+# index.html無しにリダイレクトさせる
+RewriteCond %{THE_REQUEST} ^.*/index.html
+RewriteRule ^(.*)index.html$ https://yurukei-career.com/$1 [R=301,L]
+
+# 特定ページへリダイレクトさせる
+RewriteRule ^direct.html$ https://yurukei-career.com/redirect.html [R=301,L]
