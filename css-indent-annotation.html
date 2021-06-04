@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- base -->
+		<style>
+			html {
+				font-size: 62.5%;
+			}
+			body {
+				font-size: 1.6rem;
+			}
+		</style>
+		<!-- /base -->
+
+		<!-- list-style1 -->
+		<ul>
+			<li>
+				QS とは Quality Start の略であり、1985年にスポーツライター John Lowe
+				により提唱された。これは先発投手が少なくとも6イニングを投げ、ER (Earned
+				Runs＝自責点)
+				を3以下に抑えた場合に達成される指標で、いわゆる「試合を作れた
+			</li>
+		</ul>
+		<style>
+			ul {
+				list-style: none;
+			}
+			li:before {
+				content: "※";
+			}
+		</style>
+		<!-- /list-style1 -->
+
+		<!-- list-style2 -->
+		<ul class="caution">
+			<li>
+				QS とは Quality Start の略であり、1985年にスポーツライター John Lowe
+				により提唱された。これは先発投手が少なくとも6イニングを投げ、ER (Earned
+				Runs＝自責点)
+				を3以下に抑えた場合に達成される指標で、いわゆる「試合を作れた
+			</li>
+		</ul>
+		<style>
+			ul.caution {
+				list-style: none;
+			}
+			.caution li {
+				position: relative;
+				padding-left: 24px;
+			}
+			.caution li:before {
+				content: "※";
+				left: 0;
+				position: absolute;
+			}
+		</style>
+		<!-- /list-style2 -->
+
+		<!-- list-style3 -->
+		<ul class="annotation">
+			<li>
+				QS とは Quality Start の略であり、1985年にスポーツライター John Lowe
+				により提唱された。これは先発投手が少なくとも6イニングを投げ、ER (Earned
+				Runs＝自責点)
+				を3以下に抑えた場合に達成される指標で、いわゆる「試合を作れた
+			</li>
+		</ul>
+		<style>
+			ul.annotation {
+				list-style: none;
+			}
+			.annotation li {
+				margin-left: 2rem;
+				text-indent: -2rem;
+			}
+		</style>
+		<!-- list-style3 -->
+	</body>
+</html>
