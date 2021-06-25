@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link
+			href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<details>
+			<summary>アコーディオンタイトル</summary>
+			<p>アコーディオンのコンテンツ</p>
+		</details>
+		<style>
+			summary:hover {
+				cursor: pointer;
+			}
+		</style>
+
+		<details class="details">
+			<summary>アコーディオンタイトル</summary>
+			<div class="details__content">アコーディオンのコンテンツ</div>
+		</details>
+		<style>
+			.details summary {
+				position: relative;
+				display: block;
+				padding: 10px 10px 10px 30px;
+				cursor: pointer;
+				font-weight: bold;
+				background-color: #e2f0f7;
+				transition: 0.2s;
+			}
+			.details summary:hover {
+				background-color: #ccebfb;
+			}
+			/* 矢印を消す */
+			.details summary::-webkit-details-marker {
+				display: none;
+			}
+			.details summary:before,
+			.details summary:after {
+				content: "";
+				margin: auto 0 auto 10px;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+			}
+			.details summary:before {
+				width: 16px;
+				height: 16px;
+				border-radius: 4px;
+				background-color: #1da1ff;
+			}
+			.details summary:after {
+				left: 6px;
+				width: 5px;
+				height: 5px;
+				border: 4px solid transparent;
+				border-left: 5px solid #fff;
+				box-sizing: border-box;
+				transition: 0.1s;
+			}
+
+			/* オープン時のスタイル */
+			.details[open] summary {
+				background-color: #ccebfb;
+			}
+			.details[open] summary:after {
+				transform: rotate(90deg); /* アイコンを回転 */
+				left: 4px; /* 位置を調整 */
+				top: 5px; /* 位置を調整 */
+			}
+
+			/* アニメーション */
+			.details[open] .details__content {
+				animation: fadeIn 0.5s ease;
+			}
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(-10px);
+				}
+				100% {
+					opacity: 1;
+					transform: none;
+				}
+			}
+		</style>
+
+		<details class="accordion">
+			<summary>アコーディオンタイトル</summary>
+			<div class="accordion__content">アコーディオンのコンテンツ</div>
+		</details>
+		<style>
+			.accordion summary {
+				position: relative;
+				display: block;
+				padding: 10px 20px;
+				cursor: pointer;
+				font-weight: bold;
+				background-color: #ffe6cf;
+				transition: 0.2s;
+			}
+			.accordion summary:hover {
+				background-color: #ffcea0;
+			}
+			/* 矢印を消す */
+			.accordion summary::-webkit-details-marker {
+				display: none;
+			}
+			.accordion summary:after {
+				position: absolute;
+				font-family: "Font Awesome 5 Free";
+				content: "\f078";
+				font-weight: bold;
+				font-size: 20px;
+				color: #ee7500;
+				margin: auto;
+				top: 28%;
+				right: 3%;
+				transition: 0.4s;
+			}
+
+			/* オープン時のスタイル */
+			.accordion[open] summary {
+				background-color: #ffcea0;
+			}
+			.accordion[open] summary:after {
+				transform: rotate(180deg); /* アイコンを回転 */
+			}
+
+			/* アニメーション */
+			.accordion[open] .accordion__content {
+				animation: fadeIn 0.5s ease;
+			}
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(-10px);
+				}
+				100% {
+					opacity: 1;
+					transform: none;
+				}
+			}
+
+			.accordion__content {
+				padding: 10px 20px;
+			}
+		</style>
+	</body>
+</html>
