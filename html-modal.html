@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<dialog class="dialog" id="dg1">
+			contentsだよ
+			<button
+				class="close"
+				type="button"
+				onclick="document.getElementById('dg1').close()"
+			>
+				&times;
+			</button>
+		</dialog>
+		<dialog class="dialog" id="dg2">
+			contents2だよ
+			<button
+				class="close"
+				type="button"
+				onclick="document.getElementById('dg2').close()"
+			>
+				&times;
+			</button>
+		</dialog>
+
+		<button class="open" onclick="document.getElementById('dg1').showModal()">
+			OPEN MODAL1
+		</button>
+		<button class="open" onclick="document.getElementById('dg2').showModal()">
+			OPEN MODAL2
+		</button>
+		<script>
+			const open = document.querySelector(".open");
+			const close = document.querySelector(".close");
+			const modal = document.querySelector(".dialog");
+
+			open.addEventListener("click", () => modal.showModal());
+			close.addEventListener("click", () => modal.close());
+			document.addEventListener(
+				"click",
+				({ target }) => target === modal && modal.close()
+			);
+		</script>
+		<style>
+			dialog {
+				position: relative;
+				width: 80%;
+				max-width: 1000px;
+				padding: 50px;
+				border: 0;
+				border-radius: 3px;
+				box-sizing: border-box;
+
+				color: #333;
+			}
+
+			dialog::backdrop {
+				background: rgba(0, 0, 0, 0.5);
+				animation: modal-open 0.4s ease;
+			}
+			dialog[open] {
+				animation: modal-slide 0.5s ease;
+			}
+
+			.open {
+				margin-top: 40px;
+				margin-left: 20px;
+				padding: 10px 20px;
+				cursor: pointer;
+				border-radius: 3px;
+				background: #007bbb;
+				font-size: 14px;
+				border: 1px solid #007bbb;
+				color: #fff;
+				letter-spacing: 0.2px;
+				outline: none;
+				transition: background 0.2s ease, color 0.2s ease;
+			}
+
+			.open:hover {
+				color: #007bbb;
+				background-color: transparent;
+			}
+
+			.close {
+				color: #333;
+				cursor: pointer;
+				font-size: 40px;
+				position: absolute;
+				right: 10px;
+				top: 0;
+				background-color: transparent;
+				border: none;
+				outline: none;
+			}
+
+			@keyframes modal-open {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@keyframes modal-slide {
+				0% {
+					transform: translateY(-20px);
+				}
+				100% {
+					transform: translateY(0);
+				}
+			}
+		</style>
+	</body>
+</html>
