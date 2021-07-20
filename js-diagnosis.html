@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.p-diagnosis {
+				font-size: 1.6rem;
+			}
+			.p-diagnosis__question {
+				padding: 0;
+			}
+			.p-diagnosis__question li {
+				display: inline-block;
+				width: 100%;
+				margin-top: 30px;
+				list-style: none;
+			}
+
+			.p-diagnosis__question a {
+				display: block;
+				width: 80%;
+				margin: 0 auto;
+				padding: 10px 20px;
+				text-align: center;
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 16px;
+				color: #fff;
+				background-color: #fc913a;
+				border: 2px solid #fc913a;
+				-webkit-border-radius: 6px;
+				-moz-border-radius: 6px;
+				border-radius: 6px;
+				cursor: pointer;
+			}
+
+			.p-diagnosis__question a:hover {
+				background-color: #fff;
+				color: #fc913a;
+				-webkit-transition: 0.4s;
+				-moz-transition: 0.4s;
+				-o-transition: 0.4s;
+				transition: 0.4s;
+			}
+
+			.p-diagnosis__content,
+			.p-diagnosis__result {
+				width: 100%;
+				padding: 290px 0 0;
+				margin: -270px 0 0 0;
+			}
+
+			.p-diagnosis__result {
+			}
+
+			.p-diagnosis__recommend {
+				text-align: center;
+			}
+
+			.p-diagnosis__return {
+				display: block;
+				font-weight: bold;
+				text-align: center;
+				text-decoration: none;
+				width: 72%;
+				margin: 24px auto 0;
+				padding: 10px 10px;
+				color: #fff;
+				background-color: #fc913a;
+				border: 1px solid #fc913a;
+			}
+
+			.p-diagnosis__return:hover {
+				color: #fc913a;
+				background-color: #fff;
+				transition: 0.4s;
+			}
+		</style>
+
+		<section class="p-diagnosis">
+			<!-- 質問一覧 -->
+			<h2>注文したい印刷用紙が見つかる診断メーカー(全3問)</h2>
+			<!-- 導入 -->
+			<article id="q_00" class="p-diagnosis__content">
+				<h3>3つの質問に答えて注文したい印刷用紙を見つけよう！</h3>
+				<ul class="p-diagnosis__question">
+					<li>
+						<a class="js-button" href="#q_01">印刷用紙を探してみる！</a>
+					</li>
+				</ul>
+			</article>
+
+			<!-- 質問1 -->
+			<article id="q_01" style="display: none">
+				<h3>質問1: 水性ペンや鉛筆でシールを書きますか？</h3>
+				<ul class="p-diagnosis__question">
+					<li>
+						<a class="js-button" href="#q_02" data-value="a">はい</a>
+					</li>
+					<li>
+						<a class="js-button" href="#q_02" data-value="b">いいえ</a>
+					</li>
+				</ul>
+			</article>
+
+			<!-- 質問2 -->
+			<article id="q_02" style="display: none">
+				<h3>質問2: 光沢が無くあっさりしたほうがいいですか？</h3>
+				<ul class="p-diagnosis__question">
+					<li>
+						<a class="js-button" href="#q_03" data-value="a">はい</a>
+					</li>
+					<li>
+						<a class="js-button" href="#q_03" data-value="b">いいえ</a>
+					</li>
+				</ul>
+			</article>
+
+			<!-- 質問3 -->
+			<article id="q_03" style="display: none">
+				<h3>質問3: 屋内のみで使用しますか？</h3>
+				<ul class="p-diagnosis__question">
+					<li>
+						<a class="js-button js-question-end" data-value="a">はい</a>
+					</li>
+					<li>
+						<a class="js-button js-question-end" data-value="b">いいえ</a>
+					</li>
+				</ul>
+			</article>
+
+			<!-- ここから以下回答 -->
+			<!-- 回答の答え1 -->
+			<article
+				id="js-answer01"
+				class="p-diagnosis__result"
+				style="display: none"
+			>
+				<h3>そんなあなたは、アート紙系統の用紙がおすすめ！</h3>
+				<p>光沢があって室内での利用にぴったりです。</p>
+				<a class="p-diagnosis__return" href="./">診断メーカートップにもどる</a>
+			</article>
+
+			<!-- 回答の答え2 -->
+			<article
+				id="js-answer02"
+				class="p-diagnosis__result"
+				style="display: none"
+			>
+				<h3>そんなあなたは、上質系の用紙がおすすめ！</h3>
+				<p>油性はもちろん、鉛筆や水性ペンで書き込みやすくおすすめ！</p>
+				<a class="p-diagnosis__return" href="./">診断メーカートップにもどる</a>
+			</article>
+
+			<!-- 回答の答え3 -->
+			<article
+				id="js-answer03"
+				class="p-diagnosis__result"
+				style="display: none"
+			>
+				<h3>そんなあなたは、白PETやユポがおすすめ！</h3>
+				<p>屋外でも利用できて便利。</p>
+				<a class="p-diagnosis__return" href="./">診断メーカートップにもどる</a>
+			</article>
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+			<script>
+				//ボタンを押すごとに画面が切り替わる関数
+				$(function () {
+					$(".js-button").on("click", function () {
+						$(this).closest("article").css("display", "none");
+						id = $(this).attr("href");
+						$(id).addClass("p-diagnosis__content").fadeIn("slow").show();
+					});
+
+					//選択ボタンデータを配列に入れてカウントする関数
+					let countA;
+					let countB;
+					const box = [];
+					$(".js-button").each(function () {
+						$(this).on("click", function () {
+							const value = $(this).data("value");
+							box.push(value);
+
+							countA = box.filter(function (x) {
+								return x === "a";
+							}).length;
+							countB = box.filter(function (y) {
+								return y === "b";
+							}).length;
+						});
+					});
+
+					$(".js-question-end").on("click", function () {
+						if (countA === 3) {
+							$("#js-answer02").css("display", "");
+						} else if (countB === 3) {
+							$("#js-answer03").css("display", "");
+						} else {
+							$("#js-answer01").css("display", "");
+						}
+					});
+				});
+			</script>
+		</section>
+	</body>
+</html>
