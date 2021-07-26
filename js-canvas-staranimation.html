@@ -159,7 +159,7 @@
 			}
 
 			function onDocMouseMove(e) {
-				let ev = e ? e : window.event;
+				const ev = e ? e : window.event;
 				mouseX = ev.clientX - outerDiv.offsetLeft - canvasDiv.offsetLeft;
 				mouseY = ev.clientY - outerDiv.offsetTop - canvasDiv.offsetTop;
 			}
