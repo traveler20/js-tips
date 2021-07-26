@@ -9,12 +9,12 @@
 			 * by Daniel Puhe (http://spielzeugz.de)
 			 */
 
-			let PI_2 = Math.PI * 2;
-			let canvasW = 640;
-			let canvasH = 480;
-			let numMovers = 600;
-			let friction = 0.96;
-			let movers = [];
+			const PI_2 = Math.PI * 2;
+			const canvasW = 640;
+			const canvasH = 480;
+			const numMovers = 600;
+			const friction = 0.96;
+			const movers = [];
 
 			let canvas;
 			let ctx;
@@ -71,16 +71,16 @@
 				prevMouseX = mouseX;
 				prevMouseY = mouseY;
 
-				let toDist = canvasW * 0.86;
-				let stirDist = canvasW * 0.125;
-				let blowDist = canvasW * 0.5;
+				const toDist = canvasW * 0.86;
+				const stirDist = canvasW * 0.125;
+				const blowDist = canvasW * 0.5;
 
-				let Mrnd = Math.random;
-				let Mabs = Math.abs;
+				const Mrnd = Math.random;
+				const Mabs = Math.abs;
 
 				let i = numMovers;
 				while (i--) {
-					let m = movers[i];
+					const m = movers[i];
 					let x = m.x;
 					let y = m.y;
 					let vX = m.vX;
@@ -95,20 +95,20 @@
 
 					if (isMouseDown) {
 						if (d < blowDist) {
-							let blowAcc = (1 - d / blowDist) * 14;
+							const blowAcc = (1 - d / blowDist) * 14;
 							vX += dX * blowAcc + 0.5 - Mrnd();
 							vY += dY * blowAcc + 0.5 - Mrnd();
 						}
 					}
 
 					if (d < toDist) {
-						let toAcc = (1 - d / toDist) * canvasW * 0.0014;
+						const toAcc = (1 - d / toDist) * canvasW * 0.0014;
 						vX -= dX * toAcc;
 						vY -= dY * toAcc;
 					}
 
 					if (d < stirDist) {
-						let mAcc = (1 - d / stirDist) * canvasW * 0.00026;
+						const mAcc = (1 - d / stirDist) * canvasW * 0.00026;
 						vX += mouseVX * mAcc;
 						vY += mouseVY * mAcc;
 					}
@@ -116,9 +116,9 @@
 					vX *= friction;
 					vY *= friction;
 
-					let avgVX = Mabs(vX);
-					let avgVY = Mabs(vY);
-					let avgV = (avgVX + avgVY) * 0.5;
+					const avgVX = Mabs(vX);
+					const avgVY = Mabs(vY);
+					const avgV = (avgVX + avgVY) * 0.5;
 
 					if (avgVX < 0.1) vX *= Mrnd() * 3;
 					if (avgVY < 0.1) vY *= Mrnd() * 3;
