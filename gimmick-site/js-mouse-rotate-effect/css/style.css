@@ -7,7 +7,7 @@
 /* common */
 body {
 	position: relative;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 /* mmousetext circle effect */
@@ -37,8 +37,8 @@ body {
 }
 .mouse-effect h2 span {
 	position: absolute;
-	top: -100px;
+	top: -60px;
 	text-transform: uppercase;
 	display: inline-block;
-	transform-origin: 0 100px;
+	transform-origin: 0 60px;
 }

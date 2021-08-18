@@ -10,7 +10,7 @@ mousetext.innerHTML = mousetext.textContent.replace(/\S/g, "<span>$&</span>");
 // mousetext span insert rotate element
 const element = document.querySelectorAll("span");
 for (let i = 0; i < element.length; i++) {
-	element[i].style.transform = "rotate(" + i * 18 + "deg)";
+	element[i].style.transform = "rotate(" + i * 30 + "deg)";
 }
 
 // mousetext interlock
