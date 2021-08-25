@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				cursor: none;
+			}
+
+			a {
+				cursor: none;
+			}
+
+			.c-cursor {
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 9999;
+				pointer-events: none;
+			}
+
+			.c-cursor__bg {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background: #ff0000;
+				opacity: 0.5;
+				transform: translate(-50%, -50%);
+				transition: background 0.2s linear, transform 0.1s ease-out;
+			}
+
+			.c-cursor.is-hovering .c-cursor__bg {
+				background: #0000ff;
+				transform: translate(-50%, -50%) scale(1.8);
+			}
+		</style>
+
+		<a href="#">リンク</a>
+
+		<div class="js-cursor c-cursor">
+			<div class="c-cursor__bg"></div>
+		</div>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const cursor = document.querySelector(".js-cursor");
+				const links = document.querySelectorAll("a");
+
+				// cursorを追従させる機能
+				document.addEventListener("mousemove", function (e) {
+					const x = e.pageX - window.pageXOffset;
+					const y = e.pageY - window.pageYOffset;
+
+					cursor.style.transform = "translate(" + x + "px," + y + "px)";
+				});
+
+				// linksホバー時の機能
+				Array.prototype.forEach.call(links, function (link) {
+					// linksホバー時is-hoveringクラス付与
+					link.addEventListener("mouseenter", function () {
+						cursor.classList.add("is-hovering");
+					});
+
+					//linksホバー時is-hoveringクラス削除
+					link.addEventListener("mouseleave", function () {
+						cursor.classList.remove("is-hovering");
+					});
+				});
+			});
+		</script>
+	</body>
+</html>
