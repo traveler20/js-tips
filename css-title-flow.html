@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			/* css */
+			.c-passing {
+				/* 任意の値 */
+				font-size: 20px;
+				font-weight: bold;
+				line-height: 1.7;
+				text-align: center;
+			}
+			.c-passing.is-fadeIn > span {
+				position: relative;
+				display: inline-block;
+				-webkit-transform: translate3d(0, 0, 0);
+				-ms-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			.c-passing.is-fadeIn > span:before {
+				content: "";
+				display: inline-block;
+				width: 0;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 1;
+				/* 任意の値 */
+				background: #000;
+
+				-webkit-animation: c-passing 1s ease 0s 1 normal forwards;
+				animation: c-passing 1s ease 0s 1 normal forwards;
+			}
+			.c-passing.is-fadeIn > span:after {
+				opacity: 0;
+				-webkit-transform: translate3d(0, 0, 0);
+				-ms-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+
+				-webkit-animation: c-passing-after 0s ease 0.5s 1 normal forwards;
+				animation: c-passing-after 0s ease 0.5s 1 normal forwards;
+			}
+			/* animation */
+			@-webkit-keyframes c-passing {
+				0% {
+					left: 0;
+					right: auto;
+					width: 0;
+				}
+				50% {
+					left: 0;
+					right: auto;
+					width: 100%;
+				}
+				51% {
+					left: auto;
+					right: 0;
+					width: 100%;
+				}
+				100% {
+					left: auto;
+					right: 0;
+					width: 0;
+				}
+			}
+			@keyframes c-passing {
+				0% {
+					left: 0;
+					width: 0;
+				}
+				50% {
+					left: 0;
+					width: 100%;
+				}
+				51% {
+					left: 0;
+					width: 100%;
+				}
+				100% {
+					left: 100%;
+					width: 0;
+				}
+			}
+			@-webkit-keyframes c-passing-after {
+				0% {
+					opacity: 0;
+				}
+				50% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@keyframes c-passing-after {
+				0% {
+					opacity: 0;
+				}
+				50% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+		</style>
+		<h2 class="c-passing is-fadeIn">
+			<span>左から右に現れて文字だけ残る<br />CSSアニメーション</span>
+		</h2>
+
+		<style>
+			.c-background {
+			}
+			.c-background.is-fadeIn .c-background__band::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				transform-origin: left center;
+				background: #333;
+				animation: background-flow 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+			}
+			.c-background__band {
+				color: #fff;
+				position: relative;
+				display: inline-block;
+				margin-top: 5px;
+			}
+			.c-background .c-background__band > span {
+				display: inline-block;
+				font-size: 36px;
+				font-weight: bold;
+				padding: 5px 15px;
+				position: relative;
+				z-index: 1;
+			}
+			@keyframes background-flow {
+				0% {
+					opacity: 0;
+					transform: scaleX(0) translateX(-5%);
+				}
+				30% {
+					transform: scaleX(1) translateX(0);
+				}
+				100% {
+					transform: scaleX(1) translateX(0);
+				}
+				30%,
+				100% {
+					opacity: 1;
+				}
+			}
+		</style>
+		<h2 class="c-background is-fadeIn">
+			<span class="c-background__band"><span>背景色が流れてくる</span></span
+			><br />
+			<span class="c-background__band"><span>アニメーション</span></span>
+		</h2>
+	</body>
+</html>
