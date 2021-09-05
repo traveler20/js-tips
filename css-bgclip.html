@@ -8,22 +8,23 @@
 	</head>
 	<body>
 		<style>
-			h1 {
+			div {
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.bgclip-title {
 				background: blue url("https://picsum.photos/id/1015/200/300");
 				background-clip: text;
 				-webkit-background-clip: text;
 				color: transparent;
-				margin-top: 20px;
-				font-size: 120px;
-			}
-
-			@media (max-width: 600px) {
-				h1 {
-					font-size: 45px;
-				}
+				font-size: 100px;
 			}
 		</style>
 
-		<h1>CSS IS AWESOME</h1>
+		<div>
+			<h2 class="bgclip-title">background clip title</h2>
+		</div>
 	</body>
 </html>

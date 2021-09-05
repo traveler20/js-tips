@@ -10,15 +10,19 @@
 		<style>
 			@import url("https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap");
 
-			body {
+			div {
 				font-family: Inter, sans-serif;
 				text-align: center;
 				background: #000;
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 			}
 
-			.text-gradient {
-				font-size: 4rem;
-				display: inline-block;
+			.gradation-title {
+				font-size: 100px;
+				text-align: center;
 				background: linear-gradient(
 					9deg,
 					#ffde65,
@@ -31,8 +35,8 @@
 			}
 		</style>
 
-		<h1>
-			<span class="text-gradient">Gradient Text</span>
-		</h1>
+		<div>
+			<h1 class="gradation-title">Gradient Title</h1>
+		</div>
 	</body>
 </html>

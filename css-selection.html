@@ -8,32 +8,25 @@
 	</head>
 	<body>
 		<style>
-			.wrapper {
+			div {
 				height: 100vh;
-				display: flex;
-				align-items: center;
-				justify-content: center;
+				text-align: center;
 			}
-
 			p {
 				font-size: 2rem;
 				font-family: sans-serif;
 			}
 
-			.custom-highlighting::selection {
+			.selection::selection {
 				background-color: #8e44ad;
 				color: #fff;
 			}
 		</style>
 
-		<div class="wrapper">
-			<div>
-				<p>This is default highlighting. Try it out.</p>
+		<div>
+			<p>This is default highlighting. Try it out.</p>
 
-				<p class="custom-highlighting">
-					This is customized highlighting. Try it out.
-				</p>
-			</div>
+			<p class="selection">This is customized highlighting. Try it out.</p>
 		</div>
 	</body>
 </html>
