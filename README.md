@@ -8,18 +8,20 @@
 テキストフォントのデザインを凝りたい
 テキストをネオン状のあしらいにしたい
 テキストに動きをつけたい
+各WEBフォントの表示を確認する
 ```
 
-- css-truncatetext
-- css-selection
-- css-title
+- css-truncatetext.html
+- css-selection.html
+- css-title.html
+- css-typography.html
 
-> css-webkit
-> css-typing
-> css-gradationfont
-> css-bgclip
-> css-neon-text
-> css-title-flow
+> css-webkit.html
+> css-typing.html
+> css-gradationfont.html
+> css-bgclip.html
+> css-neon-text.html
+> css-title-flow.html
 
 # リスト
 
@@ -28,8 +30,8 @@
 番号リストで 1 以外の数字からスタートさせたい
 ```
 
-- css-indent-annotation
-- html-list
+- css-indent-annotation.html
+- html-list.html
 
 # 画像
 
@@ -41,11 +43,11 @@ png 画像を背景に同化させて影をつけたい
 画像にエフェクトをかけたい
 ```
 
-- html-image
-- html-image
-- css-bgmultiply
-- css-dropshadow
-- css-backdropfilter
+- html-image.html
+- html-image.html
+- css-bgmultiply.html
+- css-dropshadow.html
+- css-backdropfilter.html
 
 # スクロール
 
@@ -56,10 +58,10 @@ png 画像を背景に同化させて影をつけたい
 スクロールバーのデザインを変えたい
 ```
 
-- css-smoothscrollbehavior
-- css-sticky
-- css-scrollsnap
-- css-customscrollbar
+- css-smoothscrollbehavior.html
+- css-sticky.html
+- css-scrollsnap.html
+- css-customscrollbar.html
 
 # 背景
 
@@ -67,7 +69,7 @@ png 画像を背景に同化させて影をつけたい
 背景をグラデーションに
 ```
 
-- css-bggradation
+- css-bggradation.html
 
 # カーソル
 
@@ -75,42 +77,46 @@ png 画像を背景に同化させて影をつけたい
 カーソルを自由に変形したい
 ```
 
-- css-cursor
-- js-mouseCursorChange
+- css-cursor.html
+- js-mouseCursorChange.html
 
 # アニメーション
 
 ```
 要素をふわっと登場させたい
 画像を自動で横にスライドさせたい
+ローディングアニメーション
 ```
 
-- js-animation
-- css-slidecard
+- js-animation.html
+- css-slider-autohtml
+- js-cssloading.html
 
 # サイトでよく実装する機能
 
 ```
 スワイプでスライドするギャラリー
+スライドする機能
 アコーディオンメニュー
 タブメニュー
 ハンバーガーメニュー
 モーダルウィンドウ
 ホバーで補足説明を出したい（ツールチップ）
 タイマーで表示を切り替えたい
-ローディングアニメーション
 パラメータ
 ```
 
-- js-swiper
-- css-details
-- css-tab
-- css-hamburger
-- css-modal
-- css-tooltip
-- php
-- js-cssloading
-- js-parameter
+- js-swiper.html
+- css-slider.html(\*)
+- css-slider2.html(\*)
+- css-slider3.html(\*)
+- css-details.html
+- css-tab.html
+- css-hamburger.html
+- css-modal.html
+- css-tooltip.html
+- php.html
+- js-parameter.html
 
 # コーディングの効率化でよく実装する機能
 
@@ -122,9 +128,27 @@ HTML で繰り返し表示させたい
 JavaScript で HTML を呼び出したい
 ```
 
-- php
-- php
-- js-
-- php
-- js-template
-- js-html
+- php.html
+- js-template.html
+
+# その他
+
+## メーターを HTML で組む
+
+- html-meter.html
+
+## canvas でスターアニメーション
+
+- js-canvas-staranimation.html
+
+## 便利なレイアウト
+
+- css-gridlayout.html
+- css-flexlayout.html
+- css-flex.html
+- css-cardlayout.html
+- css-centering.html
+
+## gimmick-site
+
+- gimmick-site
