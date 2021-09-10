@@ -89,7 +89,8 @@ png 画像を背景に同化させて影をつけたい
 ```
 
 - js-animation.html
-- css-slider-autohtml
+- css-blink-animation.html
+- css-slider-animation.html
 - js-cssloading.html
 
 # サイトでよく実装する機能
