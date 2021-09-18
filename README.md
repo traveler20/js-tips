@@ -100,38 +100,42 @@ js-cssloading.html
 - スワイプでスライドするギャラリー
 - スライドする機能
 - [アコーディオンメニュー](css-details.html)
-- タブメニュー
-- ハンバーガーメニュー
+- [タブメニュー](css-tab.html)
+- [ハンバーガーメニュー](css-hamburger.html)
 - [モーダルウィンドウ](css-modal.html)
 - [ホバーで補足説明を出したい（ツールチップ）](css-tooltip.html)
-- [タイマーで表示を切り替えたい](php.html)
+- [タイマーで表示を切り替えたい](php-timer.html)
 - [パラメータ](js-parameter.html)
+- [表示速度の向上](css-speedup.html)
 
 ```
 js-swiper.html(*)
 css-slider.html(\*)
 css-slider2.html(\*)
 css-slider3.html(\*)
-css-details.html
-css-tab.html(*)
-css-hamburger.html(*)
+css-details.html(css-details-accordion.html)
+css-tab.html
+css-hamburger.html
 css-modal.html
 css-tooltip.html
-php.html
+php-timer.html
 js-parameter.html
 ```
 
 # コーディングの効率化でよく実装する機能
 
-- キャッシュ対策を自動で設定したい
-- コロコロ入れ替わる数字や文章を一括で管理したい
-- header など各ページ共通の要素を使いまわしたい
-- HTML で繰り返し表示させたい
-- [JavaScript で HTML を呼び出したい](js-template.html)
+- [キャッシュ対策を自動で設定したい](php-cash.html)
+- [コロコロ入れ替わる数字や文章を一括で管理したい](php-variable.html)
+- [header など各ページ共通の要素を使いまわしたい](php-component.html)
+- [HTML で繰り返し表示させたい](js-template.html)
+- [JavaScript で HTML を呼び出したい](js-variable.html)
 
 ```
-php.html
+php-cash.html
+php-variable.html
+php-component.html
 js-template.html
+js-variable.html
 ```
 
 # その他
@@ -154,6 +158,7 @@ js-canvas-staranimation.html
 
 ## 便利なレイアウト
 
+- [テーブルレイアウト](css-table.html)
 - [グリッドレイアウト](css-gridlayout.html)
 - [フレックスボックスレイアウト](css-flexlayout.html)
 - [gap のとり方（margin パターン）](css-flex.html)
@@ -161,6 +166,7 @@ js-canvas-staranimation.html
 - [センタリング](css-centering.html)
 
 ```
+css-table.html
 css-gridlayout.html
 css-flexlayout.html
 css-flex.html

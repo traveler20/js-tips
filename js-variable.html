@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function template() {
+				let html = "";
+				html += "<div>";
+				html += "   <p>JSから呼び出しています。</p>";
+				html += "   <p>複数行挿入することもできます。</p>";
+				html += "</div>";
+				document.write(html);
+			}
+		</script>
+
+		<!-- HTMLの記述部分 -->
+		<strong>↓JSで記述！</strong>
+		<script type="text/javascript">
+			template();
+		</script>
+		<div id="js_template"></div>
+		<div id="js_template2"></div>
+		<!-- /HTMLの記述部分 -->
+
+		<script>
+			const js_template = "1行くらいならこれでも良さげ";
+			document.getElementById("js_template").innerHTML = js_template;
+
+			const js_template2 = "<p>JSを入れる場所だけ微妙に違うので注意</p>";
+			document.getElementById("js_template2").innerHTML = js_template2;
+		</script>
+	</body>
+</html>

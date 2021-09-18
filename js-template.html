@@ -7,32 +7,100 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<script>
-			function template() {
-				let html = "";
-				html += "<div>";
-				html += "   <p>JSから呼び出しています。</p>";
-				html += "   <p>複数行挿入することもできます。</p>";
-				html += "</div>";
-				document.write(html);
+		<style>
+			body {
+				background-color: #efefef;
 			}
-		</script>
+			img {
+				width: 100%;
+			}
+			dl,
+			dt,
+			dd {
+				margin: 0;
+			}
 
-		<!-- HTMLの記述部分 -->
-		<strong>↓JSで記述！</strong>
-		<script type="text/javascript">
-			template();
-		</script>
-		<div id="js_template"></div>
-		<div id="js_template2"></div>
-		<!-- /HTMLの記述部分 -->
+			.c-gallery {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+			}
+			.c-gallery__card {
+				display: inline-block;
+				text-decoration: none;
+				width: 32%;
+				border: solid 1px #999;
+				border-radius: 4px;
+			}
+			.c-gallery__card:hover {
+				opacity: 0.7;
+			}
+			.c-gallery__card dl {
+				padding: 5px 5px;
+			}
+			.c-gallery__card dt {
+				font-weight: bold;
+			}
+		</style>
+
+		<!-- テンプレートが表示される場所 -->
+		<section id="js-content" class="c-gallery">
+			<!-- テンプレートの内容を書く場所 -->
+			<template id="js-card">
+				<a href="" class="js-card_link c-gallery__card">
+					<img src="" alt="" class="js-card_image" />
+					<dl>
+						<dt class="js-card_title"></dt>
+						<dd class="js-card_caption"></dd>
+					</dl>
+				</a>
+			</template>
+		</section>
 
 		<script>
-			const js_template = "1行くらいならこれでも良さげ";
-			document.getElementById("js_template").innerHTML = js_template;
+			// card要素に追加したいデータを定義する
+			const array = [
+				{
+					card_link: "https://yurukei-career.com/",
+					card_image:
+						"https://yurukei-career.com/wp-content/uploads/2021/07/careerlog-logo-title-scaled.jpg",
+					card_title: "タイトル01",
+					card_caption: "カードのキャプション01",
+				},
+				{
+					card_link: "https://yurukei-career.com/toiawase-form/",
+					card_image:
+						"https://yurukei-career.com/wp-content/uploads/2021/07/careerlog-logo-scaled.jpg",
+					card_title: "タイトル02",
+					card_caption: "カードのキャプション02",
+				},
+				{
+					card_link: "https://twitter.com/yurukei20",
+					card_image:
+						"https://yurukei-career.com/wp-content/uploads/2021/07/twitter-logo.png",
+					card_title: "タイトル03",
+					card_caption: "カードのキャプション03",
+				},
+			];
 
-			const js_template2 = "<p>JSを入れる場所だけ微妙に違うので注意</p>";
-			document.getElementById("js_template2").innerHTML = js_template2;
+			// card要素を取得して定義
+			const card = document.getElementById("js-card");
+
+			for (let i = 0; i < array.length; i++) {
+				// 定義したcard要素を複製する
+				const card_content = card.content.cloneNode(true);
+
+				// 複製したcard要素にデータを挿入
+				card_content.querySelector(".js-card_link").href = array[i].card_link;
+				card_content.querySelector(".js-card_image").src = array[i].card_image;
+				card_content.querySelector(".js-card_title").textContent =
+					array[i].card_title;
+				card_content.querySelector(".js-card_caption").innerHTML =
+					array[i].card_caption + "について書きました";
+
+				// #js-contentに追加
+				document.getElementById("js-content").appendChild(card_content);
+			}
 		</script>
 	</body>
 </html>

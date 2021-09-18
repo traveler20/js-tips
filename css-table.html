@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<p>
+			解説記事は<a href="https://zenn.dev/yurukei20/articles/e824d2b2a61de7"
+				>こちら</a
+			>
+		</p>
+
+		<style>
+			/*  table  layout  template  */
+			.c-table table {
+				border-collapse: collapse;
+				border: solid 3px #1b7c26;
+			}
+			.c-table th,
+			.c-table td {
+				padding: 8px 10px;
+			}
+			.c-table th {
+				border: solid 1px #1b7c26;
+				background-color: #90e099;
+			}
+			.c-table td {
+				border: dashed 1px #1b7c26;
+			}
+			@media only screen and (max-width: 600px) {
+				.c-table {
+					white-space: nowrap;
+					overflow-x: auto;
+					-webkit-overflow-scrolling: touch;
+				}
+			}
+		</style>
+		<div class="c-table">
+			<table>
+				<tr>
+					<th>表見出し1</th>
+					<th>表見出し2</th>
+					<th>表見出し3</th>
+				</tr>
+				<tr>
+					<td>表コンテンツ1</td>
+					<td>表コンテンツ2</td>
+					<td>表コンテンツ3</td>
+				</tr>
+
+				<!--  横に結合する  -->
+				<tr>
+					<td colspan="2">表コンテンツ横2行</td>
+					<td>表コンテンツ2</td>
+				</tr>
+
+				<!--  縦に結合する  -->
+				<tr>
+					<td rowspan="2">表コンテンツ縦2行</td>
+					<td>表コンテンツ2</td>
+					<td>表コンテンツ3</td>
+				</tr>
+				<tr>
+					<td>表コンテンツ4</td>
+					<td>表コンテンツ5</td>
+				</tr>
+			</table>
+		</div>
+
+		<hr />
+
+		<style>
+			/*  table  layout  template  */
+			.c-compare table {
+				border-collapse: collapse;
+				border: solid 3px #1b7c26;
+			}
+			.c-compare th,
+			.c-compare td {
+				padding: 8px 10px;
+			}
+			.c-compare th {
+				border: solid 1px #1b7c26;
+				background-color: #90e099;
+			}
+			.c-compare td {
+				border: dashed 1px #1b7c26;
+			}
+			@media only screen and (max-width: 600px) {
+				.c-compare {
+					white-space: nowrap;
+					overflow-x: auto;
+					-webkit-overflow-scrolling: touch;
+				}
+			}
+		</style>
+		<div class="c-compare">
+			<table>
+				<tr>
+					<th>表横見出し1</th>
+					<td>表コンテンツ1</td>
+					<td>表コンテンツ2</td>
+				</tr>
+
+				<!--  横に結合する  -->
+				<tr>
+					<th>表横見出し2</th>
+					<td colspan="2">表コンテンツ横2行</td>
+				</tr>
+
+				<!--  縦に結合する  -->
+				<tr>
+					<th rowspan="2">表横見出し3</th>
+					<td>表コンテンツ1</td>
+					<td>表コンテンツ2</td>
+				</tr>
+				<tr>
+					<td>表コンテンツ3</td>
+					<td>表コンテンツ4</td>
+				</tr>
+			</table>
+		</div>
+
+		<hr />
+
+		<style>
+			/*  table  layout  template  */
+			.c-matrix table {
+				border-collapse: collapse;
+				border: solid 3px #1b7c26;
+			}
+			.c-matrix th,
+			.c-matrix td {
+				padding: 8px 10px;
+			}
+			.c-matrix th {
+				border: solid 1px #1b7c26;
+				background-color: #90e099;
+			}
+			.c-matrix td {
+				border: dashed 1px #1b7c26;
+			}
+			@media only screen and (max-width: 600px) {
+				.c-matrix {
+					white-space: nowrap;
+					overflow-x: auto;
+					-webkit-overflow-scrolling: touch;
+				}
+			}
+		</style>
+		<div class="c-matrix">
+			<table>
+				<tr>
+					<th>＼</th>
+					<th>表上見出し1</th>
+					<th>表上見出し2</th>
+				</tr>
+				<tr>
+					<th>表横見出し1</th>
+					<td>表コンテンツ1</td>
+					<td>表コンテンツ2</td>
+				</tr>
+
+				<!--  横に結合する  -->
+				<tr>
+					<th>表横見出し2</th>
+					<td colspan="2">表コンテンツ横2行</td>
+				</tr>
+
+				<!--  縦に結合する  -->
+				<tr>
+					<th rowspan="2">表横見出し3</th>
+					<td>表コンテンツ1</td>
+					<td>表コンテンツ2</td>
+				</tr>
+				<tr>
+					<td>表コンテンツ3</td>
+					<td>表コンテンツ4</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

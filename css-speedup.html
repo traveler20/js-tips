@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 画面内に要素が入り込みそうになったときに読み込み -->
+		<!-- image lazy -->
+		<img src="image.png" alt="" loading="lazy" />
+
+		<!-- iframe lazy -->
+		<iframe src="external.html" loading="lazy"></iframe>
+
+		<!-- レスポンシブ対応の画像設定 -->
+		<img
+			src="normal.png"
+			srcset="large.png 1024w, medium.png 640w, small.png 320w"
+			sizes="(min-width: 36em) 33.3vw, 100vw"
+			alt="画像の詳細"
+			loading="lazy"
+		/>
+
+		<picture>
+			<source
+				media="(min-width: 1024px)"
+				srcset="large-image.png 1x, large-image@2x.png 2x"
+			/>
+			<source srcset="image.png 1x, image@2x.png 2x, image@3x.png 3x" />
+			<img src="fallback.png" loading="lazy" />
+		</picture>
+
+		<!-- 表示（レンダリング）の遅延実行 -->
+		<style>
+			section {
+				content-visibility: auto;
+				contain-intrinsic-size: 500px;
+			}
+		</style>
+		<main>
+			<section>セクションの中身いろいろ</section>
+			<section>別の内容のセクションの中身いろいろ</section>
+			<section>そのまた別の内容のセクションの中身いろいろ</section>
+		</main>
+	</body>
+</html>

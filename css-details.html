@@ -5,146 +5,76 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<!-- fontawesome -->
+		<link
+			href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
 		<style>
-			details {
-				margin: 0 auto 20px;
-				width: 600px;
-				line-height: 1.4;
-			}
-
-			@media not all and (min-width: 578px) {
-				details {
-					width: 380px;
-				}
-			}
-
-			summary {
-				list-style: none;
+			.c-faq summary {
 				position: relative;
-				padding: 20px 70px 20px 30px;
+				display: block;
+				width: 80%;
+				padding: 10px 20px;
+				font-weight: bold;
+				background-color: #a0daa8;
 				cursor: pointer;
-				background-color: #d8be39;
+				transition: 0.2s;
 			}
-
-			@media not all and (min-width: 768px) {
-				summary {
-					padding: 20px 50px 20px 20px;
-				}
+			.c-faq summary:hover {
+				background-color: #6ebe79;
 			}
-
-			summary::-webkit-details-marker {
+			/* デフォルトの矢印を消す */
+			.c-faq summary::-webkit-details-marker {
 				display: none;
 			}
-
-			summary:hover,
-			details[open] summary {
-				background-color: #bc9e04;
-			}
-
-			summary::after {
-				content: "+";
+			/* アコーディオンの＋アイコン */
+			.c-faq summary:after {
 				position: absolute;
-				top: 50%;
-				right: 30px;
-				transform: translateY(-50%);
-				transition: transform 0.5s;
-				font-size: 30px;
+				font-family: "Font Awesome 5 Free";
+				content: "\f067";
+				font-weight: bold;
+				font-size: 20px;
+				color: #1b7c26;
+				margin: auto;
+				top: 28%;
+				right: 3%;
+				transition: 0.4s;
 			}
 
-			details[open] summary::after {
-				transform: translateY(-50%) rotate(45deg);
+			/* アコーディオンオープン時のスタイル */
+			.c-faq[open] summary {
+				background-color: #6ebe79;
+			}
+			.c-faq[open] summary:after {
+				transform: rotate(135deg); /* アイコンを回転 */
 			}
 
-			.answer {
-				padding: 20px 30px;
+			/* アニメーション */
+			.c-faq[open] .c-faq__content {
+				animation: fadeIn 0.5s ease;
 			}
-
-			@media not all and (min-width: 768px) {
-				summary::after {
-					right: 20px;
-					font-size: 20px;
-				}
-
-				.answer {
-					padding: 10px 20px;
-				}
-			}
-
-			details[open] .answer {
-				animation: fadein 0.5s ease;
-			}
-
-			@keyframes fadein {
+			@keyframes fadeIn {
 				0% {
 					opacity: 0;
+					transform: translateY(-10px);
 				}
 				100% {
 					opacity: 1;
+					transform: none;
 				}
+			}
+
+			.c-faq__content {
+				padding: 10px 20px;
 			}
 		</style>
 
-		<details>
-			<summary>
-				よくある質問はdetailsタグで実装しています。ここをクリックすると回答文が表示されます。
-			</summary>
-			<div class="answer">
-				<p>
-					summaryタグをクリックするとここが表示されます。JavaScriptは不要です。作業量がかなり減るので提案しやすいですね。
-				</p>
-			</div>
-		</details>
-		<details>
-			<summary>
-				よくある質問はdetailsタグで実装しています。ここをクリックすると回答文が表示されます。
-			</summary>
-			<div class="answer">
-				<p>
-					summaryタグをクリックするとここが表示されます。JavaScriptは不要です。作業量がかなり減るので提案しやすいですね。
-				</p>
-			</div>
-		</details>
-		<details>
-			<summary>
-				よくある質問はdetailsタグで実装しています。ここをクリックすると回答文が表示されます。
-			</summary>
-			<div class="answer">
-				<p>
-					summaryタグをクリックするとここが表示されます。JavaScriptは不要です。作業量がかなり減るので提案しやすいですね。
-				</p>
-			</div>
-		</details>
-		<details>
-			<summary>
-				よくある質問はdetailsタグで実装しています。ここをクリックすると回答文が表示されます。
-			</summary>
-			<div class="answer">
-				<p>
-					summaryタグをクリックするとここが表示されます。JavaScriptは不要です。作業量がかなり減るので提案しやすいですね。
-				</p>
-			</div>
-		</details>
-		<details>
-			<summary>
-				よくある質問はdetailsタグで実装しています。ここをクリックすると回答文が表示されます。
-			</summary>
-			<div class="answer">
-				<p>
-					summaryタグをクリックするとここが表示されます。JavaScriptは不要です。作業量がかなり減るので提案しやすいですね。
-				</p>
-			</div>
-		</details>
-		<details>
-			<summary>
-				よくある質問はdetailsタグで実装しています。ここをクリックすると回答文が表示されます。
-			</summary>
-			<div class="answer">
-				<p>
-					summaryタグをクリックするとここが表示されます。JavaScriptは不要です。作業量がかなり減るので提案しやすいですね。
-				</p>
-			</div>
+		<details class="c-faq">
+			<summary>アコーディオンタイトル</summary>
+			<div class="c-faq__content">アコーディオンのコンテンツ</div>
 		</details>
 	</body>
 </html>
