@@ -161,7 +161,6 @@ js-canvas-staranimation.html
 - [テーブルレイアウト](css-table.html)
 - [グリッドレイアウト](css-gridlayout.html)
 - [フレックスボックスレイアウト](css-flexlayout.html)
-- [gap のとり方（margin パターン）](css-flex.html)
 - [カードのレイアウト](css-cardlayout.html)
 - [センタリング](css-centering.html)
 
@@ -169,7 +168,6 @@ js-canvas-staranimation.html
 css-table.html
 css-gridlayout.html
 css-flexlayout.html
-css-flex.html
 css-cardlayout.html
 css-centering.html
 ```
