@@ -19,13 +19,6 @@
 				margin: 0;
 				font-weight: normal;
 			}
-			.section__header {
-				position: sticky;
-				top: 0;
-				padding: 1em;
-				color: #a99160;
-				background: #171717;
-			}
 			.section__content {
 				padding: 1em;
 				display: flex;
@@ -34,10 +27,19 @@
 			.section__content > div {
 				max-width: 992px;
 			}
+
+			/* 固定ヘッダー */
+			.sticky-header {
+				position: sticky;
+				top: 0;
+				padding: 1em;
+				color: #a99160;
+				background: #171717;
+			}
 		</style>
 
 		<section class="section">
-			<div class="section__header">
+			<div class="sticky-header">
 				<h2>Section #1 Header</h2>
 			</div>
 
@@ -67,7 +69,7 @@
 		</section>
 
 		<section class="section">
-			<div class="section__header">
+			<div class="sticky-header">
 				<h2>Section #2 Header</h2>
 			</div>
 
@@ -97,7 +99,7 @@
 		</section>
 
 		<section class="section">
-			<div class="section__header">
+			<div class="sticky-header">
 				<h2>Section #3 Header</h2>
 			</div>
 
@@ -127,7 +129,7 @@
 		</section>
 
 		<section class="section">
-			<div class="section__header">
+			<div class="sticky-header">
 				<h2>Section #4 Header</h2>
 			</div>
 
