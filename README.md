@@ -93,6 +93,9 @@ js-animation.html
 css-blink-animation.html
 css-slider-animation.html
 js-cssloading.html
+css-fadein--pagination.html
+css-fadeout--pagination.html
+css-fadein.html
 ```
 
 # サイトでよく実装する機能
