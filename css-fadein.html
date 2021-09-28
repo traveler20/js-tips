@@ -7,24 +7,20 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<div class="anim-box"></div>
+		<div class="box"></div>
 		<style>
-			.anim-box {
-				background: linear-gradient(
-					to right,
-					#362ae0 0%,
-					#3b79cc 50%,
-					#42d3ed 100%
-				);
+			.box {
+				background: #333;
 				border-radius: 5px;
-				max-width: 400px;
+				display: inline-block;
+				width: 400px;
 				height: 150px;
 			}
 		</style>
 		<!---->
-		<div class="anim-box fadein is-animated"></div>
+		<div class="box fadein is-animated"></div>
 		<style>
-			.anim-box.fadein.is-animated {
+			.box.fadein.is-animated {
 				animation: fadeIn 0.7s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
 			}
 
@@ -38,9 +34,9 @@
 			}
 		</style>
 		<!---->
-		<div class="anim-box slidein is-animated"></div>
+		<div class="box slidein is-animated"></div>
 		<style>
-			.anim-box.slidein.is-animated {
+			.box.slidein.is-animated {
 				animation: slideIn 1s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
 			}
 
@@ -59,9 +55,9 @@
 			}
 		</style>
 		<!---->
-		<div class="anim-box zoomin is-animated"></div>
+		<div class="box zoomin is-animated"></div>
 		<style>
-			.anim-box.zoomin.is-animated {
+			.box.zoomin.is-animated {
 				animation: zoomIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
 			}
 
@@ -77,9 +73,9 @@
 			}
 		</style>
 		<!---->
-		<div class="anim-box poyoyon is-animated"></div>
+		<div class="box poyoyon is-animated"></div>
 		<style>
-			.anim-box.poyoyon.is-animated {
+			.box.poyoyon.is-animated {
 				animation: poyoyon 0.5s cubic-bezier(0.12, 0, 0.39, 0) 1 forwards;
 			}
 
@@ -104,15 +100,15 @@
 			}
 		</style>
 		<!---->
-		<div class="anim-box kiran is-animated"></div>
+		<div class="box kiran is-animated"></div>
 		<style>
-			.anim-box.kiran {
+			.box.kiran {
 				opacity: 1;
 				overflow: hidden;
 				position: relative;
 				cursor: pointer;
 			}
-			.anim-box.kiran::before {
+			.box.kiran::before {
 				background-color: #fff;
 				content: "";
 				display: block;
@@ -124,7 +120,7 @@
 				opacity: 0;
 				transition: cubic-bezier(0.32, 0, 0.67, 0);
 			}
-			.anim-box.kiran:hover::before {
+			.box.kiran:hover::before {
 				animation: kiran 0.5s linear 1;
 			}
 
@@ -148,60 +144,6 @@
 				100% {
 					transform: scale(50) rotate(45deg);
 					opacity: 0;
-				}
-			}
-		</style>
-		<!---->
-		<div class="bg is-animated">
-			<span class="bg-wrap"><span class="inn">背景色が流れてくる</span></span
-			><br />
-			<span class="bg-wrap"><span class="inn">アニメーション</span></span>
-		</div>
-		<style>
-			.bg .bg-wrap {
-				position: relative;
-				display: inline-block;
-				margin-top: 5px;
-			}
-			.bg.is-animated .bg-wrap::before {
-				animation: bg 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-				background: linear-gradient(
-					to right,
-					#362ae0 0%,
-					#3b79cc 50%,
-					#42d3ed 100%
-				);
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				transform-origin: left center;
-			}
-			.bg .bg-wrap .inn {
-				color: #fff;
-				display: inline-block;
-				font-size: 36px;
-				font-weight: bold;
-				padding: 5px 15px;
-				position: relative;
-				z-index: 1;
-			}
-			@keyframes bg {
-				0% {
-					opacity: 0;
-					transform: scaleX(0) translateX(-5%);
-				}
-				30% {
-					transform: scaleX(1) translateX(0);
-				}
-				100% {
-					transform: scaleX(1) translateX(0);
-				}
-				30%,
-				100% {
-					opacity: 1;
 				}
 			}
 		</style>

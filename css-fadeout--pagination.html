@@ -9,11 +9,11 @@
 				transition: all 1s;
 			}
 
-			.bodyfadeout {
+			.is-fadeOut {
 				opacity: 0;
 			}
 
-			button {
+			.fadeOut-button {
 				width: 40px;
 				height: 40px;
 				background-color: coral;
@@ -26,22 +26,22 @@
 
 	<body>
 		<h1>Fade Anime1</h1>
-		<button id="button1"></button>
+		<button id="js-fadeOut-button" class="fadeOut-button"></button>
 
 		<script>
 			const body = document.getElementsByTagName("body")[0];
 
-			function fadeOut() {
-				body.classList.add("bodyfadeout");
+			function fadeOutPage() {
+				body.classList.add("is-fadeOut");
 			}
 
-			function google2() {
+			function nextPage() {
 				location.href = "https://google.com";
 			}
-			var bt1 = document.getElementById("button1");
+			var bt1 = document.getElementById("js-fadeOut-button");
 			bt1.addEventListener("click", function () {
-				fadeOut();
-				setTimeout(google2, 1500);
+				fadeOutPage();
+				setTimeout(nextPage, 1500);
 			});
 		</script>
 	</body>

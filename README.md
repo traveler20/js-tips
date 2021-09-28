@@ -87,6 +87,9 @@ js-mouseCursorChange.html
 - [要素を点滅させたい](css-blink-animation.html)
 - [画像を自動で横にスライドさせたい](css-slider-animation.html)
 - [ローディングアニメーション](js-cssloading.html)
+- [フェイドインページネーション](css-fadein--pagination.html)　仮
+- [フェイドアウトページネーション](css-fadeout--pagination.html)　仮
+- [フェイドインアニメーション](css-fadein.html)　仮
 
 ```
 js-animation.html
