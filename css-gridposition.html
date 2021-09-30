@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.gridoverlay__thumb img {
+				object-fit: cover;
+				max-width: 100%;
+				aspect-ratio: 4/3;
+				width: 100%;
+			}
+			.gridoverlay a,
+			.gridoverlay p {
+				color: #fff;
+				margin: 0;
+			}
+
+			.gridoverlay {
+				display: grid;
+				width: 300px;
+			}
+			.gridoverlay__content {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+			}
+			.gridoverlay__thumb,
+			.gridoverlay__content {
+				grid-area: 1/-1;
+			}
+		</style>
+		<article class="gridoverlay">
+			<div class="gridoverlay__thumb">
+				<img
+					src="https://s3.eu-central-1.amazonaws.com/ishadeed.com/brownies.jpg"
+					alt=""
+				/>
+			</div>
+			<div class="gridoverlay__content">
+				<h3><a href="#">Title</a></h3>
+				<p>Subtitle</p>
+			</div>
+		</article>
+
+		<style>
+			.gridcard {
+				position: relative;
+				display: grid;
+				box-shadow: 0 3px 10px 0 rgba(#000, 0.3);
+				border-radius: 5px;
+			}
+			.gridcard img {
+				object-fit: cover;
+				max-width: 100%;
+				aspect-ratio: 4/3;
+				width: 100%;
+			}
+
+			.gridcard > * {
+				grid-area: 1/-1;
+			}
+
+			.gridcard a {
+				text-decoration: none;
+				color: inherit;
+			}
+			.gridcard a:before {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			.gridcard__content {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				padding: 1rem;
+				color: #fff;
+				background: linear-gradient(to top, #000000d9, #0000) bottom/100% 60%
+					no-repeat;
+			}
+			.gridcard__content h2 {
+				font-size: 1.25rem;
+				font-weight: bold;
+				margin-bottom: 0.25rem;
+			}
+
+			.gridcard__tag {
+				background-color: #fff;
+				align-self: start;
+				justify-self: start;
+				min-width: 100px;
+				padding: 8px;
+				margin-top: 1rem;
+			}
+		</style>
+		<article class="gridcard" style="width: 350px">
+			<div class="gridcard__thumb">
+				<img
+					src="https://s3.eu-central-1.amazonaws.com/ishadeed.com/brownies.jpg"
+					alt=""
+				/>
+			</div>
+			<div class="gridcard__content">
+				<h2><a href="#">gridCard title</a></h2>
+				<p>Some desc will go here and I need it to wrap into lines</p>
+			</div>
+			<span class="gridcard__tag">Tag</span>
+		</article>
+
+		<style>
+			.gridhero {
+				display: grid;
+				height: 500px;
+			}
+
+			.gridhero__content {
+				z-index: 1; /* [1] */
+				grid-area: 1/-1;
+				display: flex;
+				flex-direction: column;
+				margin: auto; /* [2] */
+				text-align: center;
+			}
+
+			.gridhero__thumb {
+				grid-area: 1/-1;
+				object-fit: cover; /* [3] */
+				width: 100%;
+				height: 100%;
+				min-height: 0; /* [4] */
+			}
+
+			.gridhero:after {
+				content: "";
+				background-color: #000;
+				opacity: 0.5;
+				grid-area: 1/-1;
+			}
+
+			.gridhero {
+				display: grid;
+				height: calc(250px + 25vmin);
+
+				background-color: lightblue;
+			}
+			.gridhero > * {
+				grid-area: 1/-1;
+			}
+
+			.gridhero img {
+				width: 100%;
+				height: 100%;
+				min-height: 0;
+				object-fit: cover;
+			}
+
+			.gridhero:after {
+				content: "";
+				background-color: #000;
+				opacity: 0.5;
+				grid-area: 1/-1;
+			}
+
+			.gridhero__content {
+				z-index: 1;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+			}
+			.gridhero__content > * {
+				color: #fff;
+				margin-bottom: 1rem;
+			}
+
+			.gridhero__content h2 {
+				font-size: 2rem;
+				font-weight: bold;
+			}
+		</style>
+		<div class="gridhero">
+			<div class="gridhero__content">
+				<h2>Best Brownies in Town</h2>
+				<p>High quality ingredients and best in-class chef</p>
+				<a href="#">Order now</a>
+			</div>
+			<img
+				src="https://s3.eu-central-1.amazonaws.com/ishadeed.com/brownies.jpg"
+				alt=""
+			/>
+		</div>
+
+		<style>
+			.displaycontents {
+				display: flex;
+				align-items: center;
+				background-color: lightblue;
+				min-height: 300px;
+				padding: 1rem;
+			}
+			@media (min-width: 800px) {
+				.displaycontents {
+					align-items: center;
+					justify-content: space-between;
+				}
+			}
+
+			@media (max-width: 799px) {
+				.displaycontents {
+					flex-direction: column;
+				}
+			}
+
+			.displaycontents__thumb {
+				width: 250px;
+				height: 200px;
+				object-fit: cover;
+			}
+			@media (max-width: 799px) {
+				.displaycontents__thumb {
+					order: -1;
+					margin-bottom: 1rem;
+				}
+			}
+
+			.displaycontents__content {
+				max-width: 500px;
+			}
+			@media (max-width: 799px) {
+				.displaycontents__content {
+					display: contents;
+					text-align: center;
+				}
+			}
+
+			.displaycontents__content > * {
+				margin-bottom: 1rem;
+			}
+
+			.displaycontents__title {
+				font-size: 2rem;
+				font-weight: bold;
+			}
+			@media (max-width: 799px) {
+				.displaycontents__title {
+					order: -1;
+				}
+			}
+		</style>
+		<div class="displaycontents">
+			<div class="displaycontents__content">
+				<h2 class="displaycontents__title">This is a title</h2>
+				<p class="displaycontents__desc">
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit..
+				</p>
+				<a class="displaycontents__cta" href="#">Order now</a>
+			</div>
+			<img
+				class="displaycontents__thumb"
+				src="https://s3.eu-central-1.amazonaws.com/ishadeed.com/brownies.jpg"
+				alt=""
+			/>
+		</div>
+	</body>
+</html>
