@@ -8,30 +8,45 @@
 	</head>
 	<body>
 		<style>
-			.gridoverlay__thumb img {
-				object-fit: cover;
-				max-width: 100%;
-				aspect-ratio: 4/3;
-				width: 100%;
-			}
-			.gridoverlay a,
-			.gridoverlay p {
-				color: #fff;
-				margin: 0;
-			}
-
+			/* gridレイアウトでオーバーレイ表示 */
 			.gridoverlay {
 				display: grid;
-				width: 300px;
-			}
-			.gridoverlay__content {
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-end;
+				width: 350px;
 			}
 			.gridoverlay__thumb,
 			.gridoverlay__content {
 				grid-area: 1/-1;
+			}
+
+			/* 画像部分のCSS */
+			.gridoverlay__thumb img {
+				max-width: 100%;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				aspect-ratio: 4/3;
+			}
+
+			/* テキスト部分のCSS */
+			.gridoverlay__content {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				padding: 16px;
+				color: #fff;
+				background: linear-gradient(to top, #000000d9, #0000) bottom/100% 60%
+					no-repeat;
+			}
+			.gridoverlay__content h3,
+			.gridoverlay__content p {
+				margin: 0;
+			}
+			.gridoverlay__content p {
+				/* 指定行での省略 */
+				display: -webkit-box;
+				overflow: hidden;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
 			}
 		</style>
 		<article class="gridoverlay">
@@ -42,134 +57,104 @@
 				/>
 			</div>
 			<div class="gridoverlay__content">
-				<h3><a href="#">Title</a></h3>
-				<p>Subtitle</p>
+				<h3>タイトルタイトル</h3>
+				<p>
+					複素数体であれば、任意のCM-タイプの A
+					は、実際、数体である定義体（英語版）(field of
+					definition)を持っている。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosati
+					involution）をもつ環として既に分類されて
+				</p>
 			</div>
 		</article>
 
 		<style>
+			/* gridレイアウトのカード表示 */
 			.gridcard {
-				position: relative;
 				display: grid;
-				box-shadow: 0 3px 10px 0 rgba(#000, 0.3);
-				border-radius: 5px;
+				width: 350px;
 			}
-			.gridcard img {
-				object-fit: cover;
-				max-width: 100%;
-				aspect-ratio: 4/3;
-				width: 100%;
-			}
-
 			.gridcard > * {
 				grid-area: 1/-1;
 			}
 
-			.gridcard a {
-				text-decoration: none;
-				color: inherit;
-			}
-			.gridcard a:before {
-				content: "";
-				position: absolute;
-				left: 0;
-				top: 0;
+			/* 画像部分のCSS */
+			.gridcard__thumb img {
+				max-width: 100%;
 				width: 100%;
-				height: 100%;
+				object-fit: cover;
+				aspect-ratio: 4/3;
 			}
 
+			/* タグ部分のCSS */
+			.gridcard__tag {
+				/* gridレイアウト */
+				align-self: start;
+				justify-self: start;
+				background-color: #fff;
+				min-width: 100px;
+				padding: 8px;
+				margin-top: 16px;
+			}
+
+			/* テキスト部分のCSS */
 			.gridcard__content {
 				display: flex;
 				flex-direction: column;
 				justify-content: flex-end;
-				padding: 1rem;
+				padding: 16px;
 				color: #fff;
 				background: linear-gradient(to top, #000000d9, #0000) bottom/100% 60%
 					no-repeat;
 			}
-			.gridcard__content h2 {
-				font-size: 1.25rem;
-				font-weight: bold;
-				margin-bottom: 0.25rem;
+			.gridcard__content h3,
+			.gridcard__content p {
+				margin: 0;
 			}
-
-			.gridcard__tag {
-				background-color: #fff;
-				align-self: start;
-				justify-self: start;
-				min-width: 100px;
-				padding: 8px;
-				margin-top: 1rem;
+			.gridcard__content p {
+				/* 指定行での省略 */
+				display: -webkit-box;
+				overflow: hidden;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
 			}
 		</style>
-		<article class="gridcard" style="width: 350px">
+		<article class="gridcard">
 			<div class="gridcard__thumb">
 				<img
 					src="https://s3.eu-central-1.amazonaws.com/ishadeed.com/brownies.jpg"
 					alt=""
 				/>
 			</div>
-			<div class="gridcard__content">
-				<h2><a href="#">gridCard title</a></h2>
-				<p>Some desc will go here and I need it to wrap into lines</p>
-			</div>
 			<span class="gridcard__tag">Tag</span>
+			<div class="gridcard__content">
+				<h3>タイトルタイトル</h3>
+				<p>
+					複素数体であれば、任意のCM-タイプの A
+					は、実際、数体である定義体（英語版）(field of
+					definition)を持っている。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosati
+					involution）をもつ環として既に分類されて
+				</p>
+			</div>
 		</article>
 
 		<style>
+			/* gridによるヒーローエリアの表示 */
 			.gridhero {
 				display: grid;
-				height: 500px;
+				height: calc(250px + 25vmin);
+				background-color: #efefef;
 			}
-
-			.gridhero__content {
-				z-index: 1; /* [1] */
-				grid-area: 1/-1;
-				display: flex;
-				flex-direction: column;
-				margin: auto; /* [2] */
-				text-align: center;
-			}
-
-			.gridhero__thumb {
-				grid-area: 1/-1;
-				object-fit: cover; /* [3] */
-				width: 100%;
-				height: 100%;
-				min-height: 0; /* [4] */
-			}
-
 			.gridhero:after {
 				content: "";
 				background-color: #000;
 				opacity: 0.5;
 				grid-area: 1/-1;
-			}
-
-			.gridhero {
-				display: grid;
-				height: calc(250px + 25vmin);
-
-				background-color: lightblue;
 			}
 			.gridhero > * {
 				grid-area: 1/-1;
 			}
 
-			.gridhero img {
-				width: 100%;
-				height: 100%;
-				min-height: 0;
-				object-fit: cover;
-			}
-
-			.gridhero:after {
-				content: "";
-				background-color: #000;
-				opacity: 0.5;
-				grid-area: 1/-1;
-			}
-
+			/* テキスト部分のCSS */
 			.gridhero__content {
 				z-index: 1;
 				display: flex;
@@ -177,48 +162,59 @@
 				justify-content: center;
 				align-items: center;
 				text-align: center;
+				margin: auto;
 			}
 			.gridhero__content > * {
 				color: #fff;
-				margin-bottom: 1rem;
+				font-size: 16px;
+				margin: 0 0 16px;
 			}
-
 			.gridhero__content h2 {
-				font-size: 2rem;
+				font-size: 24px;
 				font-weight: bold;
 			}
+
+			/* 画像部分のCSS */
+			.gridhero__thumb {
+				object-fit: cover;
+				width: 100%;
+				height: 100%;
+				min-height: 0;
+			}
 		</style>
-		<div class="gridhero">
+		<article class="gridhero">
 			<div class="gridhero__content">
-				<h2>Best Brownies in Town</h2>
-				<p>High quality ingredients and best in-class chef</p>
-				<a href="#">Order now</a>
+				<h2>タイトルタイトル</h2>
+				<p>説明文が入ります。説明文が入ります。説明文が入ります。</p>
+				<a href="#">もっと見る</a>
 			</div>
 			<img
+				class="gridhero__thumb"
 				src="https://s3.eu-central-1.amazonaws.com/ishadeed.com/brownies.jpg"
 				alt=""
 			/>
-		</div>
+		</article>
 
 		<style>
 			.displaycontents {
 				display: flex;
 				align-items: center;
-				background-color: lightblue;
+				background-color: #efefef;
 				min-height: 300px;
 				padding: 1rem;
 			}
-			@media (min-width: 800px) {
-				.displaycontents {
-					align-items: center;
-					justify-content: space-between;
-				}
+
+			.displaycontents__content {
+				max-width: 500px;
 			}
 
-			@media (max-width: 799px) {
-				.displaycontents {
-					flex-direction: column;
-				}
+			.displaycontents__content > * {
+				margin-bottom: 16px;
+			}
+
+			.displaycontents__title {
+				font-size: 24px;
+				font-weight: bold;
 			}
 
 			.displaycontents__thumb {
@@ -226,50 +222,49 @@
 				height: 200px;
 				object-fit: cover;
 			}
-			@media (max-width: 799px) {
-				.displaycontents__thumb {
-					order: -1;
-					margin-bottom: 1rem;
+
+			/* PCレイアウト */
+			@media (min-width: 800px) {
+				.displaycontents {
+					align-items: center;
+					justify-content: space-between;
 				}
 			}
 
-			.displaycontents__content {
-				max-width: 500px;
-			}
+			/* SPレイアウト */
 			@media (max-width: 799px) {
+				.displaycontents {
+					flex-direction: column;
+				}
+
+				/* display:contents; でSPレイアウトの順序を調整 */
 				.displaycontents__content {
 					display: contents;
 					text-align: center;
 				}
-			}
 
-			.displaycontents__content > * {
-				margin-bottom: 1rem;
-			}
-
-			.displaycontents__title {
-				font-size: 2rem;
-				font-weight: bold;
-			}
-			@media (max-width: 799px) {
+				/* タイトル・画像・テキストやaタグの順序に調整 */
+				/* タイトルと画像を一個ずつ上に調整 */
 				.displaycontents__title {
 					order: -1;
 				}
+				.displaycontents__thumb {
+					order: -1;
+					margin-bottom: 16px;
+				}
 			}
 		</style>
-		<div class="displaycontents">
+		<article class="displaycontents">
 			<div class="displaycontents__content">
-				<h2 class="displaycontents__title">This is a title</h2>
-				<p class="displaycontents__desc">
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit..
-				</p>
-				<a class="displaycontents__cta" href="#">Order now</a>
+				<h2 class="displaycontents__title">タイトルタイトル</h2>
+				<p>説明文が入ります。説明文が入ります。説明文が入ります。</p>
+				<a href="#">もっと見る</a>
 			</div>
 			<img
 				class="displaycontents__thumb"
 				src="https://s3.eu-central-1.amazonaws.com/ishadeed.com/brownies.jpg"
 				alt=""
 			/>
-		</div>
+		</article>
 	</body>
 </html>
