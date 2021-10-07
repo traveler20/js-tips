@@ -392,5 +392,103 @@
 			/>
 			<h1 class="overlay-text">TITLE</h1>
 		</div>
+
+		<!-- 一文字ずつ登場するテキストアニメーション -->
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+			.letter {
+				display: flex;
+				height: 100vh;
+				justify-content: center;
+				align-items: center;
+				margin: 0;
+			}
+
+			.letter-title {
+				display: flex;
+				overflow: hidden;
+				color: #aa8f7b;
+				font-family: "Josefin Sans", sans-serif;
+			}
+			.letter-title span {
+				display: block;
+				transform: translate(0, 105%);
+				transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+			}
+			.letter-title.is-fadeIn span {
+				transform: translate(0, 0);
+			}
+			.letter-title span:nth-child(2) {
+				transition-delay: 0.06s;
+			}
+			.letter-title span:nth-child(3) {
+				transition-delay: 0.12s;
+			}
+			.letter-title span:nth-child(4) {
+				transition-delay: 0.18s;
+			}
+			.letter-title span:nth-child(5) {
+				transition-delay: 0.24s;
+			}
+			.letter-title span:nth-child(6) {
+				transition-delay: 0.3s;
+			}
+			.letter-title span:nth-child(7) {
+				transition-delay: 0.36s;
+			}
+			.letter-title span:nth-child(8) {
+				transition-delay: 0.42s;
+			}
+			.letter-title span:nth-child(9) {
+				transition-delay: 0.48s;
+			}
+			.letter-title span:nth-child(10) {
+				transition-delay: 0.54s;
+			}
+			.letter-title span:nth-child(11) {
+				transition-delay: 0.6s;
+			}
+			.letter-title span:nth-child(12) {
+				transition-delay: 0.66s;
+			}
+			.letter-title span:nth-child(13) {
+				transition-delay: 0.72s;
+			}
+			.letter-title span:nth-child(14) {
+				transition-delay: 0.78s;
+			}
+		</style>
+		<div class="letter">
+			<h1 class="letter-title" id="letter-title">
+				<span>T</span>
+				<span>E</span>
+				<span>X</span>
+				<span>T</span>
+				<span>&nbsp;</span>
+				<span>A</span>
+				<span>N</span>
+				<span>I</span>
+				<span>M</span>
+				<span>A</span>
+				<span>T</span>
+				<span>I</span>
+				<span>O</span>
+				<span>N</span>
+			</h1>
+		</div>
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"
+		></script>
+		<script>
+			const CLASSNAME = "is-fadeIn";
+			const TIMEOUT = 500;
+			const $target = $(".letter-title");
+
+			setInterval(() => {
+				$target.addClass(CLASSNAME);
+			}, TIMEOUT * 2);
+		</script>
 	</body>
 </html>
