@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			/* 画像を囲む要素 */
+			.bookcover {
+				/* 本の幅 */
+				width: 180px;
+				position: relative;
+				/* 周囲の影 */
+				box-shadow: 10px 15px 22px -5px rgba(0, 0, 0, 0.2),
+					0 0 2px rgba(0, 0, 0, 0.15);
+				/* 角丸にすると本らしさが出る */
+				border-radius: 4px;
+			}
+
+			/* 疑似要素で光沢演出のためのカバーを画像に重ねる */
+			.bookcover:after {
+				content: "";
+				/* 親要素に重なるように */
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				/* 白の透明度を調整したグラデーション */
+				background: linear-gradient(
+					-90deg,
+					rgba(255, 255, 255, 0) 0%,
+					rgba(255, 255, 255, 0.1) 80%,
+					rgba(255, 255, 255, 0.4) 94%,
+					rgba(255, 255, 255, 0.5) 96%,
+					rgba(255, 255, 255, 0) 100%
+				);
+			}
+
+			/* 画像 */
+			.bookcover-image {
+				display: block;
+				/* 親要素の幅に合うように */
+				width: 100%;
+				/* 親要素に対してoverflowを使うとバグるブラウザがあるので、画像自体にもborder-radiusを適用する */
+				border-radius: 4px;
+			}
+		</style>
+		<div class="bookcover">
+			<img
+				src="https://storage.googleapis.com/zenn-user-upload/book_cover/88cb89254a.jpg"
+				class="bookcover-image"
+			/>
+		</div>
+	</body>
+</html>

@@ -7,31 +7,54 @@
 		<title>Document</title>
 	</head>
 	<body>
+		<!-- 画像の中央寄せ -->
 		<style>
-			.center {
+			/* imgのサイズ */
+			.flex_center img,
+			.grid_center img {
+				max-width: 300px;
+			}
+
+			/* flex で中央寄せ */
+			.flex_center {
 				display: flex;
 				align-items: center;
 				justify-content: center;
 			}
 
+			/* grid で中央寄せ */
 			.grid_center {
 				display: grid;
 				place-items: center;
-				height: 100vh;
-			}
-
-			.grid_center img {
-				display: block;
-				max-width: 300px;
-				height: auto;
 			}
 		</style>
-
+		<div class="flex_center">
+			<img
+				src="https://pulpxstyle.com/wp-main/common/codepen/post42-codepen05.jpg"
+				alt="pic"
+			/>
+		</div>
+		<hr style="margin: 30px 0" />
 		<div class="grid_center">
 			<img
 				src="https://pulpxstyle.com/wp-main/common/codepen/post42-codepen05.jpg"
 				alt="pic"
 			/>
 		</div>
+
+		<hr style="margin: 30px 0" />
+
+		<!-- テキストの中央寄せで長いときは左寄せ -->
+		<style>
+			.text_table {
+				display: table;
+				margin: auto;
+				text-align: left;
+			}
+		</style>
+		<p class="text_table">短いテキスト</p>
+		<p class="text_table">
+			ちょーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーと長めの文章
+		</p>
 	</body>
 </html>

@@ -6,12 +6,14 @@
 - [テキストを選択したときの色を変えたい](css-selection.html)
 - [テキストフォントのデザインを凝りたい](css-title.html)
 - [各 WEB フォントの表示を確認する](css-typography.html)
+- [テキストの下線をアレンジしたい](css-underline.html)
 
 ```
 css-truncatetext.html
 css-selection.html
 css-title.html
 css-typography.html
+css-underline.html
 ```
 
 ```
@@ -40,6 +42,7 @@ html-list.html
 - [jpg 画像を透過させたい](css-bgmultiply.html)
 - [png 画像を背景に同化させて影をつけたい](css-dropshadow.html)
 - [画像にエフェクトをかけたい](css-backdropfilter.html)
+- [SVG 画像を HTML や CSS で色を変えたい](html-svgUse.html)
 
 ```
 html-image.html
@@ -47,6 +50,7 @@ html-image.html
 css-bgmultiply.html
 css-dropshadow.html
 css-backdropfilter.html
+html-svgUse.html
 ```
 
 # スクロール
@@ -144,25 +148,7 @@ js-template.html
 js-variable.html
 ```
 
-# その他
-
-## メーターを HTML で組む
-
-- [横長メーター](html-meter.html)
-
-```
-html-meter.html
-```
-
-## canvas でスターアニメーション
-
-- [スターアニメーション](js-canvas-staranimation.html)
-
-```
-js-canvas-staranimation.html
-```
-
-## 便利なレイアウト
+# 便利なレイアウト
 
 - [テーブルレイアウト](css-table.html)
 - [グリッドレイアウト](css-gridlayout.html)
@@ -178,6 +164,28 @@ css-gridposition.html
 css-flexlayout.html
 css-cardlayout.html
 css-centering.html
+```
+
+# その他
+
+## いつか使いそうなやつ
+
+- [横長メーター](html-meter.html)
+- [画像を本っぽく装飾](css-bookcover.html)
+
+```
+html-meter.html
+css-bookcover.html
+```
+
+## canvas アニメーション
+
+- [スターアニメーション](js-canvas-staranimation.html)
+- [セクション区切りの波アニメーション](js-canvas-wavesection.html)
+
+```
+js-canvas-staranimation.html
+js-canvas-wavesection.html
 ```
 
 ## project

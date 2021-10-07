@@ -1,0 +1,19 @@
+<svg
+    id="pen"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 0 30 30"
+>
+    <rect
+        class="icon-red"
+        x="14.81"
+        y="9.19"
+        width="10.95"
+        height="4.03"
+        transform="translate(-1.97 17.65) rotate(-45.08)"
+    ></rect>
+    <path
+        class="icon-red"
+        d="M12.15,15a4,4,0,0,0-3.9,3.23h0A14,14,0,0,1,7,21.38,11.16,11.16,0,0,1,4.43,24,46.83,46.83,0,0,0,10.3,24a8.89,8.89,0,0,0,4-1.66l.07-.06.47-.37h0A4,4,0,0,0,12.15,15Z"
+    ></path>
+</svg>

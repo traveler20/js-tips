@@ -214,6 +214,45 @@
 			<h2 class="gradation-title">Gradient Title</h2>
 		</div>
 
+		<!-- グラデーションテキストアニメ -->
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap");
+			.gradation-bg {
+				font-family: Inter, sans-serif;
+				text-align: center;
+				background: #000;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.gradation-bg-title {
+				font-size: 100px;
+				text-align: center;
+				background: linear-gradient(
+					5deg,
+					#ffde65,
+					#ff8484 50%,
+					#ff86c3 60%,
+					#716fff 80%
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-size: 180% 180%;
+				animation: gradationanime 3s ease -1s infinite alternate;
+			}
+			@keyframes gradationanime {
+				0% {
+					background-position: 0% 100%;
+				}
+				100% {
+					background-position: 100% 0%;
+				}
+			}
+		</style>
+		<div class="gradation-bg">
+			<h2 class="gradation-bg-title">Gradient Title</h2>
+		</div>
+
 		<!-- タイピング -->
 		<style>
 			.typing-title {
@@ -321,6 +360,37 @@
 		</style>
 		<div class="c-neon">
 			<h2 class="c-neon__title">OPEN</h2>
+		</div>
+
+		<!-- オーバーレイで文字を透過 -->
+		<style>
+			.overlay {
+				display: grid;
+			}
+			.overlay > * {
+				grid-area: 1/-1;
+			}
+			.overlay-image {
+				width: 100%;
+			}
+			.overlay-text {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-weight: bold;
+				font-size: 100px;
+				color: #fff;
+				/* overlay でテキストを透過 */
+				mix-blend-mode: overlay;
+			}
+		</style>
+		<div class="overlay">
+			<img
+				class="overlay-image"
+				src="https://picsum.photos/id/1015/200/300"
+				alt=""
+			/>
+			<h1 class="overlay-text">TITLE</h1>
 		</div>
 	</body>
 </html>
