@@ -290,7 +290,7 @@
 				text-align: center;
 			}
 		</style>
-		<h2 class="shadow-title">Contact</h2>
+		<h2 class="shadow-title">Title</h2>
 
 		<!-- ネオン -->
 		<style>
@@ -393,102 +393,197 @@
 			<h1 class="overlay-text">TITLE</h1>
 		</div>
 
-		<!-- 一文字ずつ登場するテキストアニメーション -->
+		<!-- フェイドイン -->
 		<style>
-			@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
-			.letter {
-				display: flex;
-				height: 100vh;
-				justify-content: center;
-				align-items: center;
-				margin: 0;
+			.fadein-title {
+				font-family: monospace;
+				font-size: 30px;
+				text-align: center;
 			}
-
-			.letter-title {
-				display: flex;
-				overflow: hidden;
-				color: #aa8f7b;
-				font-family: "Josefin Sans", sans-serif;
+			.fadein-title.is-show {
+				animation: slideText 0.5s steps(22);
 			}
-			.letter-title span {
-				display: block;
-				transform: translate(0, 105%);
-				transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
-			}
-			.letter-title.is-fadeIn span {
-				transform: translate(0, 0);
-			}
-			.letter-title span:nth-child(2) {
-				transition-delay: 0.06s;
-			}
-			.letter-title span:nth-child(3) {
-				transition-delay: 0.12s;
-			}
-			.letter-title span:nth-child(4) {
-				transition-delay: 0.18s;
-			}
-			.letter-title span:nth-child(5) {
-				transition-delay: 0.24s;
-			}
-			.letter-title span:nth-child(6) {
-				transition-delay: 0.3s;
-			}
-			.letter-title span:nth-child(7) {
-				transition-delay: 0.36s;
-			}
-			.letter-title span:nth-child(8) {
-				transition-delay: 0.42s;
-			}
-			.letter-title span:nth-child(9) {
-				transition-delay: 0.48s;
-			}
-			.letter-title span:nth-child(10) {
-				transition-delay: 0.54s;
-			}
-			.letter-title span:nth-child(11) {
-				transition-delay: 0.6s;
-			}
-			.letter-title span:nth-child(12) {
-				transition-delay: 0.66s;
-			}
-			.letter-title span:nth-child(13) {
-				transition-delay: 0.72s;
-			}
-			.letter-title span:nth-child(14) {
-				transition-delay: 0.78s;
+			@keyframes slideText {
+				0% {
+					transform: translateY(100%);
+					opacity: 0;
+				}
+				100% {
+					transform: translateY(0);
+					opacity: 1;
+				}
 			}
 		</style>
-		<div class="letter">
-			<h1 class="letter-title" id="letter-title">
-				<span>T</span>
-				<span>E</span>
-				<span>X</span>
-				<span>T</span>
-				<span>&nbsp;</span>
-				<span>A</span>
-				<span>N</span>
-				<span>I</span>
-				<span>M</span>
-				<span>A</span>
-				<span>T</span>
-				<span>I</span>
-				<span>O</span>
-				<span>N</span>
-			</h1>
-		</div>
-		<script
-			src="https://code.jquery.com/jquery-3.6.0.min.js"
-			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-			crossorigin="anonymous"
-		></script>
-		<script>
-			const CLASSNAME = "is-fadeIn";
-			const TIMEOUT = 500;
-			const $target = $(".letter-title");
+		<h2 class="fadein-title js-fadeIn">下から登場するタイトル</h2>
 
-			setInterval(() => {
-				$target.addClass(CLASSNAME);
-			}, TIMEOUT * 2);
+		<!-- スルッと登場 -->
+		<style>
+			.slideUp-title,
+			.slideUp-title span {
+				display: block;
+			}
+			.slideUp-title {
+				font-family: monospace;
+				font-size: 30px;
+				text-align: center;
+				overflow: hidden;
+				opacity: 0;
+			}
+			.slideUp-title span {
+				opacity: 0;
+				transform: matrix(1, 0, 0, 1, 0, 100);
+				transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+			}
+			.slideUp-title.is-show {
+				opacity: 1;
+			}
+			.slideUp-title.is-show span {
+				opacity: 1;
+				transform: matrix(1, 0, 0, 1, 0, 0);
+			}
+		</style>
+		<h2 class="slideUp-title js-fadeIn">
+			<span>スルッと登場するタイトル</span>
+		</h2>
+
+		<!-- ズームイン -->
+		<style>
+			.zoomin-title {
+				font-family: monospace;
+				font-size: 30px;
+				position: relative;
+				margin: 47px 0;
+				text-align: center;
+				text-shadow: 0 0 2px white;
+			}
+			.zoomin-title:before {
+				content: "";
+				position: absolute;
+				background: #ffd69d;
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+				z-index: -1;
+			}
+			.zoomin-title.is-show {
+				animation: zoomText 0.5s steps(22);
+			}
+			@keyframes zoomText {
+				0% {
+					transform: scale(0.8);
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+					transform: scale(1);
+				}
+			}
+		</style>
+		<h2 class="zoomin-title js-fadeIn">ズームして登場するタイトル</h2>
+
+		<!-- 左からスルッと登場する -->
+		<style>
+			.smooth-title {
+				clip-path: inset(0 100% 0 0);
+				display: inline-block;
+				font-family: monospace;
+				font-size: 30px;
+				font-weight: bold;
+				transition: 1.4s cubic-bezier(0.37, 0, 0.63, 1);
+				transition-property: clip-path;
+				margin-top: 15px;
+			}
+			.smooth-title.is-show {
+				clip-path: inset(0);
+			}
+		</style>
+		<h2 class="smooth-title js-fadeIn">左からスルッと登場するタイトル</h2>
+
+		<!-- 1文字ずつ表示させる -->
+		<style>
+			.stepUp-title,
+			.stepUp-title span {
+				display: block;
+			}
+			.stepUp-title {
+				font-family: monospace;
+				font-size: 30px;
+				text-align: center;
+				display: flex;
+				overflow: hidden;
+				opacity: 0;
+			}
+			.stepUp-title span {
+				opacity: 0;
+				transform: matrix(1, 0, 0, 1, 0, 100);
+			}
+			.stepUp-title.is-show {
+				opacity: 1;
+			}
+			.stepUp-title.is-show span {
+				opacity: 1;
+				transform: matrix(1, 0, 0, 1, 0, 0);
+			}
+		</style>
+		<h2 class="stepUp-title js-fadeIn js-innerspan">TEXT&nbsp;ANIMATION</h2>
+		<script>
+			// innerspan definition
+			const innerspan = document.querySelector(".js-innerspan");
+
+			// innerspan insert span
+			innerspan.innerHTML = innerspan.textContent.replace(
+				/\S/g,
+				"<span>$&</span>"
+			);
+
+			// innerspan span insert rotate element
+			const element = document.querySelectorAll("span");
+			for (let i = 0; i < element.length; i++) {
+				element[i].style.transition =
+					"1s cubic-bezier(0.22, 1, 0.36, 1)" + i * 0.06 + "s";
+			}
+		</script>
+
+		<hr style="margin: 100px 0" />
+		<script>
+			/* ===============================
+			 * 到達したら要素を表示させる設定
+			 =============================== */
+			/* 関数showElementAnimationを設定 */
+			function showElementAnimation() {
+				/* js-fadeInの値をelementに代入 */
+				const element = document.getElementsByClassName("js-fadeIn");
+				/* 要素がなかったら処理をキャンセル */
+				if (!element) return;
+
+				/* 要素が出るタイミングの調整 */
+				// 要素が200px（768px以下のウィンドウサイズでは40px）分過ぎたら表示させる
+				const showTiming = window.innerHeight > 768 ? 200 : 40; // 表示させるwindowのコンテンツの高さ
+				const scrollY = window.pageYOffset; // Y軸へのスクロール
+				const windowH = window.innerHeight; // windowのコンテンツの高さ
+
+				/* i(element)の数分だけ繰り返す */
+				for (let i = 0; i < element.length; i++) {
+					const elemClientRect = element[i].getBoundingClientRect(); // 要素の寸法と位置
+					const elemY = scrollY + elemClientRect.top; // スクロール分と要素の一番高い部分との足し算
+					/* 表示させるwindowの高さまでスクロールしたとき */
+					if (scrollY + windowH - showTiming > elemY) {
+						/* is-showを追加 */
+						element[i].classList.add("is-show");
+						/* スクロール分が表示させる高さより上に移動したとき */
+					} else if (scrollY + windowH < elemY) {
+						/* 上にスクロールして再度is-showを削除 */
+						element[i].classList.remove("is-show");
+					}
+				}
+			}
+			/* 関数showElementAnimationを実行 */
+			showElementAnimation();
+			window.addEventListener("scroll", showElementAnimation);
 		</script>
 	</body>
 </html>
