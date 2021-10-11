@@ -11,33 +11,43 @@
 			/* #7EC2C2 #9DDCDC #FFF4E1 #E67A7A */
 			body {
 				background-color: #a0d8ef;
+				overflow-x: hidden;
 			}
 
-			.wrapper {
+			.particle-fv {
 				width: 100vw;
 				height: 100vh;
-				position: relative;
+				display: grid;
+			}
+			.particle-fv > * {
+				grid-area: 1/-1;
+				width: 100%;
 			}
 
-			.title {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
+			.particle-fv__title {
+				z-index: 1;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
 				font-size: 100px;
 				font-weight: bold;
 				color: #fff4e14d;
 			}
 		</style>
 
-		<div class="wrapper">
+		<div class="particle-fv">
+			<h1 class="particle-fv__title">Particle</h1>
 			<canvas id="js-canvas"></canvas>
-			<h1 class="title">Particle</h1>
 		</div>
 
 		<script>
+			// canvas
 			const canvas = document.getElementById("js-canvas");
+			// canvas に描画する context
 			const ctx = canvas.getContext("2d");
+
+			// canvasサイズをウィンドウサイズに
 			canvas.width = window.innerWidth;
 			canvas.height = window.innerHeight;
 
@@ -50,7 +60,8 @@
 					setTimeout(cb, 17);
 				};
 
-			const NUM = 50; // 表示数
+			// 表示数
+			const NUM = 50;
 			const particles = [];
 
 			class Particle {
@@ -63,8 +74,9 @@
 					this.index = index;
 				}
 				render() {
+					// 色のパターン
 					if (this.index % 3 === 0) {
-						ctx.fillStyle = "#fff";
+						ctx.fillStyle = "#ffffff99";
 						ctx.fill();
 					} else if (this.index % 3 === 1) {
 						ctx.strokeStyle = "#fff";
@@ -75,10 +87,12 @@
 						ctx.fillStyle = "#0f0091";
 						ctx.fill();
 					}
-					// 円をかく
+					// 円を描画
 					ctx.beginPath();
 					ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
 				}
+
+				// 円を動かす
 				update() {
 					this.x += this.directionX;
 					if (this.x > canvas.width + this.radius) {
@@ -93,10 +107,12 @@
 			render();
 
 			function init() {
+				// particles
 				for (let i = 0; i < NUM; i++) {
-					// particles
+					// 円の大きさ
 					const x = Math.random() * canvas.width;
 					const y = Math.floor(Math.random() * canvas.height);
+					// 円が登場するパターン
 					const radius = Math.floor(Math.random() * 20);
 					const directionX = Math.random() * 2;
 					const directionY = Math.random() * 2 - 1;
@@ -117,6 +133,7 @@
 				for (let i = 0; i < particles.length; i++) {
 					particles[i].update();
 				}
+				// render を定期的に実行
 				requestAnimationFrame(render);
 			}
 		</script>
