@@ -218,10 +218,16 @@ css-bookcover.html
 
 - [スターアニメーション](js-canvas-staranimation.html)
 - [セクション区切りの波アニメーション](js-canvas-wavesection.html)
+- [パーティクルアニメーション](js-canvas-particle.html)
+- [スペースアニメーション](js-canvas-space.html)
+- [液体系のアニメーション](js-canvas-liquid.html)
 
 ```
 js-canvas-staranimation.html
 js-canvas-wavesection.html
+js-canvas-particle.html
+js-canvas-space.html
+js-canvas-liquid.html
 ```
 
 ## project
