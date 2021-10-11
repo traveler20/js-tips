@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			/* base */
+			body {
+				display: flex;
+				height: 100vh;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				margin: 0;
+				font-family: "Yu Gothic Medium", "游ゴシック Medium",
+					"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro";
+			}
+			div {
+				margin: 5px 0;
+			}
+
+			.check__input {
+				position: absolute;
+				height: 1px;
+				width: 1px;
+				overflow: hidden;
+				clip: rect(1px, 1px, 1px, 1px);
+			}
+
+			.check__label {
+				position: relative;
+				padding-left: 25px;
+				font-size: 18px;
+				cursor: pointer;
+			}
+			.check__label:before {
+				content: "";
+				display: block;
+				position: absolute;
+				left: 0;
+				width: 16px;
+				height: 16px;
+				top: 1px;
+				border: solid 2px #ccc;
+				border-radius: 3px;
+				transition: all ease-in-out 0.125s;
+			}
+			.check__label:after {
+				content: "";
+				position: absolute;
+				top: 11px;
+				left: 5px;
+				transform: rotate(-45deg) scaleX(0);
+				transform-origin: left;
+				width: 12px;
+				height: 5px;
+				border-left: 2px solid #fff;
+				border-bottom: 2px solid #fff;
+				transition: transform 0.125s ease-in-out;
+			}
+
+			.check__input:checked + .check__label:before {
+				background-color: #1b7c26;
+				border-color: #1b7c26;
+			}
+			.check__input:checked + .check__label:after {
+				transform: rotate(-45deg) scaleX(1);
+			}
+		</style>
+		<div>
+			<input class="check__input" type="checkbox" id="checkbox1" checked />
+			<label class="check__label" for="checkbox1">チェックボックス1</label>
+		</div>
+		<div>
+			<input class="check__input" type="checkbox" id="checkbox2" />
+			<label class="check__label" for="checkbox2">チェックボックス2</label>
+		</div>
+		<div>
+			<input class="check__input" type="checkbox" id="checkbox3" />
+			<label class="check__label" for="checkbox3">チェックボックス3</label>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			/* base */
+			@import url("https://fonts.googleapis.com/css?family=Quicksand");
+			body,
+			html {
+				height: 100%;
+				margin: 0 auto;
+				font-family: Quicksand;
+				letter-spacing: 2px;
+			}
+
+			/* 固定された画像 */
+			.parallax {
+				position: relative;
+				background-image: url("https://saruwakakun.com/wp-content/uploads/2017/07/img.jpg");
+				height: 100vh;
+				background-attachment: fixed;
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+
+			/* タイトル */
+			.parallax__title {
+				color: #fff;
+				font-size: 80px;
+				text-align: center;
+				position: fixed;
+				width: 100%;
+				top: 20%;
+			}
+
+			/* スクロールするボックス */
+			.parallax__contents {
+				position: relative;
+				z-index: 1;
+				height: 500px;
+				background: #555;
+				font-size: 60px;
+				background: #f89174;
+				padding: 100px 20px;
+				text-align: center;
+			}
+		</style>
+		<div class="parallax">
+			<h2 class="parallax__title">HUNGRY?</h2>
+		</div>
+
+		<div class="parallax__contents">This is Example.</div>
+
+		<div class="parallax"></div>
+	</body>
+</html>

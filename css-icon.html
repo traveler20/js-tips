@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				height: 100vh;
+				justify-content: center;
+				align-items: center;
+				margin: 0;
+			"
+		>
+			<!-- 新しいタブで開くアイコン -->
+			<style>
+				.icon-blank {
+					display: inline-block;
+					box-sizing: border-box;
+					position: relative;
+					width: 20px;
+					height: 16px;
+					transform: scale(3);
+				}
+				.icon-blank:before,
+				.icon-blank:after {
+					content: "";
+					box-sizing: border-box;
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					border-style: solid;
+					border-color: black;
+				}
+				.icon-blank:before {
+					top: 0;
+					left: 0;
+					border-width: 3px;
+				}
+				.icon-blank:after {
+					top: 6px;
+					left: 6px;
+					border-width: 0 3px 3px 0;
+				}
+			</style>
+			<i class="icon-blank"></i>
+
+			<div style="margin: 0 100px"></div>
+
+			<!-- 矢印アイコン -->
+			<style>
+				.icon-arrow {
+					display: inline-block;
+					box-sizing: border-box;
+					width: 14px;
+					height: 14px;
+					border-style: solid;
+					border-width: 3px 3px 0 0;
+					border-color: black;
+					transform: rotate(45deg) scale(3);
+				}
+			</style>
+			<i class="icon-arrow"></i>
+		</div>
+	</body>
+</html>

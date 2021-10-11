@@ -59,20 +59,46 @@ html-svgUse.html
 - [スクロールしても表示を固定させたい](css-sticky.html)
 - [スクロールしたら画面が切り替わるようにしたい](css-scrollsnap.html)
 - [スクロールバーのデザインを変えたい](css-customscrollbar.html)
+- [CSS で簡易なパララックス風ギミック](css-parallax.html)
+- JS でパララックス効果を用いる
 
 ```
 css-smoothscrollbehavior.html
 css-sticky.html
 css-scrollsnap.html
 css-customscrollbar.html
+css-parallax.html
+js-parallax.html(*)
 ```
 
 # 背景
 
 - [背景をグラデーションに](css-bggradation.html)
+- [背景がグワンっと上がる](css-bgup.html)
 
 ```
 css-bggradation.html
+css-bgup.html
+```
+
+# input タグ
+
+- [チェックボックスボタン](css-checkbox.html)
+- [ラジオボタンのアニメーション](css-radio.html)
+- [ファイルアップロードボタン](css-upload.html)
+
+```
+css-checkbox.html
+css-radio.html
+css-upload.html
+```
+
+# アイコン
+
+- [CSS でアイコン表示させる](css-icon.html)
+
+```
+css-icon.html
 ```
 
 # カーソル
@@ -85,6 +111,14 @@ css-cursor.html
 js-mouseCursorChange.html
 ```
 
+# ボタン
+
+- [トップスクロールボタン](css-topscroll.html)
+
+```
+css-topscroll.html
+```
+
 # アニメーション
 
 - [要素をふわっと登場させたい](js-animation.html)
@@ -94,6 +128,7 @@ js-mouseCursorChange.html
 - [フェイドインページネーション](css-fadein--pagination.html)　仮
 - [フェイドアウトページネーション](css-fadeout--pagination.html)　仮
 - [フェイドインアニメーション](css-fadein.html)　仮
+- [背景がグワンっと上がる](css-bgup.html)
 
 ```
 js-animation.html
@@ -103,6 +138,7 @@ js-cssloading.html
 css-fadein--pagination.html
 css-fadeout--pagination.html
 css-fadein.html
+css-bgup.html
 ```
 
 # サイトでよく実装する機能

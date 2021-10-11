@@ -79,5 +79,58 @@
 			}
 		</style>
 		<p class="underline-arrange">テキストテキストテキストテキスト</p>
+
+		<!-- 下線アニメーション（疑似要素を使用） -->
+		<style>
+			/* base */
+			.container {
+				display: flex;
+				height: 100vh;
+				justify-content: center;
+				align-items: center;
+				margin: 0;
+				font-family: "Yu Gothic Medium", "游ゴシック Medium", "Yu Gothic",
+					"游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3",
+					"Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo";
+				line-height: 1.4;
+				font-size: 20px;
+				background-color: #333;
+			}
+			.container li {
+				list-style: none;
+				margin: 10px 0;
+			}
+
+			.underline-anime {
+				display: inline-block;
+				position: relative;
+				overflow: hidden;
+				color: #fff;
+				text-decoration: none;
+			}
+			.underline-anime:after {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 1px;
+				background-color: #fff;
+				transform: translate(-100%, 0);
+				transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s;
+				content: "";
+			}
+			.underline-anime:hover:after {
+				transform: translate(0, 0);
+			}
+		</style>
+		<div class="container">
+			<ul>
+				<li><a class="underline-anime" href="#">ホーム</a></li>
+				<li><a class="underline-anime" href="#">選ぶメリット</a></li>
+				<li><a class="underline-anime" href="#">楽しむためのコツ</a></li>
+				<li><a class="underline-anime" href="#">導入事例</a></li>
+				<li><a class="underline-anime" href="#">お問い合わせ</a></li>
+			</ul>
+		</div>
 	</body>
 </html>
