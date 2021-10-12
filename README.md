@@ -1,5 +1,7 @@
 # tips
 
+github のコードは[こちら](https://github.com/traveler20/tips)。
+
 # テキスト・フォント
 
 - [テキストを途中まで表示させて...と表示させたい](css-truncatetext.html)
@@ -129,6 +131,7 @@ css-topscroll.html
 - [フェイドアウトページネーション](css-fadeout--pagination.html)　仮
 - [フェイドインアニメーション](css-fadein.html)　仮
 - [背景がグワンっと上がる](css-bgup.html)
+- [ぐるぐる動く系のアニメーション](css-infinityanimation.html)
 
 ```
 js-animation.html
@@ -139,6 +142,7 @@ css-fadein--pagination.html
 css-fadeout--pagination.html
 css-fadein.html
 css-bgup.html
+css-infinityanimation.html
 ```
 
 # サイトでよく実装する機能
@@ -228,6 +232,16 @@ js-canvas-wavesection.html
 js-canvas-particle.html
 js-canvas-space.html
 js-canvas-liquid.html
+```
+
+## GSAP アニメーション
+
+- [鳥が変形する](js-gsap-typography.html)
+- [タイトルが変形する](js-gsapanimejs-bird.html)
+
+```
+js-gsap-typography.html
+js-gsapanimejs-bird.html
 ```
 
 ## project

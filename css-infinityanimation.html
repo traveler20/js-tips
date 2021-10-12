@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body style="background-color: #333">
+		<style>
+			.spin-box {
+				position: relative;
+				box-sizing: border-box;
+				border: 4px solid #ccc;
+				width: 80px;
+				height: 80px;
+				animation: spin 8s infinite linear;
+			}
+			.spin-box:before {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				box-sizing: border-box;
+				border: 4px solid #ccc;
+				width: 60px;
+				height: 60px;
+				animation: pulse 3s infinite ease;
+			}
+			@keyframes spin {
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+			@keyframes pulse {
+				50% {
+					border-width: 30px;
+				}
+			}
+		</style>
+		<div class="spin-box"></div>
+
+		<style>
+			.rollingball {
+				position: relative;
+				width: 300px;
+				height: 300px;
+				margin: 50px auto;
+				border-radius: 50%;
+				animation: rolling 5s linear 0s infinite;
+				/* 要素内の子要素が3Dで描画されるように */
+				transform-style: preserve-3d;
+			}
+			.rollingball__element {
+				position: absolute;
+				display: inline-block;
+				width: 300px;
+				height: 300px;
+				box-sizing: border-box;
+				border: 1px solid #ccc;
+				border-radius: 50%;
+			}
+			@keyframes rolling {
+				0% {
+					transform: rotate3d(1, 1, 1, 0deg);
+				}
+				100% {
+					transform: rotate3d(2, 2, 2, 360deg);
+				}
+			}
+		</style>
+		<div id="js-rollingball" class="rollingball"></div>
+		<script>
+			const ballWrap = document.getElementById("js-rollingball");
+			const ballElement = document.createElement("span");
+			ballElement.className = "rollingball__element";
+
+			for (let i = 0; i < 180; i++) {
+				const ballClone = ballElement.cloneNode();
+				const ballCloneStyle = ballClone.style;
+				//1deg ずつずらして180度分重ねる
+				ballCloneStyle.transform = "rotateY(" + i + "deg)";
+				ballWrap.appendChild(ballClone);
+			}
+		</script>
+	</body>
+</html>
