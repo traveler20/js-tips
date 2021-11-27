@@ -28,13 +28,16 @@
 			.members__list + .members__list {
 				margin-left: 10px;
 			}
-			.members a {
+			.members {
 				color: #00aa91;
+			}
+			.members a {
 				text-decoration: none;
 			}
 			.members__img {
 				height: auto;
 				width: 100%;
+				border-radius: 50%;
 			}
 			.members__description {
 				height: 120px;
@@ -51,9 +54,18 @@
 				margin: 2px 0 6px;
 			}
 			.members__text {
-				color: #333;
+				color: #fff;
+				background-color: #00aa91;
+				border: solid 1px #00aa91;
+				padding: 8px 16px;
+				border-radius: 50px;
 				font-size: 16px;
 				margin: 0;
+				transition: 0.4s;
+			}
+			.members__text:hover {
+				color: #00aa91;
+				background-color: #efefef;
 			}
 			/*slick setting*/
 			.slick-prev {
@@ -73,116 +85,100 @@
 
 		<ul class="members">
 			<li class="members__list">
-				<a href="#">
-					<img
-						src="http://placehold.jp/500x500.png?text=coming%20soon...."
-						class="members__img"
-						alt=""
-					/>
-					<div class="members__description">
-						<p class="members__post">代表取締役</p>
-						<h3 class="members__name">T.K.</h3>
-						<p class="members__text">インタビューを見る</p>
-					</div>
-				</a>
+				<img
+					src="http://placehold.jp/500x500.png?text=coming%20soon...."
+					class="members__img"
+					alt=""
+				/>
+				<div class="members__description">
+					<p class="members__post">代表取締役</p>
+					<h3 class="members__name">T.K.</h3>
+					<a href="#"><span class="members__text">インタビューを見る</span></a>
+				</div>
 			</li>
 			<li class="members__list">
-				<a href="#">
-					<img
-						src="http://placehold.jp/500x500.png?text=coming%20soon...."
-						class="members__img"
-						alt=""
-					/>
-					<div class="members__description">
-						<p class="members__post">取締役CTO</p>
-						<h3 class="members__name">T.S.</h3>
-						<p class="members__text">対談企画を見る</p>
-					</div>
-				</a>
+				<img
+					src="http://placehold.jp/500x500.png?text=coming%20soon...."
+					class="members__img"
+					alt=""
+				/>
+				<div class="members__description">
+					<p class="members__post">取締役CTO</p>
+					<h3 class="members__name">T.S.</h3>
+					<a href="#"><span class="members__text">対談企画を見る</span></a>
+				</div>
 			</li>
 			<li class="members__list">
-				<a href="#">
-					<img
-						src="http://placehold.jp/500x500.png?text=coming%20soon...."
-						class="members__img"
-						alt=""
-					/>
-					<div class="members__description">
-						<p class="members__post">クリエイティブG マネージャー</p>
-						<h3 class="members__name">T.K.</h3>
-						<p class="members__text"></p>
-					</div>
-				</a>
+				<img
+					src="http://placehold.jp/500x500.png?text=coming%20soon...."
+					class="members__img"
+					alt=""
+				/>
+				<div class="members__description">
+					<p class="members__post">クリエイティブG マネージャー</p>
+					<h3 class="members__name">T.K.</h3>
+					<a href="#"></a>
+				</div>
 			</li>
 			<li class="members__list">
-				<a href="#">
-					<img
-						src="http://placehold.jp/500x500.png?text=coming%20soon...."
-						class="members__img"
-						alt=""
-					/>
-					<div class="members__description">
-						<p class="members__post">エンジニア</p>
-						<h3 class="members__name">Y.S.</h3>
-						<p class="members__text">対談企画を見る</p>
-					</div>
-				</a>
+				<img
+					src="http://placehold.jp/500x500.png?text=coming%20soon...."
+					class="members__img"
+					alt=""
+				/>
+				<div class="members__description">
+					<p class="members__post">エンジニア</p>
+					<h3 class="members__name">Y.S.</h3>
+					<a href="#"><span class="members__text">対談企画を見る</span></a>
+				</div>
 			</li>
 			<li class="members__list">
-				<a href="#">
-					<img
-						src="http://placehold.jp/500x500.png?text=coming%20soon...."
-						class="members__img"
-						alt=""
-					/>
-					<div class="members__description">
-						<p class="members__post">経理・財務・人事労務</p>
-						<h3 class="members__name">K.Y.</h3>
-						<p class="members__text"></p>
-					</div>
-				</a>
+				<img
+					src="http://placehold.jp/500x500.png?text=coming%20soon...."
+					class="members__img"
+					alt=""
+				/>
+				<div class="members__description">
+					<p class="members__post">経理・財務・人事労務</p>
+					<h3 class="members__name">K.Y.</h3>
+					<a href="#"></a>
+				</div>
 			</li>
 			<li class="members__list">
-				<a href="#">
-					<img
-						src="http://placehold.jp/500x500.png?text=coming%20soon...."
-						class="members__img"
-						alt=""
-					/>
-					<div class="members__description">
-						<p class="members__post">第一マーケティングG マネージャー</p>
-						<h3 class="members__name">T.F.</h3>
-						<p class="members__text">対談企画を見る</p>
-					</div>
-				</a>
+				<img
+					src="http://placehold.jp/500x500.png?text=coming%20soon...."
+					class="members__img"
+					alt=""
+				/>
+				<div class="members__description">
+					<p class="members__post">第一マーケティングG マネージャー</p>
+					<h3 class="members__name">T.F.</h3>
+					<a href="#"><span class="members__text">対談企画を見る</span></a>
+				</div>
 			</li>
 			<li class="members__list">
-				<a href="#">
-					<img
-						src="http://placehold.jp/500x500.png?text=coming%20soon...."
-						class="members__img"
-						alt=""
-					/>
-					<div class="members__description">
-						<p class="members__post">マーケター</p>
-						<h3 class="members__name">N.O.</h3>
-						<p class="members__text"></p>
-					</div>
-				</a>
+				<img
+					src="http://placehold.jp/500x500.png?text=coming%20soon...."
+					class="members__img"
+					alt=""
+				/>
+				<div class="members__description">
+					<p class="members__post">マーケター</p>
+					<h3 class="members__name">N.O.</h3>
+					<a href="#"></a>
+				</div>
 			</li>
 			<li class="members__list">
-				<a href="#">
-					<img
-						src="http://placehold.jp/500x500.png?text=coming%20soon...."
-						class="members__img"
-						alt=""
-					/>
-					<div class="members__description">
-						<p class="members__post">第二マーケティングG マネージャー</p>
-						<h3 class="members__name">S.M.</h3>
-						<p class="members__text">対談企画を見る</p>
-					</div>
-				</a>
+				<img
+					src="http://placehold.jp/500x500.png?text=coming%20soon...."
+					class="members__img"
+					alt=""
+				/>
+				<div class="members__description">
+					<p class="members__post">第二マーケティングG マネージャー</p>
+					<h3 class="members__name">S.M.</h3>
+					<a href="#"><span class="members__text">対談企画を見る</span></a>
+				</div>
 			</li>
 		</ul>
 
