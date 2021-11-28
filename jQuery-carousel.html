@@ -16,6 +16,10 @@
 			type="text/css"
 			href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
 		/>
+		<link
+			href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+			rel="stylesheet"
+		/>
 		<style>
 			.members {
 				margin: 100px auto;
@@ -54,16 +58,19 @@
 				margin: 2px 0 6px;
 			}
 			.members__text {
+				display: flex;
+				justify-content: center;
+			}
+			.members__text a {
 				color: #fff;
 				background-color: #00aa91;
 				border: solid 1px #00aa91;
 				padding: 8px 16px;
 				border-radius: 50px;
 				font-size: 16px;
-				margin: 0;
 				transition: 0.4s;
 			}
-			.members__text:hover {
+			.members__text a:hover {
 				color: #00aa91;
 				background-color: #efefef;
 			}
@@ -76,7 +83,15 @@
 			}
 			.slick-prev:before,
 			.slick-next:before {
+				font-family: "Font Awesome 5 Free";
+				font-weight: 900;
 				color: #00aa91;
+			}
+			.slick-prev:before {
+				content: "\f053";
+			}
+			.slick-next:before {
+				content: "\f054";
 			}
 			.slick-dots {
 				visibility: hidden;
@@ -93,7 +108,7 @@
 				<div class="members__description">
 					<p class="members__post">代表取締役</p>
 					<h3 class="members__name">T.K.</h3>
-					<a href="#"><span class="members__text">インタビューを見る</span></a>
+					<span class="members__text"><a href="#">インタビューを見る</a></span>
 				</div>
 			</li>
 			<li class="members__list">
@@ -105,7 +120,7 @@
 				<div class="members__description">
 					<p class="members__post">取締役CTO</p>
 					<h3 class="members__name">T.S.</h3>
-					<a href="#"><span class="members__text">対談企画を見る</span></a>
+					<span class="members__text"><a href="#">対談企画を見る</a></span>
 				</div>
 			</li>
 			<li class="members__list">
@@ -129,7 +144,7 @@
 				<div class="members__description">
 					<p class="members__post">エンジニア</p>
 					<h3 class="members__name">Y.S.</h3>
-					<a href="#"><span class="members__text">対談企画を見る</span></a>
+					<span class="members__text"><a href="#">対談企画を見る</a></span>
 				</div>
 			</li>
 			<li class="members__list">
@@ -153,7 +168,7 @@
 				<div class="members__description">
 					<p class="members__post">第一マーケティングG マネージャー</p>
 					<h3 class="members__name">T.F.</h3>
-					<a href="#"><span class="members__text">対談企画を見る</span></a>
+					<span class="members__text"><a href="#">対談企画を見る</a></span>
 				</div>
 			</li>
 			<li class="members__list">
@@ -177,7 +192,7 @@
 				<div class="members__description">
 					<p class="members__post">第二マーケティングG マネージャー</p>
 					<h3 class="members__name">S.M.</h3>
-					<a href="#"><span class="members__text">対談企画を見る</span></a>
+					<span class="members__text"><a href="#">対談企画を見る</a></span>
 				</div>
 			</li>
 		</ul>
