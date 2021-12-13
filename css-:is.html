@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		/>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			ul {
+				list-style: none;
+			}
+
+			html,
+			body {
+				background-color: #fff;
+				text-align: left;
+				height: 100%;
+			}
+
+			.material-icons {
+				font-family: "Material Icons";
+				font-weight: normal;
+				font-style: normal;
+				font-size: 24px; /* Preferred icon size */
+				display: inline-block;
+				line-height: 1;
+				text-transform: none;
+				letter-spacing: normal;
+				word-wrap: normal;
+				white-space: nowrap;
+				direction: ltr;
+
+				/* Support for all WebKit browsers. */
+				-webkit-font-smoothing: antialiased;
+				/* Support for Safari and Chrome. */
+				text-rendering: optimizeLegibility;
+
+				/* Support for Firefox. */
+				-moz-osx-font-smoothing: grayscale;
+
+				/* Support for IE. */
+				font-feature-settings: "liga";
+			}
+
+			.container {
+				display: grid;
+				height: 100%;
+				grid-template-columns: 240px 1fr;
+			}
+
+			.link {
+				font-family: sans-serif;
+				color: #333333;
+				display: flex;
+				align-items: center;
+				gap: 24px;
+				font-size: 16px;
+				padding-left: 24px;
+				padding-right: 24px;
+				height: 48px;
+				text-align: center;
+				text-decoration: none;
+			}
+
+			.link-list .link:is(:hover, .current) {
+				color: white;
+				background-color: #333333;
+			}
+
+			.main {
+				background-color: #e8e8e8;
+				display: grid;
+				place-content: center;
+				font-size: min(calc(80vw - 240px), 60vh);
+			}
+		</style>
+
+		<div class="container">
+			<nav>
+				<ul class="link-list">
+					<li>
+						<a class="link current" href="#🥺">
+							<span class="material-icons">home</span>ホーム
+						</a>
+					</li>
+					<li>
+						<a class="link" href="#🤔">
+							<span class="material-icons">explore</span>探索</a
+						>
+					</li>
+					<li>
+						<a class="link" href="#😡">
+							<span class="material-icons">history</span>履歴</a
+						>
+					</li>
+					<li>
+						<a class="link" href="#🥶">
+							<span class="material-icons">recommend</span>お気に入り
+						</a>
+					</li>
+					<li>
+						<a class="link" href="#🤩">
+							<span class="material-icons">settings</span>設定</a
+						>
+					</li>
+				</ul>
+			</nav>
+			<main class="js-main main">🥺</main>
+		</div>
+
+		<script>
+			const main = document.querySelector(".js-main");
+
+			const createFace = (index) => {
+				switch (index) {
+					case 0:
+						return "🥺";
+					case 1:
+						return "🤔";
+					case 2:
+						return "😡";
+					case 3:
+						return "🥶";
+					case 4:
+						return "🤩";
+				}
+			};
+
+			document.querySelectorAll("a").forEach((anchorElement, index) => {
+				anchorElement.addEventListener("click", (event) => {
+					main.textContent = createFace(index);
+
+					document.querySelectorAll("a").forEach((otherElement) => {
+						otherElement.classList.remove("current");
+					});
+
+					anchorElement.classList.add("current");
+					event.preventDefault();
+				});
+			});
+		</script>
+	</body>
+</html>

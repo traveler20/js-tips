@@ -213,10 +213,12 @@ css-centering.html
 
 - [横長メーター](html-meter.html)
 - [画像を本っぽく装飾](css-bookcover.html)
+- [セレクタとホバー同時にスタイリングする](css-:is.html)
 
 ```
 html-meter.html
 css-bookcover.html
+css-:is.html
 ```
 
 ## canvas アニメーション
