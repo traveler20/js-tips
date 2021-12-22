@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<!-- Google font Icon -->
+		<!-- <link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/> -->
+	</head>
+
+	<style>
+		/* Google font Icon */
+		@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+	</style>
+
+	<body>
+		<span class="material-icons">home</span>
+		<span class="material-icons">account_circle</span>
+		<span class="material-icons">done</span>
+		<span class="material-icons">favorite</span>
+
+		<style>
+			.text-7xl {
+				font-size: 72px;
+			}
+			.text-red-500 {
+				color: rgba(239, 68, 68);
+			}
+		</style>
+		<span class="material-icons text-7xl text-red-500">home</span>
+		<span class="material-icons text-7xl text-red-500">account_circle</span>
+		<span class="material-icons text-7xl text-red-500">done</span>
+		<span class="material-icons text-7xl text-red-500">favorite</span>
+
+		<style>
+			.c-button {
+				display: inline-block;
+				color: #fff;
+				background-color: #333;
+				border: solid 1px #333;
+				border-radius: 4px;
+				text-decoration: none;
+				padding: 10px 30px;
+				transition: 0.4s;
+				position: relative;
+			}
+			.c-button .material-icons {
+				position: absolute;
+				top: 10px;
+				bottom: 0px;
+				right: 8px;
+				transition: 0.4s;
+			}
+
+			.c-button:hover {
+				opacity: 0.8;
+			}
+			.c-button:hover .material-icons {
+				right: 4px;
+			}
+		</style>
+		<a href="" class="c-button"
+			>READ MORE <i class="material-icons">chevron_right</i></a
+		>
+	</body>
+</html>
