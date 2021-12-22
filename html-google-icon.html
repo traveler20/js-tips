@@ -48,23 +48,22 @@
 				transition: 0.4s;
 				position: relative;
 			}
-			.c-button .material-icons {
+			.c-button:after {
 				position: absolute;
-				top: 10px;
-				bottom: 0px;
+				top: 14px;
 				right: 8px;
+				content: "\e5e1";
+				font-family: "Material Icons";
 				transition: 0.4s;
 			}
 
 			.c-button:hover {
 				opacity: 0.8;
 			}
-			.c-button:hover .material-icons {
+			.c-button:hover:after {
 				right: 4px;
 			}
 		</style>
-		<a href="" class="c-button"
-			>READ MORE <i class="material-icons">chevron_right</i></a
-		>
+		<a href="" class="c-button">READ MORE</a>
 	</body>
 </html>
