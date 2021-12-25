@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-family: sans-serif;
+				background-color: #ffe194;
+			}
+
+			.container {
+				width: 100%;
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 100vh 0 40px;
+			}
+
+			.bubble-wrapper {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.bubble-wrapper:not(:first-of-type) {
+				margin-top: 40px;
+			}
+
+			.bubble-wrapper:nth-of-type(2n) {
+				flex-direction: row-reverse;
+			}
+
+			.bubble-wrapper::after {
+				display: block;
+				content: "";
+			}
+
+			.bubble {
+				position: relative;
+				max-width: 60%;
+				font-size: 14px;
+				letter-spacing: 0.1em;
+				padding: 20px;
+				border-radius: 20px;
+			}
+
+			.bubble::after {
+				display: block;
+				position: absolute;
+				content: "";
+				width: 18px;
+				height: 20px;
+				bottom: 20px;
+			}
+
+			.bubble-wrapper:nth-of-type(2n) .bubble {
+				background-color: #4c4c6d;
+				color: white;
+			}
+
+			.bubble-wrapper:nth-of-type(2n + 1) .bubble {
+				background-color: #e8f6ef;
+				color: #222;
+			}
+
+			.bubble-wrapper:nth-of-type(2n) .bubble::after {
+				background-color: #4c4c6d;
+				clip-path: polygon(0 0, 0% 100%, 100% 50%);
+				right: -16px;
+			}
+
+			.bubble-wrapper:nth-of-type(2n + 1) .bubble::after {
+				background-color: #e8f6ef;
+				clip-path: polygon(0 50%, 100% 0, 100% 100%);
+				left: -16px;
+			}
+		</style>
+
+		<div class="container">
+			<div class="bubble-wrapper">
+				<p class="bubble">
+					あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら
+				</p>
+			</div>
+			<div class="bubble-wrapper">
+				<p class="bubble">
+					うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波
+				</p>
+			</div>
+			<div class="bubble-wrapper">
+				<p class="bubble">またそのなかでいっしょになったたくさんのひとたち</p>
+			</div>
+			<div class="bubble-wrapper">
+				<p class="bubble">
+					ファゼーロとロザーロ、羊飼のミーロや、顔の赤いこどもたち
+				</p>
+			</div>
+			<div class="bubble-wrapper">
+				<p class="bubble">
+					地主のテーモ、山猫博士のボーガント・デストゥパーゴなど
+				</p>
+			</div>
+			<div class="bubble-wrapper">
+				<p class="bubble">いまこの暗い巨きな石の建物のなかで考えていると</p>
+			</div>
+			<div class="bubble-wrapper">
+				<p class="bubble">
+					みんなむかし風のなつかしい青い幻燈のように思われます
+				</p>
+			</div>
+			<div class="bubble-wrapper">
+				<p class="bubble">では、わたくしはいつかの小さなみだしをつけながら</p>
+			</div>
+			<div class="bubble-wrapper">
+				<p class="bubble">
+					しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう
+				</p>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+		<script>
+			const spanWrapText = (target) => {
+				const nodes = [...target.childNodes]; // ノードリストを配列にする
+				let returnText = ""; // 最終的に返すテキスト
+
+				for (const node of nodes) {
+					if (node.nodeType == 3) {
+						//テキストの場合
+						const text = node.textContent.replace(/\r?\n/g, ""); //テキストから改行コード削除
+						const splitText = text.split(""); // 一文字ずつ分割
+						for (const char of splitText) {
+							returnText += `<span>${char}</span>`; // spanタグで挟んで連結
+						}
+					} else {
+						//テキスト以外の場合
+						//<br>などテキスト以外の要素をそのまま連結
+						returnText += node.outerHTML;
+					}
+				}
+				return returnText;
+			};
+
+			const bubbles = [...document.querySelectorAll(".bubble")];
+			for (const bubble of bubbles) {
+				bubble.innerHTML = spanWrapText(bubble);
+
+				// spanたちを配列にし、それをプロパティとして持っておく
+				bubble.spans = bubble.querySelectorAll("span");
+
+				// scrollTriggerによって発火するTimelineを作成
+				const tl = gsap.timeline({
+					scrollTrigger: {
+						trigger: bubble, // 吹き出しをアニメーション発火のトリガーに
+						start: "top 90%", // 吹き出しの上部（TOP）が、画面の上から90%の位置を通過したらスタート
+					},
+				});
+
+				// アニメーションタイムライン。上から順に動作する
+				tl.from(bubble, {
+					opacity: 0,
+					y: "10%",
+				}).from(bubble.spans, {
+					opacity: 0,
+					duration: 0.01,
+					stagger: 0.03,
+				});
+			}
+		</script>
+	</body>
+</html>

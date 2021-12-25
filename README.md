@@ -246,11 +246,13 @@ js-canvas-liquid.html
 - [鳥が変形する](js-gsap-typography.html)
 - [タイトルが変形する](js-gsapanimejs-bird.html)
 - [横スクロールのサイト](js-gsap-sidescroll.html)
+- [スクロールでチャットが流れる](js-gsap-scrollchat.html)
 
 ```
 js-gsap-typography.html
 js-gsapanimejs-bird.html
 js-gsap-sidescroll.html
+js-gsap-scrollchat.html
 ```
 
 ## project
