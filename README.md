@@ -64,6 +64,7 @@ html-svgUse.html
 - [CSS で簡易なパララックス風ギミック](css-parallax.html)
 - CSS でのパララックスは position:sticky で簡易的に実装することも可能
 - JS でパララックス効果を用いる
+- [横スクロールのサイト](js-gsap-sidescroll.html)
 
 ```
 css-smoothscrollbehavior.html
@@ -72,6 +73,7 @@ css-scrollsnap.html
 css-customscrollbar.html
 css-parallax.html
 js-parallax.html(*)
+js-gsap-sidescroll.html
 ```
 
 # 背景
@@ -99,9 +101,11 @@ css-upload.html
 # アイコン
 
 - [CSS でアイコン表示させる](css-icon.html)
+- [Google Font Icon を使いたい](html-google-icon.html)
 
 ```
 css-icon.html
+html-google-icon.html
 ```
 
 # カーソル
@@ -241,10 +245,12 @@ js-canvas-liquid.html
 
 - [鳥が変形する](js-gsap-typography.html)
 - [タイトルが変形する](js-gsapanimejs-bird.html)
+- [横スクロールのサイト](js-gsap-sidescroll.html)
 
 ```
 js-gsap-typography.html
 js-gsapanimejs-bird.html
+js-gsap-sidescroll.html
 ```
 
 ## project
