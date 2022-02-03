@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				--font-size: 1rem;
+				font-family: sans-serif;
+				line-height: 1.25;
+			}
+
+			h1 {
+				--viewport-from: 320;
+				--font-size-from: 32;
+				--viewport-to: 960;
+				--font-size-to: 48;
+			}
+
+			h2 {
+				--viewport-from: 320;
+				--min-font-size: 32;
+				--viewport-to: 960;
+				--max-font-size: 48;
+			}
+
+			h3 {
+				--viewport-from: 320;
+				--font-size-from: 32;
+				--viewport-to: 960;
+				--font-size-to: 48;
+				--min-font-size: 36;
+				--max-font-size: 40;
+			}
+
+			h4 {
+				--viewport-from: 320;
+				--font-size-from: 32;
+				--viewport-to: 960;
+				--font-size-to: 48;
+			}
+
+			@media (min-width: 960px) {
+				h4 {
+					--viewport-from: 960;
+					--font-size-from: 48;
+					--viewport-to: 1920;
+					--font-size-to: 64;
+				}
+			}
+
+			h5 {
+				--viewport-from: 320;
+				--font-size-from: 48;
+				--viewport-to: 960;
+				--font-size-to: 32;
+				--min-font-size: 16;
+			}
+
+			.text-xl {
+				--font-size: 1.25rem;
+			}
+
+			/**
+            * Available vars:
+            * @var --viewport-from: <number> - Number in pixels without the unit. Required if `--font-size` is not exist.
+            * @var --viewport-to: <number> - Number in pixels without the unit. Required if `--font-size` is not exist.
+            * @var --font-size-from: <number> - Number in pixels without the unit. Required if `--font-size` and `--min-font-size` is not exist.
+            * @var --font-size-to: <number> - Number in pixels without the unit. Required if `--font-size` and `--max-font-size` is not exist.
+            * @var --max-font-size: <number> - Number in pixels without the unit. Optional.
+            * @var --min-font-size: <number> - Number in pixels without the unit. Optional.
+            * @var --viewport-unit-converter: 1vw | 1vh | 1vmin | 1vmax - Optional. Default: 1vw.
+            * @var --font-size: <length> | <percentage> | <absolute-size> | <relative-size> | Global values - Optional.
+            */
+			* {
+				--viewport-unit-converter: 1vw;
+				--fz-from: var(--font-size-from, var(--min-font-size));
+				--fz-to: var(--font-size-to, var(--max-font-size));
+				--fz-slope: (var(--fz-to) - var(--fz-from)) /
+					(var(--viewport-to) - var(--viewport-from)) * 100;
+				--fz-intercept: (
+						var(--viewport-to) * var(--fz-from) - var(--viewport-from) *
+							var(--fz-to)
+					) / (var(--viewport-to) - var(--viewport-from));
+				--font-size: calc(
+					var(--fz-slope) * var(--viewport-unit-converter) + var(--fz-intercept) *
+						1px
+				);
+
+				--min-fz-px: calc(var(--min-font-size) * 1px);
+				--max-fz-px: calc(var(--max-font-size) * 1px);
+				--clamp: clamp(var(--min-fz-px), var(--font-size), var(--max-fz-px));
+				--max: var(--has-max, var(--min));
+				--min: var(--has-min, var(--font-size));
+				--has-max: min(var(--max-fz-px), var(--font-size));
+				--has-min: max(var(--min-fz-px), var(--font-size));
+
+				font-size: var(--clamp, var(--max));
+			}
+		</style>
+
+		<h1>
+			From 32px at 320px viewport width to 48px at 960px without min/max font
+			size
+		</h1>
+
+		<div class="text-xl">
+			<p>
+				This paragraph inherits the font size of 1.25rem (20px) from `.text-xl`.
+			</p>
+		</div>
+
+		<h2>
+			From the minimum font size 32px at 320px viewport width to the max 48px at
+			960px
+		</h2>
+
+		<p>
+			This paragraph inherits the default font size of 1rem (16px) from the
+			body.
+		</p>
+
+		<h3>
+			From 32px at 320px viewport width to 32px at 960px with the min font size
+			36px and max 40px.
+		</h3>
+
+		<h4>
+			From 32px at 320px viewport width to 48px at 960px then 64px at 1920px
+			without min/max font size
+		</h4>
+
+		<h5>From 48px at 320px viewport width to 32px at 960px</h5>
+	</body>
+</html>
