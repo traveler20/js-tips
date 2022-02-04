@@ -201,6 +201,7 @@ js-variable.html
 - [グリッドレイアウト](css-gridlayout.html)
 - [グリッドレイアウトで position](css-gridposition.html)
 - [フレックスボックスレイアウト](css-flexlayout.html)
+- [フレックスレイアウトでレスポンシブ対応](css-flexresponsive.html)
 - [カードのレイアウト](css-cardlayout.html)
 - [センタリング](css-centering.html)
 

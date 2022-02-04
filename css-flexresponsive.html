@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			ul {
+				padding: 0;
+			}
+			li {
+				height: 300px;
+				background-color: #999;
+				list-style: none;
+			}
+
+			.flexbox {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 20px;
+			}
+			.flexbox__list {
+				/* 30%より大きくならない。最小の大きさが300px */
+				width: clamp(300px, 100%, 30%);
+				/* 300pxより大きくならない。最小の大きさが30% */
+				/* width: min(30%, 300px); */
+				/* 30%より大きくならない。最小の大きさが300px */
+				/* width: max(30%, 300px); */
+			}
+		</style>
+
+		<ul class="flexbox">
+			<li class="flexbox__list">コンテンツ</li>
+			<li class="flexbox__list">コンテンツ</li>
+			<li class="flexbox__list">コンテンツ</li>
+			<li class="flexbox__list">コンテンツ</li>
+			<li class="flexbox__list">コンテンツ</li>
+			<li class="flexbox__list">コンテンツ</li>
+			<li class="flexbox__list">コンテンツ</li>
+			<li class="flexbox__list">コンテンツ</li>
+		</ul>
+	</body>
+</html>
