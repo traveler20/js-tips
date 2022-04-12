@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.c-timeline {
+				list-style: none;
+			}
+			.c-timeline__list {
+				margin-bottom: 60px;
+			}
+			/* .c-timeline__list {
+				position: relative;
+			}
+			.c-timeline__content:before {
+				content: "";
+				width: 12px;
+				height: 12px;
+				background: #6fc173;
+				position: absolute;
+				left: -26px;
+				top: 50px;
+				border-radius: 100%;
+			} */
+
+			/* for Desktop */
+			@media (min-width: 640px) {
+				.c-timeline__list {
+					overflow: hidden;
+					margin: 0;
+					position: relative;
+				}
+				.c-timeline__date {
+					width: 110px;
+					float: left;
+					margin-top: 20px;
+				}
+				.c-timeline__content {
+					width: 75%;
+					float: left;
+					border-left: 3px #e5e5d1 solid;
+					padding-left: 30px;
+				}
+				.c-timeline__content:before {
+					content: "";
+					width: 12px;
+					height: 12px;
+					background: #6fc173;
+					position: absolute;
+					left: 106px;
+					top: 24px;
+					border-radius: 100%;
+				}
+			}
+		</style>
+
+		<ul class="c-timeline">
+			<li class="c-timeline__list">
+				<p class="c-timeline__date">2007年2月</p>
+				<div class="c-timeline__content">
+					<h3>カナダでワーキングホリデー</h3>
+					<p>
+						ワーホリビザで渡加。アクセサリーショップ等でバイト。カナダ生活を満喫。
+					</p>
+				</div>
+			</li>
+			<li class="c-timeline__list">
+				<p class="c-timeline__date">2008年3月</p>
+				<div class="c-timeline__content">
+					<h3>Webの専門学校に入学</h3>
+					<p>
+						有給インターンシップ付きの一年プログラムを受講。HTML、CSS、JavaScript、PHP等のコーディングやWebデザインの基礎を学ぶ。
+					</p>
+				</div>
+			</li>
+			<li class="c-timeline__list">
+				<p class="c-timeline__date">2009年2月</p>
+				<div class="c-timeline__content">
+					<h3>バンクーバーのWeb制作会社でWebデザイナーとして働く</h3>
+					<p>
+						私以外全員カナダ人という環境で英語やWebの技術を学びながら必死に働く
+					</p>
+				</div>
+			</li>
+		</ul>
+	</body>
+</html>
