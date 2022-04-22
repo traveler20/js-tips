@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Dark or light</title>
+	</head>
+	<style>
+		/* デフォルトはダークモード表示 */
+		body {
+			margin: 0;
+			padding: 1em 2em;
+			color: #aaae8d;
+			background-color: #1d1d2c;
+			transition-duration: 1s;
+			transition-property: color, background-color;
+		}
+		.msg {
+			font-size: 30px;
+			font-weight: bold;
+		}
+
+		.dark {
+			display: block;
+		}
+		.light {
+			display: none;
+		}
+
+		/*↑一応デバイスのテーマで切り替えられるように設定↓*/
+		@media (prefers-color-scheme: light) {
+			.dark {
+				display: none;
+			}
+			.light {
+				display: block;
+			}
+		}
+
+		/* ライトモードのとき */
+		.js-mode-light {
+			color: #000;
+			background-color: whitesmoke;
+		}
+		.js-mode-light .light {
+			display: block;
+		}
+		.js-mode-light .dark {
+			display: none;
+		}
+
+		/* モード切り替えボタン */
+		input[type="checkbox"] {
+			display: none;
+		}
+		.switch {
+			position: fixed;
+			top: 0.5em;
+			right: 0.5em;
+			font-size: 60px;
+		}
+		.switch-label {
+			cursor: pointer;
+		}
+		.switch-mode {
+			position: absolute;
+			top: -120px;
+			right: -120px;
+			display: block;
+			width: 200px;
+			height: 200px;
+			transform: rotate(0);
+			transition: transform 1s;
+		}
+		/* 月と太陽を対角線上に設置しておく。
+     設定したspanを回したら太陽がひっくり返ってしまったので、transform scaleで上下反転した */
+		.switch-mode::before {
+			content: "🌙";
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+		.switch-mode::after {
+			content: "🌄";
+			position: absolute;
+			right: 0;
+			top: 0;
+			transform: scale(1, -1);
+		}
+	</style>
+	<body>
+		<!-- 表示を切り替えてみたい要素  -->
+		<!--light modeだけで見せたい部分-->
+		<p class="msg light">light mode</p>
+		<p class="msg light">おはようございます！</p>
+		<p class="msg light">明るいです。</p>
+
+		<!--dark modeだけで見せたい部分-->
+		<p class="msg dark">dark mode</p>
+		<p class="msg dark">こんばんは。</p>
+		<p class="msg dark">落ち着いたトーンです。</p>
+
+		<!--共通部分-->
+		<p class="msg">こんにちは！</p>
+		<p class="msg">モードに合わせて変化します。</p>
+
+		<!-- モード切替スイッチ -->
+		<div class="switch">
+			<label class="switch-label">
+				<input type="checkbox" id="js_mode_toggle" />
+				<span class="switch-mode" id="js_rotate"></span>
+			</label>
+		</div>
+
+		<script>
+			// 要素やクラスを指定しておく
+			const checkToggle = document.getElementById("js_mode_toggle");
+			const rotateIcon = document.getElementById("js_rotate");
+			const classLight = "js-mode-light";
+
+			// デバイスがライトモードかどうかチェック
+			const isLight = window.matchMedia(
+				"(prefers-color-scheme: light)"
+			).matches;
+
+			// ローカルストレージに保存するための適当なKey名
+			const keyLocalStorage = "whike-theme-mode";
+
+			// ローカルストレージの情報を取得
+			const localTheme = localStorage.getItem(keyLocalStorage);
+
+			// 絵文字を回転させる角度
+			let nowRotate = 0;
+
+			// ローカルストレージの中身と、端末がライトモードかどうか（ie,edgeには無意味）をチェック
+			if (localTheme === "light") {
+				// ローカルストレージの情報が優先
+				rotateInfinite();
+				changeMode("light");
+			} else if (localTheme === "dark") {
+				changeMode("dark");
+			} else if (isLight) {
+				rotateInfinite();
+				changeMode("light");
+			}
+
+			// チェックボックスでの切り替え、選択をローカルストレージに保存
+			// モード切替スイッチが変更されたら発動
+			checkToggle.addEventListener("change", function (e) {
+				// 絵文字大回転
+				rotateInfinite();
+
+				// チェックされたらライトモード、されなければダークモードにし、ローカルストレージにどちらを選んだか保存する
+				if (e.target.checked) {
+					changeMode("light");
+					localStorage.setItem(keyLocalStorage, "light");
+				} else {
+					changeMode("dark");
+					localStorage.setItem(keyLocalStorage, "dark");
+				}
+			});
+
+			/**
+			 * テーマ切り替え
+			 * @param {String} mode 'light' もしくは 'dark'
+			 */
+			function changeMode(mode) {
+				// 引数にしたがってbodyにクラスをつける
+				// チェックボックス経由で変更かかったときはいいんだけど、ローカルストレージとかからモードを変えた場合にチェック状態がおかしくなるので、合わせておく
+				if (mode === "light") {
+					document.body.classList.add(classLight);
+					checkToggle.checked = true;
+				} else if (mode === "dark") {
+					document.body.classList.remove(classLight);
+					checkToggle.checked = false;
+				}
+			}
+
+			/**
+			 * 月と太陽アイコン無限回転
+			 * 呼ばれるたびに180度角度が追加されていく
+			 */
+			function rotateInfinite() {
+				nowRotate += 180;
+				rotateIcon.style.transform = "rotate(" + nowRotate + "deg)";
+			}
+		</script>
+	</body>
+</html>
