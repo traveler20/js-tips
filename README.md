@@ -165,6 +165,7 @@ css-infinityanimation.html
 - [タイマーで表示を切り替えたい](php-timer.html)
 - [パラメータ](js-parameter.html)
 - [表示速度の向上](css-speedup.html)
+- [問い合わせフォーム（formspree）](html-formspree.html)
 
 ```
 js-swiper.html(*)
@@ -178,6 +179,8 @@ css-modal.html
 css-tooltip.html
 php-timer.html
 js-parameter.html
+css-speedup.html
+html-formspree.html
 ```
 
 # コーディングの効率化でよく実装する機能

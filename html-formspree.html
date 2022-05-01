@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<!-- reset.css destyle -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+		/>
+	</head>
+	<body>
+		<style>
+			*:focus-visible {
+				outline: #333 auto 1px;
+			}
+			.c-form {
+				text-align: center;
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 16px;
+
+				font-size: 18px;
+				line-height: 1.7;
+			}
+			.c-form__label {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				margin-bottom: 24px;
+				position: relative;
+				line-height: 36px;
+				text-align: left;
+			}
+			.c-form__required {
+				position: absolute;
+				right: 0;
+				color: #fff;
+				background-color: #333;
+				border-radius: 4px;
+				padding: 0px 12px;
+				line-height: 32px;
+				height: 32px;
+			}
+			.c-form__input {
+				width: 100%;
+				padding: 8px 16px;
+				border: solid 1px #333;
+				border-radius: 2px;
+			}
+			textarea.c-form__input {
+				height: 180px;
+			}
+			.c-form__button {
+				padding: 8px 20px;
+				margin: auto;
+				min-width: 240px;
+				max-width: 100%;
+				transition: 0.4s;
+
+				font-weight: bold;
+				color: #fff;
+				background-color: #333;
+				border: solid 2px #333;
+				border-radius: 2px;
+			}
+			.c-form__button:hover {
+				cursor: pointer;
+				color: #333;
+				background-color: #fff;
+			}
+		</style>
+
+		<section class="p-contact">
+			<div class="p-contact__box">
+				<h2 class="p-contact__title">お問い合わせ</h2>
+				<p class="p-contact__lead">問い合わせは以下からお願いします。</p>
+				<form
+					class="c-form"
+					action="https://formspree.io/f/mzbokypk"
+					method="POST"
+				>
+					<label class="c-form__label">
+						メールアドレス：<span class="c-form__required">必須</span>
+						<input class="c-form__input" type="email" name="email" required />
+					</label>
+					<label class="c-form__label">
+						メッセージ内容：
+						<textarea class="c-form__input" name="message"></textarea>
+					</label>
+					<!-- your other form fields go here -->
+					<button class="c-form__button" type="submit">送信する</button>
+				</form>
+			</div>
+		</section>
+		<style>
+			.p-contact {
+				background-color: #efefef;
+				padding: 80px 16px;
+
+				text-align: center;
+			}
+			.p-contact__title {
+				font-size: 32px;
+				font-weight: bold;
+			}
+			.p-contact__lead {
+				margin: 16px 0;
+			}
+			.p-contact__box {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 48px 0px;
+				background-color: #fff;
+				border-radius: 2px;
+			}
+		</style>
+	</body>
+</html>
