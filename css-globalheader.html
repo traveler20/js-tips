@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+			integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+			crossorigin="anonymous"
+		/>
+	</head>
+	<body>
+		<style>
+			@charset "utf-8";
+			ul,
+			div,
+			img {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+				font-weight: normal;
+			}
+
+			/* 本文をメニューの高さ分下げる */
+			/* #main {
+				margin-top: 60px;
+			} */
+
+			#navi {
+				background-color: #fff;
+				position: fixed;
+				top: 0;
+				left: 0;
+				height: 60px;
+				width: 100%;
+			}
+			/* チェックボックスを非表示 */
+			#navi input {
+				display: none;
+			}
+			/* 左上ロゴ */
+			.menu-left {
+				float: left;
+				line-height: 60px;
+			}
+			/* 上部メニュー */
+			#menu {
+				float: right;
+				margin-right: 10px;
+			}
+			#menu li {
+				position: relative;
+				white-space: nowrap;
+			}
+			#menu li a {
+				display: block;
+			}
+			#menu > li {
+				float: left;
+				margin: 0 15px;
+				line-height: 60px;
+				font-size: 17px;
+				font-weight: bold;
+			}
+			/* パソコンでは V を非表示 */
+			#menu > li .pd {
+				display: none;
+			}
+
+			#menu-navibtn {
+				display: none;
+				cursor: pointer;
+				cursor: hand;
+			}
+
+			/* スマホ用 */
+			@media screen and (max-width: 620px) {
+				/* 基本非表示 */
+				#menu {
+					display: none;
+				}
+				#menu li {
+					height: auto;
+					width: 100%;
+					padding: 0px 20px;
+					border-bottom: 1px solid #ddd;
+					white-space: nowrap;
+				}
+				#menu > li {
+					margin-right: -20px;
+				}
+				/* V を表示 */
+				#menu > li .pd {
+					display: inline-block;
+					width: 100%;
+				}
+				#menu li a {
+					display: inline-block;
+				}
+				#menu li:first-child {
+					border-top: 1px solid #ddd;
+				}
+				#menu li i {
+					padding: 0px 6px;
+				}
+				/* メニューを移動させないため */
+				#menu-navibtn:checked ~ #navi {
+					position: fixed;
+					overflow-y: scroll;
+					overflow-x: hidden;
+					height: 100%;
+				}
+			}
+
+			/* ドロップダウンメニュー */
+			#menu li ul {
+				position: absolute;
+			}
+			/* 子メニュー */
+			#menu > li > ul li {
+				font-size: 14px;
+				display: none;
+				padding: 0px 20px;
+				background-color: #fff;
+				border-left: 1px solid #000;
+				border-right: 1px solid #000;
+				border-bottom: 1px solid #ddd;
+			}
+			#menu li ul li:first-child {
+				border-top: 1px solid #000;
+			}
+			#menu li ul li:last-child {
+				border-bottom: 1px solid #000;
+			}
+			#menu li ul li ul {
+				top: -1px;
+				left: 100%;
+			}
+			#menu li ul li ul li ul,
+			#menu li:nth-child(n + 3) ul li ul {
+				left: inherit;
+				right: 100%;
+			}
+			#menu > li > ul {
+				margin-left: -40px;
+				width: auto;
+			}
+
+			/* パソコン用 */
+			@media screen and (min-width: 620px) {
+				#menu li:hover {
+					background: #eee;
+				}
+				#menu > li:hover > ul > li,
+				#menu li ul li:hover > ul > li {
+					display: block;
+				}
+				/* 階層がある場合の誘導の印 */
+				#menu li ul li ul:before,
+				#menu li ul li ul li ul:before,
+				#menu li:nth-child(n + 3) ul li ul:before {
+					position: absolute;
+					top: 28px;
+					content: "";
+					border: 5px solid transparent;
+					display: block;
+				}
+				/* 通常タイプ */
+				#menu li ul li ul:before {
+					left: -10px;
+					border-left-color: #666;
+				}
+				/* 右側タイプ */
+				#menu li ul li ul li ul:before,
+				#menu li:nth-child(n + 3) ul li ul:before {
+					right: -10px;
+					border-right-color: #666;
+				}
+			}
+			/* スマホ用 */
+			@media screen and (max-width: 620px) {
+				/* ハンバーガーメニューがクリックされた時 */
+				#menu-navibtn:checked ~ * #menu {
+					display: block;
+				}
+				#menu-navibtn:checked ~ * #menu > li {
+					max-height: inherit;
+					overflow-y: visible;
+				}
+				#menu > li ul {
+					line-height: 50px;
+				}
+				#menu > li > label:hover {
+					cursor: pointer;
+					cursor: hand;
+				}
+				#menu li ul {
+					position: static;
+				}
+				/* 子メニュー */
+				#menu > li > ul {
+					margin-left: initial;
+					position: relative;
+				}
+				#menu li ul li:first-child {
+					border-top: 1px solid #ddd;
+				}
+				#menu ul li:last-child {
+					border-bottom: none;
+				}
+				#menu > li > ul li {
+					border-left: 1px solid #fff;
+					border-right: 1px solid #fff;
+				}
+				#menu li ul li ul {
+					top: inherit;
+					left: 0;
+				}
+				#menu li ul li:last-child {
+					border-bottom: none;
+				}
+				/* 子メニューがクリックされた時 */
+				#menu input[type="checkbox"]:checked ~ label ~ ul > li {
+					max-height: inherit;
+					overflow-y: visible;
+					display: block;
+				}
+				.angletoggle:before {
+					content: "\f107";
+				}
+				#navi input[type="checkbox"]:checked ~ label .pd .angletoggle:before {
+					content: "\f106";
+				}
+			}
+
+			/* ハンバーガー */
+			#navi #navibtn {
+				display: none;
+			}
+			@media screen and (max-width: 620px) {
+				#navi #navibtn {
+					display: block;
+					position: absolute;
+					top: 10px;
+					right: 10px;
+				}
+				#navibtn span {
+					display: block;
+					width: 40px;
+					height: 40px;
+					background-color: #333;
+				}
+				#navibtn span span {
+					display: block;
+					overflow: hidden;
+					width: 1px;
+					height: 1px;
+				}
+				#navibtn span span::before,
+				#navibtn span span::after,
+				#navibtn span::after {
+					position: absolute;
+					left: 10px;
+					content: "";
+					width: 20px;
+					height: 3px;
+					background-color: #fff;
+				}
+				/* 上の棒 */
+				#navibtn span span::before {
+					top: 10px;
+				}
+				#menu-navibtn:checked ~ #navi label#navibtn span span::before {
+					top: 19px;
+					transform: rotate(-45deg);
+					-webkit-transform: rotate(-45deg);
+				}
+				/* 下の棒 */
+				#navibtn span::after {
+					bottom: 10px;
+				}
+				#menu-navibtn:checked ~ #navi label#navibtn > span::after {
+					bottom: 18px;
+					transform: rotate(-135deg);
+					-webkit-transform: rotate(-135deg);
+				}
+				/* 中の棒 */
+				#navibtn span span::after {
+					top: 18px;
+				}
+				#menu-navibtn:checked ~ #navi label#navibtn span span::after {
+					display: none;
+				}
+			}
+		</style>
+
+		<header>
+			<input type="checkbox" id="menu-navibtn" />
+			<nav id="navi" role="navigation" aria-label="メインメニュー">
+				<div>
+					<label id="navibtn" for="menu-navibtn">
+						<span>
+							<span>メニューを開く</span>
+						</span>
+					</label>
+					<div class="menu-left">
+						<a href="/"><span class="companylogo">logo</span></a>
+					</div>
+					<ul id="menu">
+						<li>
+							<a class="ib" href="/service/">サービス</a>
+							<input type="checkbox" id="menu-parent01" />
+							<label for="menu-parent01">
+								<span class="pd"><i class="fas angletoggle"></i></span>
+							</label>
+							<ul>
+								<li>
+									<a href="/service/hpconsult.html"
+										>ホームページ制作＆コンサル</a
+									>
+									<input type="checkbox" id="menu-0101" />
+									<label for="menu-0101">
+										<span class="pd"><i class="fas angletoggle"></i></span>
+									</label>
+									<ul>
+										<li>
+											<a href="/service/hpstudy.html">ホームページ勉強会</a>
+											<input type="checkbox" id="menu-010101" />
+											<label for="menu-010101">
+												<span class="pd"><i class="fas angletoggle"></i></span>
+											</label>
+											<ul>
+												<li>
+													<a href="/column/freeseminar.html"
+														>web マーケティング改善セミナー</a
+													>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a href="/service/hpmainte.html"
+												>ホームページメンテナンス</a
+											>
+										</li>
+									</ul>
+								</li>
+								<li>
+									サービス
+									<input type="checkbox" id="menu-0102" />
+									<label for="menu-0102">
+										<span class="pd"><i class="fas angletoggle"></i></span>
+									</label>
+									<ul>
+										<li>
+											<a href="/service/hpaccesslog.html">アクセスログ解析</a>
+										</li>
+										<li><a href="/column/webform.html">webフォーム</a></li>
+										<li>
+											<a href="/service/mailsystem.html">メール配信システム</a>
+										</li>
+										<li>
+											<a href="/service/salesforceautomation.html"
+												>営業支援システム</a
+											>
+										</li>
+									</ul>
+								</li>
+
+								<li>
+									コンサルティング
+									<input type="checkbox" id="menu-0103" />
+									<label for="menu-0103">
+										<span class="pd"><i class="fas angletoggle"></i></span>
+									</label>
+									<ul>
+										<li>
+											<a href="/service/product.html"
+												>商品企画コンサルティング</a
+											>
+										</li>
+										<li>
+											<a href="/service/sales.html">営業コンサルティング</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span>コラム</span>
+							<input type="checkbox" id="menu-parent02" />
+							<label for="menu-parent02">
+								<span class="pd"><i class="fas angletoggle"></i></span>
+							</label>
+							<ul>
+								<li><a href="/column/book-hp.html">書籍発売のご案内</a></li>
+								<li>
+									営業関連
+									<input type="checkbox" id="menu-0202" />
+									<label for="menu-0202">
+										<span class="pd"><i class="fas angletoggle"></i></span>
+									</label>
+									<ul class="menu-grandchild">
+										<li><a href="/column/sales.html">効率のよい営業とは</a></li>
+										<li><a href="/column/failure.html">失注の原因分析</a></li>
+										<li>
+											<a href="/column/processmanagement.html"
+												>プロセスマネジメント</a
+											>
+										</li>
+										<li><a href="/column/managesales.html">営業管理とは</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a class="ib" href="/tool/">ツール</a>
+							<input type="checkbox" id="menu-parent03" />
+							<label for="menu-parent03">
+								<span class="pd"><i class="fas angletoggle"></i></span>
+							</label>
+							<ul>
+								<li>
+									<a href="/tool/morphurl.html">単語出現頻度ランキング</a>
+								</li>
+								<li><a href="/tool/similarpage.html">類似ページ検索</a></li>
+								<li>
+									<a href="/tool/thesaurus.html"
+										>類語(類義語)辞書(シソーラス)</a
+									>
+								</li>
+								<li><a href="/tool/bcp.html">名刺読み込み</a></li>
+							</ul>
+						</li>
+						<li>
+							会社案内
+							<input type="checkbox" id="menu-0401" />
+							<label for="menu-0401">
+								<span class="pd"><i class="fas angletoggle"></i></span>
+							</label>
+							<ul>
+								<li>
+									<a href="/company/">レクタスとは</a>
+									<input type="checkbox" id="menu-040101" />
+									<label for="menu-040101">
+										<span class="pd"><i class="fas angletoggle"></i></span>
+									</label>
+									<ul>
+										<li>
+											<a href="/company/privacy.html">個人情報保護方針</a>
+											<input type="checkbox" id="menu-04010101" />
+											<label for="menu-04010101">
+												<span class="pd"><i class="fas angletoggle"></i></span>
+											</label>
+											<ul>
+												<li>
+													<a href="/service/hpstudy.html">ホームページ勉強会</a>
+													<input type="checkbox" id="menu-0401010101" />
+													<label for="menu-0401010101">
+														<span class="pd"
+															><i class="fas angletoggle"></i
+														></span>
+													</label>
+													<ul>
+														<li>
+															<a href="/service/hpstudy.html"
+																>ホームページ勉強会</a
+															>
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a class="ib" href="/contact/">お問合せ</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+	</body>
+</html>
