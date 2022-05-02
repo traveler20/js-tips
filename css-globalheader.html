@@ -43,13 +43,14 @@
 			}
 			/* 左上ロゴ */
 			.menu-left {
-				float: left;
+				/* float: left; */
 				line-height: 60px;
 			}
 			/* 上部メニュー */
 			#menu {
 				float: right;
 				margin-right: 10px;
+				display: flex;
 			}
 			#menu li {
 				position: relative;
@@ -60,13 +61,12 @@
 			}
 			#menu > li {
 				float: left;
-				margin: 0 15px;
+				padding: 0 20px;
 				line-height: 60px;
-				font-size: 17px;
 				font-weight: bold;
 			}
 			/* パソコンでは V を非表示 */
-			#menu > li .pd {
+			#menu > li .menu__arrow {
 				display: none;
 			}
 
@@ -89,11 +89,11 @@
 					border-bottom: 1px solid #ddd;
 					white-space: nowrap;
 				}
-				#menu > li {
-					margin-right: -20px;
-				}
+				/* #menu > li {
+					margin: 0;
+				} */
 				/* V を表示 */
-				#menu > li .pd {
+				#menu > li .menu__arrow {
 					display: inline-block;
 					width: 100%;
 				}
@@ -121,7 +121,6 @@
 			}
 			/* 子メニュー */
 			#menu > li > ul li {
-				font-size: 14px;
 				display: none;
 				padding: 0px 20px;
 				background-color: #fff;
@@ -228,10 +227,14 @@
 					overflow-y: visible;
 					display: block;
 				}
-				.angletoggle:before {
+				.menu__icon:before {
 					content: "\f107";
 				}
-				#navi input[type="checkbox"]:checked ~ label .pd .angletoggle:before {
+				#navi
+					input[type="checkbox"]:checked
+					~ label
+					.menu__arrow
+					.menu__icon:before {
 					content: "\f106";
 				}
 			}
@@ -300,186 +303,180 @@
 		<header>
 			<input type="checkbox" id="menu-navibtn" />
 			<nav id="navi" role="navigation" aria-label="メインメニュー">
-				<div>
-					<label id="navibtn" for="menu-navibtn">
-						<span>
-							<span>メニューを開く</span>
-						</span>
-					</label>
-					<div class="menu-left">
-						<a href="/"><span class="companylogo">logo</span></a>
-					</div>
-					<ul id="menu">
-						<li>
-							<a class="ib" href="/service/">サービス</a>
-							<input type="checkbox" id="menu-parent01" />
-							<label for="menu-parent01">
-								<span class="pd"><i class="fas angletoggle"></i></span>
-							</label>
-							<ul>
-								<li>
-									<a href="/service/hpconsult.html"
-										>ホームページ制作＆コンサル</a
-									>
-									<input type="checkbox" id="menu-0101" />
-									<label for="menu-0101">
-										<span class="pd"><i class="fas angletoggle"></i></span>
-									</label>
-									<ul>
-										<li>
-											<a href="/service/hpstudy.html">ホームページ勉強会</a>
-											<input type="checkbox" id="menu-010101" />
-											<label for="menu-010101">
-												<span class="pd"><i class="fas angletoggle"></i></span>
-											</label>
-											<ul>
-												<li>
-													<a href="/column/freeseminar.html"
-														>web マーケティング改善セミナー</a
-													>
-												</li>
-											</ul>
-										</li>
-										<li>
-											<a href="/service/hpmainte.html"
-												>ホームページメンテナンス</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li>
-									サービス
-									<input type="checkbox" id="menu-0102" />
-									<label for="menu-0102">
-										<span class="pd"><i class="fas angletoggle"></i></span>
-									</label>
-									<ul>
-										<li>
-											<a href="/service/hpaccesslog.html">アクセスログ解析</a>
-										</li>
-										<li><a href="/column/webform.html">webフォーム</a></li>
-										<li>
-											<a href="/service/mailsystem.html">メール配信システム</a>
-										</li>
-										<li>
-											<a href="/service/salesforceautomation.html"
-												>営業支援システム</a
-											>
-										</li>
-									</ul>
-								</li>
+				<a class="menu-left" href="#">logo</a>
+				<label id="navibtn" for="menu-navibtn">
+					<span>
+						<span>メニューを開く</span>
+					</span>
+				</label>
+				<ul id="menu">
+					<li>
+						<a href="#">サービス</a>
+						<input type="checkbox" id="menu-parent01" />
+						<label for="menu-parent01">
+							<span class="menu__arrow"><i class="fas menu__icon"></i></span>
+						</label>
+						<ul>
+							<li>
+								<a href="#">ホームページ制作＆コンサル</a>
+								<input type="checkbox" id="menu-0101" />
+								<label for="menu-0101">
+									<span class="menu__arrow"
+										><i class="fas menu__icon"></i
+									></span>
+								</label>
+								<ul>
+									<li>
+										<a href="#">ホームページ勉強会</a>
+										<input type="checkbox" id="menu-010101" />
+										<label for="menu-010101">
+											<span class="menu__arrow"
+												><i class="fas menu__icon"></i
+											></span>
+										</label>
+										<ul>
+											<li>
+												<a href="#">webマーケセミナー</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a href="#">ホームページメンテナンス</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								サービス
+								<input type="checkbox" id="menu-0102" />
+								<label for="menu-0102">
+									<span class="menu__arrow"
+										><i class="fas menu__icon"></i
+									></span>
+								</label>
+								<ul>
+									<li>
+										<a href="#">アクセスログ解析</a>
+									</li>
+									<li><a href="#">webフォーム</a></li>
+									<li>
+										<a href="#">メール配信システム</a>
+									</li>
+									<li>
+										<a href="#">営業支援システム</a>
+									</li>
+								</ul>
+							</li>
 
-								<li>
-									コンサルティング
-									<input type="checkbox" id="menu-0103" />
-									<label for="menu-0103">
-										<span class="pd"><i class="fas angletoggle"></i></span>
-									</label>
-									<ul>
-										<li>
-											<a href="/service/product.html"
-												>商品企画コンサルティング</a
-											>
-										</li>
-										<li>
-											<a href="/service/sales.html">営業コンサルティング</a>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<span>コラム</span>
-							<input type="checkbox" id="menu-parent02" />
-							<label for="menu-parent02">
-								<span class="pd"><i class="fas angletoggle"></i></span>
-							</label>
-							<ul>
-								<li><a href="/column/book-hp.html">書籍発売のご案内</a></li>
-								<li>
-									営業関連
-									<input type="checkbox" id="menu-0202" />
-									<label for="menu-0202">
-										<span class="pd"><i class="fas angletoggle"></i></span>
-									</label>
-									<ul class="menu-grandchild">
-										<li><a href="/column/sales.html">効率のよい営業とは</a></li>
-										<li><a href="/column/failure.html">失注の原因分析</a></li>
-										<li>
-											<a href="/column/processmanagement.html"
-												>プロセスマネジメント</a
-											>
-										</li>
-										<li><a href="/column/managesales.html">営業管理とは</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a class="ib" href="/tool/">ツール</a>
-							<input type="checkbox" id="menu-parent03" />
-							<label for="menu-parent03">
-								<span class="pd"><i class="fas angletoggle"></i></span>
-							</label>
-							<ul>
-								<li>
-									<a href="/tool/morphurl.html">単語出現頻度ランキング</a>
-								</li>
-								<li><a href="/tool/similarpage.html">類似ページ検索</a></li>
-								<li>
-									<a href="/tool/thesaurus.html"
-										>類語(類義語)辞書(シソーラス)</a
-									>
-								</li>
-								<li><a href="/tool/bcp.html">名刺読み込み</a></li>
-							</ul>
-						</li>
-						<li>
-							会社案内
-							<input type="checkbox" id="menu-0401" />
-							<label for="menu-0401">
-								<span class="pd"><i class="fas angletoggle"></i></span>
-							</label>
-							<ul>
-								<li>
-									<a href="/company/">レクタスとは</a>
-									<input type="checkbox" id="menu-040101" />
-									<label for="menu-040101">
-										<span class="pd"><i class="fas angletoggle"></i></span>
-									</label>
-									<ul>
-										<li>
-											<a href="/company/privacy.html">個人情報保護方針</a>
-											<input type="checkbox" id="menu-04010101" />
-											<label for="menu-04010101">
-												<span class="pd"><i class="fas angletoggle"></i></span>
-											</label>
-											<ul>
-												<li>
-													<a href="/service/hpstudy.html">ホームページ勉強会</a>
-													<input type="checkbox" id="menu-0401010101" />
-													<label for="menu-0401010101">
-														<span class="pd"
-															><i class="fas angletoggle"></i
-														></span>
-													</label>
-													<ul>
-														<li>
-															<a href="/service/hpstudy.html"
-																>ホームページ勉強会</a
-															>
-														</li>
-													</ul>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li><a class="ib" href="/contact/">お問合せ</a></li>
-					</ul>
-				</div>
+							<li>
+								コンサルティング
+								<input type="checkbox" id="menu-0103" />
+								<label for="menu-0103">
+									<span class="menu__arrow"
+										><i class="fas menu__icon"></i
+									></span>
+								</label>
+								<ul>
+									<li>
+										<a href="#">商品企画コンサルティング</a>
+									</li>
+									<li>
+										<a href="#">営業コンサルティング</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<span>コラム</span>
+						<input type="checkbox" id="menu-parent02" />
+						<label for="menu-parent02">
+							<span class="menu__arrow"><i class="fas menu__icon"></i></span>
+						</label>
+						<ul>
+							<li><a href="#">書籍発売のご案内</a></li>
+							<li>
+								営業関連
+								<input type="checkbox" id="menu-0202" />
+								<label for="menu-0202">
+									<span class="menu__arrow"
+										><i class="fas menu__icon"></i
+									></span>
+								</label>
+								<ul class="menu-grandchild">
+									<li><a href="#">効率のよい営業とは</a></li>
+									<li><a href="#">失注の原因分析</a></li>
+									<li>
+										<a href="#">プロセスマネジメント</a>
+									</li>
+									<li><a href="#">営業管理とは</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">ツール</a>
+						<input type="checkbox" id="menu-parent03" />
+						<label for="menu-parent03">
+							<span class="menu__arrow"><i class="fas menu__icon"></i></span>
+						</label>
+						<ul>
+							<li>
+								<a href="#">単語出現頻度ランキング</a>
+							</li>
+							<li><a href="#">類似ページ検索</a></li>
+							<li>
+								<a href="#">類語(類義語)辞書(シソーラス)</a>
+							</li>
+							<li><a href="#">名刺読み込み</a></li>
+						</ul>
+					</li>
+					<li>
+						会社案内
+						<input type="checkbox" id="menu-0401" />
+						<label for="menu-0401">
+							<span class="menu__arrow"><i class="fas menu__icon"></i></span>
+						</label>
+						<ul>
+							<li>
+								<a href="#">レクタスとは</a>
+								<input type="checkbox" id="menu-040101" />
+								<label for="menu-040101">
+									<span class="menu__arrow"
+										><i class="fas menu__icon"></i
+									></span>
+								</label>
+								<ul>
+									<li>
+										<a href="#">個人情報保護方針</a>
+										<input type="checkbox" id="menu-04010101" />
+										<label for="menu-04010101">
+											<span class="menu__arrow"
+												><i class="fas menu__icon"></i
+											></span>
+										</label>
+										<ul>
+											<li>
+												<a href="#">ホームページ勉強会</a>
+												<input type="checkbox" id="menu-0401010101" />
+												<label for="menu-0401010101">
+													<span class="menu__arrow"
+														><i class="fas menu__icon"></i
+													></span>
+												</label>
+												<ul>
+													<li>
+														<a href="#">ホームページ勉強会</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><a href="#">お問合せ</a></li>
+				</ul>
 			</nav>
 		</header>
 	</body>
