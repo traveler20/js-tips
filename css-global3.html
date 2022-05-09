@@ -79,6 +79,27 @@
 				display: inline-block;
 			}
 
+			/* .CTAボタン */
+			.l-gnavi__cta {
+				padding: 0 0 0 20px;
+				line-height: var(--header-height);
+			}
+			.l-gnavi__button {
+				line-height: 1.7;
+				font-weight: bold;
+				display: inline-block;
+				color: var(--color-white);
+				background-color: var(--color-black);
+				border: solid 1px var(--color-black);
+				border-radius: 2px;
+				transition: 0.4s;
+				padding: 8px 20px;
+			}
+			.l-gnavi__button:hover {
+				color: var(--color-black);
+				background-color: var(--color-white);
+			}
+
 			.l-gnavi__icon {
 				padding: 0 6px;
 			}
@@ -321,6 +342,9 @@
 									</li>
 								</ul>
 							</div>
+						</li>
+						<li class="l-gnavi__cta">
+							<a class="l-gnavi__button" href="#">問い合わせ</a>
 						</li>
 					</ul>
 				</nav>
