@@ -19,34 +19,61 @@
 	</head>
 	<body>
 		<style>
-			.menu {
-				width: 100%;
-			}
 			header input {
 				display: none;
 			}
 
+			.l-header__inner {
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 20px;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+
+				height: 58px;
+			}
 			.l-header__label {
+				height: 58px;
+				line-height: 58px;
+
+				width: 40%;
 				display: none;
+				position: absolute;
+				right: 0;
+				top: 0;
+				text-align: center;
+				background: #333;
+				color: #fff;
 			}
 
+			.menu {
+				width: 100%;
+				border-top: solid 1px #333;
+				border-bottom: solid 1px #333;
+			}
 			.menu__lists {
 				display: flex;
+				max-width: 1000px;
+				margin: 0 auto;
 			}
 			.menu__list {
 				position: relative;
-			}
-			.menu__list a {
-				display: inline-block;
-			}
-			.menu__list {
 				padding: 0 20px;
 				line-height: 60px;
 				font-weight: bold;
 			}
+			.menu__list a {
+				display: inline-block;
+			}
+
+			.menu__icon:before {
+				content: "\f107";
+			}
 
 			.menu__childlists {
 				position: absolute;
+				left: 0;
 			}
 			.menu__childlists li {
 				display: none;
@@ -54,6 +81,12 @@
 				border-left: 1px solid #000;
 				border-right: 1px solid #000;
 				border-bottom: 1px solid #ddd;
+			}
+			.menu__childlists li a {
+				/* 子要素リストの横幅設定 */
+				width: 320px;
+				padding: 14px 20px;
+				line-height: 1.4;
 			}
 			/* PC */
 			@media screen and (min-width: 620px) {
@@ -76,13 +109,16 @@
 				.l-header__label {
 					display: inline-block;
 				}
+				.menu {
+					border-bottom: none;
+				}
 				.menu__lists {
 					display: none;
 				}
 				.menu__lists li {
 					height: auto;
 					width: 100%;
-					padding: 0 20px;
+					/* padding: 0 20px; */
 					border-bottom: solid 1px #eee;
 					white-space: nowrap;
 				}
@@ -95,6 +131,10 @@
 				.menu__list .menu__arrow {
 					display: inline-block;
 					width: 100%;
+				}
+				/* レスポンシブ時のメニュー開閉の矢印 */
+				.menu__list input:checked ~ label .menu__icon {
+					transform: rotate(180deg);
 				}
 				/*  */
 				#navi-button:checked ~ .menu {
@@ -126,27 +166,19 @@
 					overflow-y: visible;
 					display: block;
 				}
-
-				.menu__icon:before {
-					content: "\f107";
-				}
-				.navi
-					input[type="checkbox"]:checked
-					~ label
-					.menu__arrow
-					.menu__icon:before {
-					content: "\f106";
-				}
 			}
 		</style>
 
-		<header>
-			<a href="#" class="l-header__logo">LOGO</a>
+		<header class="l-header">
+			<div class="l-header__inner">
+				<a href="#" class="l-header__logo">LOGO</a>
+			</div>
+			<!-- <div> -->
 			<input type="checkbox" id="navi-button" />
 			<label class="l-header__label" id="navi-menu" for="navi-button">
-				<span>
-					<span>メニュー</span>
-				</span>
+				<!-- <span> -->
+				<span>メニュー</span>
+				<!-- </span> -->
 			</label>
 			<nav class="menu">
 				<ul class="menu__lists">
@@ -157,8 +189,8 @@
 							<span class="menu__arrow"><i class="fas menu__icon"></i></span>
 						</label>
 						<ul class="menu__childlists">
-							<li><a href="#">制作事業</a></li>
-							<li><a href="#">制作事業</a></li>
+							<li><a href="#">制作事業制作事業制作事業</a></li>
+							<li><a href="#">制作事業制作事業</a></li>
 							<li><a href="#">制作事業</a></li>
 							<li><a href="#">制作事業</a></li>
 						</ul>
@@ -174,10 +206,14 @@
 							<li><a href="#">制作事業</a></li>
 							<li><a href="#">制作事業</a></li>
 							<li><a href="#">制作事業</a></li>
+							<li><a href="#">制作事業</a></li>
+							<li><a href="#">制作事業</a></li>
+							<li><a href="#">制作事業</a></li>
 						</ul>
 					</li>
 				</ul>
 			</nav>
+			<!-- </div> -->
 		</header>
 	</body>
 </html>
