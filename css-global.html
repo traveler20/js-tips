@@ -28,7 +28,7 @@
 				margin: 0 auto;
 				padding: 20px;
 				display: flex;
-				justify-content: flex-start;
+				justify-content: space-between;
 				align-items: center;
 
 				height: 58px;
@@ -56,57 +56,83 @@
 				display: flex;
 				max-width: 1000px;
 				margin: 0 auto;
+				position: relative;
 			}
 			.menu__list {
 				position: relative;
 				padding: 0 20px;
 				line-height: 60px;
-				font-weight: bold;
+			}
+			.menu__list--full {
+				position: static;
 			}
 			.menu__list a {
 				display: inline-block;
 			}
 
+			.menu__icon {
+				padding: 0 6px;
+			}
 			.menu__icon:before {
 				content: "\f107";
 			}
 
-			.menu__childlists {
+			.menu__content {
 				position: absolute;
 				left: 0;
-				display: block;
 				min-width: 100%;
 				white-space: nowrap;
-			}
-			.menu__childlists li {
-				display: none;
 				background-color: #fff;
-				border-left: 1px solid #000;
-				border-right: 1px solid #000;
-				border-bottom: 1px solid #ddd;
-			}
-			.menu__childlists li a {
 				padding: 14px 20px;
-				line-height: 1.4;
+				line-height: 2.4;
+
+				display: none;
 			}
+			.menu__content h3,
+			.menu__content h4 {
+				font-weight: bold;
+			}
+			.menu__content a:hover {
+				text-decoration: underline;
+			}
+			.menu__childlists {
+			}
+			/* .menu__childlists li {
+				line-height: 2.4;
+			} */
+			/* .menu__childlists li a {
+				padding: 0px 0px;
+			} */
 			/* PC */
-			@media screen and (min-width: 620px) {
-				.menu__list:hover {
+			@media screen and (min-width: 800px) {
+				/* .menu__list:hover {
 					background-color: #eee;
-				}
-				.menu__list:hover > ul > li {
+				} */
+				.menu__list:hover .menu__content {
 					display: block;
 				}
 
-				.menu__childlists li:first-of-type {
-					border-top: 1px solid #000;
+				.menu__content {
+					border-top: 1px solid #333;
+					border-bottom: 1px solid #333;
+					border-left: 1px solid #333;
+					border-right: 1px solid #333;
+					/* border-bottom: 1px solid #ddd; */
+				}
+				/* .menu__childlists li:first-of-type {
+					border-top: 1px solid #333;
 				}
 				.menu__childlists li:last-of-type {
-					border-bottom: 1px solid #000;
+					border-bottom: 1px solid #333;
+				} */
+				.menu__categorylists {
+					display: flex;
+					justify-content: space-between;
+					align-items: flex-start;
 				}
 			}
 			/* SP */
-			@media screen and (max-width: 620px) {
+			@media screen and (max-width: 800px) {
 				.l-header__label {
 					display: inline-block;
 				}
@@ -120,14 +146,17 @@
 					height: auto;
 					width: 100%;
 					/* padding: 0 20px; */
-					border-bottom: solid 1px #eee;
+					/* border-bottom: solid 1px #eee; */
 					white-space: nowrap;
 				}
-				.menu__lists li:first-of-type {
+				/* .menu__lists li:first-of-type {
 					border-top: solid 1px #eee;
+				} */
+				.menu__content {
+					padding: 0 0 0 8px;
 				}
-				.menu__list i {
-					padding: 0 6px;
+				.menu__categorylists ul {
+					padding: 0 0 0 8px;
 				}
 				.menu__list .menu__arrow {
 					display: inline-block;
@@ -137,35 +166,36 @@
 				.menu__list input:checked ~ label .menu__icon {
 					transform: rotate(180deg);
 				}
-				/*  */
+				/* メニュー checked */
+				#navi-button:checked ~ .l-header__label:before {
+					content: "閉じる";
+				}
+				#navi-button:checked ~ .l-header__label span {
+					display: none;
+				}
 				#navi-button:checked ~ .menu {
 					position: fixed;
 					overflow-y: scroll;
 					overflow-x: hidden;
 					height: 100%;
 				}
-				#navi-button:checked ~ * .menu__lists {
+				#navi-button:checked ~ .menu .menu__lists {
 					display: block;
-				}
-				#navi-button:checked ~ * .menu__list {
 					max-height: inherit;
 					overflow-y: visible;
+					padding-bottom: 80px;
 				}
 
-				.menu__childlists {
-					line-height: 50px;
-				}
-				.menu__childlists {
-					position: static;
+				/* .menu__childlists {
 				}
 				.menu__childlists li {
-					border-left: none;
-					border-right: none;
-				}
-				.menu__lists input[type="checkbox"]:checked ~ label ~ ul > li {
+					line-height: 50px;
+				} */
+				.menu__lists input[type="checkbox"]:checked ~ .menu__content {
 					max-height: inherit;
 					overflow-y: visible;
 					display: block;
+					position: relative;
 				}
 			}
 		</style>
@@ -186,12 +216,14 @@
 						<label for="menu00">
 							<span class="menu__arrow"><i class="fas menu__icon"></i></span>
 						</label>
-						<ul class="menu__childlists">
-							<li><a href="#">制作事業制作事業制作事業</a></li>
-							<li><a href="#">制作事業制作事業</a></li>
-							<li><a href="#">制作事業</a></li>
-							<li><a href="#">制作事業</a></li>
-						</ul>
+						<div class="menu__content">
+							<ul class="menu__childlists">
+								<li><a href="#">制作事業制作事業制作事業</a></li>
+								<li><a href="#">制作事業制作事業</a></li>
+								<li><a href="#">制作事業</a></li>
+								<li><a href="#">制作事業</a></li>
+							</ul>
+						</div>
 					</li>
 					<li class="menu__list">
 						<a href="#">機能一覧</a>
@@ -199,15 +231,17 @@
 						<label for="menu01">
 							<span class="menu__arrow"><i class="fas menu__icon"></i></span>
 						</label>
-						<ul class="menu__childlists">
-							<li><a href="#">制作事業</a></li>
-							<li><a href="#">制作事業</a></li>
-							<li><a href="#">制作事業</a></li>
-							<li><a href="#">制作事業</a></li>
-							<li><a href="#">制作事業</a></li>
-							<li><a href="#">制作事業</a></li>
-							<li><a href="#">制作事業</a></li>
-						</ul>
+						<div class="menu__content">
+							<ul class="menu__childlists">
+								<li><a href="#">制作事業</a></li>
+								<li><a href="#">制作事業</a></li>
+								<li><a href="#">制作事業</a></li>
+								<li><a href="#">制作事業</a></li>
+								<li><a href="#">制作事業</a></li>
+								<li><a href="#">制作事業</a></li>
+								<li><a href="#">制作事業</a></li>
+							</ul>
+						</div>
 					</li>
 					<li class="menu__list">
 						<a href="#">利用料金</a>
@@ -216,17 +250,84 @@
 						<a href="#">資料請求</a>
 					</li>
 					<li class="menu__list">
+						<a href="#">事例</a>
+					</li>
+					<li class="menu__list">
+						<a href="#">特長</a>
+					</li>
+					<li class="menu__list menu__list--full">
 						<a href="#">サービス一覧</a>
-						<input type="checkbox" id="menu00" />
-						<label for="menu00">
+						<input type="checkbox" id="menu02" />
+						<label for="menu02">
 							<span class="menu__arrow"><i class="fas menu__icon"></i></span>
 						</label>
-						<ul class="menu__childlists">
-							<li><a href="#">制作事業制作事業制作事業</a></li>
-							<li><a href="#">制作事業制作事業</a></li>
-							<li><a href="#">制作事業</a></li>
-							<li><a href="#">制作事業</a></li>
-						</ul>
+						<div class="menu__content">
+							<h3><a href="#">ホーム</a></h3>
+							<ul class="menu__categorylists">
+								<li>
+									<h4>制作サービス</h4>
+									<ul>
+										<li>
+											<a href="#">制作事業制作事業制作事業</a>
+										</li>
+										<li>
+											<a href="#">制作事業</a>
+										</li>
+										<li>
+											<a href="#">制作事業</a>
+										</li>
+										<li>
+											<a href="#">制作事業</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h4>制作サービス</h4>
+									<ul>
+										<li>
+											<a href="#">制作事業制作事業制作事業</a>
+										</li>
+										<li>
+											<a href="#">制作事業</a>
+										</li>
+										<li>
+											<a href="#">制作事業</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h4>制作サービス</h4>
+									<ul>
+										<li>
+											<a href="#">制作事業制作事業制作事業</a>
+										</li>
+										<li>
+											<a href="#">制作事業</a>
+										</li>
+										<li>
+											<a href="#">制作事業</a>
+										</li>
+										<li>
+											<a href="#">制作事業</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h4>制作サービス</h4>
+									<ul>
+										<li>
+											<a href="#">制作事業制作事業制作事業</a>
+										</li>
+										<li>
+											<a href="#">制作事業</a>
+										</li>
+										<li>
+											<a href="#">制作事業</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
 					</li>
 				</ul>
 			</nav>
