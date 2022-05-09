@@ -19,7 +19,7 @@
 	</head>
 	<body>
 		<style>
-			header input {
+			.l-header input {
 				display: none;
 			}
 
@@ -74,6 +74,9 @@
 			.menu__childlists {
 				position: absolute;
 				left: 0;
+				display: block;
+				min-width: 100%;
+				white-space: nowrap;
 			}
 			.menu__childlists li {
 				display: none;
@@ -83,8 +86,6 @@
 				border-bottom: 1px solid #ddd;
 			}
 			.menu__childlists li a {
-				/* 子要素リストの横幅設定 */
-				width: 320px;
 				padding: 14px 20px;
 				line-height: 1.4;
 			}
@@ -173,12 +174,9 @@
 			<div class="l-header__inner">
 				<a href="#" class="l-header__logo">LOGO</a>
 			</div>
-			<!-- <div> -->
 			<input type="checkbox" id="navi-button" />
 			<label class="l-header__label" id="navi-menu" for="navi-button">
-				<!-- <span> -->
 				<span>メニュー</span>
-				<!-- </span> -->
 			</label>
 			<nav class="menu">
 				<ul class="menu__lists">
@@ -196,7 +194,7 @@
 						</ul>
 					</li>
 					<li class="menu__list">
-						<a href="#">サービス</a>
+						<a href="#">機能一覧</a>
 						<input type="checkbox" id="menu01" />
 						<label for="menu01">
 							<span class="menu__arrow"><i class="fas menu__icon"></i></span>
@@ -211,9 +209,27 @@
 							<li><a href="#">制作事業</a></li>
 						</ul>
 					</li>
+					<li class="menu__list">
+						<a href="#">利用料金</a>
+					</li>
+					<li class="menu__list">
+						<a href="#">資料請求</a>
+					</li>
+					<li class="menu__list">
+						<a href="#">サービス一覧</a>
+						<input type="checkbox" id="menu00" />
+						<label for="menu00">
+							<span class="menu__arrow"><i class="fas menu__icon"></i></span>
+						</label>
+						<ul class="menu__childlists">
+							<li><a href="#">制作事業制作事業制作事業</a></li>
+							<li><a href="#">制作事業制作事業</a></li>
+							<li><a href="#">制作事業</a></li>
+							<li><a href="#">制作事業</a></li>
+						</ul>
+					</li>
 				</ul>
 			</nav>
-			<!-- </div> -->
 		</header>
 	</body>
 </html>
