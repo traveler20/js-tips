@@ -40,10 +40,6 @@
 				height: var(--header-height);
 			}
 			/* .CTAボタン */
-			/* .l-header__cta--pc {
-				padding: 0 0 0 20px;
-				line-height: var(--header-height);
-			} */
 			.l-header__button {
 				line-height: 1.7;
 				font-weight: bold;
@@ -64,7 +60,7 @@
 				height: var(--header-height);
 				line-height: var(--header-height);
 
-				width: 40%;
+				width: 60px;
 				display: none;
 				position: absolute;
 				right: 0;
@@ -72,6 +68,9 @@
 				text-align: center;
 				background: var(--color-black);
 				color: var(--color-white);
+			}
+			.l-header__label span {
+				font-size: 28px;
 			}
 
 			.l-gnavi {
@@ -124,11 +123,8 @@
 			}
 			/* PC */
 			@media screen and (min-width: 800px) {
-				.l-header__cta--pc {
+				.l-header__cta {
 					display: block;
-				}
-				.l-header__cta--sp {
-					display: none;
 				}
 
 				.l-gnavi__list:hover .l-gnavi__content {
@@ -149,16 +145,8 @@
 			}
 			/* SP */
 			@media screen and (max-width: 800px) {
-				.l-header__cta--pc {
-					display: none;
-				}
-				.l-header__cta--sp {
-					display: block;
-					padding: 16px 20px;
-					text-align: center;
-				}
-				.l-header__cta--sp .l-header__button {
-					width: 100%;
+				.l-header__inner {
+					padding-right: 72px;
 				}
 
 				.l-header__label {
@@ -228,19 +216,16 @@
 		<header class="l-header">
 			<div class="l-header__inner">
 				<a href="#" class="l-header__logo">LOGO</a>
-				<div class="l-header__cta--pc">
+				<div class="l-header__cta">
 					<a href="#" class="l-header__button">問い合わせ</a>
 				</div>
 			</div>
 			<input type="checkbox" id="navi-button" />
 			<label class="l-header__label" for="navi-button">
-				<span>メニュー</span>
+				<span>🍔</span>
 			</label>
 			<nav class="l-gnavi">
 				<ul class="l-gnavi__lists">
-					<li class="l-header__cta--sp">
-						<a href="#" class="l-header__button">問い合わせ</a>
-					</li>
 					<li class="l-gnavi__list">
 						<a href="#">サービス</a>
 						<input type="checkbox" id="menu00" />
