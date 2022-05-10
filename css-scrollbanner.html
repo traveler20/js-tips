@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.c-scrollbanner {
+				width: 100%;
+				height: 125px;
+				/* 8452×200px */
+				background: url(https://smarthr.jp/assets/img/home/logo/logo-slide.png)
+					repeat-x 50%;
+				background-size: auto 100px;
+				animation: scrollbanner 46s linear infinite;
+			}
+			@keyframes scrollbanner {
+				0% {
+					background-position: 0 0;
+				}
+
+				100% {
+					background-position: -4436px 0;
+				}
+			}
+		</style>
+		<div class="c-scrollbanner"></div>
+	</body>
+</html>
