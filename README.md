@@ -155,7 +155,7 @@ css-infinityanimation.html
 
 # サイトでよく実装する機能
 
-- スワイプでスライドするギャラリー
+- [スワイプでスライドするギャラリー](js-swiper.html)
 - スライドする機能
 - [アコーディオンメニュー](css-details.html)
 - [タブメニュー](css-tab.html)
@@ -170,7 +170,7 @@ css-infinityanimation.html
 - [問い合わせフォーム（noway）](html-noway.html)
 
 ```
-js-swiper.html(*)
+js-swiper.html
 css-slider.html(\*)
 css-slider2.html(\*)
 css-slider3.html(\*)
@@ -205,6 +205,10 @@ js-variable.html
 
 # 便利なレイアウト
 
+- [グローバルヘッダー(ロゴが上)](css-global.html)
+- [グローバルヘッダー(ロゴが横)](css-global2.html)
+- [グローバルヘッダー(ロゴが横・ボタン)](css-global3.html)
+- [グローバルヘッダー(ロゴが上・🍔)](css-global4.html)
 - [テーブルレイアウト](css-table.html)
 - [グリッドレイアウト](css-gridlayout.html)
 - [グリッドレイアウトで position](css-gridposition.html)
@@ -214,6 +218,10 @@ js-variable.html
 - [センタリング](css-centering.html)
 
 ```
+css-global.html
+css-global2.html
+css-global3.html
+css-global4.html
 css-table.html
 css-gridlayout.html
 css-gridposition.html

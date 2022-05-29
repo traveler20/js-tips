@@ -11,19 +11,83 @@
 		/>
 	</head>
 	<body>
-		<style></style>
+		<style>
+			@import url(https://unpkg.com/swiper@7/swiper-bundle.min.css);
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+			img {
+				max-width: 100%;
+				object-fit: cover;
+			}
+			.swiper-container {
+				/* width/height */
+				width: 400px;
+				height: 400px;
+
+				overflow-y: hidden;
+				position: relative;
+				background: #ccc;
+			}
+			.swiper-slide picture {
+				display: block;
+				max-width: 400px;
+				margin: 0 auto;
+			}
+
+			.swiper-button-next:after,
+			.swiper-button-prev:after {
+				color: #fff;
+			}
+			.swiper-pagination-bullet {
+				background-color: #fff;
+			}
+		</style>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<picture>
+						<img
+							src="https://traveler20.github.io/kokopp/asset/img/gallery/13.jpg"
+							alt=""
+						/>
+					</picture>
+				</div>
+				<div class="swiper-slide">
+					<picture>
+						<img
+							src="https://traveler20.github.io/kokopp/asset/img/gallery/13-1.jpg"
+							alt=""
+						/>
+					</picture>
+				</div>
+				<div class="swiper-slide">
+					<picture>
+						<img
+							src="https://traveler20.github.io/kokopp/asset/img/gallery/13-2.jpg"
+							alt=""
+						/>
+					</picture>
+				</div>
+			</div>
+			<div class="swiper-pagination"></div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+
+		<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 		<script>
-			var mySwiper = new Swiper(".swiper-container", {
+			// swiper
+			const swiper = new Swiper(".swiper-container", {
 				loop: true,
-				slidesPerView: 1,
-				spaceBetween: 10,
-				centeredSlides: true,
-				pagination: ".swiper-pagination",
-				nextButton: ".swiper-button-next",
-				prevButton: ".swiper-button-prev",
-				autoplay: 3000,
+				// ページネーション
+				pagination: {
+					el: ".swiper-pagination",
+					clickable: true,
+				},
+				// 前後の矢印
+				navigation: {
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				},
 			});
 		</script>
 	</body>
