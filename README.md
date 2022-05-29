@@ -166,6 +166,8 @@ css-infinityanimation.html
 - [パラメータ](js-parameter.html)
 - [表示速度の向上](css-speedup.html)
 - [問い合わせフォーム（formspree）](html-formspree.html)
+- [問い合わせフォーム（googleform）](html-googleform.html)
+- [問い合わせフォーム（noway）](html-noway.html)
 
 ```
 js-swiper.html(*)
@@ -181,6 +183,8 @@ php-timer.html
 js-parameter.html
 css-speedup.html
 html-formspree.html
+html-googleform.html
+html-noway.html
 ```
 
 # コーディングの効率化でよく実装する機能
