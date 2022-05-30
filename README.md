@@ -2,6 +2,14 @@
 
 github のコードは[こちら](https://github.com/traveler20/tips)。
 
+# 基礎的な内容
+
+- [head タグに入れる内容](html-head.html)
+
+```
+html-head.html
+```
+
 # テキスト・フォント
 
 - [テキストを途中まで表示させて...と表示させたい](css-truncatetext.html)
