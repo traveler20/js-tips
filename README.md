@@ -101,11 +101,13 @@ css-bgup.html
 - [チェックボックスボタン](css-checkbox.html)
 - [ラジオボタンのアニメーション](css-radio.html)
 - [ファイルアップロードボタン](css-upload.html)
+- [柔軟なテキストエリア](js-textareaFlexible.html)
 
 ```
 css-checkbox.html
 css-radio.html
 css-upload.html
+js-textareaFlexible.html
 ```
 
 # アイコン
