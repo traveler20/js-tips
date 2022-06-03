@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.l-column-grid1,
+			.l-column-grid2,
+			.l-column-grid3 {
+				display: grid;
+				justify-content: center;
+
+				grid-template-columns: repeat(auto-fit, 100%);
+				grid-gap: 16px 16px;
+			}
+			/* PC */
+			@media screen and (min-width: 800px) {
+				.l-column-grid1 {
+					grid-template-columns: repeat(auto-fit, 940px);
+				}
+				.l-column-grid2 {
+					grid-template-columns: repeat(auto-fit, 460px);
+				}
+				.l-column-grid3 {
+					grid-template-columns: repeat(auto-fit, 300px);
+				}
+			}
+			/* SP */
+			@media screen and (max-width: 800px) {
+			}
+
+			.c-card {
+				padding: 32px 20px;
+				border: solid 1px #333;
+				border-radius: 4px;
+
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+			.c-card__title {
+				font-size: 24px;
+				font-weight: bold;
+				text-align: center;
+			}
+			.c-card__description {
+				display: table;
+				text-align: left;
+				margin: auto;
+			}
+		</style>
+
+		<!-- 1カラム -->
+		<div class="l-column-grid1">
+			<dl class="c-card">
+				<dt class="c-card__title">カードタイトル</dt>
+				<dd class="c-card__description">
+					複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+				</dd>
+			</dl>
+		</div>
+
+		<!-- 2カラム -->
+		<div class="l-column-grid2">
+			<dl class="c-card">
+				<dt class="c-card__title">カードタイトル</dt>
+				<dd class="c-card__description">
+					複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+				</dd>
+			</dl>
+			<dl class="c-card">
+				<dt class="c-card__title">カードタイトル</dt>
+				<dd class="c-card__description">
+					複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+				</dd>
+			</dl>
+		</div>
+
+		<!-- 3カラム -->
+		<div class="l-column-grid3">
+			<dl class="c-card">
+				<dt class="c-card__title">カードタイトル</dt>
+				<dd class="c-card__description">
+					複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+				</dd>
+			</dl>
+			<dl class="c-card">
+				<dt class="c-card__title">カードタイトル</dt>
+				<dd class="c-card__description">
+					複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+				</dd>
+			</dl>
+			<dl class="c-card">
+				<dt class="c-card__title">カードタイトル</dt>
+				<dd class="c-card__description">
+					複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+				</dd>
+			</dl>
+		</div>
+	</body>
+</html>
