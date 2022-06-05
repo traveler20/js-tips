@@ -226,6 +226,7 @@ js-variable.html
 - [フレックスレイアウトでレスポンシブ対応](css-flexresponsive.html)
 - [カードのレイアウト](css-cardlayout.html)
 - [センタリング](css-centering.html)
+- [レイアウト × コンポーネントのスタイリング](css-layout.html)
 
 ```
 css-global.html
@@ -238,6 +239,7 @@ css-gridposition.html
 css-flexlayout.html
 css-cardlayout.html
 css-centering.html
+css-layout.html
 ```
 
 # その他
