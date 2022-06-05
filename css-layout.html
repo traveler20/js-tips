@@ -8,6 +8,17 @@
 	</head>
 	<body>
 		<style>
+			* {
+				box-sizing: border-box;
+			}
+			img {
+				max-width: 100%;
+			}
+			h3,
+			p {
+				margin: 0;
+			}
+
 			/* ──────────────────────────────
              * レイアウトパターン
             ────────────────────────────── */
@@ -21,9 +32,6 @@
 
 				grid-template-columns: repeat(auto-fit, 100%);
 				grid-gap: 16px 16px;
-
-				/* レイアウトごとの余白 */
-				margin: 80px 0;
 			}
 			/* PC */
 			@media screen and (min-width: 800px) {
@@ -47,6 +55,26 @@
 			@media screen and (max-width: 800px) {
 			}
 
+			.l-column-flex2,
+			.l-column-flex2--reverse {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			/* PC */
+			@media screen and (min-width: 800px) {
+				.l-column-flex2 {
+					flex-direction: row;
+				}
+				.l-column-flex2--reverse {
+					flex-direction: row-reverse;
+				}
+			}
+			/* SP */
+			@media screen and (max-width: 800px) {
+			}
+
 			/* ──────────────────────────────
              * コンポーネント
             ────────────────────────────── */
@@ -61,7 +89,7 @@
 				gap: 8px;
 			}
 			.c-card__title {
-				font-size: 24px;
+				font-size: 20px;
 				font-weight: bold;
 				text-align: center;
 			}
@@ -70,10 +98,57 @@
 				text-align: left;
 				margin: auto;
 			}
+
+			.c-box {
+				width: 100%;
+				max-width: 500px;
+				/* margin: -30px 0 0 0; */
+				padding: 32px 20px;
+				background-color: #fff;
+				box-shadow: 0 4px 8px -1px rgb(51 51 51 / 60%);
+
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+			.c-box__title {
+				font-size: 20px;
+				font-weight: bold;
+			}
+
+			/* ──────────────────────────────
+             * utility
+            ────────────────────────────── */
+			.my-20 {
+				margin-top: 80px;
+				margin-bottom: 80px;
+			}
+			.mx-0 {
+				margin-left: 0;
+				margin-right: 0;
+			}
+			.-mt-8 {
+				margin-top: -32px;
+			}
+			/* PC */
+			@media screen and (min-width: 800px) {
+				.md\:-ml-8 {
+					margin-left: -32px;
+				}
+				.md\:-mr-8 {
+					margin-right: -32px;
+				}
+				.md\:mt-0 {
+					margin-top: 0;
+				}
+			}
+			/* SP */
+			@media screen and (max-width: 800px) {
+			}
 		</style>
 
 		<!-- 1カラム -->
-		<div class="l-column-grid1">
+		<div class="l-column-grid1 my-20">
 			<dl class="c-card">
 				<dt class="c-card__title">カードタイトル</dt>
 				<dd class="c-card__description">
@@ -83,7 +158,7 @@
 		</div>
 
 		<!-- 2カラム -->
-		<div class="l-column-grid2">
+		<div class="l-column-grid2 my-20">
 			<dl class="c-card">
 				<dt class="c-card__title">カードタイトル</dt>
 				<dd class="c-card__description">
@@ -99,7 +174,7 @@
 		</div>
 
 		<!-- 3カラム -->
-		<div class="l-column-grid3">
+		<div class="l-column-grid3 my-20">
 			<dl class="c-card">
 				<dt class="c-card__title">カードタイトル</dt>
 				<dd class="c-card__description">
@@ -121,7 +196,7 @@
 		</div>
 
 		<!-- 4カラム -->
-		<div class="l-column-grid4">
+		<div class="l-column-grid4 my-20">
 			<dl class="c-card">
 				<dt class="c-card__title">カードタイトル</dt>
 				<dd class="c-card__description">
@@ -149,7 +224,7 @@
 		</div>
 
 		<!-- 5カラム -->
-		<div class="l-column-grid5">
+		<div class="l-column-grid5 my-20">
 			<dl class="c-card">
 				<dt class="c-card__title">タイトル</dt>
 				<dd class="c-card__description">
@@ -181,5 +256,31 @@
 				</dd>
 			</dl>
 		</div>
+
+		<!-- flex 2カラム -->
+		<figure class="l-column-flex2 my-20 mx-0">
+			<picture>
+				<img src="https://placehold.jp/400x300.png" alt="" />
+			</picture>
+			<figcaption class="c-box -mt-8 md:-ml-8 md:mt-0">
+				<h3 class="c-box__title">タイトルテキスト</h3>
+				<p>
+					複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+				</p>
+			</figcaption>
+		</figure>
+
+		<!-- flex 2カラム -->
+		<figure class="l-column-flex2--reverse my-20 mx-0">
+			<picture>
+				<img src="https://placehold.jp/400x300.png" alt="" />
+			</picture>
+			<figcaption class="c-box -mt-8 md:-mr-8 md:mt-0">
+				<h3 class="c-box__title">タイトルテキスト</h3>
+				<p>
+					複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+				</p>
+			</figcaption>
+		</figure>
 	</body>
 </html>
