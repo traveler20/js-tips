@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.toggle {
+				width: 48px;
+				height: 24px;
+				cursor: pointer;
+				background-color: #ddd;
+				background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAACXBIWXMAAAsSAAALEgHS3X78AAAEZElEQVRoge2aT2/aSBjGfyYJaWkDSgTZSk0CSg7bc1QiVeoeejZIKx9zaD4Jp3yEFVKuq/RojhwTKadKzRdITqzPXBBrsWoLeA8zkx0Gg7ABJ0H7SCMcx3+ex+87Y8/zDqwYrCd0reApkLCM30n7whAYv5P2RcJ6zPNM0im5bclt8zgTOuGh/DuQ25OOmwlxBCniIMirtiZbyjhmEnQRA9mGjArUj50JUQTpUdFFrBtNidLPMaEIKjF9o+nizHOmYlZBFqMppYRsyJYG0rVarWjb9odisXiSzWbfZTKZX8Mu1uv17rvd7p3ned+azebX8/NzD/gB/JS/urBBVFGziElJAWkgA+SAAvAWOHRd96zdbl8HMdFut69d1z0DjoB9YBfYBl4Bm/LeKpUXJuYF8BrYAd4ApUaj8bnT6dzGFWKi0+ncSmGH8mHlgay898a8opSYDXnBrLzBnuM4x57nXS5KiIlWq/WlWq2WgQNEtJSo2JEyI5OVFz6oVCpl3/fvliVGwff9e9u2T4DSvKL0jr+piSnV63Wn3+93ly1God/vd+v1uiMjVUCkfFpyiywojeiUeeDAtu2TJMXooiqVShnYQ/TfDBH6k55qLxEjzdtqtVr2ff8+aTEKvu/fOY5zjBiMckRIPUuGMw1syVQ7bLVaXx5LjILneZeI/qSn3lRBZnR2gH3Xdc8eW4xCo9H4jBjOtyXHqVHS+84W8AtwtMj3zLzodDq3iHfUruQ4FiXzy1h9o60DG67rfszlcu+n5WiSyOVy713X/Q0hREUnNEL6S/QVIk8P5/mcWRba7fY1IkoFyXVkxEuFCFsD1mu1WjGfz39awoOeC/l8/lOtVivy35f9SHQmpdyabdsfEmMZEZKbmqZM7EMKFpAqFosnydCLDskttO+ETZctwMpms+8S4BYLkps+K34Qpu9YQ3Swl8BWEAR/JcgxMizLKgF/A/8gJoYDIAhLuWeNZyvo9PQ0G7b//5R76lh5QQ82Ua/Xu0+Yy8wwuI1YW6mQfwRA0O1275ZNLC4kN91dfRAVlnIBMPQ871sC3GJBclOW8QjMCCn7ddBsNr8mQy86JDfTCx/Byk0f9FxU5vmPm5ubP5fzjONDclL+94ApNSVzCr4LHD7nKbjCUKr/CXy/urr6YzHPdn5ILt8R3PqMF8jGoEfpNSJPS8v0sWdFHBtLF6Q87RzwxnGc4yT87EmYx2jURW0gbNcdYK9SqZQfywqWlYhYVrAuSjmoKvUOHsOsv7i4+B1h1ueJadbrUTLLKSXbtk+S8Ll937/TakQFxKg2VzVvYo2oWq2Wl+l3e553KfvMnozMFnMWvExRZhXvoba66JKk9K9LiAFgB5FmS6uzbiI+N7YR0doHjhZYNFa11QJiNMswavvONKLNKko1tcBCrUtII0v7Cyjrq9K+enGqD9CA8cUYcwnSRUGyCy8irf+Jmo8jZiTjq0oWtTRmaBwTmWBULHvxUuxVWSu3vGzlFgCuHP4Fajx4VFL6zv8AAAAASUVORK5CYII=");
+				background-repeat: no-repeat;
+				background-position: top 2px left 2px;
+				background-size: 20px;
+				border: none;
+				border-radius: 12px;
+				box-shadow: 0 0 3px rgba(0, 0, 0, 10%) inset;
+				transition: background-position 0.4s cubic-bezier(0.65, 0, 0.35, 1),
+					background-color 0.4s cubic-bezier(0.65, 0, 0.35, 1)
+						/* easeInOutCubicのイージング */;
+				appearance: none;
+			}
+			.toggle:checked {
+				background-color: #4ac65f;
+				background-position: top 2px right 2px;
+			}
+		</style>
+
+		<input type="checkbox" class="toggle" />
+	</body>
+</html>

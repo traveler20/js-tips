@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.warning {
+				width: 100%;
+				height: 20px;
+				background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAoCAYAAACiu5n/AAAACXBIWXMAABYlAAAWJQFJUiTwAAABj0lEQVRogc2Z0W3DMAxEz5nAI6gbtBt4hIygDZoRvEHRCewRuoFGcDdQN0g3YD+ioq4rI6mQIymAH0Eskg9HMJcEKEeAswDiKCJYR4DoAHAdZwF6JnB2ALmOkQl7dAC4DZq6BwDPrOSNZ+6AT1byTgBhJW88Dx3wwUp+YCVuPG9MWMAf8CszuQDR00i/d8ATs4AAiyeF2eoOAB7h4CNIBMhM2AKcBBAvCrPVDbgoDA8Kc23khXH6rucBeCTDhnU9DyM9k/PHX6+M1Z2YpAL0svnaaw0cyMCnbU1L4MSELcDZE/BAhq3+qGEFvDBhC/BSq221pXVs5M6b2upmJmxhSnv1LRTWs5E7D2iqq2ojPSytkQwbrvWgPdIzOX+8+oSiuhOTVCo20nqkAxn4j420BE5M2AKcPQEPZNib/xvTADazkbXQ2NJ2NnLnAlPdTCP96T/9pye2wrY2cucSS11zG6m9tF7IsH1LX8yRpo4zgFPTLZK6053htj3fZCM1FWare0TrfiCom+7LVu05t/b3BZRwKvJlcBzrAAAAAElFTkSuQmCC");
+				background-repeat: repeat-x;
+				background-size: 30px 36px;
+				animation-name: warning;
+				animation-duration: 0.7s;
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+			}
+			.warning.reverse {
+				animation-direction: reverse;
+			}
+			@keyframes warning {
+				0% {
+					background-position: 0 0;
+				}
+
+				100% {
+					background-position: 30px 0;
+				}
+			}
+
+			/*  */
+			.warningWrapper {
+				width: 240px;
+				margin: 0 auto;
+				background-color: #000;
+			}
+			.warning__text {
+				font-family: "Zen Antique", serif;
+				font-weight: bold;
+				color: red;
+				text-transform: uppercase;
+				text-align: center;
+				line-height: 1.2;
+
+				display: flex;
+				flex-direction: column;
+				padding: 4px 0;
+			}
+			.warning__ja {
+				font-size: 72px;
+			}
+			.warning__en {
+				font-size: 26px;
+			}
+		</style>
+
+		<div class="warningWrapper">
+			<div class="warning"></div>
+			<div class="warning__text">
+				<span class="warning__ja">警告</span>
+				<span class="warning__en">warning</span>
+			</div>
+			<div class="warning reverse"></div>
+		</div>
+	</body>
+</html>
