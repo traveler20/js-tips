@@ -90,22 +90,26 @@ js-gsap-sidescroll.html
 
 - [背景をグラデーションに](css-bggradation.html)
 - [背景がグワンっと上がる](css-bgup.html)
+- [警告風メッセージ](css-warning.html)
 
 ```
 css-bggradation.html
 css-bgup.html
+css-warning.html
 ```
 
 # input タグ
 
 - [チェックボックスボタン](css-checkbox.html)
 - [ラジオボタンのアニメーション](css-radio.html)
+- [トグルボタン](css-toggle.html)
 - [ファイルアップロードボタン](css-upload.html)
 - [柔軟なテキストエリア](js-textareaFlexible.html)
 
 ```
 css-checkbox.html
 css-radio.html
+css-toggle.html
 css-upload.html
 js-textareaFlexible.html
 ```
