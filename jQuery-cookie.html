@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!--  -->
+		<style>
+			body {
+				height: 2000px;
+				background: #fff;
+				margin: 0;
+			}
+			header {
+				width: 100%;
+				font-size: 2em;
+				text-align: center;
+				background: #ddd;
+				padding: 0.5em;
+				box-sizing: border-box;
+			}
+		</style>
+		<header>Header</header>
+		<!--  -->
+
+		<style>
+			.c-cookie {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				font-size: 12px;
+				color: #fff;
+				background: rgba(0, 0, 0, 0.7);
+				padding: 14px;
+				box-sizing: border-box;
+				z-index: 100;
+				visibility: hidden;
+			}
+			.c-cookie.is-show {
+				visibility: visible;
+			}
+			.c-cookie a {
+				color: #fff;
+			}
+			.c-cookie__agree {
+				color: #fff;
+				background: #333;
+				display: block;
+				padding: 4px 18px;
+			}
+			.c-cookie__agree:hover {
+				cursor: pointer;
+			}
+			/* ゆっくり消える */
+			.js-cookie-hide {
+				animation: hide 1s linear 0s;
+				animation-fill-mode: forwards;
+			}
+			@keyframes hide {
+				from {
+					opacity: 1;
+				}
+				to {
+					opacity: 0;
+					visibility: hidden;
+				}
+			}
+			/* メディアクエリ */
+			@media screen and (max-width: 800px) {
+				.c-cookie {
+					flex-direction: column;
+					gap: 8px;
+				}
+			}
+		</style>
+
+		<div class="c-cookie js-cookie">
+			<div>
+				当サイトではCookieを使用します。Cookieの使用に関する詳細は「<a
+					href="#privacy-policy"
+					>プライバシーポリシー</a
+				>」をご覧ください。
+			</div>
+			<div class="c-cookie__agree js-cookie__agree">OK</div>
+		</div>
+
+		<script>
+			(function () {
+				const expire = 365; // 有効期限（日）
+				let cc = document.querySelector(".js-cookie");
+				let ca = document.querySelector(".js-cookie__agree");
+				const flag = localStorage.getItem("popupFlag");
+				if (flag != null) {
+					const data = JSON.parse(flag);
+					if (data["value"] == "true") {
+						popup();
+					} else {
+						const current = new Date();
+						if (current.getTime() > data["expire"]) {
+							setWithExpiry("popupFlag", "true", expire);
+							popup();
+						}
+					}
+				} else {
+					setWithExpiry("popupFlag", "true", expire);
+					popup();
+				}
+				ca.addEventListener("click", () => {
+					cc.classList.add("js-cookie-hide");
+					setWithExpiry("popupFlag", "false", expire);
+				});
+
+				function setWithExpiry(key, value, expire) {
+					const current = new Date();
+					expire = current.getTime() + expire * 24 * 3600 * 1000;
+					const item = {
+						value: value,
+						expire: expire,
+					};
+					localStorage.setItem(key, JSON.stringify(item));
+				}
+
+				function popup() {
+					cc.classList.add("is-show");
+				}
+			})();
+		</script>
+	</body>
+</html>
