@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			section {
+				color: #333;
+				font-family: YuGothic, san-serif;
+			}
+			div {
+				width: 90vw;
+				margin: 0 auto;
+				background-color: #f3f3f9;
+				padding: 32px 0;
+			}
+			h3 {
+				text-align: center;
+				font-weight: 600;
+			}
+			p {
+				font-size: 18px;
+			}
+			.font-feature-palt {
+				font-feature-settings: "palt";
+			}
+			.font-feature-halt {
+				font-feature-settings: "halt";
+			}
+			.font-feature-pwid {
+				font-feature-settings: "pwid";
+			}
+			.font-feature-pkna {
+				font-feature-settings: "pkna";
+			}
+		</style>
+
+		<section>
+			<div class="">
+				<h3>設定無し</h3>
+				<p>
+					OTFの文字間情報を利用して文字詰めができるfont-feature-settings。その中でもメトリクスは約物（カッコや句読点など）半角になる。全角英数字（１２３ＡＢＣ）と半角[123ABC]の違いはこんな感じ。
+				</p>
+				<p>
+					「行頭にカッコが来た場合」、paltやhaltだと半角詰まるのでツラ合わせになる。
+				</p>
+				<p>　行頭にある全角スペースを詰めるのはpwidのみ。</p>
+			</div>
+			<div class="font-feature-palt">
+				<h3>palt - プロポーショナルメトリクス</h3>
+				<p>
+					OTFの文字間情報を利用して文字詰めができるfont-feature-settings。その中でもメトリクスは約物（カッコや句読点など）半角になる。全角英数字（１２３ＡＢＣ）と半角[123ABC]の違いはこんな感じ。
+				</p>
+				<p>
+					「行頭にカッコが来た場合」、paltやhaltだと半角詰まるのでツラ合わせになる。
+				</p>
+				<p>　行頭にある全角スペースを詰めるのはpwidのみ。</p>
+			</div>
+			<div class="font-feature-halt">
+				<h3>halt - 字幅半角メトリクス</h3>
+				<p>
+					OTFの文字間情報を利用して文字詰めができるfont-feature-settings。その中でもメトリクスは約物（カッコや句読点など）半角になる。全角英数字（１２３ＡＢＣ）と半角[123ABC]の違いはこんな感じ。
+				</p>
+				<p>
+					「行頭にカッコが来た場合」、paltやhaltだと半角詰まるのでツラ合わせになる。
+				</p>
+				<p>　行頭にある全角スペースを詰めるのはpwidのみ。</p>
+			</div>
+			<div class="font-feature-pwid">
+				<h3>pwid - プロポーショナル字形</h3>
+				<p>
+					OTFの文字間情報を利用して文字詰めができるfont-feature-settings。その中でもメトリクスは約物（カッコや句読点など）半角になる。全角英数字（１２３ＡＢＣ）と半角[123ABC]の違いはこんな感じ。
+				</p>
+				<p>
+					「行頭にカッコが来た場合」、paltやhaltだと半角詰まるのでツラ合わせになる。
+				</p>
+				<p>　行頭にある全角スペースを詰めるのはpwidのみ。</p>
+			</div>
+			<div class="font-feature-pkna">
+				<h3>pkna - プロポーショナルかな</h3>
+				<p>
+					OTFの文字間情報を利用して文字詰めができるfont-feature-settings。その中でもメトリクスは約物（カッコや句読点など）半角になる。全角英数字（１２３ＡＢＣ）と半角[123ABC]の違いはこんな感じ。
+				</p>
+				<p>
+					「行頭にカッコが来た場合」、paltやhaltだと半角詰まるのでツラ合わせになる。
+				</p>
+				<p>　行頭にある全角スペースを詰めるのはpwidのみ。</p>
+			</div>
+		</section>
+	</body>
+</html>
