@@ -12,9 +12,27 @@
 		<img src="image.png" alt="" loading="lazy" />
 
 		<!-- iframe lazy -->
-		<iframe src="external.html" loading="lazy"></iframe>
+		<iframe src="iframe.html" loading="lazy"></iframe>
 
 		<!-- レスポンシブ対応の画像設定 -->
+		<picture>
+			<!-- sp -->
+			<source
+				media="(max-width:960px)"
+				srcset="https://placehold.jp/300x250.png"
+			/>
+			<!-- pc -->
+			<source
+				media="(min-width:961px)"
+				srcset="https://placehold.jp/600x160.png"
+			/>
+			<!-- sourceタグ非対応のブラウザ用 -->
+			<img
+				src="https://placehold.jp/600x160.png"
+				alt="レスポンシブに変わる画像"
+			/>
+		</picture>
+
 		<img
 			src="normal.png"
 			srcset="large.png 1024w, medium.png 640w, small.png 320w"
