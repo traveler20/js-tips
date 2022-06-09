@@ -8,6 +8,48 @@
 	</head>
 	<body>
 		<style>
+			.hamburg {
+				margin: 80px 0px;
+			}
+		</style>
+
+		<div class="hamburg">
+			<input id="hamburg-input" class="hamburg__input" type="checkbox" />
+			<label id="label1" class="hamburg__label" for="hamburg-input">🍔</label>
+			<div class="hamburg__content">
+				<ul>
+					<li><a href="#url">link1</a></li>
+					<li><a href="#url">link2</a></li>
+					<li><a href="#url">link3</a></li>
+					<li><a href="#url">link4</a></li>
+				</ul>
+			</div>
+		</div>
+		<style>
+			.hamburg__input {
+				display: none;
+			}
+			.hamburg__label {
+				cursor: pointer;
+				display: inline-block;
+				padding: 16px;
+				background-color: #efefef;
+			}
+			.hamburg__content {
+				width: 200px;
+				height: 100%;
+				padding: 16px;
+				background-color: #ccc;
+				/* クリック前はコンテンツを非表示 */
+				transform: translateX(-210px);
+			}
+			/* クリックしたらコンテンツをスライド */
+			.hamburg__input:checked ~ .hamburg__content {
+				transform: translatex(0px);
+			}
+		</style>
+
+		<style>
 			*,
 			*:before,
 			*:after {
