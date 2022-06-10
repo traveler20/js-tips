@@ -8,6 +8,76 @@
 	</head>
 	<body>
 		<!-- ────────────────────────────── 
+         HTML だけでできるアコーディオン
+        ────────────────────────────── -->
+		<section class="l-section">
+			<details>
+				<summary>アコーディオンタイトル</summary>
+				<div>アコーディオンのコンテンツ</div>
+			</details>
+			<style>
+				.c-faq__summary {
+					position: relative;
+					display: block;
+					width: 80%;
+					padding: 10px 20px;
+					font-weight: bold;
+					background-color: #a0daa8;
+					cursor: pointer;
+					transition: 0.2s;
+				}
+				.c-faq__summary:hover {
+					background-color: #6ebe79;
+				}
+				/* デフォルトの矢印を消す */
+				.c-faq__summary::-webkit-details-marker {
+					display: none;
+				}
+				/* アコーディオンの＋アイコン */
+				.c-faq__summary:after {
+					position: absolute;
+					content: "+";
+					font-weight: bold;
+					font-size: 20px;
+					color: #1b7c26;
+					margin: auto;
+					top: 14%;
+					right: 4%;
+					transition: 0.4s;
+				}
+				.c-faq__content {
+					padding: 10px 20px;
+				}
+
+				/* アコーディオンオープン時のスタイル */
+				.c-faq[open] .c-faq__summary {
+					background-color: #6ebe79;
+				}
+				.c-faq[open] .c-faq__summary:after {
+					transform: rotate(135deg); /* アイコンを回転 */
+				}
+
+				/* アニメーション */
+				.c-faq[open] .c-faq__content {
+					animation: fadeIn 0.5s ease;
+				}
+				@keyframes fadeIn {
+					0% {
+						opacity: 0;
+						transform: translateY(-10px);
+					}
+					100% {
+						opacity: 1;
+						transform: none;
+					}
+				}
+			</style>
+			<details class="c-faq">
+				<summary class="c-faq__summary">アコーディオンタイトル</summary>
+				<div class="c-faq__content">アコーディオンのコンテンツ</div>
+			</details>
+		</section>
+		<!-- ────────────────────────────── 
          CSSでつくるネオン文字
         ────────────────────────────── -->
 		<section class="l-section">
