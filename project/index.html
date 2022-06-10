@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- ────────────────────────────── 
+         HTMLとCSSでつくるハンバーガーメニュー
+        ────────────────────────────── -->
+		<section class="l-section">
+			<style>
+				.c-hamburg__input {
+					display: none;
+				}
+				.c-hamburg__label {
+					cursor: pointer;
+					display: inline-block;
+					padding: 16px;
+					background-color: #efefef;
+				}
+				.c-hamburg__content {
+					width: 200px;
+					height: 100%;
+					padding: 16px;
+					background-color: #ccc;
+					/* クリック前はコンテンツを非表示 */
+					transform: translateX(-210px);
+					transition: all 0.4s;
+				}
+				/* クリックしたらコンテンツをスライド */
+				.c-hamburg__input:checked ~ .c-hamburg__content {
+					transform: translatex(0px);
+				}
+			</style>
+			<div class="c-hamburg">
+				<input id="hamburg-input" class="c-hamburg__input" type="checkbox" />
+				<label id="label1" class="c-hamburg__label" for="hamburg-input"
+					>🍔</label
+				>
+				<div class="c-hamburg__content">
+					<ul>
+						<li><a href="#url">link1</a></li>
+						<li><a href="#url">link2</a></li>
+						<li><a href="#url">link3</a></li>
+						<li><a href="#url">link4</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<!-- ────────────────────────────── 
+         サイト表示速度の向上
+        ────────────────────────────── -->
+		<section class="l-section">
+			<!-- 画面内に要素が入り込みそうになったときに読み込み -->
+			<!-- image lazy -->
+			<img src="" alt="" loading="lazy" />
+			<!-- iframe lazy -->
+			<iframe src="" loading="lazy"></iframe>
+
+			<!-- レスポンシブ対応の画像設定 -->
+			<picture>
+				<!-- sp -->
+				<source
+					media="(max-width:960px)"
+					srcset="https://placehold.jp/300x250.png"
+				/>
+				<!-- pc -->
+				<source
+					media="(min-width:961px)"
+					srcset="https://placehold.jp/600x160.png"
+				/>
+				<!-- sourceタグ非対応のブラウザ用 -->
+				<img
+					src="https://placehold.jp/600x160.png"
+					alt="レスポンシブに変わる画像"
+				/>
+			</picture>
+
+			<!-- 表示（レンダリング）の遅延実行 -->
+			<style>
+				.c-lazy-section {
+					content-visibility: auto;
+					contain-intrinsic-size: 500px;
+				}
+			</style>
+			<main>
+				<section class="c-lazy-section">セクションの中身いろいろ</section>
+				<section class="c-lazy-section">
+					別の内容のセクションの中身いろいろ
+				</section>
+				<section class="c-lazy-section">
+					そのまた別の内容のセクションの中身いろいろ
+				</section>
+			</main>
+		</section>
+		<!-- ────────────────────────────── 
+         CSSでつくるツールチップ
+        ────────────────────────────── -->
+		<section class="l-section">
+			<style>
+				.c-tooltip {
+					position: relative;
+					border-bottom: 1px dotted #062b45;
+				}
+				/* ツールチップボックス */
+				.c-tooltip:before {
+					content: attr(data-tooltip);
+					text-align: center;
+					font-size: 12px;
+					line-height: 1.2;
+					color: #fff;
+					position: absolute;
+					bottom: 125%;
+					left: 50%;
+					width: 100px;
+					margin-left: -60px;
+					padding: 10px;
+					background-color: #062b45;
+					border-radius: 6px;
+					z-index: 1;
+					opacity: 0;
+					visibility: hidden;
+					transition: opacity 0.6s;
+				}
+				/* ツールチップの矢印 */
+				.c-tooltip:after {
+					content: "";
+					position: absolute;
+					bottom: 75%;
+					left: 50%;
+					margin-left: -5px;
+					border-width: 5px;
+					border-style: solid;
+					border-color: #062b45 transparent transparent transparent;
+					opacity: 0;
+					visibility: hidden;
+					transition: opacity 0.6s;
+				}
+				/* ホバーしたら表示 */
+				.c-tooltip:hover:before,
+				.c-tooltip:hover:after {
+					opacity: 1;
+					visibility: visible;
+				}
+			</style>
+			<p>
+				マウスで<span class="c-tooltip" data-tooltip="ツールチップの文"
+					>こちら</span
+				>をホバーするとツールチップが表示されます。
+			</p>
+			<p>
+				<span class="c-tooltip" data-tooltip="ちょっと長めのツールチップの内容"
+					>こちら</span
+				>をホバーしてもツールチップが表示されます。
+			</p>
+		</section>
+
+		<style>
+			.l-section {
+				padding: 40px;
+				margin: 40px;
+				background-color: #f9f9f9;
+				border: solid 1px #999;
+			}
+		</style>
+	</body>
+</html>

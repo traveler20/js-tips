@@ -51,6 +51,7 @@ html-list.html
 
 - [webp に対応しているブラウザだけ webp に表示させたい](html-image.html)
 - [スマホと PC で画像の表示を切り替えたい](html-image.html)
+- [CSS で画像をいじる](css-image.html)
 - [jpg 画像を透過させたい](css-bgmultiply.html)
 - [png 画像を背景に同化させて影をつけたい](css-dropshadow.html)
 - [画像にエフェクトをかけたい](css-backdropfilter.html)
@@ -59,6 +60,7 @@ html-list.html
 ```
 html-image.html
 html-image.html
+css-image.html
 css-bgmultiply.html
 css-dropshadow.html
 css-backdropfilter.html
