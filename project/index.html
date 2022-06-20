@@ -8,6 +8,99 @@
 	</head>
 	<body>
 		<!-- ────────────────────────────── 
+         CSSでできるタブメニュー
+        ────────────────────────────── -->
+		<section class="l-section">
+			<style>
+				/* タブ切り替え全体のスタイル*/
+				.c-tabs {
+					background-color: #fff;
+					box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+					/* タブ全体の横幅設定 */
+					width: min(700px, 90%);
+					margin: 0 auto;
+					padding-bottom: 40px;
+				}
+				/* ラジオボタンを全て消す */
+				input[name="c-tabs__item"] {
+					display: none;
+				}
+				/* タブのスタイル */
+				.c-tabs__item {
+					/*タブタイトルの幅を三分割に（ここで数の調整が可能）*/
+					width: calc(100% / 3);
+					/*タブタイトルの高さ*/
+					height: 50px;
+					line-height: 50px;
+					font-size: 16px;
+					text-align: center;
+					color: #565656;
+					font-weight: bold;
+					border-bottom: 3px solid #1b7c26;
+					background-color: #d9d9d9;
+					display: block;
+					float: left;
+					transition: all 0.2s ease;
+				}
+
+				/* タブアイテムにカーソルを当てたとき */
+				.c-tabs__item:hover {
+					opacity: 0.7;
+					cursor: pointer;
+				}
+
+				/* タブ切り替えの中身のスタイル */
+				.c-tabs__content {
+					display: none;
+					padding: 40px 40px 0;
+					clear: both;
+					overflow: hidden;
+				}
+
+				/* 選択されているタブのコンテンツのみを表示 */
+				#tab1:checked ~ #tab1_content,
+				#tab2:checked ~ #tab2_content,
+				#tab3:checked ~ #tab3_content {
+					display: block;
+				}
+
+				/* 選択されているタブのスタイルを変える */
+				.c-tabs input:checked + .c-tabs__item {
+					background-color: #1b7c26;
+					color: #fff;
+				}
+			</style>
+
+			<section class="c-tabs">
+				<!--menu1-->
+				<input id="tab1" type="radio" name="c-tabs__item" checked />
+				<label class="c-tabs__item" for="tab1">メニュー１</label>
+
+				<!--menu2-->
+				<input id="tab2" type="radio" name="c-tabs__item" />
+				<label class="c-tabs__item" for="tab2">メニュー２</label>
+
+				<!--menu3-->
+				<input id="tab3" type="radio" name="c-tabs__item" />
+				<label class="c-tabs__item" for="tab3">メニュー３</label>
+
+				<!--content1-->
+				<div class="c-tabs__content" id="tab1_content">
+					<p>メニュー１の内容がここに入ります</p>
+				</div>
+
+				<!--content2-->
+				<div class="c-tabs__content" id="tab2_content">
+					<p>メニュー２の内容がここに入ります</p>
+				</div>
+
+				<!--content3-->
+				<div class="c-tabs__content" id="tab3_content">
+					<p>メニュー３の内容がここに入ります</p>
+				</div>
+			</section>
+		</section>
+		<!-- ────────────────────────────── 
          CSS一行でできるスムーズスクロール
         ────────────────────────────── -->
 		<section class="l-section">
