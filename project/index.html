@@ -8,6 +8,192 @@
 	</head>
 	<body>
 		<!-- ────────────────────────────── 
+         Twitter共有ボタン スクラッチ版
+        ────────────────────────────── -->
+		<section class="l-section">
+			<a
+				href="http://twitter.com/share?url=yurukei-career.com&text=Twitterのシェアをするときの文章です&via=yurukei20&hashtags=ハッシュタグのテキスト"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+			>
+				Twitterで共有する
+			</a>
+		</section>
+		<!-- ────────────────────────────── 
+         Twitter共有ボタン JS版
+        ────────────────────────────── -->
+		<section class="l-section">
+			<a
+				href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+				class="twitter-share-button"
+				data-text="Twitterのシェアをするときの文章です"
+				data-hashtags="ハッシュタグのテキスト"
+				data-via="yurukei20"
+				data-related="yurukei20"
+				data-size="large"
+				data-show-count="false"
+			></a>
+			<script
+				async
+				src="https://platform.twitter.com/widgets.js"
+				charset="utf-8"
+			></script>
+		</section>
+		<!-- ────────────────────────────── 
+         メーター表示
+        ────────────────────────────── -->
+		<section class="l-section">
+			<style>
+				.c-meter-label {
+					display: block;
+					margin-top: 15px;
+				}
+				.c-meter {
+					width: 300px;
+					height: 20px;
+				}
+			</style>
+
+			<!-- 
+				meter
+				min:最低値
+				max:最高値
+				low:赤になる基準値
+				high:黄色になる基準値
+				optimum:緑色になる基準値
+				value:設定した値
+			-->
+			<label class="c-meter-label" for="value1">Low</label>
+			<meter
+				class="c-meter"
+				id="value1"
+				min="0"
+				max="100"
+				low="30"
+				high="75"
+				optimum="80"
+				value="25"
+			></meter>
+			<label class="c-meter-label" for="value2">Medium</label>
+			<meter
+				class="c-meter"
+				id="value2"
+				min="0"
+				max="100"
+				low="30"
+				high="75"
+				optimum="80"
+				value="50"
+			></meter>
+			<label class="c-meter-label" for="value3">High</label>
+			<meter
+				class="c-meter"
+				id="value3"
+				min="0"
+				max="100"
+				low="30"
+				high="75"
+				optimum="80"
+				value="80"
+			></meter>
+		</section>
+		<!-- ────────────────────────────── 
+         画像のアスペクト比
+        ────────────────────────────── -->
+		<section class="l-section">
+			<style>
+				.c-picture {
+					display: block;
+					width: 320px;
+				}
+				.c-picture img {
+					width: 100%;
+				}
+				/* アスペクト比 2:1 */
+				.aspect-2-1 {
+					aspect-ratio: 2 / 1;
+				}
+				/* 縦横比崩れ調整 */
+				.object-cover {
+					object-fit: cover;
+				}
+			</style>
+
+			<picture class="c-picture">
+				<img
+					class="aspect-2-1 object-cover"
+					src="https://placehold.jp/400x1000.png"
+					alt=""
+				/>
+			</picture>
+		</section>
+		<!-- ────────────────────────────── 
+         スクロールバーの編集
+        ────────────────────────────── -->
+		<section class="l-section">
+			<style>
+				/* 背景 */
+				.c-scroll {
+					overflow: auto;
+					display: inline-block;
+					background-color: #999;
+					height: 200px;
+					width: 200px;
+				}
+				/* スクロールバーの背景色 */
+				.c-scroll::-webkit-scrollbar {
+					width: 12px;
+					background-color: #ccc;
+				}
+				.c-scroll::-webkit-scrollbar-track {
+					background-color: transparent;
+				}
+				/* スクロールバー自体とborder色 */
+				.c-scroll::-webkit-scrollbar-thumb {
+					border-radius: 8px;
+					background-color: #333333;
+					border: 2px solid #ffffff;
+				}
+				.c-box__content {
+					padding: 20px;
+					height: 500px;
+				}
+			</style>
+
+			<article class="c-scroll">
+				<div class="c-box__content">custom scrollbar</div>
+			</article>
+		</section>
+		<!-- ────────────────────────────── 
+         【最新情報】mediaクエリ
+        ────────────────────────────── -->
+		<section class="l-section">
+			<!-- Chromeは104から、Firefoxは63から、利用可能！ -->
+			<style>
+				.sp-only {
+					display: block;
+				}
+				.pc-only {
+					display: none;
+				}
+				@media (800px <= width) {
+					.sp-only {
+						display: none;
+					}
+					.pc-only {
+						display: block;
+					}
+				}
+			</style>
+			<div>
+				<p>
+					ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト
+				</p>
+				<p class="sp-only">スマホのみ表示させる文章</p>
+				<p class="pc-only">パソコンのみ表示させる文章</p>
+			</div>
+		</section>
+		<!-- ────────────────────────────── 
          CSSでできるタブメニュー
         ────────────────────────────── -->
 		<section class="l-section">
