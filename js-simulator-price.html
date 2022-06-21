@@ -23,10 +23,10 @@
 			#mitsumori-js .mitsumori-js-tbl {
 				margin-bottom: 15px;
 			}
-			#mitsumori-js .mitsumori-js-total-tbl {
+			/* #mitsumori-js .mitsumori-js-total-tbl {
 				width: 480px;
 				margin-left: auto;
-			}
+			} */
 			#mitsumori-js .mitsumori-js-total-tbl th {
 				width: 45%;
 			}
@@ -64,12 +64,13 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: flex-end;
-				gap: 20px;
+				gap: 24px;
 			}
 			.c-quote__label {
 				width: 100%;
-				max-width: 400px;
+				max-width: 340px;
 				display: flex;
+				justify-content: space-between;
 				gap: 14px;
 			}
 			.c-quote__title {
@@ -77,23 +78,25 @@
 			.c-quote__unit {
 			}
 			.c-quote__input {
-				width: 80px;
+				width: 108px;
 				font-size: 18px;
 				font-weight: bold;
 				height: 100%;
-				padding: 4px 4px 4px 16px;
+				padding: 4px 4px 4px 8px;
 				border: none;
 				border-bottom: solid 1px #333;
-			}
-			.c-quote__input {
+
 				outline: none;
 			}
 			.c-quote__input:focus {
 				border-bottom: solid 1px #f00;
 			}
 			.c-quote__price {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
 				width: 100px;
-				margin: 0 0 0 auto;
+				/* margin: 0 0 0 auto; */
 				padding: 4px;
 				border-bottom: solid 1px #333;
 			}
@@ -104,6 +107,7 @@
 				display: block;
 			}
 			.c-quote__optionPrice {
+				margin: 0 0 0 auto;
 			}
 
 			.c-quote-total {
@@ -111,11 +115,23 @@
 				justify-content: flex-end;
 				align-items: flex-end;
 			}
+			@media (max-width: 640px) {
+				.c-quote-calculation {
+					display: flex;
+					flex-direction: column;
+					gap: 40px;
+				}
+				.c-quote__column {
+					/* flex-direction: column; */
+					flex-wrap: wrap;
+					gap: 8px;
+				}
+			}
 		</style>
 
 		<!--  -->
 		<article class="c-quote" id="mitsumori-js">
-			<div class="mitsumori-js-tbl">
+			<div class="c-quote-calculation mitsumori-js-tbl">
 				<div
 					id="mitsumori-js-item-1"
 					class="mitsumori-js-item c-quote__column"
@@ -130,6 +146,7 @@
 						type="number"
 						id="main-design"
 						class="text-quantity c-quote__input"
+						placeholder="数値を入力"
 						data-itemnum="1"
 						value="1"
 						min="0"
@@ -152,6 +169,7 @@
 						type="number"
 						id="main-cording"
 						class="text-quantity c-quote__input"
+						placeholder="数値を入力"
 						data-itemnum="2"
 						value="1"
 						min="0"
@@ -174,6 +192,7 @@
 						type="number"
 						id="sub-design"
 						class="text-quantity c-quote__input"
+						placeholder="数値を入力"
 						data-itemnum="3"
 						value="1"
 						min="0"
@@ -196,6 +215,7 @@
 						type="number"
 						id="sub-cording"
 						class="text-quantity c-quote__input"
+						placeholder="数値を入力"
 						data-itemnum="4"
 						value="1"
 						min="0"
