@@ -259,6 +259,7 @@ css-layout.html
 - [画像を本っぽく装飾](css-bookcover.html)
 - [セレクタとホバー同時にスタイリングする](css-:is.html)
 - [simple.css という CSS フレームワーク](cdn-simplecss.html)
+- [Scrollbetween を使ったスクロールアニメーション](js-scrollbetween.html)
 
 ```
 css-timeline.html
@@ -266,6 +267,7 @@ html-meter.html
 css-bookcover.html
 css-:is.html
 cdn-simplecss.html
+js-scrollbetween.html
 ```
 
 ## canvas アニメーション

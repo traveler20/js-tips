@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 
+            https://coliss.com/articles/build-websites/operation/javascript/tween-css-values-scrollbtween.html
+         -->
+
+		<div
+			scroll-btween="foo"
+			data-background-color="rgb(|255 to 10|,|50 to 90|,|122 to 40|)"
+		>
+			<h2>Scroll to see background change</h2>
+		</div>
+		<div
+			scroll-btween="bar"
+			data-background="linear-gradient(|0 to 360|deg, rgba(|10 to 129|,94,|255 to 80|,1) 0%, rgba(252,|10 to 129|,|200 to 9|,1) 100%"
+		>
+			<h2>Scroll to see background change</h2>
+		</div>
+		<style>
+			/* DEMO PURPOSE ONLY */
+			body {
+				padding-bottom: 100vh;
+			}
+			div {
+				height: 200vh;
+			}
+			h2 {
+				position: sticky;
+				top: 100px;
+				left: 0px;
+				width: 100%;
+				text-align: center;
+				color: white;
+				font-family: monospace;
+				padding-top: 100px;
+			}
+			#scroll-btween-debugbar {
+				display: none;
+			}
+		</style>
+
+		<!--  -->
+		<script src="https://olivier3lanc.github.io/Scroll-Btween/js/ola.min.js"></script>
+		<script src="https://olivier3lanc.github.io/Scroll-Btween/js/scroll-btween.js"></script>
+	</body>
+</html>
