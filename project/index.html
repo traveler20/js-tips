@@ -8,7 +8,123 @@
 	</head>
 	<body>
 		<!-- ────────────────────────────── 
+         CSSタイムライン
+        ────────────────────────────── -->
+		<section class="l-section">
+			<style>
+				.c-lists-timeline {
+					margin-left: 14px;
+					position: relative;
+				}
+				.c-lists-timeline__list {
+					display: block;
+					position: relative;
+					padding-left: 24px;
+					padding-bottom: 32px;
+				}
+				.c-lists-timeline__list:before {
+					content: "";
+					position: absolute;
+					left: -4px;
+					top: 10px;
+					bottom: 0;
+					width: 2px;
+					background: #999;
+				}
+				.c-lists-timeline__list:last-of-type:before {
+					display: none;
+				}
+				.c-lists-timeline__dot {
+					position: absolute;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					width: 16px;
+					height: 16px;
+					border-radius: 50%;
+					top: 0px;
+					left: -15px;
+					background-color: #999;
+					border: 4px solid #f9f9f9;
+				}
+				.c-lists-timeline__content h3 {
+					font-weight: bold;
+					margin: 8px 0 8px;
+				}
+			</style>
+			<ul class="c-lists-timeline">
+				<li class="c-lists-timeline__list">
+					<div class="c-lists-timeline__dot"></div>
+					<time class="c-lists-timeline__time">2021.11&nbsp;-</time>
+					<div class="c-lists-timeline__content">
+						<h3>インハウスデザイナーとして就業</h3>
+						<p>
+							正社員のWEBデザイナーとして就業。自社開発サービスのランディングページのデザイン・コーディング制作を担当しています。
+						</p>
+					</div>
+				</li>
+				<li class="c-lists-timeline__list">
+					<div class="c-lists-timeline__dot"></div>
+					<time class="c-lists-timeline__time"
+						>2020.11&nbsp;-&nbsp;2021.10</time
+					>
+					<div class="c-lists-timeline__content">
+						<h3>派遣社員としてコーディング業務に従事</h3>
+						<p>
+							ECサイトやランディングページのコーディング業務を担当しました。
+						</p>
+					</div>
+				</li>
+				<li class="c-lists-timeline__list">
+					<div class="c-lists-timeline__dot"></div>
+					<time class="c-lists-timeline__time"
+						>2016.04&nbsp;-&nbsp;2020.03</time
+					>
+					<div class="c-lists-timeline__content">
+						<h3>〇〇大学&nbsp;経営学部</h3>
+						<p>
+							大学にて経営戦略やブルー・オーシャン戦略に関する研究をしました。
+						</p>
+					</div>
+				</li>
+			</ul>
+		</section>
+		<!-- ────────────────────────────── 
          CSSでカーニング
+        ────────────────────────────── -->
+		<section class="l-section">
+			<h2 class="l-section__title">
+				<span>CSSでできる</span><br />
+				<span style="letter-spacing: 12px">カーニング</span>
+			</h2>
+			<style>
+				.tracking-tighter {
+					letter-spacing: -0.05em;
+				}
+				.tracking-tight {
+					letter-spacing: -0.025em;
+				}
+				.tracking-widest {
+					letter-spacing: 0.1em;
+				}
+			</style>
+			<div>
+				<p class="tracking-tighter">
+					カーニングの設定を-0.05emにした文章。そこそこ詰まっている。
+				</p>
+				<p class="tracking-tight">
+					カーニングの設定を-0.025emにした文章。ちょっと詰まっている。
+				</p>
+				<p>
+					カーニングの設定を特にしていない文章。普通の文字間隔になっていますねー。
+				</p>
+				<p class="tracking-widest">
+					カーニングを0.1emに設定した文章。ちょっと広がった感じ。
+				</p>
+			</div>
+		</section>
+		<!-- ────────────────────────────── 
+         CSSでカギカッコのカーニング
         ────────────────────────────── -->
 		<section class="l-section">
 			<style>
@@ -689,6 +805,11 @@
 				margin: 40px;
 				background-color: #f9f9f9;
 				border: solid 1px #999;
+			}
+			.l-section__title {
+				font-size: 40px;
+				font-weight: bold;
+				margin: 40px;
 			}
 		</style>
 	</body>

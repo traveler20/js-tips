@@ -18,6 +18,7 @@ html-head.html
 - [各 WEB フォントの表示を確認する](css-typography.html)
 - [テキストの下線をアレンジしたい](css-underline.html)
 - [フォントを流動的に変化させたい](css-fluidTypography.html)
+- [フォントのカーニング](css-font-feature-settings.html)
 
 ```
 css-truncatetext.html
@@ -26,6 +27,7 @@ css-title.html
 css-typography.html
 css-underline.html
 css-fluidTypography.html
+css-font-feature-settings.html
 ```
 
 ```
