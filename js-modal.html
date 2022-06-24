@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>DEMO_01: 表示切り替えのサンプル</title>
+		<script
+			type="module"
+			crossorigin
+			src="https://ics-creative.github.io/220620_fixed_scrolling/assets/demo01.js"
+		></script>
+		<link
+			rel="modulepreload"
+			href="https://ics-creative.github.io/220620_fixed_scrolling/assets/base.js"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://ics-creative.github.io/220620_fixed_scrolling/assets/base.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://ics-creative.github.io/220620_fixed_scrolling/assets/modal.css"
+		/>
+	</head>
+	<body class="red">
+		<div id="js-menu-header" class="header">
+			<div class="header_wrapper">
+				<a class="header_heading" href="#">LOGO</a>
+			</div>
+		</div>
+
+		<div id="js-menu" class="menu">
+			<button
+				id="js-menu-button"
+				class="menu_button menu_button__red"
+				aria-label="メニューを開く"
+			>
+				<span class="menu_button_line"></span>
+				<span class="menu_button_line"></span>
+				<span class="menu_button_line"></span>
+			</button>
+			<!-- 非表示のコンテンツ -->
+			<div id="js-menu-content" class="menu_content">
+				<ul class="menu_list">
+					<li class="menu_list_item">
+						<a href="#">HOME</a>
+					</li>
+					<li class="menu_list_item">
+						<a href="#">ABOUT</a>
+					</li>
+					<li class="menu_list_item">
+						<a href="#">WORKS</a>
+					</li>
+					<li class="menu_list_item">
+						<a href="#">NEWS</a>
+					</li>
+					<li class="menu_list_item">
+						<a href="#">RECRUIT</a>
+					</li>
+					<li class="menu_list_item">
+						<a href="#">PRIVACY POLICY</a>
+					</li>
+					<li class="menu_list_item">
+						<a href="#">CONTACT</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /非表示のコンテンツ -->
+		</div>
+
+		<div class="wrapper">
+			<h1>DEMO_01: 表示切り替えのサンプル</h1>
+			<button id="js-modal-button" class="button button__red">
+				モーダルを開く
+			</button>
+
+			<section class="dummySection">
+				<p class="dummyText dummyText__red dummyText__verticalLarge"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red dummyText__narrow"></p>
+				<p class="dummyText dummyText__red dummyText__verticalLarge"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red dummyText__narrow"></p>
+				<p class="dummyText dummyText__red dummyText__verticalLarge"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red dummyText__narrow"></p>
+				<p class="dummyText dummyText__red dummyText__verticalLarge"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red dummyText__narrow"></p>
+				<p class="dummyText dummyText__red dummyText__verticalLarge"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red"></p>
+				<p class="dummyText dummyText__red dummyText__narrow"></p>
+			</section>
+		</div>
+
+		<div class="footer footer__red">
+			<ul class="footer_link">
+				<li class="footer_link_item">
+					<a href="#">ページ上部へ移動</a>
+				</li>
+				<li class="footer_link_item">
+					<a href="index.html">一覧へもどる</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- 非表示のコンテンツ -->
+		<div id="js-modal" class="modal">
+			<div id="js-modal-overlay" class="modal_overlay modal_overlay__red"></div>
+			<div class="modal_content">
+				<div class="modal_content_text">
+					<p class="dummyText dummyText__red dummyText__verticalLarge"></p>
+					<p class="dummyText dummyText__red"></p>
+					<p class="dummyText dummyText__red"></p>
+					<p class="dummyText dummyText__red dummyText__narrow"></p>
+					<button id="js-modal-close" class="button button__red">
+						モーダルを閉じる
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- /非表示のコンテンツ -->
+
+		<script type="module" src="./src/demo01/main.ts"></script>
+	</body>
+</html>
