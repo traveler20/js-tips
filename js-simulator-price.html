@@ -8,53 +8,8 @@
 	</head>
 	<body>
 		<style>
-			#mitsumori-js {
-				background-color: #fff;
-				padding: 20px;
-				max-width: 800px;
-				margin: 0 auto;
-				box-sizing: border-box;
-			}
-			#mitsumori-js table {
-				width: 100%;
-				border-collapse: collapse;
-				border-spacing: 0;
-			}
-			#mitsumori-js .mitsumori-js-tbl {
-				margin-bottom: 15px;
-			}
-			/* #mitsumori-js .mitsumori-js-total-tbl {
-				width: 480px;
-				margin-left: auto;
-			} */
-			#mitsumori-js .mitsumori-js-total-tbl th {
-				width: 45%;
-			}
-			#mitsumori-js th,
-			#mitsumori-js td {
-				border: 1px solid #000;
-				padding: 12px;
-			}
-			#mitsumori-js .item-name {
-				/* width: 30%; */
-			}
-			#mitsumori-js .item-quantity {
-				/* width: 45%; */
-			}
-			#mitsumori-js .item-price {
-				min-width: 100px;
-			}
-			#mitsumori-js .item-quantity label {
-				display: block;
-			}
-			#mitsumori-js .item-quantity .text-quantity {
-				width: 100%;
-			}
-		</style>
-
-		<style>
 			.c-quote {
-				max-width: 1000px;
+				max-width: 800px;
 				margin: 0 auto;
 
 				font-size: 16px;
@@ -130,11 +85,11 @@
 		</style>
 
 		<!--  -->
-		<article class="c-quote" id="mitsumori-js">
-			<div class="c-quote-calculation mitsumori-js-tbl">
+		<article class="c-quote" id="js-quote">
+			<div class="c-quote-calculation js-quote-tbl">
 				<div
-					id="mitsumori-js-item-1"
-					class="mitsumori-js-item c-quote__column"
+					id="js-quote-item-1"
+					class="js-quote-item c-quote__column"
 					data-itemnum="1"
 				>
 					<label class="c-quote__label" for="main-design">
@@ -156,8 +111,8 @@
 					<div class="item-price c-quote__price">￥<span></span></div>
 				</div>
 				<div
-					id="mitsumori-js-item-2"
-					class="mitsumori-js-item c-quote__column"
+					id="js-quote-item-2"
+					class="js-quote-item c-quote__column"
 					data-itemnum="2"
 				>
 					<label class="c-quote__label" for="main-cording">
@@ -179,8 +134,8 @@
 					<div class="item-price c-quote__price">￥<span></span></div>
 				</div>
 				<div
-					id="mitsumori-js-item-3"
-					class="mitsumori-js-item c-quote__column"
+					id="js-quote-item-3"
+					class="js-quote-item c-quote__column"
 					data-itemnum="3"
 				>
 					<label class="c-quote__label" for="sub-design">
@@ -202,8 +157,8 @@
 					<div class="item-price c-quote__price">￥<span></span></div>
 				</div>
 				<div
-					id="mitsumori-js-item-4"
-					class="mitsumori-js-item c-quote__column"
+					id="js-quote-item-4"
+					class="js-quote-item c-quote__column"
 					data-itemnum="4"
 				>
 					<label class="c-quote__label" for="sub-cording">
@@ -225,8 +180,8 @@
 					<div class="item-price c-quote__price">￥<span></span></div>
 				</div>
 				<div
-					id="mitsumori-js-item-5"
-					class="mitsumori-js-item c-quote__option"
+					id="js-quote-item-5"
+					class="js-quote-item c-quote__option"
 					data-itemnum="5"
 				>
 					<h3 class="item-name">オプション</h3>
@@ -269,9 +224,9 @@
 					</div>
 				</div>
 			</div>
-			<dl class="c-quote-total mitsumori-js-total-tbl" data-taxflg="0">
+			<dl class="c-quote-total js-quote-total-tbl" data-taxflg="0">
 				<dt class="c-quote__title">合計金額</dt>
-				<dd class="c-quote__price">￥<span id="mitsumori-js-total"></span></dd>
+				<dd class="c-quote__price">￥<span id="js-quote-total"></span></dd>
 			</dl>
 		</article>
 		<!--  -->
@@ -281,7 +236,7 @@
 
 			window.onload = function () {
 				var textQuantityElems = document.querySelectorAll(
-					"#mitsumori-js .text-quantity"
+					"#js-quote .text-quantity"
 				);
 				textQuantityElems = Array.prototype.slice.call(textQuantityElems, 0);
 				textQuantityElems.forEach(function (
@@ -293,7 +248,7 @@
 					textQuantityElem.addEventListener("blur", calcPrice, false);
 				});
 				var radioQuantityElems = document.querySelectorAll(
-					"#mitsumori-js .radio-quantity"
+					"#js-quote .radio-quantity"
 				);
 				radioQuantityElems = Array.prototype.slice.call(radioQuantityElems, 0);
 				radioQuantityElems.forEach(function (
@@ -304,7 +259,7 @@
 					radioQuantityElem.addEventListener("change", calcPrice, false);
 				});
 				var checkQuantityElems = document.querySelectorAll(
-					"#mitsumori-js .check-quantity"
+					"#js-quote .check-quantity"
 				);
 				checkQuantityElems = Array.prototype.slice.call(checkQuantityElems, 0);
 				checkQuantityElems.forEach(function (
@@ -315,7 +270,7 @@
 					checkQuantityElem.addEventListener("change", calcPrice, false);
 				});
 				var selectQuantityElems = document.querySelectorAll(
-					"#mitsumori-js .select-quantity"
+					"#js-quote .select-quantity"
 				);
 				selectQuantityElems = Array.prototype.slice.call(
 					selectQuantityElems,
@@ -336,10 +291,10 @@
 						itemNum = event.target.getAttribute("data-itemnum"),
 						taxFlg = parseInt(
 							document
-								.querySelector(".mitsumori-js-total-tbl")
+								.querySelector(".js-quote-total-tbl")
 								.getAttribute("data-taxflg")
 						),
-						items = document.querySelectorAll(".mitsumori-js-item");
+						items = document.querySelectorAll(".js-quote-item");
 					items = Array.prototype.slice.call(items, 0);
 					items.forEach(function (itemElem, itemIndex) {
 						if (itemElem.getAttribute("data-itemnum") == itemNum) {
@@ -377,29 +332,27 @@
 						tax =
 							subtotal *
 							(parseInt(
-								document.querySelector("#mitsumori-js-tax-rate").textContent
+								document.querySelector("#js-quote-tax-rate").textContent
 							) /
 								100);
 						tax = Math.floor(tax);
-						document.querySelector("#mitsumori-js-subtotal").textContent =
-							subtotal;
-						document.querySelector("#mitsumori-js-tax").textContent = tax;
-						document.querySelector("#mitsumori-js-total").textContent =
+						document.querySelector("#js-quote-subtotal").textContent = subtotal;
+						document.querySelector("#js-quote-tax").textContent = tax;
+						document.querySelector("#js-quote-total").textContent =
 							subtotal + tax;
 					} else {
-						document.querySelector("#mitsumori-js-total").textContent =
-							subtotal;
+						document.querySelector("#js-quote-total").textContent = subtotal;
 					}
 
 					var outputContents = document.querySelectorAll(
-						"textarea.mitsumori-js-output"
+						"textarea.js-quote-output"
 					);
 					outputContents = Array.prototype.slice.call(outputContents, 0);
 					outputContents.forEach(function (outputElem, outputIndex) {
 						var outputHtml = "",
-							mjItems = document.querySelectorAll(".mitsumori-js-item"),
+							mjItems = document.querySelectorAll(".js-quote-item"),
 							mjTotalItems = document.querySelectorAll(
-								".mitsumori-js-total-tbl tr"
+								".js-quote-total-tbl tr"
 							);
 						mjItems = Array.prototype.slice.call(mjItems, 0);
 						mjItems.forEach(function (mjElem, mjIndex) {
@@ -506,144 +459,5 @@
 				}
 			};
 		</script>
-
-		<!-- <div id="mitsumori-js">
-			<table class="mitsumori-js-tbl">
-				<thead>
-					<th>項目</th>
-					<th>単価</th>
-					<th>数量</th>
-					<th>金額</th>
-				</thead>
-				<tbody>
-					<tr
-						id="mitsumori-js-item-1"
-						class="mitsumori-js-item"
-						data-itemnum="1"
-					>
-						<td class="item-name">メインページのデザイン</td>
-						<td class="item-name">¥50000/ページ</td>
-						<td class="item-quantity">
-							<input type="hidden" class="unit-price" value="50000" /><input
-								type="number"
-								class="text-quantity"
-								data-itemnum="1"
-								value="1"
-								min="0"
-								max="5"
-							/>
-						</td>
-						<td class="item-price">￥<span></span></td>
-					</tr>
-					<tr
-						id="mitsumori-js-item-2"
-						class="mitsumori-js-item"
-						data-itemnum="2"
-					>
-						<td class="item-name">メインページの実装</td>
-						<td class="item-name">¥100000/ページ</td>
-						<td class="item-quantity">
-							<input type="hidden" class="unit-price" value="100000" /><input
-								type="number"
-								class="text-quantity"
-								data-itemnum="2"
-								value="1"
-								min="0"
-								max="5"
-							/>
-						</td>
-						<td class="item-price">￥<span></span></td>
-					</tr>
-					<tr
-						id="mitsumori-js-item-3"
-						class="mitsumori-js-item"
-						data-itemnum="3"
-					>
-						<td class="item-name">子ページのデザイン</td>
-						<td class="item-name">¥30000/ページ</td>
-						<td class="item-quantity">
-							<input type="hidden" class="unit-price" value="30000" /><input
-								type="number"
-								class="text-quantity"
-								data-itemnum="3"
-								value="1"
-								min="0"
-								max="20"
-							/>
-						</td>
-						<td class="item-price">￥<span></span></td>
-					</tr>
-					<tr
-						id="mitsumori-js-item-4"
-						class="mitsumori-js-item"
-						data-itemnum="4"
-					>
-						<td class="item-name">子ページの実装</td>
-						<td class="item-name">¥50000/ページ</td>
-						<td class="item-quantity">
-							<input type="hidden" class="unit-price" value="50000" /><input
-								type="number"
-								class="text-quantity"
-								data-itemnum="4"
-								value="1"
-								min="0"
-								max="20"
-							/>
-						</td>
-						<td class="item-price">￥<span></span></td>
-					</tr>
-					<tr
-						id="mitsumori-js-item-5"
-						class="mitsumori-js-item"
-						data-itemnum="5"
-					>
-						<td class="item-name">オプション</td>
-						<td class="item-quantity" colspan="2">
-							<label
-								><input
-									type="checkbox"
-									class="check-quantity"
-									data-itemnum="5"
-									value="5000"
-								/>サーバー・ドメインのセットアップ（¥5000）</label
-							>
-							<label
-								><input
-									type="checkbox"
-									class="check-quantity"
-									data-itemnum="5"
-									value="10000"
-								/>WordPressへの組み込み（¥10000）</label
-							>
-							<label
-								><input
-									type="checkbox"
-									class="check-quantity"
-									data-itemnum="5"
-									value="5000"
-								/>Wraptasへの組み込み（¥5000）</label
-							>
-							<label
-								><input
-									type="checkbox"
-									class="check-quantity"
-									data-itemnum="5"
-									value="5000"
-								/>問い合わせフォームの実装（¥5000）</label
-							>
-						</td>
-						<td class="item-price">￥<span></span></td>
-					</tr>
-				</tbody>
-			</table>
-			<table class="mitsumori-js-total-tbl" data-taxflg="0">
-				<tbody>
-					<tr>
-						<th>合計金額</th>
-						<td>￥<span id="mitsumori-js-total"></span></td>
-					</tr>
-				</tbody>
-			</table>
-		</div> -->
 	</body>
 </html>
