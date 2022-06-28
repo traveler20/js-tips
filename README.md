@@ -142,6 +142,8 @@ js-mouseCursorChange.html
 
 - [トップスクロールボタン](css-topscroll.html)
 - [Twitter シェアボタン](html-twittershare.html)
+- [各種共有ボタン](html-share.html)
+- [各種共有ボタンプラグイン版](html-share-plugin.html)
 
 ```
 css-topscroll.html
