@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<!-- reset.css destyle -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+		/>
+	</head>
+	<body>
+		<style>
+			html {
+				font-size: 16px;
+				line-height: 1.7;
+				font-family: YuGothic, "Yu Gothic", "Helvetica Neue", Arial,
+					"Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+				font-weight: 500;
+			}
+			*:focus-visible {
+				outline: #73cbf3 auto 1px;
+			}
+
+			.c-koko {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 40px 16px;
+			}
+			.c-koko-title {
+				font-size: 24px;
+				font-weight: bold;
+				line-height: 1.5;
+				margin: 0 0 32px;
+			}
+			.c-koko-labels {
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+			.c-koko-labels label {
+				display: flex;
+				flex-direction: column;
+			}
+			.c-koko-labels input {
+				padding: 4px 8px;
+				border: solid 1px #ccc;
+				border-radius: 4px;
+			}
+			.c-koko-labels input[type="button"] {
+				display: inline-block;
+				text-align: center;
+				font-size: 14px;
+				font-weight: 700;
+				color: #fff;
+				background-color: #73cbf3;
+				border: solid 2px #73cbf3;
+				border-radius: 50px;
+				margin: 0 auto;
+				padding: 16px 20px;
+				min-width: 320px;
+				max-width: 100%;
+				transition: 0.4s;
+			}
+			.c-koko-labels input[type="button"]:hover {
+				color: #73cbf3;
+				background-color: #fff;
+			}
+
+			.c-koko-article {
+				opacity: 0;
+				padding: 80px 0;
+				transition: 0.4s;
+			}
+			.c-koko-article.is-show {
+				opacity: 1;
+			}
+		</style>
+
+		<section class="c-koko">
+			<h1 class="c-koko-title">
+				小原好美さんファースト写真集『夢色夢時』サイン会レポっぽい文章ジェネレータ
+			</h1>
+
+			<div class="c-koko-labels">
+				<label
+					>名前：<input
+						type="text"
+						size="40"
+						id="js-input_name"
+						placeholder="ここネームや本名など"
+						required="required"
+				/></label>
+				<label
+					>写真集のお気に入り箇所：<input
+						type="text"
+						size="40"
+						id="js-input_favorite"
+						placeholder="例）冬色の雪をかぶっている写真 など"
+						required="required"
+				/></label>
+				<label
+					>住んでいる場所：<input
+						type="text"
+						size="40"
+						id="js-input_place"
+						placeholder="例）大阪 神戸 など"
+						required="required"
+				/></label>
+
+				<input type="button" value="つくる" id="js-input_button" />
+			</div>
+
+			<article class="c-koko-article" id="js-content">
+				<p>
+					<span class="js-text-name"></span>「ここちゃん、ここにちは！<span
+						class="js-text-name"
+					></span
+					>です！」
+				</p>
+				<p>
+					ここちゃん「<span class="js-text-name"></span
+					>さん、ここにちは！どうもありがとう〜。」
+				</p>
+				<p>
+					<span class="js-text-name"></span>「写真集よかったです！<span
+						class="js-text-favorite"
+					></span
+					>の箇所がお気に入りです！」
+				</p>
+				<p>
+					ここちゃん「嬉しい！ありがとうございます。今日はどこから来られたんですか？」
+				</p>
+				<p>
+					<span class="js-text-name"></span>「<span class="js-text-place"></span
+					>です！」
+				</p>
+				<p>
+					ここちゃん「<span class="js-text-place"></span>！暑い中ありがとうね」
+				</p>
+				<p>
+					<span class="js-text-name"></span
+					>「いえいえ！いつも勇気付けられています！これからも応援しています！！」
+				</p>
+				<p>ここちゃん「今日は本当にありがとう。帰りも気をつけてね〜！」</p>
+				<p>
+					<span class="js-text-name"></span>「はい！ありがとうございました！！」
+				</p>
+			</article>
+		</section>
+
+		<script>
+			// 入力したテキストをHTMLに出力
+			function butotnClick() {
+				content.classList.add("is-show");
+				for (var i = 0; i < text_name.length; i++) {
+					text_name[i].innerText = `${input_name.value}`;
+				}
+				for (var i = 0; i < text_favorite.length; i++) {
+					text_favorite[i].innerText = `${input_favorite.value}`;
+				}
+				for (var i = 0; i < text_place.length; i++) {
+					text_place[i].innerText = `${input_place.value}`;
+				}
+			}
+
+			// 入力したテキストを定義
+			const input_name = document.getElementById("js-input_name");
+			const input_favorite = document.getElementById("js-input_favorite");
+			const input_place = document.getElementById("js-input_place");
+			// 出力する用のテキストを定義
+			const text_name = document.getElementsByClassName("js-text-name");
+			const text_favorite = document.getElementsByClassName("js-text-favorite");
+			const text_place = document.getElementsByClassName("js-text-place");
+			const input_button = document.getElementById("js-input_button");
+			const content = document.getElementById("js-content");
+			// ボタンクリック
+			input_button.addEventListener("click", butotnClick);
+
+			// テキストをコピーする
+			// 共有する
+		</script>
+	</body>
+</html>
