@@ -300,12 +300,18 @@ js-canvas-liquid.html
 - [タイトルが変形する](js-gsapanimejs-bird.html)
 - [横スクロールのサイト](js-gsap-sidescroll.html)
 - [スクロールでチャットが流れる](js-gsap-scrollchat.html)
+- [スクロール](js-gsap-scroll-fixed.html)
+- [スクロール](js-gsap-scroll-scrab.html)
+- [スクロール](js-gsap-scroll-trigger.html)
 
 ```
 js-gsap-typography.html
 js-gsapanimejs-bird.html
 js-gsap-sidescroll.html
 js-gsap-scrollchat.html
+js-gsap-scroll-fixed.html
+js-gsap-scroll-scrab.html
+js-gsap-scroll-trigger.html
 ```
 
 ## project
