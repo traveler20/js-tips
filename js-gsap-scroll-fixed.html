@@ -8,102 +8,32 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 	</head>
 	<body>
-		<section class="top">
-			<div class="top_title">
-				<span class="top_title_innerLeft">Hello</span
-				><span class="top_title_innerRight">World</span>
+		<section class="p-fv js-fv">
+			<div class="p-fv__title js-fv__title">
+				<span class="p-fv__left js-fv__left">Hello</span
+				><span class="p-fv__right js-fv__right">World</span>
 			</div>
 		</section>
-		<section class="section js-section-card">
-			<article class="article">
+		<section class="p-section">
+			<article class="p-section__inner">
 				<img
-					class="article_image"
+					class="p-section__image js-column-image"
 					src="https://picsum.photos/seed/80/1200/900"
 					alt=""
 				/>
-				<p class="article_text">
+				<p class="p-section__paragraph js-column-paragraph">
 					サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。
 				</p>
 			</article>
 		</section>
-		<section class="cardSection">
-			<div class="cards_wrapper">
-				<ul class="cards">
-					<li class="singleCard">
-						<img
-							class="singleCard_image"
-							src="https://picsum.photos/seed/1/300/400"
-							alt=""
-						/>
-						<p class="singleCard_text">01</p>
-					</li>
-					<li class="singleCard">
-						<img
-							class="singleCard_image"
-							src="https://picsum.photos/seed/2/300/400"
-							alt=""
-						/>
-						<p class="singleCard_text">02</p>
-					</li>
-					<li class="singleCard">
-						<img
-							class="singleCard_image"
-							src="https://picsum.photos/seed/3/300/400"
-							alt=""
-						/>
-						<p class="singleCard_text">03</p>
-					</li>
-					<li class="singleCard">
-						<img
-							class="singleCard_image"
-							src="https://picsum.photos/seed/4/300/400"
-							alt=""
-						/>
-						<p class="singleCard_text">04</p>
-					</li>
-					<li class="singleCard">
-						<img
-							class="singleCard_image"
-							src="https://picsum.photos/seed/5/300/400"
-							alt=""
-						/>
-						<p class="singleCard_text">05</p>
-					</li>
-					<li class="singleCard">
-						<img
-							class="singleCard_image"
-							src="https://picsum.photos/seed/6/300/400"
-							alt=""
-						/>
-						<p class="singleCard_text">06</p>
-					</li>
-					<li class="singleCard">
-						<img
-							class="singleCard_image"
-							src="https://picsum.photos/seed/7/300/400"
-							alt=""
-						/>
-						<p class="singleCard_text">07</p>
-					</li>
-					<li class="singleCard">
-						<img
-							class="singleCard_image"
-							src="https://picsum.photos/seed/8/300/400"
-							alt=""
-						/>
-						<p class="singleCard_text">08</p>
-					</li>
-				</ul>
-			</div>
-		</section>
-		<section class="bottom"></section>
+		<section style="height: 100vh"></section>
 		<script defer>
 			gsap.registerPlugin(ScrollTrigger);
 
-			// キービジュアル
+			// fv
 			const topTl = gsap.timeline({
 				scrollTrigger: {
-					trigger: ".top",
+					trigger: ".js-fv",
 					start: "top top",
 					end: "+=900",
 					scrub: true,
@@ -111,18 +41,18 @@
 				},
 			});
 			topTl.fromTo(
-				".top_title",
+				".js-fv__title",
 				{
 					opacity: 0,
 					scale: 0.2,
 				},
 				{ opacity: 1, scale: 1, ease: "Power4.out" }
 			);
-			topTl.to(".top_title_innerLeft", {
+			topTl.to(".js-fv__left", {
 				x: -innerWidth / 2,
 			});
 			topTl.to(
-				".top_title_innerRight",
+				".js-fv__right",
 				{
 					x: innerWidth / 2,
 				},
@@ -130,43 +60,43 @@
 			);
 
 			// 説明コンテンツ
-
 			ScrollTrigger.create({
-				trigger: ".article_image",
+				trigger: ".js-column-image",
 				start: "top 80",
-				endTrigger: ".article_text",
+				endTrigger: ".js-column-paragraph",
 				end: `center 40%`,
 				pin: true,
 				pinSpacing: false,
 			});
 
 			// カード
-			const cardTl = gsap.timeline({
-				scrollTrigger: {
-					trigger: ".cardSection",
-					start: "top top",
-					pin: true,
-					end: `+=${innerHeight}`,
-					scrub: 0.5,
-				},
-			});
-
-			const target = document.querySelector(".cards");
-			cardTl.to(target, {
-				delay: 0.1,
-				x: -target.clientWidth + innerWidth - 120,
-				ease: "none",
-			});
-
-			window.addEventListener("load", () => {
-				ScrollTrigger.refresh();
-			});
+			// const cardTl = gsap.timeline({
+			// 	scrollTrigger: {
+			// 		trigger: ".cardSection",
+			// 		start: "top top",
+			// 		pin: true,
+			// 		end: `+=${innerHeight}`,
+			// 		scrub: 0.5,
+			// 	},
+			// });
+			//
+			// const target = document.querySelector(".cards");
+			// cardTl.to(target, {
+			// 	delay: 0.1,
+			// 	x: -target.clientWidth + innerWidth - 120,
+			// 	ease: "none",
+			// });
+			//
+			// window.addEventListener("load", () => {
+			// 	ScrollTrigger.refresh();
+			// });
 		</script>
 		<style>
 			@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
 			* {
 				margin: 0;
 				padding: 0;
+				box-sizing: border-box;
 			}
 
 			li {
@@ -174,10 +104,13 @@
 			}
 
 			body {
-				background: #333333;
+				color: #fff;
+				font-size: 18px;
+				line-height: 1.8;
+				background: #333;
 			}
 
-			.top {
+			.p-fv {
 				width: 100%;
 				height: 100vh;
 				background: url("https://picsum.photos/id/1021/1920/1200") no-repeat;
@@ -186,82 +119,39 @@
 				align-items: center;
 				overflow: hidden;
 			}
-			.top_title {
+			.p-fv__title {
 				font-size: 120px;
 				color: #fff;
 				font-family: "EB Garamond", serif;
 			}
-			.top_title_innerLeft,
-			.top_title_innerRight {
+			.p-fv__left,
+			.p-fv__right {
 				display: inline-block;
 			}
 
-			.cards {
-				display: inline-flex;
-				gap: 150px;
-			}
-			.cards_wrapper {
-				max-width: 100%;
-				padding: 0 50px;
-				overflow: hidden;
-			}
-
-			.singleCard {
-				position: relative;
-			}
-			.singleCard_image {
-				width: 300px;
-				height: 400px;
-			}
-			.singleCard_text {
-				position: absolute;
-				bottom: 10px;
-				right: -8%;
-				font-size: 80px;
-				font-weight: bold;
-				color: #ffffff;
-				text-shadow: 0 2px 3px rgba(0, 0, 0, 0.18);
-			}
-
-			.section {
-				padding: 80px 50px;
+			.p-section {
+				padding: 80px 16px;
 				min-height: 150vh;
 			}
-
-			.cardSection {
-				min-height: 100vh;
-				display: flex;
-				align-items: center;
-			}
-
-			.article {
+			.p-section__inner {
 				position: relative;
-				width: 100%;
-				margin-bottom: 150px;
+				max-width: 1000px;
+				margin: 0 auto;
 			}
-			.article_image {
+			.p-section__image {
 				display: block;
 				width: 70%;
-				height: auto;
-				transform-origin: left top;
+				border: 10px solid #fff;
 				border-radius: 12px;
-				border: 10px solid #ffffff;
-				box-sizing: border-box;
-				margin-bottom: 100px;
 			}
-			.article_text {
+			.p-section__paragraph {
 				position: relative;
 				width: 40%;
-				color: #f4f4f4;
-				font-size: 18px;
-				line-height: 1.8;
 				margin-left: auto;
 				z-index: 2;
-				background: rgba(0, 0, 0, 0.9);
+				background: #222;
 				padding: 20px;
 			}
-
-			/*# sourceMappingURL=style_03.css.map */
 		</style>
 	</body>
 </html>
