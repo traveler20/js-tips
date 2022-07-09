@@ -8,6 +8,225 @@
 	</head>
 	<body>
 		<!-- ────────────────────────────── 
+         画像の無限スクロール
+        ────────────────────────────── -->
+		<section class="l-section">
+			<style>
+				.c-scroll2 {
+					position: relative;
+					width: 100vw;
+					height: 20rem;
+					padding: 2rem 0;
+					overflow-x: hidden;
+				}
+				.c-scroll2__content {
+					width: inherit;
+					height: inherit;
+					position: absolute;
+					left: 0%;
+					top: 0%;
+					display: flex;
+					align-items: center;
+					justify-content: space-around;
+				}
+				.c-scroll2__content--primary {
+					animation: primary 3s linear infinite;
+				}
+				.c-scroll2__content--secondary {
+					animation: secondary 3s linear infinite;
+				}
+				@keyframes primary {
+					from {
+						left: 0%;
+					}
+					to {
+						left: -100%;
+					}
+				}
+				@keyframes secondary {
+					from {
+						left: 100%;
+					}
+					to {
+						left: 0%;
+					}
+				}
+				.c-scroll2__image {
+					width: 15%;
+				}
+			</style>
+			<div class="c-scroll2">
+				<div class="c-scroll2__content c-scroll2__content--primary">
+					<img
+						class="c-scroll2__image"
+						src="https://avatars.dicebear.com/api/adventurer/damilola-jerugba.svg"
+						alt=""
+					/>
+					<img
+						class="c-scroll2__image"
+						src="https://avatars.dicebear.com/api/adventurer/tosin-jerugba.svg"
+						alt=""
+					/>
+					<img
+						class="c-scroll2__image"
+						src="https://avatars.dicebear.com/api/adventurer/fiyin-jerugba.svg"
+						alt=""
+					/>
+					<img
+						class="c-scroll2__image"
+						src="https://avatars.dicebear.com/api/adventurer/feyikemi-jerugba.svg"
+						alt=""
+					/>
+					<img
+						class="c-scroll2__image"
+						src="https://avatars.dicebear.com/api/adventurer/femi-jerugba.svg"
+						alt=""
+					/>
+				</div>
+				<div class="c-scroll2__content c-scroll2__content--secondary">
+					<img
+						class="c-scroll2__image"
+						src="https://avatars.dicebear.com/api/adventurer/damilola-jerugba.svg"
+						alt=""
+					/>
+					<img
+						class="c-scroll2__image"
+						src="https://avatars.dicebear.com/api/adventurer/tosin-jerugba.svg"
+						alt=""
+					/>
+					<img
+						class="c-scroll2__image"
+						src="https://avatars.dicebear.com/api/adventurer/fiyin-jerugba.svg"
+						alt=""
+					/>
+					<img
+						class="c-scroll2__image"
+						src="https://avatars.dicebear.com/api/adventurer/feyikemi-jerugba.svg"
+						alt=""
+					/>
+					<img
+						class="c-scroll2__image"
+						src="https://avatars.dicebear.com/api/adventurer/femi-jerugba.svg"
+						alt=""
+					/>
+				</div>
+			</div>
+		</section>
+		<!-- ────────────────────────────── 
+         SNS共有ボタン プラグイン版
+        ────────────────────────────── -->
+		<section class="l-section">
+			<style>
+				.l-footer-share {
+					display: flex;
+					justify-content: flex-start;
+					align-items: flex-end;
+					gap: 8px;
+				}
+			</style>
+
+			<footer class="l-footer-share">
+				<!-- facebook -->
+				<div
+					class="fb-share-button"
+					data-href="https://yurukei-career.com"
+					data-layout="button"
+					data-size="small"
+				>
+					<a
+						target="_blank"
+						href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyurukei-career.com%2F&amp;src=sdkpreparse"
+						class="fb-xfbml-parse-ignore"
+						>シェアする</a
+					>
+				</div>
+				<!-- facebook plugin -->
+				<!-- <div id="fb-root"></div> -->
+				<script
+					async
+					defer
+					crossorigin="anonymous"
+					src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v14.0"
+					nonce="eCoZNwql"
+				></script>
+
+				<!-- twitter -->
+				<a
+					href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+					class="twitter-share-button"
+					data-text="Twitterのシェアをするときの文章です"
+					data-hashtags="ハッシュタグのテキスト"
+					data-via="yurukei20"
+					data-related="yurukei20"
+					data-size="large"
+					data-show-count="false"
+					>Tweet</a
+				>
+				<!-- twitter plugin -->
+				<script
+					async
+					src="https://platform.twitter.com/widgets.js"
+					charset="utf-8"
+				></script>
+
+				<!-- line -->
+				<div
+					class="line-it-button"
+					data-lang="ja"
+					data-type="share-a"
+					data-env="REAL"
+					data-url="https://yurukei-career.com/"
+					data-color="default"
+					data-size="small"
+					data-count="false"
+					data-ver="3"
+					style="display: none"
+				></div>
+				<!-- line plugin -->
+				<script
+					src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js"
+					async="async"
+					defer="defer"
+				></script>
+			</footer>
+		</section>
+		<!-- ────────────────────────────── 
+         SNS共有ボタン スクラッチ版
+        ────────────────────────────── -->
+		<section class="l-section">
+			<!-- facebook -->
+			<a
+				href="http://www.facebook.com/share.php?u=yurukei-career.com"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>Facebookでシェアする</a
+			>
+
+			<!-- twitter -->
+			<a
+				href="http://twitter.com/share?url=yurukei-career.com&text=Twitterのシェアをするときの文章です&via=yurukei20&hashtags=ハッシュタグのテキスト"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>Twitterで共有する</a
+			>
+
+			<!-- line -->
+			<a
+				href="https://social-plugins.line.me/lineit/share?url=yurukei-career.com"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>LINEで送る</a
+			>
+
+			<!-- hatena -->
+			<a
+				href="http://b.hatena.ne.jp/entry/s/https://yurukei-career.com"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>はてなブックマークに登録する</a
+			>
+		</section>
+		<!-- ────────────────────────────── 
          CSSタイムライン
         ────────────────────────────── -->
 		<section class="l-section">

@@ -1,29 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./styles.css" />
 		<title>Auto Scroll Animation</title>
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<!-- reset.css destyle -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+		/>
 	</head>
 	<body>
 		<style>
-			*,
-			*::after,
-			*::before {
-				margin: 0;
-				padding: 0;
-				border: none;
-				outline: none;
-				box-sizing: border-box;
-			}
-
-			html {
-				font-size: 10px;
-			}
-
 			.container {
 				display: flex;
 				align-items: center;
@@ -49,10 +38,6 @@
 				align-items: center;
 				justify-content: space-around;
 			}
-			.c-scroll__content img {
-				width: 15%;
-			}
-
 			.c-scroll__content--primary {
 				animation: primary 3s linear infinite;
 			}
@@ -75,50 +60,63 @@
 					left: 0%;
 				}
 			}
+			.c-scroll__image {
+				width: 15%;
+			}
 		</style>
 
 		<div class="container">
 			<div class="c-scroll">
 				<div class="c-scroll__content c-scroll__content--primary">
 					<img
+						class="c-scroll__image"
 						src="https://avatars.dicebear.com/api/adventurer/damilola-jerugba.svg"
 						alt=""
 					/>
 					<img
+						class="c-scroll__image"
 						src="https://avatars.dicebear.com/api/adventurer/tosin-jerugba.svg"
 						alt=""
 					/>
 					<img
+						class="c-scroll__image"
 						src="https://avatars.dicebear.com/api/adventurer/fiyin-jerugba.svg"
 						alt=""
 					/>
 					<img
+						class="c-scroll__image"
 						src="https://avatars.dicebear.com/api/adventurer/feyikemi-jerugba.svg"
 						alt=""
 					/>
 					<img
+						class="c-scroll__image"
 						src="https://avatars.dicebear.com/api/adventurer/femi-jerugba.svg"
 						alt=""
 					/>
 				</div>
 				<div class="c-scroll__content c-scroll__content--secondary">
 					<img
+						class="c-scroll__image"
 						src="https://avatars.dicebear.com/api/adventurer/damilola-jerugba.svg"
 						alt=""
 					/>
 					<img
+						class="c-scroll__image"
 						src="https://avatars.dicebear.com/api/adventurer/tosin-jerugba.svg"
 						alt=""
 					/>
 					<img
+						class="c-scroll__image"
 						src="https://avatars.dicebear.com/api/adventurer/fiyin-jerugba.svg"
 						alt=""
 					/>
 					<img
+						class="c-scroll__image"
 						src="https://avatars.dicebear.com/api/adventurer/feyikemi-jerugba.svg"
 						alt=""
 					/>
 					<img
+						class="c-scroll__image"
 						src="https://avatars.dicebear.com/api/adventurer/femi-jerugba.svg"
 						alt=""
 					/>
