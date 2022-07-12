@@ -8,6 +8,49 @@
 	</head>
 	<body>
 		<!-- ────────────────────────────── 
+         filter:invert();で色反転
+        ────────────────────────────── -->
+		<section class="l-section">
+			<style>
+				.c-invert {
+					filter: invert(100%);
+					mix-blend-mode: exclusion;
+					position: sticky;
+					top: 8px;
+					right: 8px;
+				}
+			</style>
+			<main style="border: solid 2px #333">
+				<p class="c-invert" style="font-size: 32px">反転文字</p>
+				<div style="background-color: #333; height: 200px"></div>
+				<div style="background-color: #fff; height: 200px"></div>
+				<div style="background-color: #333; height: 200px"></div>
+				<div style="background-color: #fff; height: 200px"></div>
+			</main>
+		</section>
+		<!-- ────────────────────────────── 
+         :is でセレクタとホバー同時にスタイリング
+        ────────────────────────────── -->
+		<section class="l-section">
+			<style>
+				.p-is-content {
+					color: #333;
+					display: flex;
+					align-items: center;
+					font-size: 16px;
+					text-align: center;
+					text-decoration: none;
+				}
+				.p-is-content:is(:hover, .is-current) {
+					color: #fff;
+					background-color: #333;
+				}
+			</style>
+			<div>
+				<a href="" class="p-is-content">テキストテキスト </a>
+			</div>
+		</section>
+		<!-- ────────────────────────────── 
          画像の無限スクロール
         ────────────────────────────── -->
 		<section class="l-section">
