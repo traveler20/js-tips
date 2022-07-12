@@ -263,7 +263,7 @@ css-layout.html
 - [タイムライン](css-timeline.html)
 - [横長メーター](html-meter.html)
 - [画像を本っぽく装飾](css-bookcover.html)
-- [セレクタとホバー同時にスタイリングする](css-:is.html)
+- [セレクタとホバー同時にスタイリングする（複数のスタイリング）](css-:is.html)
 - [simple.css という CSS フレームワーク](cdn-simplecss.html)
 - [Scrollbetween を使ったスクロールアニメーション](js-scrollbetween.html)
 - [ジェネレータ](js-generator.html)
