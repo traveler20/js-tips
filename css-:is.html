@@ -54,15 +54,15 @@
 				font-feature-settings: "liga";
 			}
 
-			.container {
+			.l-container {
 				display: grid;
 				height: 100%;
 				grid-template-columns: 240px 1fr;
 			}
 
-			.link {
+			.l-nav__link {
 				font-family: sans-serif;
-				color: #333333;
+				color: #333;
 				display: flex;
 				align-items: center;
 				gap: 24px;
@@ -73,13 +73,12 @@
 				text-align: center;
 				text-decoration: none;
 			}
-
-			.link-list .link:is(:hover, .current) {
-				color: white;
-				background-color: #333333;
+			.l-nav__link:is(:hover, .is-current) {
+				color: #fff;
+				background-color: #333;
 			}
 
-			.main {
+			.l-main {
 				background-color: #e8e8e8;
 				display: grid;
 				place-content: center;
@@ -87,37 +86,37 @@
 			}
 		</style>
 
-		<div class="container">
+		<div class="l-container">
 			<nav>
-				<ul class="link-list">
+				<ul>
 					<li>
-						<a class="link current" href="#🥺">
+						<a class="l-nav__link is-current" href="#🥺">
 							<span class="material-icons">home</span>ホーム
 						</a>
 					</li>
 					<li>
-						<a class="link" href="#🤔">
+						<a class="l-nav__link" href="#🤔">
 							<span class="material-icons">explore</span>探索</a
 						>
 					</li>
 					<li>
-						<a class="link" href="#😡">
+						<a class="l-nav__link" href="#😡">
 							<span class="material-icons">history</span>履歴</a
 						>
 					</li>
 					<li>
-						<a class="link" href="#🥶">
+						<a class="l-nav__link" href="#🥶">
 							<span class="material-icons">recommend</span>お気に入り
 						</a>
 					</li>
 					<li>
-						<a class="link" href="#🤩">
+						<a class="l-nav__link" href="#🤩">
 							<span class="material-icons">settings</span>設定</a
 						>
 					</li>
 				</ul>
 			</nav>
-			<main class="js-main main">🥺</main>
+			<main class="l-main js-main">🥺</main>
 		</div>
 
 		<script>
@@ -143,10 +142,10 @@
 					main.textContent = createFace(index);
 
 					document.querySelectorAll("a").forEach((otherElement) => {
-						otherElement.classList.remove("current");
+						otherElement.classList.remove("is-current");
 					});
 
-					anchorElement.classList.add("current");
+					anchorElement.classList.add("is-current");
 					event.preventDefault();
 				});
 			});
