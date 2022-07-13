@@ -8,6 +8,53 @@
 	</head>
 	<body>
 		<!-- ────────────────────────────── 
+         背景やボーダーをはみ出す
+        ────────────────────────────── -->
+		<section class="l-section">
+			<style>
+				.c-extended-title1 {
+					border-image: linear-gradient(0deg, #1095c1 5px, #0000 0) fill 0
+						//0 100vw 0 0;;
+					padding: 10px 0;
+				}
+				.c-extended-title2 {
+					padding: 10px 0;
+					border-image-source: linear-gradient(#10a1da, #10a1da);
+					border-image-slice: 0 fill;
+					border-image-outset: 0 100vw 0 50px;
+				}
+				.c-extended-title3 {
+					padding: 10px 0;
+					color: #fff;
+					border-image: linear-gradient(90deg, #053547 60%, transparent 90%)
+						fill 0 //0 50px 0 100vw;;
+				}
+				.c-extended-paragraph {
+					padding: 10px 0;
+					/* 文字を横いっぱいに */
+					/* text-align: justify; */
+					border-image: linear-gradient(#fcddd0, #fcddd0) fill 0
+						//0 50px 0 100vw;;
+				}
+
+				.c-extended-section {
+					max-width: 700px;
+					margin: 0 auto;
+				}
+			</style>
+			<section class="c-extended-section">
+				<h2 class="c-extended-title1">タイトルテキスト</h2>
+				<h2 class="c-extended-title2">タイトルテキスト</h2>
+				<h2 class="c-extended-title3">タイトルテキスト</h2>
+				<p class="c-extended-paragraph">
+					複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+				</p>
+				<p>
+					複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+				</p>
+			</section>
+		</section>
+		<!-- ────────────────────────────── 
          filter:invert();で色反転
         ────────────────────────────── -->
 		<section class="l-section">

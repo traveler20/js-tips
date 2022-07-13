@@ -95,11 +95,13 @@ js-gsap-sidescroll.html
 - [背景をグラデーションに](css-bggradation.html)
 - [背景がグワンっと上がる](css-bgup.html)
 - [警告風メッセージ](css-warning.html)
+- [背景色をはみ出して表示](css-extended.html)
 
 ```
 css-bggradation.html
 css-bgup.html
 css-warning.html
+css-extended.html
 ```
 
 # input タグ
@@ -267,6 +269,7 @@ css-layout.html
 - [simple.css という CSS フレームワーク](cdn-simplecss.html)
 - [Scrollbetween を使ったスクロールアニメーション](js-scrollbetween.html)
 - [ジェネレータ](js-generator.html)
+- [文字が反転する](css-invert.html)
 
 ```
 css-timeline.html
@@ -276,6 +279,7 @@ css-:is.html
 cdn-simplecss.html
 js-scrollbetween.html
 js-generator.html
+css-invert.html
 ```
 
 ## canvas アニメーション
