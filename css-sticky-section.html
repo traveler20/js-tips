@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				margin: 0;
+			}
+			.l-section__inner--sticky,
+			.l-section__inner {
+				height: 100vh;
+				font-size: 40px;
+				font-weight: bold;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.l-section {
+				height: 100vh;
+				position: relative;
+			}
+			.l-section0 {
+				background-color: #efefef;
+			}
+			.l-section1 {
+				height: 200vh;
+				background: white;
+			}
+			.l-section2 {
+				margin-top: -100vh;
+				background: #333;
+			}
+			.l-section3 {
+				background-color: #555;
+			}
+
+			.l-section__inner--sticky {
+				height: 100vh; /* 中央寄せ用 */
+				position: sticky;
+				top: 0;
+			}
+		</style>
+
+		<section class="l-section l-section0">
+			<div class="l-section__inner">コンテンツ</div>
+		</section>
+		<section class="l-section l-section1">
+			<div class="l-section__inner--sticky">コンテンツ</div>
+		</section>
+		<section class="l-section l-section2">
+			<div class="l-section__inner">コンテンツ</div>
+		</section>
+		<section class="l-section l-section3">
+			<div class="l-section__inner">コンテンツ</div>
+		</section>
+	</body>
+</html>

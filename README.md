@@ -76,6 +76,7 @@ html-svgUse.html
 - [スクロールしたら画面が切り替わるようにしたい](css-scrollsnap.html)
 - [スクロールバーのデザインを変えたい](css-customscrollbar.html)
 - [CSS で簡易なパララックス風ギミック](css-parallax.html)
+- [CSS sticky で簡易なパララックス](css-sticky-section.html)
 - CSS でのパララックスは position:sticky で簡易的に実装することも可能
 - JS でパララックス効果を用いる
 - [横スクロールのサイト](js-gsap-sidescroll.html)
@@ -86,6 +87,7 @@ css-sticky.html
 css-scrollsnap.html
 css-customscrollbar.html
 css-parallax.html
+css-sticky-section.html
 js-parallax.html(*)
 js-gsap-sidescroll.html
 ```
