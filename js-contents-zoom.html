@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.c-zoom-img {
+				position: sticky;
+				top: 20vh;
+				will-change: transform;
+				width: 100%;
+				transform: scale(2.2);
+			}
+
+			.l-section {
+				height: 100vh;
+			}
+			.l-section--zoom {
+				height: 200vh;
+			}
+		</style>
+
+		<section class="l-section"></section>
+		<section class="l-section l-section--zoom">
+			<img
+				class="c-zoom-img js-zoom-img"
+				src="https://cdn.builder.io/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2F5b8fd21c9bd74e9cb07b8a44c1e93649"
+			/>
+		</section>
+		<section class="l-section"></section>
+
+		<script>
+			const zoom = document.querySelector(".js-zoom-img");
+			const minZoom = 1;
+			const maxZoom = 2;
+
+			addEventListener("scroll", (e) => {
+				const vh = window.innerHeight / 100;
+				const scrollTop = document.documentElement.scrollTop;
+				const start = 100 * vh;
+				const stop = 200 * vh;
+				if (scrollTop > start && scrollTop < stop) {
+					const scale = Math.max(2.2 - (scrollTop - start) / 500, 1);
+					zoom.style.transform = `scale(${scale})`;
+				}
+			});
+		</script>
+	</body>
+</html>

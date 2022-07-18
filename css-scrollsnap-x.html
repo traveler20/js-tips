@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.c-scroll {
+				overflow: auto;
+				display: flex;
+				gap: 5px;
+				scroll-snap-type: x mandatory;
+			}
+			.c-scroll__card {
+				height: 200px;
+				width: 200px;
+				background: red;
+				flex-shrink: 0;
+				scroll-snap-align: start;
+			}
+		</style>
+
+		<div class="c-scroll">
+			<div class="c-scroll__card"></div>
+			<div class="c-scroll__card"></div>
+			<div class="c-scroll__card"></div>
+			<div class="c-scroll__card"></div>
+			<div class="c-scroll__card"></div>
+			<div class="c-scroll__card"></div>
+			<div class="c-scroll__card"></div>
+			<div class="c-scroll__card"></div>
+			<div class="c-scroll__card"></div>
+			<div class="c-scroll__card"></div>
+		</div>
+	</body>
+</html>
