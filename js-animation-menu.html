@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				background-color: #cdbea5;
+				color: #000;
+				font-size: 2rem;
+			}
+
+			.wrapper {
+				display: flex;
+				flex-direction: column;
+				overflow: hidden;
+			}
+
+			.hamburger {
+				position: fixed;
+				top: 24px;
+				right: 24px;
+				z-index: 20;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 8px;
+				width: 80px;
+				height: 80px;
+				border: none;
+				border-radius: 100vmax;
+				background-color: black;
+				cursor: pointer;
+			}
+			.hamburger::before,
+			.hamburger::after,
+			.hamburger .hamburgerLine {
+				position: absolute;
+				display: block;
+				width: 50%;
+				height: 4px;
+				border-radius: 100vmax;
+				background-color: white;
+			}
+			.hamburger::before,
+			.hamburger::after {
+				content: "";
+			}
+			.hamburger::before {
+				transform: translateY(-16px);
+			}
+			.hamburger::after {
+				transform: translateY(16px);
+			}
+			.hamburger[aria-expanded="true"] .hamburgerLine {
+				opacity: 0;
+			}
+			.hamburger[aria-expanded="true"]::before {
+				transform: rotate(30deg);
+			}
+			.hamburger[aria-expanded="true"]::after {
+				transform: rotate(-30deg);
+			}
+
+			.nav {
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 10;
+				width: 100%;
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: hidden;
+			}
+			.nav[aria-hidden="true"] {
+				visibility: hidden;
+				opacity: 0;
+				pointer-events: none;
+			}
+			.nav[aria-hidden="false"] {
+				visibility: visible;
+				opacity: 1;
+				pointer-events: auto;
+			}
+
+			.menu {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 2em;
+				width: 100%;
+				height: 100%;
+				background: #b46e41;
+				color: white;
+			}
+
+			.main {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-evenly;
+				height: 200vh;
+			}
+
+			.footer {
+				padding: 1em 0;
+				text-align: center;
+				background-color: #2d2314;
+				color: #fff;
+			}
+
+			.overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 100;
+				width: 100%;
+				height: 100vh;
+				pointer-events: none;
+			}
+		</style>
+
+		<div class="wrapper">
+			<button
+				id="toggle"
+				class="hamburger"
+				type="button"
+				aria-label="メニューを開く"
+				aria-controls="nav"
+				aria-expanded="false"
+			>
+				<span class="hamburgerLine"></span>
+			</button>
+			<nav id="nav" class="nav" aria-hidden="true">
+				<ul id="menu" class="menu">
+					<li>Menu 01</li>
+					<li>Menu 02</li>
+					<li>Mnue 03</li>
+				</ul>
+			</nav>
+			<main id="main" class="main">
+				<p>main contents</p>
+				<p>main contents</p>
+				<p>main contents</p>
+				<p>main contents</p>
+				<p>main contents</p>
+			</main>
+			<footer id="footer" class="footer">
+				<p>&copy;2022&nbsp;traveler20</p>
+			</footer>
+			<svg
+				class="overlay"
+				width="100%"
+				height="100%"
+				viewBox="0 0 100 100"
+				preserveAspectRatio="none"
+			>
+				<path
+					id="overlayPath"
+					class="overlayPath"
+					vector-effect="non-scaling-stroke"
+					d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
+				/>
+			</svg>
+		</div>
+
+		<script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+		<script>
+			const CONTENTS = {
+				MAIN: document.getElementById("main"),
+				FOOTER: document.getElementById("footer"),
+			};
+			const NAV = document.getElementById("nav");
+			const MENU = document.getElementById("menu");
+			const TOGGLE = document.getElementById("toggle");
+			const OVERLAYPATH = document.getElementById("overlayPath");
+
+			// ボタン連打用のフラグ
+			let isAnimating = false;
+
+			function menuOpen() {
+				if (isAnimating) return;
+				isAnimating = true;
+				gsap
+					.timeline({
+						onStart: () => {
+							NAV.setAttribute("aria-hidden", "false");
+							TOGGLE.setAttribute("aria-label", "メニューを閉じる");
+							gsap.to(TOGGLE, {
+								autoAlpha: 0,
+								scale: 0,
+								duration: 0.1,
+							});
+							gsap.set(MENU, {
+								y: -100,
+								autoAlpha: 0,
+							});
+						},
+						onComplete: () => {
+							isAnimating = false;
+						},
+					})
+					// 初めにアニメーションするパス
+					// 透明なパス
+					.set(OVERLAYPATH, {
+						attr: { d: "M 0 0 V 0 Q 50 0 100 0 V 0 z" },
+					})
+					// 扇型を黒く塗りつぶして反転させたパス
+					.to(
+						OVERLAYPATH,
+						{
+							attr: { d: "M 0 0 V 50 Q 50 100 100 50 V 0 z" },
+							ease: "power4.in",
+							duration: 0.5,
+						},
+						0
+					)
+					// 真っ黒なパス
+					.to(OVERLAYPATH, {
+						attr: { d: "M 0 0 V 100 Q 50 100 100 100 V 0 z" },
+						ease: "power2",
+						duration: 0.3,
+					})
+					// メインコンテンツを移動させながら非表示にする
+					.to(
+						[CONTENTS.MAIN, CONTENTS.FOOTER],
+						{
+							y: 100,
+							opacity: 0,
+							duration: 0.3,
+							ease: "power3.in",
+						},
+						0.1
+					)
+					// 後にアニメーションするパス
+					// 真っ黒なパス
+					.set(OVERLAYPATH, {
+						attr: { d: "M 0 100 V 0 Q 50 0 100 0 V 100 z" },
+					})
+
+					// 扇型の余白部分を黒く塗りつぶして反転させたパス
+					.to(OVERLAYPATH, {
+						attr: { d: "M 0 100 V 50 Q 50 100 100 50 V 100 z" },
+						duration: 0.3,
+						ease: "power2.in",
+					})
+					// 透明なパス
+					.to(OVERLAYPATH, {
+						attr: { d: "M 0 100 V 100 Q 50 100 100 100 V 100 z" },
+						duration: 0.3,
+						ease: "power4",
+					})
+					// メニューを移動させながら表示させる
+					.to(
+						MENU,
+						{
+							y: 0,
+							autoAlpha: 1,
+							duration: 0.5,
+							ease: "power4",
+							onStart: () => {
+								TOGGLE.setAttribute("aria-expanded", "true");
+								gsap.to(TOGGLE, {
+									autoAlpha: 1,
+									scale: 1,
+									duration: 0.1,
+								});
+							},
+						},
+						">-=0.5"
+					);
+			}
+
+			function menuClose() {
+				if (isAnimating) return;
+				isAnimating = true;
+				gsap
+					.timeline({
+						onStart: () => {
+							TOGGLE.setAttribute("aria-label", "メニューを開く");
+						},
+						onComplete: () => {
+							NAV.setAttribute("aria-hidden", "true");
+							isAnimating = false;
+						},
+					})
+					// 初めにアニメーションするパス
+					// 透明なパス
+					.set(OVERLAYPATH, {
+						attr: { d: "M 0 100 V 100 Q 50 100 100 100 V 100 z" },
+					})
+					// 扇型を黒く塗りつぶしたパス
+					.to(
+						OVERLAYPATH,
+						{
+							duration: 0.5,
+							ease: "power4.in",
+							attr: { d: "M 0 100 V 50 Q 50 0 100 50 V 100 z" },
+						},
+						0
+					)
+					// 真っ黒なパス
+					.to(OVERLAYPATH, {
+						duration: 0.3,
+						ease: "power2",
+						attr: { d: "M 0 100 V 0 Q 50 0 100 0 V 100 z" },
+					})
+					// メニューを上に移動させながら非表示にする
+					.to(
+						MENU,
+						{
+							duration: 0.5,
+							ease: "power3.in",
+							y: -100,
+							onStart: () => {
+								gsap.to(TOGGLE, {
+									autoAlpha: 0,
+									duration: 0.1,
+								});
+							},
+						},
+						0.1
+					)
+					// 後にアニメーションするパス
+					// 真っ黒なパス
+					.set(OVERLAYPATH, {
+						attr: { d: "M 0 0 V 100 Q 50 100 100 100 V 0 z" },
+					})
+					.set(
+						MENU,
+						{
+							opacity: 0,
+						},
+						"<"
+					)
+					// 扇型の余白部分を黒く塗りつぶしたパス
+					.to(OVERLAYPATH, {
+						duration: 0.3,
+						ease: "power2.in",
+						attr: { d: "M 0 0 V 50 Q 50 0 100 50 V 0 z" },
+					})
+					// 透明なパス
+					.to(OVERLAYPATH, {
+						duration: 0.3,
+						ease: "power4",
+						attr: { d: "M 0 0 V 0 Q 50 0 100 0 V 0 z" },
+					})
+					// メインコンテンツを移動させながら表示させる
+					.to(
+						[CONTENTS.MAIN, CONTENTS.FOOTER],
+						{
+							duration: 0.5,
+							ease: "power4",
+							y: 0,
+							opacity: 1,
+							onStart: () => {
+								TOGGLE.setAttribute("aria-expanded", "false");
+								gsap.to(TOGGLE, {
+									autoAlpha: 1,
+									duration: 0.1,
+								});
+							},
+						},
+						">-=0.4"
+					);
+			}
+
+			// タッチデバイスでは touchstart をトリガーにする
+			const clickTouchEvent = "ontouchstart" in window ? "touchstart" : "click";
+
+			// リスナー登録
+			TOGGLE.addEventListener(clickTouchEvent, () => {
+				if (TOGGLE.getAttribute("aria-expanded") === "true") {
+					menuClose();
+				} else {
+					menuOpen();
+				}
+			});
+		</script>
+	</body>
+</html>
