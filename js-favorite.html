@@ -8,28 +8,28 @@
 	</head>
 	<body>
 		<ul>
-			<li no="1" class="add" onclick="addfav('1')">
+			<li no="1" class="js-favorite-add" onclick="favorite_add('1')">
 				<span>♡</span>No:1 りんご
 			</li>
-			<li no="1" class="remove" onclick="removefav('1')">
+			<li no="1" class="js-favorite-remove" onclick="favorite_remove('1')">
 				<span>♥</span>No:1 りんご
 			</li>
-			<li no="2" class="add" onclick="addfav('2')">
+			<li no="2" class="js-favorite-add" onclick="favorite_add('2')">
 				<span>♡</span>No:2 みかん
 			</li>
-			<li no="2" class="remove" onclick="removefav('2')">
+			<li no="2" class="js-favorite-remove" onclick="favorite_remove('2')">
 				<span>♥</span>No:2 みかん
 			</li>
-			<li no="3" class="add" onclick="addfav('3')">
+			<li no="3" class="js-favorite-add" onclick="favorite_add('3')">
 				<span>♡</span>No:3 ばなな
 			</li>
-			<li no="3" class="remove" onclick="removefav('3')">
+			<li no="3" class="js-favorite-remove" onclick="favorite_remove('3')">
 				<span>♥</span>No:3 ばなな
 			</li>
 		</ul>
 
 		<style>
-			ul li.remove span {
+			ul li.js-favorite-remove span {
 				color: #f00;
 			}
 		</style>
@@ -40,23 +40,23 @@
 			function togleitem(oid, event) {
 				if (event == "add") {
 					// 未チェック(class="add")を非表示にして、チェック済(class="remove")を表示する
-					$("li.add[no=" + oid + "]").hide();
-					$("li.remove[no=" + oid + "]").show();
+					$("li.js-favorite-add[no=" + oid + "]").hide();
+					$("li.js-favorite-remove[no=" + oid + "]").show();
 				} else if (event == "remove") {
 					// チェック済(class="remove")を非表示にして、未チェック(class="add")を表示する
-					$("li.add[no=" + oid + "]").show();
-					$("li.remove[no=" + oid + "]").hide();
+					$("li.js-favorite-add[no=" + oid + "]").show();
+					$("li.js-favorite-remove[no=" + oid + "]").hide();
 				}
 			}
 
 			/* 【解説Bパート】 "ページロード時にローカルストレージの中をチェック" */
 			$(function () {
-				$("ul .remove").hide(); // お気に入り中の表示は一時的に非表示に。
+				$("ul .js-favorite-remove").hide(); // お気に入り中の表示は一時的に非表示に。
 
 				// お気に入りリストに存在するか確認
-				var key = "お気に入りID";
-				var getjson = localStorage.getItem(key);
-				var oidlist = JSON.parse(getjson);
+				const key = "お気に入りID";
+				const getjson = localStorage.getItem(key);
+				const oidlist = JSON.parse(getjson);
 				if (oidlist != null) {
 					oidlist.forEach(function (oid) {
 						togleitem(oid, "add");
@@ -65,17 +65,17 @@
 			});
 
 			/* 【解説Cパート】 "お気に入りに追加機能" */
-			function addfav(oid) {
-				var key = "お気に入りID"; // キーの名前を指定
+			function favorite_add(oid) {
+				const key = "お気に入りID"; // キーの名前を指定
 
 				// ローカルストレージから値を取得
-				var getjson = localStorage.getItem(key);
-				var oidlist = JSON.parse(getjson);
+				const getjson = localStorage.getItem(key);
+				const oidlist = JSON.parse(getjson);
 
 				if (oidlist == null) {
 					// 初めて「お気に入りID」というキーがローカルストレージに登録される時の処理
 					oidary = new Array(oid);
-					var setjson = JSON.stringify(oidary);
+					const setjson = JSON.stringify(oidary);
 					localStorage.setItem(key, setjson);
 
 					togleitem(oid, "add");
@@ -84,7 +84,7 @@
 					if (oidlist.indexOf(oid) == -1) {
 						// 且つ、まだお気に入りIDに登録されていない時
 						oidlist.push(oid);
-						var setjson = JSON.stringify(oidlist);
+						const setjson = JSON.stringify(oidlist);
 						localStorage.setItem(key, setjson);
 
 						togleitem(oid, "add");
@@ -93,26 +93,68 @@
 			}
 
 			/* 【解説Dパート】 "お気に入りから削除機能" */
-			function removefav(oid) {
-				var key = "お気に入りID"; // キーの名前を指定
+			function favorite_remove(oid) {
+				const key = "お気に入りID"; // キーの名前を指定
 
 				// ローカルストレージから値を取得
-				var getjson = localStorage.getItem(key);
-				var oidlist = JSON.parse(getjson);
+				const getjson = localStorage.getItem(key);
+				const oidlist = JSON.parse(getjson);
 
 				if (oidlist != null) {
 					// 「お気に入りID」というキーが存在した時
-					var checkitem = oidlist.indexOf(oid); // 配列の何番目に該当のIDがあるかを見る
+					const checkitem = oidlist.indexOf(oid); // 配列の何番目に該当のIDがあるかを見る
 					if (checkitem != -1) {
 						// 「お気に入りID」の中に該当のIDが見つかった時
 						oidlist.splice(checkitem, 1);
-						var setjson = JSON.stringify(oidlist);
+						const setjson = JSON.stringify(oidlist);
 						localStorage.setItem(key, setjson);
 
 						togleitem(oid, "remove");
 					}
 				}
 			}
+		</script>
+
+		<!--  -->
+		<style>
+			.c-favorite_button {
+				font-size: 24px;
+				color: #fff;
+				-webkit-text-stroke: 1px #333;
+				border: none;
+				background-color: #fff;
+			}
+			.c-favorite_button.is-bookmark {
+				color: #f00;
+				-webkit-text-stroke: 1px #f00;
+			}
+		</style>
+		<button class="c-favorite_button js-favorite-button">♥</button>
+		<script>
+			$(".js-favorite-button").click(function () {
+				$(".js-favorite-button").toggleClass("is-bookmark");
+			});
+			// localStorage.setItem(
+			// 	"favorite-item",
+			// 	$(".js-favorite-button").hasClass("is-bookmark")
+			// );
+
+			// $(".js-favorite-button").click(function () {
+			// 	$(".js-favorite-button").toggleClass("is-bookmark");
+
+			// 	localStorage.setItem(
+			// 		"favorite-item",
+			// 		$(".js-favorite-button").hasClass("is-bookmark")
+			// 	);
+			// });
+
+			// // window.localStorage.setItem('keyname','内容です。');
+			// if (window.localStorage.getItem("favorite-item")) {
+			// 	$(".js-favorite-button").addClass("is-bookmarke");
+			// }
+			// if (localStorage.getItem("favorite-item") === "true") {
+			// 	$(".js-favorite-button").addClass("is-bookmarke");
+			// }
 		</script>
 	</body>
 </html>
