@@ -156,5 +156,23 @@
 			// 	$(".js-favorite-button").addClass("is-bookmarke");
 			// }
 		</script>
+
+		<script>
+			// ウェブストレージに対応している場合
+			if (window.localStorage) {
+				// 保存するオブジェクト
+				const obj = {
+					str: "Hello",
+				};
+				// オブジェクトをjsonに変換
+				const txt = JSON.stringify(obj);
+				// jsonデータをlocalStorageに保存
+				localStorage.setItem("hoge", txt);
+				// localStorageに保存されたものをキーを指定して取得
+				const item = localStorage.getItem("hoge");
+				// コンソールに出力
+				console.log(item);
+			}
+		</script>
 	</body>
 </html>
