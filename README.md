@@ -117,6 +117,7 @@ css-extended.html
 - [トグルボタン](css-toggle.html)
 - [ファイルアップロードボタン](css-upload.html)
 - [柔軟なテキストエリア](js-textareaFlexible.html)
+- [チェックボックスに色をつける](css-accent-color.html)
 
 ```
 css-checkbox.html
@@ -124,6 +125,7 @@ css-radio.html
 css-toggle.html
 css-upload.html
 js-textareaFlexible.html
+css-accent-color.html
 ```
 
 # アイコン
@@ -169,6 +171,7 @@ css-topscroll.html
 - [フェイドインアニメーション](css-fadein.html)　仮
 - [背景がグワンっと上がる](css-bgup.html)
 - [ぐるぐる動く系のアニメーション](css-infinityanimation.html)
+- [ぐわんとうごくメニュー](js-animation-menu.html)
 
 ```
 js-animation.html
@@ -181,6 +184,7 @@ css-fadeout--pagination.html
 css-fadein.html
 css-bgup.html
 css-infinityanimation.html
+js-animation-menu.html
 ```
 
 # サイトでよく実装する機能
@@ -278,6 +282,7 @@ css-container.html
 - [Scrollbetween を使ったスクロールアニメーション](js-scrollbetween.html)
 - [ジェネレータ](js-generator.html)
 - [文字が反転する](css-invert.html)
+- [お気に入り登録ボタン](js-favorite.html)
 
 ```
 css-timeline.html
@@ -288,6 +293,7 @@ cdn-simplecss.html
 js-scrollbetween.html
 js-generator.html
 css-invert.html
+js-favorite.html
 ```
 
 ## canvas アニメーション

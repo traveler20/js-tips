@@ -7,44 +7,133 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<!-- facebook -->
-		<a
-			href="http://www.facebook.com/share.php?u=yurukei-career.com"
-			target="_blank"
-			rel="nofollow noopener noreferrer"
-			>Facebookでシェアする</a
-		>
+		<section>
+			<!-- facebook -->
+			<a
+				href="http://www.facebook.com/share.php?u=yurukei-career.com"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>Facebookでシェアする</a
+			>
 
-		<!-- twitter -->
-		<a
-			href="http://twitter.com/share?url=yurukei-career.com&text=Twitterのシェアをするときの文章です&via=yurukei20&hashtags=ハッシュタグのテキスト"
-			target="_blank"
-			rel="nofollow noopener noreferrer"
-			>Twitterで共有する</a
-		>
+			<!-- twitter -->
+			<a
+				href="http://twitter.com/share?url=yurukei-career.com&text=Twitterのシェアをするときの文章です&via=yurukei20&hashtags=ハッシュタグのテキスト"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>Twitterで共有する</a
+			>
 
-		<!-- line -->
-		<a
-			href="https://social-plugins.line.me/lineit/share?url=yurukei-career.com"
-			target="_blank"
-			rel="nofollow noopener noreferrer"
-			>LINEで送る</a
-		>
+			<!-- line -->
+			<a
+				href="https://social-plugins.line.me/lineit/share?url=yurukei-career.com"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>LINEで送る</a
+			>
 
-		<!-- hatena -->
-		<a
-			href="http://b.hatena.ne.jp/entry/s/https://yurukei-career.com"
-			target="_blank"
-			rel="nofollow noopener noreferrer"
-			>はてなブックマークに登録する</a
-		>
+			<!-- hatena -->
+			<a
+				href="http://b.hatena.ne.jp/entry/s/https://yurukei-career.com"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>はてなブックマークに登録する</a
+			>
 
-		<!-- pocket -->
-		<a
-			href="http://getpocket.com/edit?url=https://yurukei-career.com"
-			target="_blank"
-			rel="nofollow noopener noreferrer"
-			>pocketに登録</a
-		>
+			<!-- pocket -->
+			<a
+				href="http://getpocket.com/edit?url=https://yurukei-career.com"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>pocketに登録</a
+			>
+		</section>
+
+		<section>
+			<!-- facebook -->
+			<a
+				class="share_button share_facebook"
+				href="http://www.facebook.com/share.php?u=yurukei-career.com"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>Facebookでシェアする</a
+			>
+			<!-- twitter -->
+			<a
+				class="share_button share_twitter"
+				href="http://twitter.com/share?url=yurukei-career.com&text=Twitterのシェアをするときの文章です&via=yurukei20&hashtags=ハッシュタグのテキスト"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>Twitterで共有する</a
+			>
+			<!-- line -->
+			<a
+				class="share_button share_line"
+				href="https://social-plugins.line.me/lineit/share?url=yurukei-career.com"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>LINEで送る</a
+			>
+			<!-- hatena -->
+			<a
+				class="share_button share_hatena"
+				href="http://b.hatena.ne.jp/entry/s/https://yurukei-career.com"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>はてなブックマークに登録する</a
+			>
+			<!-- pocket -->
+			<a
+				class="share_button share_pocket"
+				href="http://getpocket.com/edit?url=https://yurukei-career.com"
+				target="_blank"
+				rel="nofollow noopener noreferrer"
+				>pocketに登録</a
+			>
+		</section>
+		<style>
+			body {
+				height: 100vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 32px;
+			}
+			section {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+				align-items: center;
+				gap: 16px;
+			}
+			.share_button {
+				display: inline-block;
+				padding: 8px 24px;
+				border-radius: 8px;
+				color: #fff;
+				background-color: #333;
+				text-decoration: none;
+				transition: 0.4s;
+			}
+			.share_button:hover {
+				opacity: 0.7;
+			}
+			.share_twitter {
+				background-color: #1da1f2;
+			}
+			.share_facebook {
+				background-color: #1877f2;
+			}
+			.share_line {
+				background-color: #00b900;
+			}
+			.share_hatena {
+				background-color: #5279e7;
+			}
+			.share_pocket {
+				background-color: #ee4056;
+			}
+		</style>
 	</body>
 </html>
