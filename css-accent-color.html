@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+			}
+			html {
+				block-size: 100%;
+			}
+			body {
+				min-block-size: 100%;
+				font-family: system-ui, sans-serif;
+
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+				gap: 32px;
+			}
+
+			/* ────────────────────────────── */
+
+			[color-scheme="light"] {
+				color-scheme: light;
+			}
+			[color-scheme="dark"] {
+				color-scheme: dark;
+			}
+
+			.c-checkbox__fieldset {
+				border: 1px solid #333;
+				border-radius: 18px;
+				padding: 18px;
+				display: flex;
+				flex-direction: column;
+				gap: 18px;
+			}
+			.c-checkbox__fieldset[color-scheme="dark"] {
+				background: Canvas;
+				color: #fff;
+			}
+
+			.c-checkbox__input,
+			.c-checkbox__input--accented {
+				--size: 32px;
+				block-size: var(--size);
+				inline-size: var(--size);
+			}
+			.c-checkbox__input--accented {
+				accent-color: deeppink;
+			}
+			[color-scheme="dark"] .c-checkbox__input--accented {
+				accent-color: hsl(328 100% 80%);
+			}
+
+			.c-checkbox__label {
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				gap: 20px;
+			}
+		</style>
+
+		<fieldset class="c-checkbox__fieldset" color-scheme="light">
+			<label class="c-checkbox__label" for="default-light">
+				Default
+				<input
+					class="c-checkbox__input"
+					type="checkbox"
+					id="default-light"
+					checked
+				/>
+			</label>
+			<label class="c-checkbox__label" for="accented-light">
+				Tinted
+				<input
+					class="c-checkbox__input--accented"
+					type="checkbox"
+					id="accented-light"
+					checked
+				/>
+			</label>
+		</fieldset>
+
+		<fieldset class="c-checkbox__fieldset" color-scheme="dark">
+			<label class="c-checkbox__label" for="default-dark">
+				Default
+				<input
+					class="c-checkbox__input"
+					type="checkbox"
+					id="default-dark"
+					checked
+				/>
+			</label>
+			<label class="c-checkbox__label" for="accented-dark">
+				Tinted
+				<input
+					class="c-checkbox__input--accented"
+					type="checkbox"
+					id="accented-dark"
+					checked
+				/>
+			</label>
+		</fieldset>
+	</body>
+</html>
