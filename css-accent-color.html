@@ -14,7 +14,22 @@
 			}
 			html {
 				block-size: 100%;
+				--brand: hotpink;
+				scrollbar-color: hotpink Canvas;
 			}
+			:focus-visible {
+				outline-color: var(--brand);
+			}
+			::selection {
+				background-color: var(--brand);
+			}
+			/* list や summary のマーカー色 */
+			::marker {
+				color: var(--brand);
+			}
+			/* :is(::-webkit-calendar-picker-indicator, ::-webkit-clear-button, ::-webkit-inner-spin-button, ::-webkit-outer-spin-button) {
+				color: var(--brand);
+			} */
 			body {
 				min-block-size: 100%;
 				font-family: system-ui, sans-serif;
@@ -107,6 +122,90 @@
 					type="checkbox"
 					id="accented-dark"
 					checked
+				/>
+			</label>
+		</fieldset>
+
+		<fieldset class="c-checkbox__fieldset" color-scheme="light">
+			<label class="c-checkbox__label">
+				Default
+				<input
+					class="c-checkbox__input"
+					type="radio"
+					name="default-demo-light"
+					checked
+				/>
+				<input
+					class="c-checkbox__input"
+					type="radio"
+					name="default-demo-light"
+				/>
+				<input
+					class="c-checkbox__input"
+					type="radio"
+					name="default-demo-light"
+				/>
+			</label>
+
+			<label class="c-checkbox__label">
+				Tinted
+				<input
+					class="c-checkbox__input--accented"
+					type="radio"
+					name="accented-demo-light"
+					checked
+				/>
+				<input
+					class="c-checkbox__input--accented"
+					type="radio"
+					name="accented-demo-light"
+				/>
+				<input
+					class="c-checkbox__input--accented"
+					type="radio"
+					name="accented-demo-light"
+				/>
+			</label>
+		</fieldset>
+
+		<fieldset class="c-checkbox__fieldset" color-scheme="dark">
+			<label class="c-checkbox__label">
+				Default
+				<input
+					class="c-checkbox__input"
+					type="radio"
+					name="default-demo-dark"
+					checked
+				/>
+				<input
+					class="c-checkbox__input"
+					type="radio"
+					name="default-demo-dark"
+				/>
+				<input
+					class="c-checkbox__input"
+					type="radio"
+					name="default-demo-dark"
+				/>
+			</label>
+
+			<label class="c-checkbox__label">
+				Tinted
+				<input
+					class="c-checkbox__input--accented"
+					type="radio"
+					name="accented-demo-dark"
+					checked
+				/>
+				<input
+					class="c-checkbox__input--accented"
+					type="radio"
+					name="accented-demo-dark"
+				/>
+				<input
+					class="c-checkbox__input--accented"
+					type="radio"
+					name="accented-demo-dark"
 				/>
 			</label>
 		</fieldset>
