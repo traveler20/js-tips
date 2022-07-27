@@ -216,15 +216,10 @@
 				"js-header-gnavi-content"
 			);
 			for (let i = 0; i < gnavi_button.length; i++) {
-				const gnavi_content_class = gnavi_content[i].className;
-
-				// if (gnavi_content_class.contains("is-show") == true){
-				// }
-				if (gnavi_content_class == "is-show") {
-					gnavi_content_class = "js-header-gnavi-content";
-				}
-
 				gnavi_button[i].onclick = function () {
+					gnavi_content[i].classList.toggle("is-show");
+				};
+				gnavi_button[i].onblur = function () {
 					gnavi_content[i].classList.toggle("is-show");
 				};
 			}
