@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- reset.css destyle -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+		/>
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			:root {
+				--color-black: #333;
+				--color-white: #fff;
+				--inner-width: 1000px;
+				--header-height: 60px;
+			}
+			.l-header {
+				border-bottom: solid 1px var(--color-black);
+			}
+			.l-header__inner {
+				max-width: var(--inner-width);
+				margin: 0 auto;
+				padding: 0 16px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				position: relative;
+
+				height: var(--header-height);
+			}
+			/* PC */
+			@media screen and (min-width: 800px) {
+				.l-header__hamburger {
+					display: none;
+				}
+
+				.l-header-gnavi__ul {
+					display: flex;
+					gap: 16px;
+					max-width: var(--inner-width);
+					margin: 0 auto;
+				}
+				.l-header-gnavi__list {
+					position: relative;
+					line-height: var(--header-height);
+				}
+				.l-header-gnavi__list--full {
+					position: static;
+				}
+				.l-header-gnavi__button,
+				.l-header-gnavi__link,
+				.l-header-gnavi__ctaButton {
+					display: inline-block;
+					padding: 0 20px;
+					height: 100%;
+					width: 100%;
+				}
+				.l-header-gnavi__content {
+					position: absolute;
+					left: 0;
+					min-width: 100%;
+					white-space: nowrap;
+					background-color: var(--color-white);
+					padding: 14px 20px;
+					line-height: 2.4;
+
+					display: none;
+				}
+				.l-header-gnavi__content.is-show {
+					display: block;
+				}
+			}
+			/* SP */
+			@media screen and (max-width: 800px) {
+				.l-header__hamburger {
+					display: block;
+				}
+			}
+		</style>
+
+		<!-- .l-header -->
+		<header class="l-header">
+			<div class="l-header__inner">
+				<a href="/" class="l-header__logo">LOGO</a>
+				<button class="l-header__hamburger">
+					<span>メニュー</span>
+				</button>
+				<nav class="l-header-gnavi">
+					<ul class="l-header-gnavi__ul">
+						<li class="l-header-gnavi__list l-header-gnavi__list--full">
+							<button
+								class="l-header-gnavi__button js-header-gnavi-button"
+								type="button"
+							>
+								サービス一覧
+							</button>
+							<div class="l-header-gnavi__content js-header-gnavi-content">
+								<h3 class="l-header-gnavi__contentTitle">
+									<a href="#" class="l-header-gnavi__contentLink"
+										>タイトルリンク</a
+									>
+								</h3>
+								<ul class="l-header-gnavi__contentUl">
+									<li class="l-header-gnavi__contentList">
+										<h4 class="l-header-gnavi__contentSubTitle">
+											<a href="#" class="l-header-gnavi__contentLink"
+												>タイトルリンク</a
+											>
+										</h4>
+										<a href="#" class="l-header-gnavi__contentLink"
+											>リンクテキスト</a
+										>
+										<a href="#" class="l-header-gnavi__contentLink"
+											>リンクテキスト</a
+										>
+										<a href="#" class="l-header-gnavi__contentLink"
+											>リンクテキスト</a
+										>
+									</li>
+									<li class="l-header-gnavi__contentList">
+										<h4 class="l-header-gnavi__contentSubTitle">
+											<a href="#" class="l-header-gnavi__contentLink"
+												>タイトルリンク</a
+											>
+										</h4>
+										<a href="#" class="l-header-gnavi__contentLink"
+											>リンクテキスト</a
+										>
+										<a href="#" class="l-header-gnavi__contentLink"
+											>リンクテキスト</a
+										>
+										<a href="#" class="l-header-gnavi__contentLink"
+											>リンクテキスト</a
+										>
+									</li>
+									<li class="l-header-gnavi__contentList">
+										<h4 class="l-header-gnavi__contentSubTitle">
+											<a href="#" class="l-header-gnavi__contentLink"
+												>タイトルリンク</a
+											>
+										</h4>
+										<a href="#" class="l-header-gnavi__contentLink"
+											>リンクテキスト</a
+										>
+										<a href="#" class="l-header-gnavi__contentLink"
+											>リンクテキスト</a
+										>
+										<a href="#" class="l-header-gnavi__contentLink"
+											>リンクテキスト</a
+										>
+									</li>
+									<li class="l-header-gnavi__contentList">
+										<h4 class="l-header-gnavi__contentSubTitle">
+											<a href="#" class="l-header-gnavi__contentLink"
+												>タイトルリンク</a
+											>
+										</h4>
+										<a href="#" class="l-header-gnavi__contentLink"
+											>リンクテキスト</a
+										>
+										<a href="#" class="l-header-gnavi__contentLink"
+											>リンクテキスト</a
+										>
+										<a href="#" class="l-header-gnavi__contentLink"
+											>リンクテキスト</a
+										>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="l-header-gnavi__list">
+							<button
+								class="l-header-gnavi__button js-header-gnavi-button"
+								type="button"
+							>
+								サポート
+							</button>
+							<div class="l-header-gnavi__content js-header-gnavi-content">
+								<h3 class="l-header-gnavi__contentTitle">
+									<a href="#" class="l-header-gnavi__contentLink"
+										>タイトルリンク</a
+									>
+								</h3>
+								<p class="l-header-gnavi__contentParagraph">
+									<a href="#" class="l-header-gnavi__contentLink"
+										>リンクテキスト</a
+									>
+								</p>
+							</div>
+						</li>
+						<li class="l-header-gnavi__list">
+							<a href="#" class="l-header-gnavi__link">利用料金</a>
+						</li>
+						<li class="l-header-gnavi__list">
+							<a href="#" class="l-header-gnavi__link">特徴</a>
+						</li>
+						<li class="l-header-gnavi__list">
+							<a href="#" class="l-header-gnavi__ctaButton">問い合わせ</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<!-- /.l-header -->
+
+		<script>
+			const gnavi_button = document.getElementsByClassName(
+				"js-header-gnavi-button"
+			);
+			const gnavi_content = document.getElementsByClassName(
+				"js-header-gnavi-content"
+			);
+			for (let i = 0; i < gnavi_button.length; i++) {
+				const gnavi_content_class = gnavi_content[i].className;
+
+				// if (gnavi_content_class.contains("is-show") == true){
+				// }
+				if (gnavi_content_class == "is-show") {
+					gnavi_content_class = "js-header-gnavi-content";
+				}
+
+				gnavi_button[i].onclick = function () {
+					gnavi_content[i].classList.toggle("is-show");
+				};
+			}
+		</script>
+	</body>
+</html>
