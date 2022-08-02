@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			.overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 100;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+			}
+			.button-wrap {
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 101;
+			}
+			.button-wrap.on-animation {
+				pointer-events: none;
+			}
+		</style>
+
+		<!-- 擬似アニメーショントリガー -->
+		<div class="button-wrap">
+			<button class="down">down</button>
+			<button class="up">up</button>
+		</div>
+		<svg
+			class="overlay"
+			width="100%"
+			height="100%"
+			viewBox="0 0 100 100"
+			preserveAspectRatio="none"
+		>
+			<path
+				class="overlay-path"
+				vector-effect="non-scaling-stroke"
+				d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
+			>
+				<!-- 下降アニメーション -->
+				<!-- begin="hoge.click" でhogeをクリックしたらアニメーション発火という設定も可能。hogeはSVG要素に付与されたIDである必要がある -->
+				<animate
+					id="animation1"
+					attributeName="d"
+					attributeType="xml"
+					from="M 0 0 V 0 Q 50 0 100 0 V 0 z"
+					to="M 0 0 V 50 Q 50 100 100 50 V 0 z"
+					begin="indefinite"
+					dur="0.3s"
+					calcMode="spline"
+					keyTimes="0;1"
+					keySplines="0.9 0 1.0 1.0"
+				/>
+				<animate
+					id="animation2"
+					attributeName="d"
+					attributeType="xml"
+					from="M 0 0 V 50 Q 50 100 100 50 V 0 z"
+					to="M 0 0 V 100 Q 50 100 100 100 V 0 z"
+					begin="animation1.end"
+					dur="0.2s"
+					fill="freeze"
+				/>
+				<animate
+					id="animation3"
+					attributeName="d"
+					attributeType="xml"
+					from="M 0 0 V 100 Q 50 100 100 100 V 0 z"
+					to="M 0 0 V 100 Q 50 100 100 100 V 0 z"
+					begin="animation2.end"
+					dur="0.35s"
+					fill="freeze"
+				/>
+				<animate
+					id="animation4"
+					attributeName="d"
+					attributeType="xml"
+					from="M 0 100 V 0 Q 50 0 100 0 V 100 z"
+					to="M 0 100 V 50 Q 50 100 100 50 V 100 z"
+					begin="animation3.end"
+					dur="0.2s"
+					fill="freeze"
+					calcMode="spline"
+					keyTimes="0;1"
+					keySplines="0.9 0 1.0 1.0"
+				/>
+				<animate
+					id="animation5"
+					attributeName="d"
+					attributeType="xml"
+					from="M 0 100 V 50 Q 50 100 100 50 V 100 z"
+					to="M 0 100 V 100 Q 50 100 100 100 V 100 z"
+					begin="animation4.end"
+					dur="0.2s"
+					fill="freeze"
+				/>
+				<!-- 上昇アニメーション -->
+				<animate
+					id="animationR1"
+					attributeName="d"
+					attributeType="xml"
+					from="M 0 100 V 100 Q 50 100 100 100 V 100 z"
+					to="M 0 100 V 50 Q 50 0 100 50 V 100 z"
+					begin="indefinite"
+					dur="0.3s"
+					calcMode="spline"
+					keyTimes="0;1"
+					keySplines="0.9 0 1.0 1.0"
+				/>
+				<animate
+					id="animationR2"
+					attributeName="d"
+					attributeType="xml"
+					from="M 0 100 V 50 Q 50 0 100 50 V 100 z"
+					to="M 0 100 V 0 Q 50 0 100 0 V 100 z"
+					begin="animationR1.end"
+					dur="0.2s"
+					fill="freeze"
+				/>
+				<animate
+					id="animationR3"
+					attributeName="d"
+					attributeType="xml"
+					from="M 0 100 V 0 Q 50 0 100 0 V 100 z"
+					to="M 0 100 V 0 Q 50 0 100 0 V 100 z"
+					begin="animationR2.end"
+					dur="0.35s"
+					fill="freeze"
+				/>
+				<animate
+					id="animationR4"
+					attributeName="d"
+					attributeType="xml"
+					from="M 0 0 V 100 Q 50 100 100 100 V 0 z"
+					to="M 0 0 V 50 Q 50 0 100 50 V 0 z"
+					begin="animationR3.end"
+					dur="0.2s"
+					fill="freeze"
+					calcMode="spline"
+					keyTimes="0;1"
+					keySplines="0.9 0 1.0 1.0"
+				/>
+				<animate
+					id="animationR5"
+					attributeName="d"
+					attributeType="xml"
+					from="M 0 0 V 50 Q 50 0 100 50 V 0 z"
+					to="M 0 0 V 0 Q 50 0 100 0 V 0 z"
+					begin="animationR4.end"
+					dur="0.2s"
+					fill="freeze"
+				/>
+			</path>
+		</svg>
+
+		<script>
+			const triggerDown = document.querySelector(".down"); // 下降アニメーションのトリガーとなる要素
+			const triggerUp = document.querySelector(".up"); // 上昇アニメーションのトリガーとなる要素
+			const animationStartElement = document.querySelector("#animation1"); // 下降アニメーション開始発火要素
+			const animationStartElementR = document.querySelector("#animationR1"); // 下降アニメーション開始発火要素
+			const animationEndElement = document.querySelector("#animation5"); // 下降アニメーション終了検知要素
+			const animationEndElementR = document.querySelector("#animationR5"); // 上昇アニメーション終了検知要素
+			const button = document.querySelector(".button-wrap"); // SVGアニメーション発火のトリガーとなる要素
+
+			// 下降アニメーション発火
+			triggerDown.addEventListener("click", function () {
+				animationStartElement.beginElement();
+				button.classList.add("on-animation");
+			});
+
+			// 上昇アニメーション発火
+			triggerUp.addEventListener("click", function () {
+				animationStartElementR.beginElement();
+				button.classList.add("on-animation");
+			});
+
+			// アニメーションが完了したら発火トリガーをクリック可能にする
+			animationEndElement.addEventListener("endEvent", function () {
+				button.classList.remove("on-animation");
+			});
+
+			animationEndElementR.addEventListener("endEvent", function () {
+				button.classList.remove("on-animation");
+			});
+		</script>
+	</body>
+</html>
