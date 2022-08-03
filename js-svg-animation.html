@@ -5,10 +5,56 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<!-- reset.css destyle -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+		/>
 	</head>
 	<body>
 		<style>
-			.overlay {
+			body {
+				color: #000;
+				background-color: #f9f9f9;
+			}
+			.l-header {
+				/*  */
+				height: 60px;
+				position: sticky;
+				top: 0;
+				z-index: 1;
+				background-color: #f9f9f9;
+			}
+			.l-header__inner {
+				display: flex;
+				align-items: center;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+			.l-header-menu {
+				position: relative;
+				width: 60px;
+				height: 60px;
+				margin: 0 0 0 auto;
+			}
+			/* .l-header-menu.is-animation {
+				pointer-events: none;
+			} */
+			.l-header-menu__menuClose,
+			.l-header-menu__menuOpen {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				/* padding: 20px; */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: #f9f9f9;
+				background-color: #000;
+			}
+			.l-header-menu__overlay {
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -17,178 +63,235 @@
 				height: 100%;
 				pointer-events: none;
 			}
-			.button-wrap {
+			.l-header-menu__content {
 				position: fixed;
 				top: 0;
 				left: 0;
-				z-index: 101;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 16px;
+				color: #000;
+				background-color: #f9f9f9;
+
+				transition: 1.6s linear;
+				/* transition: color 1.6s linear; */
+				/* transition: visibility 1.6s linear; */
+				/* transition: background-color 1s linear; */
+				opacity: 0;
+				visibility: hidden;
 			}
-			.button-wrap.on-animation {
-				pointer-events: none;
+			.l-header-menu__menuClose {
+				opacity: 0;
+				visibility: hidden;
+			}
+			.l-header-menu__menuOpen {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			.l-header-menu__content.is-show {
+				opacity: 1;
+				visibility: visible;
+			}
+			.l-header-menu__content.is-show ~ .l-header-menu__menuClose {
+				opacity: 1;
+				visibility: visible;
+			}
+			.l-header-menu__content.is-show ~ .l-header-menu__menuOpen {
+				opacity: 0;
+				visibility: hidden;
 			}
 		</style>
 
-		<!-- 擬似アニメーショントリガー -->
-		<div class="button-wrap">
-			<button class="down">down</button>
-			<button class="up">up</button>
-		</div>
-		<svg
-			class="overlay"
-			width="100%"
-			height="100%"
-			viewBox="0 0 100 100"
-			preserveAspectRatio="none"
-		>
-			<path
-				class="overlay-path"
-				vector-effect="non-scaling-stroke"
-				d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
-			>
-				<!-- 下降アニメーション -->
-				<!-- begin="hoge.click" でhogeをクリックしたらアニメーション発火という設定も可能。hogeはSVG要素に付与されたIDである必要がある -->
-				<animate
-					id="animation1"
-					attributeName="d"
-					attributeType="xml"
-					from="M 0 0 V 0 Q 50 0 100 0 V 0 z"
-					to="M 0 0 V 50 Q 50 100 100 50 V 0 z"
-					begin="indefinite"
-					dur="0.3s"
-					calcMode="spline"
-					keyTimes="0;1"
-					keySplines="0.9 0 1.0 1.0"
-				/>
-				<animate
-					id="animation2"
-					attributeName="d"
-					attributeType="xml"
-					from="M 0 0 V 50 Q 50 100 100 50 V 0 z"
-					to="M 0 0 V 100 Q 50 100 100 100 V 0 z"
-					begin="animation1.end"
-					dur="0.2s"
-					fill="freeze"
-				/>
-				<animate
-					id="animation3"
-					attributeName="d"
-					attributeType="xml"
-					from="M 0 0 V 100 Q 50 100 100 100 V 0 z"
-					to="M 0 0 V 100 Q 50 100 100 100 V 0 z"
-					begin="animation2.end"
-					dur="0.35s"
-					fill="freeze"
-				/>
-				<animate
-					id="animation4"
-					attributeName="d"
-					attributeType="xml"
-					from="M 0 100 V 0 Q 50 0 100 0 V 100 z"
-					to="M 0 100 V 50 Q 50 100 100 50 V 100 z"
-					begin="animation3.end"
-					dur="0.2s"
-					fill="freeze"
-					calcMode="spline"
-					keyTimes="0;1"
-					keySplines="0.9 0 1.0 1.0"
-				/>
-				<animate
-					id="animation5"
-					attributeName="d"
-					attributeType="xml"
-					from="M 0 100 V 50 Q 50 100 100 50 V 100 z"
-					to="M 0 100 V 100 Q 50 100 100 100 V 100 z"
-					begin="animation4.end"
-					dur="0.2s"
-					fill="freeze"
-				/>
-				<!-- 上昇アニメーション -->
-				<animate
-					id="animationR1"
-					attributeName="d"
-					attributeType="xml"
-					from="M 0 100 V 100 Q 50 100 100 100 V 100 z"
-					to="M 0 100 V 50 Q 50 0 100 50 V 100 z"
-					begin="indefinite"
-					dur="0.3s"
-					calcMode="spline"
-					keyTimes="0;1"
-					keySplines="0.9 0 1.0 1.0"
-				/>
-				<animate
-					id="animationR2"
-					attributeName="d"
-					attributeType="xml"
-					from="M 0 100 V 50 Q 50 0 100 50 V 100 z"
-					to="M 0 100 V 0 Q 50 0 100 0 V 100 z"
-					begin="animationR1.end"
-					dur="0.2s"
-					fill="freeze"
-				/>
-				<animate
-					id="animationR3"
-					attributeName="d"
-					attributeType="xml"
-					from="M 0 100 V 0 Q 50 0 100 0 V 100 z"
-					to="M 0 100 V 0 Q 50 0 100 0 V 100 z"
-					begin="animationR2.end"
-					dur="0.35s"
-					fill="freeze"
-				/>
-				<animate
-					id="animationR4"
-					attributeName="d"
-					attributeType="xml"
-					from="M 0 0 V 100 Q 50 100 100 100 V 0 z"
-					to="M 0 0 V 50 Q 50 0 100 50 V 0 z"
-					begin="animationR3.end"
-					dur="0.2s"
-					fill="freeze"
-					calcMode="spline"
-					keyTimes="0;1"
-					keySplines="0.9 0 1.0 1.0"
-				/>
-				<animate
-					id="animationR5"
-					attributeName="d"
-					attributeType="xml"
-					from="M 0 0 V 50 Q 50 0 100 50 V 0 z"
-					to="M 0 0 V 0 Q 50 0 100 0 V 0 z"
-					begin="animationR4.end"
-					dur="0.2s"
-					fill="freeze"
-				/>
-			</path>
-		</svg>
+		<header class="l-header">
+			<div class="l-header__inner">
+				<a href="#" class="l-header-logo">LOGO</a>
+				<!-- 擬似アニメーショントリガー -->
+				<nav class="l-header-menu js-menu-header">
+					<svg
+						class="l-header-menu__overlay"
+						width="100%"
+						height="100%"
+						viewBox="0 0 100 100"
+						preserveAspectRatio="none"
+					>
+						<path
+							class="overlay-path"
+							vector-effect="non-scaling-stroke"
+							d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
+						>
+							<!-- 下降アニメーション -->
+							<!-- begin="hoge.click" でhogeをクリックしたらアニメーション発火という設定も可能。hogeはSVG要素に付与されたIDである必要がある -->
+							<animate
+								id="animation1"
+								attributeName="d"
+								attributeType="xml"
+								from="M 0 0 V 0 Q 50 0 100 0 V 0 z"
+								to="M 0 0 V 50 Q 50 100 100 50 V 0 z"
+								begin="indefinite"
+								dur="0.3s"
+								calcMode="spline"
+								keyTimes="0;1"
+								keySplines="0.9 0 1.0 1.0"
+							/>
+							<animate
+								id="animation2"
+								attributeName="d"
+								attributeType="xml"
+								from="M 0 0 V 50 Q 50 100 100 50 V 0 z"
+								to="M 0 0 V 100 Q 50 100 100 100 V 0 z"
+								begin="animation1.end"
+								dur="0.2s"
+								fill="freeze"
+							/>
+							<animate
+								id="animation3"
+								attributeName="d"
+								attributeType="xml"
+								from="M 0 0 V 100 Q 50 100 100 100 V 0 z"
+								to="M 0 0 V 100 Q 50 100 100 100 V 0 z"
+								begin="animation2.end"
+								dur="0.35s"
+								fill="freeze"
+							/>
+							<animate
+								id="animation4"
+								attributeName="d"
+								attributeType="xml"
+								from="M 0 100 V 0 Q 50 0 100 0 V 100 z"
+								to="M 0 100 V 50 Q 50 100 100 50 V 100 z"
+								begin="animation3.end"
+								dur="0.2s"
+								fill="freeze"
+								calcMode="spline"
+								keyTimes="0;1"
+								keySplines="0.9 0 1.0 1.0"
+							/>
+							<animate
+								id="animation5"
+								attributeName="d"
+								attributeType="xml"
+								from="M 0 100 V 50 Q 50 100 100 50 V 100 z"
+								to="M 0 100 V 100 Q 50 100 100 100 V 100 z"
+								begin="animation4.end"
+								dur="0.2s"
+								fill="freeze"
+							/>
+							<!-- 上昇アニメーション -->
+							<animate
+								id="animationR1"
+								attributeName="d"
+								attributeType="xml"
+								from="M 0 100 V 100 Q 50 100 100 100 V 100 z"
+								to="M 0 100 V 50 Q 50 0 100 50 V 100 z"
+								begin="indefinite"
+								dur="0.3s"
+								calcMode="spline"
+								keyTimes="0;1"
+								keySplines="0.9 0 1.0 1.0"
+							/>
+							<animate
+								id="animationR2"
+								attributeName="d"
+								attributeType="xml"
+								from="M 0 100 V 50 Q 50 0 100 50 V 100 z"
+								to="M 0 100 V 0 Q 50 0 100 0 V 100 z"
+								begin="animationR1.end"
+								dur="0.2s"
+								fill="freeze"
+							/>
+							<animate
+								id="animationR3"
+								attributeName="d"
+								attributeType="xml"
+								from="M 0 100 V 0 Q 50 0 100 0 V 100 z"
+								to="M 0 100 V 0 Q 50 0 100 0 V 100 z"
+								begin="animationR2.end"
+								dur="0.35s"
+								fill="freeze"
+							/>
+							<animate
+								id="animationR4"
+								attributeName="d"
+								attributeType="xml"
+								from="M 0 0 V 100 Q 50 100 100 100 V 0 z"
+								to="M 0 0 V 50 Q 50 0 100 50 V 0 z"
+								begin="animationR3.end"
+								dur="0.2s"
+								fill="freeze"
+								calcMode="spline"
+								keyTimes="0;1"
+								keySplines="0.9 0 1.0 1.0"
+							/>
+							<animate
+								id="animationR5"
+								attributeName="d"
+								attributeType="xml"
+								from="M 0 0 V 50 Q 50 0 100 50 V 0 z"
+								to="M 0 0 V 0 Q 50 0 100 0 V 0 z"
+								begin="animationR4.end"
+								dur="0.2s"
+								fill="freeze"
+							/>
+						</path>
+					</svg>
+					<div class="l-header-menu__content js-menu-content">
+						<div><a href="#url">リストメニュー1</a></div>
+						<div><a href="#url">リストメニュー2</a></div>
+						<div><a href="#url">リストメニュー3</a></div>
+						<div><a href="#url">リストメニュー4</a></div>
+						<div><a href="#url">リストメニュー5</a></div>
+					</div>
+					<button class="l-header-menu__menuClose js-menu-down">close</button>
+					<button class="l-header-menu__menuOpen js-menu-up">open</button>
+				</nav>
+			</div>
+		</header>
+
+		<section style="height: 100vh; background-color: #efefef">
+			複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+		</section>
+		<section style="height: 100vh; background-color: #999">
+			複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+		</section>
 
 		<script>
-			const triggerDown = document.querySelector(".down"); // 下降アニメーションのトリガーとなる要素
-			const triggerUp = document.querySelector(".up"); // 上昇アニメーションのトリガーとなる要素
+			const triggerDown = document.querySelector(".js-menu-down"); // 下降アニメーションのトリガーとなる要素
+			const triggerUp = document.querySelector(".js-menu-up"); // 上昇アニメーションのトリガーとなる要素
 			const animationStartElement = document.querySelector("#animation1"); // 下降アニメーション開始発火要素
 			const animationStartElementR = document.querySelector("#animationR1"); // 下降アニメーション開始発火要素
 			const animationEndElement = document.querySelector("#animation5"); // 下降アニメーション終了検知要素
 			const animationEndElementR = document.querySelector("#animationR5"); // 上昇アニメーション終了検知要素
-			const button = document.querySelector(".button-wrap"); // SVGアニメーション発火のトリガーとなる要素
+			const button = document.querySelector(".js-menu-header"); // SVGアニメーション発火のトリガーとなる要素
+			const content = document.querySelector(".js-menu-content"); //
 
 			// 下降アニメーション発火
 			triggerDown.addEventListener("click", function () {
 				animationStartElement.beginElement();
-				button.classList.add("on-animation");
+				button.classList.add("is-animation");
+				content.classList.remove("is-show");
 			});
 
 			// 上昇アニメーション発火
 			triggerUp.addEventListener("click", function () {
 				animationStartElementR.beginElement();
-				button.classList.add("on-animation");
+				button.classList.add("is-animation");
+				content.classList.add("is-show");
 			});
 
 			// アニメーションが完了したら発火トリガーをクリック可能にする
 			animationEndElement.addEventListener("endEvent", function () {
-				button.classList.remove("on-animation");
+				button.classList.remove("is-animation");
+				// content.classList.remove("is-show");
 			});
 
 			animationEndElementR.addEventListener("endEvent", function () {
-				button.classList.remove("on-animation");
+				button.classList.remove("is-animation");
+				// content.classList.add("is-show");
 			});
 		</script>
 	</body>
