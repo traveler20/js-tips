@@ -10,12 +10,20 @@
 		<div
 			style="
 				display: flex;
-				height: 100vh;
+				flex-wrap: wrap;
 				justify-content: center;
 				align-items: center;
+				gap: 100px;
 				margin: 0;
+				min-height: 100vh;
 			"
 		>
+			<style>
+				:root {
+					--icon-width: 4px;
+					--icon-color: black;
+				}
+			</style>
 			<!-- 新しいタブで開くアイコン -->
 			<style>
 				.icon-blank {
@@ -24,7 +32,6 @@
 					position: relative;
 					width: 20px;
 					height: 16px;
-					transform: scale(3);
 				}
 				.icon-blank:before,
 				.icon-blank:after {
@@ -34,37 +41,153 @@
 					width: 100%;
 					height: 100%;
 					border-style: solid;
-					border-color: black;
+					border-color: var(--icon-color);
 				}
 				.icon-blank:before {
 					top: 0;
 					left: 0;
-					border-width: 3px;
+					border-width: var(--icon-width);
 				}
 				.icon-blank:after {
 					top: 6px;
 					left: 6px;
-					border-width: 0 3px 3px 0;
+					border-width: 0 var(--icon-width) var(--icon-width) 0;
 				}
 			</style>
 			<i class="icon-blank"></i>
-
-			<div style="margin: 0 100px"></div>
 
 			<!-- 矢印アイコン -->
 			<style>
 				.icon-arrow {
 					display: inline-block;
 					box-sizing: border-box;
-					width: 14px;
-					height: 14px;
+					width: 18px;
+					height: 18px;
 					border-style: solid;
-					border-width: 3px 3px 0 0;
-					border-color: black;
-					transform: rotate(45deg) scale(3);
+					border-width: var(--icon-width) var(--icon-width) 0 0;
+					border-color: var(--icon-color);
+					transform: rotate(45deg);
+				}
+				.icon-arrow-right {
+					transform: rotate(45deg);
+				}
+				.icon-arrow-top {
+					transform: rotate(-45deg);
+				}
+				.icon-arrow-bottom {
+					transform: rotate(135deg);
 				}
 			</style>
-			<i class="icon-arrow"></i>
+			<i class="icon-arrow icon-arrow-top"></i>
+			<i class="icon-arrow icon-arrow-right"></i>
+			<i class="icon-arrow icon-arrow-bottom"></i>
+
+			<!-- 3本線メニュー -->
+			<style>
+				.icon-menu {
+					color: var(--icon-color);
+					position: relative;
+					margin: 10px 0;
+				}
+				.icon-menu,
+				.icon-menu:before,
+				.icon-menu:after {
+					width: 24px;
+					height: var(--icon-width);
+					background-color: currentColor;
+				}
+				.icon-menu:before,
+				.icon-menu:after {
+					content: "";
+					position: absolute;
+					left: 0;
+				}
+				.icon-menu:before {
+					top: -8px;
+				}
+				.icon-menu:after {
+					top: 8px;
+				}
+			</style>
+			<i class="icon-menu"></i>
+
+			<!-- バツ印 -->
+			<style>
+				.icon-close {
+					color: var(--icon-color);
+					width: 24px;
+					height: 24px;
+					position: relative;
+				}
+				.icon-close:before,
+				.icon-close:after {
+					content: "";
+					position: absolute;
+					top: 12px;
+					width: 24px;
+					height: var(--icon-width);
+					background-color: currentColor;
+				}
+				.icon-close:before {
+					-webkit-transform: rotate(-45deg);
+					transform: rotate(-45deg);
+				}
+				.icon-close:after {
+					-webkit-transform: rotate(45deg);
+					transform: rotate(45deg);
+				}
+			</style>
+			<i class="icon-close"></i>
+
+			<!-- プラス -->
+			<style>
+				.icon-plus {
+					color: var(--icon-color);
+					width: 24px;
+					height: 24px;
+					position: relative;
+				}
+				.icon-plus:before,
+				.icon-plus:after {
+					content: "";
+					position: absolute;
+					top: 12px;
+					width: 24px;
+					height: var(--icon-width);
+					background-color: currentColor;
+				}
+				/* .icon-plus:before {
+				} */
+				.icon-plus:after {
+					-webkit-transform: rotate(90deg);
+					transform: rotate(90deg);
+				}
+			</style>
+			<i class="icon-plus"></i>
+
+			<!-- マイナス -->
+			<style>
+				.icon-minus {
+					color: var(--icon-color);
+					width: 24px;
+					height: var(--icon-width);
+					background-color: currentColor;
+				}
+			</style>
+			<i class="icon-minus"></i>
+
+			<!-- チェックマーク -->
+			<style>
+				.icon-check {
+					color: var(--icon-color);
+					width: 18px;
+					height: 10px;
+					border-bottom: solid var(--icon-width) currentColor;
+					border-left: solid var(--icon-width) currentColor;
+					transform: rotate(-45deg);
+				}
+			</style>
+			<i class="icon-check"></i>
 		</div>
 	</body>
 </html>
