@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 参考：https://codepen.io/alvaromontoro/pen/QWQWjrj -->
+		<style>
+			body {
+				background: #000;
+			}
+
+			@keyframes fireworks-animation {
+				0% {
+					transform: translate(-50%, 90vh);
+					width: 4px;
+					opacity: 1;
+				}
+				50% {
+					width: 4px;
+					opacity: 1;
+				}
+				100% {
+					width: 400px;
+					opacity: 0;
+				}
+			}
+
+			.c-firework,
+			.c-firework::before,
+			.c-firework::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				aspect-ratio: 1;
+				background: radial-gradient(circle, #ff0 10px, #000 0) 50% 00%,
+					radial-gradient(circle, #ff0 10px, #000 0) 00% 50%,
+					radial-gradient(circle, #ff0 10px, #000 0) 50% 99%,
+					radial-gradient(circle, #ff0 10px, #000 0) 99% 50%,
+					radial-gradient(circle, #ff0 10px, #000 0) 80% 90%,
+					radial-gradient(circle, #ff0 10px, #000 0) 95% 90%,
+					radial-gradient(circle, #ff0 10px, #000 0) 10% 60%,
+					radial-gradient(circle, #ff0 10px, #000 0) 31% 80%,
+					radial-gradient(circle, #ff0 10px, #000 0) 80% 10%,
+					radial-gradient(circle, #ff0 10px, #000 0) 90% 23%,
+					radial-gradient(circle, #ff0 10px, #000 0) 45% 20%,
+					radial-gradient(circle, #ff0 10px, #000 0) 13% 24%;
+				background-size: 4px 4px;
+				background-repeat: no-repeat;
+				transform: translate(-50%, -50%);
+				animation: fireworks-animation 4s infinite;
+			}
+			.c-firework::before {
+				transform: translate(-50%, -50%) rotate(25deg) !important;
+			}
+			.c-firework::after {
+				transform: translate(-50%, -50%) rotate(-37deg) !important;
+			}
+		</style>
+
+		<div class="c-firework"></div>
+	</body>
+</html>
