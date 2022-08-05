@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				background: #000;
+				overflow: hidden;
+			}
+
+			.pyro > .before,
+			.pyro > .after {
+				position: absolute;
+				width: 5px;
+				height: 5px;
+				border-radius: 50%;
+				box-shadow: 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff,
+					0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff,
+					0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff,
+					0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff,
+					0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff,
+					0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff,
+					0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff,
+					0 0 #fff, 0 0 #fff, 0 0 #fff;
+				animation: 1s bang ease-out infinite backwards,
+					1s gravity ease-in infinite backwards,
+					5s position linear infinite backwards;
+			}
+
+			.pyro > .after {
+				animation-delay: 1.25s, 1.25s, 1.25s;
+				animation-duration: 1.25s, 1.25s, 6.25s;
+			}
+
+			@keyframes bang {
+				to {
+					box-shadow: 20px -41.6666666667px #aa00ff,
+						105px 4.3333333333px #66ff00, -97px -229.6666666667px #ff00aa,
+						169px 51.3333333333px #ff0011, 121px -281.6666666667px #00ff91,
+						21px -248.6666666667px #0900ff, 106px -300.6666666667px #ff2b00,
+						219px -152.6666666667px darkorange, -205px -414.6666666667px #5500ff,
+						-34px -407.6666666667px #ffdd00, 162px -330.6666666667px #ff00a6,
+						17px -111.6666666667px #91ff00, 163px 35.3333333333px #ff5e00,
+						-63px -130.6666666667px #5e00ff, -74px -68.6666666667px #1eff00,
+						102px -295.6666666667px #ff00e6, -108px -17.6666666667px #00ff44,
+						-161px -232.6666666667px #55ff00, 200px -200.6666666667px #ff005e,
+						205px -253.6666666667px #2200ff, -92px -345.6666666667px #ff4400,
+						13px -414.6666666667px #ff5900, -163px -186.6666666667px #ff00ae,
+						-26px -390.6666666667px #9dff00, -122px -283.6666666667px #008cff,
+						39px 22.3333333333px #1100ff, -232px 33.3333333333px lime,
+						199px 67.3333333333px #00fff7, 11px -58.6666666667px #00ccff,
+						-20px -256.6666666667px #0062ff, -21px -327.6666666667px #ff0048,
+						-206px -28.6666666667px #ff0015, 28px -311.6666666667px #00ff80,
+						25px -389.6666666667px #73ff00, 105px 40.3333333333px #ff7b00,
+						3px -267.6666666667px #ff0040, 242px -267.6666666667px #8000ff,
+						150px -249.6666666667px #11ff00, 140px 64.3333333333px #5eff00,
+						6px -374.6666666667px #ff0037, -109px -262.6666666667px #11ff00,
+						108px -400.6666666667px #ff00cc, -204px -42.6666666667px #c400ff,
+						173px -146.6666666667px #00bbff, 8px -222.6666666667px #ff00b7,
+						-205px -37.6666666667px #ff007b, -49px -414.6666666667px #00eaff,
+						189px -132.6666666667px #ff2f00, -78px -414.6666666667px #ff7700,
+						-69px -172.6666666667px #00d0ff, -89px -308.6666666667px #00ff1a;
+				}
+			}
+			@keyframes gravity {
+				to {
+					transform: translateY(200px);
+					-moz-transform: translateY(200px);
+					-webkit-transform: translateY(200px);
+					-o-transform: translateY(200px);
+					-ms-transform: translateY(200px);
+					opacity: 0;
+				}
+			}
+			@keyframes position {
+				0%,
+				19.9% {
+					margin-top: 10%;
+					margin-left: 40%;
+				}
+				20%,
+				39.9% {
+					margin-top: 40%;
+					margin-left: 30%;
+				}
+				40%,
+				59.9% {
+					margin-top: 20%;
+					margin-left: 70%;
+				}
+				60%,
+				79.9% {
+					margin-top: 30%;
+					margin-left: 20%;
+				}
+				80%,
+				99.9% {
+					margin-top: 30%;
+					margin-left: 80%;
+				}
+			}
+		</style>
+
+		<div class="pyro">
+			<div class="before"></div>
+			<div class="after"></div>
+		</div>
+	</body>
+</html>
