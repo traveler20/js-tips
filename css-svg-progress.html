@@ -5,114 +5,77 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<!-- reset.css destyle -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+		/>
 	</head>
 	<body>
 		<style>
 			@import url(https://fonts.googleapis.com/css?family=Lato:100,400);
-			@-webkit-keyframes load {
-				0% {
-					stroke-dashoffset: 0;
-				}
-			}
+
 			@keyframes load {
 				0% {
 					stroke-dashoffset: 0;
 				}
 			}
-			.progress {
+			.c-progress {
 				position: relative;
-				display: inline-block;
-				padding: 0;
-				text-align: center;
+				display: flex;
+				flex-wrap: wrap;
 			}
-			.progress > li {
-				display: inline-block;
+			.c-progress__list {
+				font-family: Lato;
 				position: relative;
 				text-align: center;
 				color: #93a2ac;
-				font-family: Lato;
-				font-weight: 100;
-				margin: 2rem;
+				margin: 32px;
 			}
-			.progress > li:before {
+			.c-progress__list:before {
 				content: attr(data-name);
 				position: absolute;
 				width: 100%;
-				bottom: -2rem;
+				bottom: -24px;
 				font-weight: 400;
 			}
-			.progress > li:after {
+			.c-progress__list:after {
 				content: attr(data-percent);
 				position: absolute;
-				width: 100%;
-				top: 3.7rem;
+				font-size: 32px;
+				font-weight: 100;
+				top: 0;
+				bottom: 0;
 				left: 0;
-				font-size: 2rem;
-				text-align: center;
+				margin: auto;
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
 			}
-			.progress svg {
-				width: 10rem;
-				height: 10rem;
+			.c-progress svg {
+				width: 160px;
+				height: 160px;
 			}
-			.progress svg:nth-child(2) {
+			.c-progress svg:nth-child(2) {
 				position: absolute;
 				left: 0;
 				top: 0;
 				transform: rotate(-90deg);
 			}
-			.progress svg:nth-child(2) path {
+			.c-progress svg:nth-child(2) path {
 				fill: none;
 				stroke-width: 25;
-				stroke-dasharray: 629;
+				stroke-dasharray: 630;
 				stroke: #fff;
 				opacity: 0.9;
-				-webkit-animation: load 10s;
-				animation: load 10s;
+				animation: load 2s;
 			}
 		</style>
 
 		<!--  Container  -->
-		<ul class="progress">
+		<ul class="c-progress">
 			<!--  Item  -->
-			<li data-name="SVG Skill" data-percent="13%">
-				<svg viewBox="-10 -10 220 220">
-					<g fill="none" stroke-width="3" transform="translate(100,100)">
-						<path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)" />
-						<path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)" />
-						<path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)" />
-						<path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)" />
-						<path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)" />
-						<path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)" />
-					</g>
-				</svg>
-				<svg viewBox="-10 -10 220 220">
-					<path
-						d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z"
-						stroke-dashoffset="81"
-					></path>
-				</svg>
-			</li>
-			<!--  Item  -->
-			<li data-name="HTML5 Skill" data-percent="87%">
-				<svg viewBox="-10 -10 220 220">
-					<g fill="none" stroke-width="2" transform="translate(100,100)">
-						<path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)" />
-						<path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)" />
-						<path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)" />
-						<path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)" />
-						<path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)" />
-						<path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)" />
-					</g>
-				</svg>
-				<svg viewBox="-10 -10 220 220">
-					<path
-						d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z"
-						stroke-dashoffset="547"
-					></path>
-				</svg>
-			</li>
-			<!--  Item  -->
-			<li data-name="jQuery Skill" data-percent="13%">
+			<li class="c-progress__list" data-name="jQuery Skill" data-percent="13%">
 				<svg viewBox="-10 -10 220 220">
 					<g fill="none" stroke-width="12" transform="translate(100,100)">
 						<path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)" />
@@ -131,9 +94,9 @@
 				</svg>
 			</li>
 			<!--  Item  -->
-			<li data-name="UI Skill" data-percent="97%">
+			<li class="c-progress__list" data-name="jQuery Skill" data-percent="100%">
 				<svg viewBox="-10 -10 220 220">
-					<g fill="none" stroke-width="9" transform="translate(100,100)">
+					<g fill="none" stroke-width="12" transform="translate(100,100)">
 						<path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)" />
 						<path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)" />
 						<path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)" />
@@ -145,14 +108,14 @@
 				<svg viewBox="-10 -10 220 220">
 					<path
 						d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z"
-						stroke-dashoffset="610"
+						stroke-dashoffset="630"
 					></path>
 				</svg>
 			</li>
 			<!--  Item  -->
-			<li data-name="PHP Skill" data-percent="58%">
+			<li class="c-progress__list" data-name="jQuery Skill" data-percent="50%">
 				<svg viewBox="-10 -10 220 220">
-					<g fill="none" stroke-width="6" transform="translate(100,100)">
+					<g fill="none" stroke-width="12" transform="translate(100,100)">
 						<path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)" />
 						<path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)" />
 						<path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)" />
@@ -164,26 +127,7 @@
 				<svg viewBox="-10 -10 220 220">
 					<path
 						d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z"
-						stroke-dashoffset="364"
-					></path>
-				</svg>
-			</li>
-			<!--  Item  -->
-			<li data-name="CSS Skill" data-percent="100%">
-				<svg viewBox="-10 -10 220 220">
-					<g fill="none" stroke-width="6" transform="translate(100,100)">
-						<path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)" />
-						<path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)" />
-						<path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)" />
-						<path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)" />
-						<path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)" />
-						<path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)" />
-					</g>
-				</svg>
-				<svg viewBox="-10 -10 220 220">
-					<path
-						d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z"
-						stroke-dashoffset="629"
+						stroke-dashoffset="315"
 					></path>
 				</svg>
 			</li>
