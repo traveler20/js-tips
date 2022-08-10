@@ -286,6 +286,8 @@ css-container.html
 - [ジェネレータ](js-generator.html)
 - [文字が反転する](css-invert.html)
 - [お気に入り登録ボタン](js-favorite.html)
+- [](css-svg-favorite.html)
+- [](css-svg-progress.html)
 
 ```
 css-timeline.html
@@ -297,6 +299,8 @@ js-scrollbetween.html
 js-generator.html
 css-invert.html
 js-favorite.html
+css-svg-favorite.html
+css-svg-progress.html
 ```
 
 ## canvas アニメーション
@@ -352,6 +356,8 @@ project/fv_css-animation-star-shooting
 - [ラジオボタン](gimmick-site/css-radio-button)
 - [マウスのテキストローテーション](gimmick-site/js-mouse-rotate-effect)
 - [グーグル検索](gimmick-site/js-search-google)
+- [CSS でつくる花火](css-fireworks.html)
+- [CSS でつくる花火](css-fireworks-colorful.html)
 
 ```
 gimmick-site/css-animation-star-shooting
@@ -360,6 +366,8 @@ gimmick-site/css-book-cover
 gimmick-site/css-radio-button
 gimmick-site/js-mouse-rotate-effect
 gimmick-site/js-search-google
+css-fireworks.html
+css-fireworks-colorful.html
 ```
 
 ---
