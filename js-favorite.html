@@ -7,172 +7,853 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<ul>
-			<li no="1" class="js-favorite-add" onclick="favorite_add('1')">
-				<span>♡</span>No:1 りんご
-			</li>
-			<li no="1" class="js-favorite-remove" onclick="favorite_remove('1')">
-				<span>♥</span>No:1 りんご
-			</li>
-			<li no="2" class="js-favorite-add" onclick="favorite_add('2')">
-				<span>♡</span>No:2 みかん
-			</li>
-			<li no="2" class="js-favorite-remove" onclick="favorite_remove('2')">
-				<span>♥</span>No:2 みかん
-			</li>
-			<li no="3" class="js-favorite-add" onclick="favorite_add('3')">
-				<span>♡</span>No:3 ばなな
-			</li>
-			<li no="3" class="js-favorite-remove" onclick="favorite_remove('3')">
-				<span>♥</span>No:3 ばなな
-			</li>
-		</ul>
+		<div>
+			<ul>
+				<li no="1" class="js-favorite-add" onclick="favorite_add('1')">
+					<span>♡</span>No:1 りんご
+				</li>
+				<li no="1" class="js-favorite-remove" onclick="favorite_remove('1')">
+					<span>♥</span>No:1 りんご
+				</li>
+				<li no="2" class="js-favorite-add" onclick="favorite_add('2')">
+					<span>♡</span>No:2 みかん
+				</li>
+				<li no="2" class="js-favorite-remove" onclick="favorite_remove('2')">
+					<span>♥</span>No:2 みかん
+				</li>
+				<li no="3" class="js-favorite-add" onclick="favorite_add('3')">
+					<span>♡</span>No:3 ばなな
+				</li>
+				<li no="3" class="js-favorite-remove" onclick="favorite_remove('3')">
+					<span>♥</span>No:3 ばなな
+				</li>
+			</ul>
 
-		<style>
-			ul li.js-favorite-remove span {
-				color: #f00;
-			}
-		</style>
-
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
-		<script>
-			/* 【解説Aパート】 "表示ソースの切り替え" */
-			function togleitem(oid, event) {
-				if (event == "add") {
-					// 未チェック(class="add")を非表示にして、チェック済(class="remove")を表示する
-					$("li.js-favorite-add[no=" + oid + "]").hide();
-					$("li.js-favorite-remove[no=" + oid + "]").show();
-				} else if (event == "remove") {
-					// チェック済(class="remove")を非表示にして、未チェック(class="add")を表示する
-					$("li.js-favorite-add[no=" + oid + "]").show();
-					$("li.js-favorite-remove[no=" + oid + "]").hide();
+			<style>
+				ul li.js-favorite-remove span {
+					color: #f00;
 				}
-			}
+			</style>
 
-			/* 【解説Bパート】 "ページロード時にローカルストレージの中をチェック" */
-			$(function () {
-				$("ul .js-favorite-remove").hide(); // お気に入り中の表示は一時的に非表示に。
-
-				// お気に入りリストに存在するか確認
-				const key = "お気に入りID";
-				const getjson = localStorage.getItem(key);
-				const oidlist = JSON.parse(getjson);
-				if (oidlist != null) {
-					oidlist.forEach(function (oid) {
-						togleitem(oid, "add");
-					});
+			<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+			<script>
+				/* 【解説Aパート】 "表示ソースの切り替え" */
+				function togleitem(oid, event) {
+					if (event == "add") {
+						// 未チェック(class="add")を非表示にして、チェック済(class="remove")を表示する
+						$("li.js-favorite-add[no=" + oid + "]").hide();
+						$("li.js-favorite-remove[no=" + oid + "]").show();
+					} else if (event == "remove") {
+						// チェック済(class="remove")を非表示にして、未チェック(class="add")を表示する
+						$("li.js-favorite-add[no=" + oid + "]").show();
+						$("li.js-favorite-remove[no=" + oid + "]").hide();
+					}
 				}
-			});
 
-			/* 【解説Cパート】 "お気に入りに追加機能" */
-			function favorite_add(oid) {
-				const key = "お気に入りID"; // キーの名前を指定
+				/* 【解説Bパート】 "ページロード時にローカルストレージの中をチェック" */
+				$(function () {
+					$("ul .js-favorite-remove").hide(); // お気に入り中の表示は一時的に非表示に。
 
-				// ローカルストレージから値を取得
-				const getjson = localStorage.getItem(key);
-				const oidlist = JSON.parse(getjson);
+					// お気に入りリストに存在するか確認
+					const key = "お気に入りID";
+					const getjson = localStorage.getItem(key);
+					const oidlist = JSON.parse(getjson);
+					if (oidlist != null) {
+						oidlist.forEach(function (oid) {
+							togleitem(oid, "add");
+						});
+					}
+				});
 
-				if (oidlist == null) {
-					// 初めて「お気に入りID」というキーがローカルストレージに登録される時の処理
-					oidary = new Array(oid);
-					const setjson = JSON.stringify(oidary);
-					localStorage.setItem(key, setjson);
+				/* 【解説Cパート】 "お気に入りに追加機能" */
+				function favorite_add(oid) {
+					const key = "お気に入りID"; // キーの名前を指定
 
-					togleitem(oid, "add");
-				} else {
-					// 既に「お気に入りID」というキーが存在する時
-					if (oidlist.indexOf(oid) == -1) {
-						// 且つ、まだお気に入りIDに登録されていない時
-						oidlist.push(oid);
-						const setjson = JSON.stringify(oidlist);
+					// ローカルストレージから値を取得
+					const getjson = localStorage.getItem(key);
+					const oidlist = JSON.parse(getjson);
+
+					if (oidlist == null) {
+						// 初めて「お気に入りID」というキーがローカルストレージに登録される時の処理
+						oidary = new Array(oid);
+						const setjson = JSON.stringify(oidary);
 						localStorage.setItem(key, setjson);
 
 						togleitem(oid, "add");
+					} else {
+						// 既に「お気に入りID」というキーが存在する時
+						if (oidlist.indexOf(oid) == -1) {
+							// 且つ、まだお気に入りIDに登録されていない時
+							oidlist.push(oid);
+							const setjson = JSON.stringify(oidlist);
+							localStorage.setItem(key, setjson);
+
+							togleitem(oid, "add");
+						}
 					}
 				}
-			}
 
-			/* 【解説Dパート】 "お気に入りから削除機能" */
-			function favorite_remove(oid) {
-				const key = "お気に入りID"; // キーの名前を指定
+				/* 【解説Dパート】 "お気に入りから削除機能" */
+				function favorite_remove(oid) {
+					const key = "お気に入りID"; // キーの名前を指定
 
-				// ローカルストレージから値を取得
-				const getjson = localStorage.getItem(key);
-				const oidlist = JSON.parse(getjson);
+					// ローカルストレージから値を取得
+					const getjson = localStorage.getItem(key);
+					const oidlist = JSON.parse(getjson);
 
-				if (oidlist != null) {
-					// 「お気に入りID」というキーが存在した時
-					const checkitem = oidlist.indexOf(oid); // 配列の何番目に該当のIDがあるかを見る
-					if (checkitem != -1) {
-						// 「お気に入りID」の中に該当のIDが見つかった時
-						oidlist.splice(checkitem, 1);
-						const setjson = JSON.stringify(oidlist);
-						localStorage.setItem(key, setjson);
+					if (oidlist != null) {
+						// 「お気に入りID」というキーが存在した時
+						const checkitem = oidlist.indexOf(oid); // 配列の何番目に該当のIDがあるかを見る
+						if (checkitem != -1) {
+							// 「お気に入りID」の中に該当のIDが見つかった時
+							oidlist.splice(checkitem, 1);
+							const setjson = JSON.stringify(oidlist);
+							localStorage.setItem(key, setjson);
 
-						togleitem(oid, "remove");
+							togleitem(oid, "remove");
+						}
 					}
 				}
-			}
-		</script>
+			</script>
 
-		<!--  -->
+			<!--  -->
+			<style>
+				.c-favorite_button {
+					font-size: 24px;
+					color: #fff;
+					-webkit-text-stroke: 1px #333;
+					border: none;
+					background-color: #fff;
+				}
+				.c-favorite_button.is-bookmark {
+					color: #f00;
+					-webkit-text-stroke: 1px #f00;
+				}
+			</style>
+			<button class="c-favorite_button js-favorite-button">♥</button>
+			<script>
+				$(".js-favorite-button").click(function () {
+					$(".js-favorite-button").toggleClass("is-bookmark");
+				});
+				// localStorage.setItem(
+				// 	"favorite-item",
+				// 	$(".js-favorite-button").hasClass("is-bookmark")
+				// );
+
+				// $(".js-favorite-button").click(function () {
+				// 	$(".js-favorite-button").toggleClass("is-bookmark");
+
+				// 	localStorage.setItem(
+				// 		"favorite-item",
+				// 		$(".js-favorite-button").hasClass("is-bookmark")
+				// 	);
+				// });
+
+				// // window.localStorage.setItem('keyname','内容です。');
+				// if (window.localStorage.getItem("favorite-item")) {
+				// 	$(".js-favorite-button").addClass("is-bookmarke");
+				// }
+				// if (localStorage.getItem("favorite-item") === "true") {
+				// 	$(".js-favorite-button").addClass("is-bookmarke");
+				// }
+			</script>
+
+			<script>
+				// ウェブストレージに対応している場合
+				if (window.localStorage) {
+					// 保存するオブジェクト
+					const obj = {
+						str: "Hello",
+					};
+					// オブジェクトをjsonに変換
+					const txt = JSON.stringify(obj);
+					// jsonデータをlocalStorageに保存
+					localStorage.setItem("hoge", txt);
+					// localStorageに保存されたものをキーを指定して取得
+					const item = localStorage.getItem("hoge");
+					// コンソールに出力
+					console.log(item);
+				}
+			</script>
+		</div>
+
 		<style>
-			.c-favorite_button {
-				font-size: 24px;
-				color: #fff;
-				-webkit-text-stroke: 1px #333;
-				border: none;
-				background-color: #fff;
+			body {
+				height: 100vh;
+				display: flex;
+				align-content: center;
+				justify-content: center;
+				align-items: center;
 			}
-			.c-favorite_button.is-bookmark {
-				color: #f00;
-				-webkit-text-stroke: 1px #f00;
+
+			.c-favorite-button {
+				background-color: #f2f2f2;
+				border: solid 1px #ccc;
+				border-radius: 50%;
+				display: inline-flex;
+				align-content: center;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.c-favorite-button__svgExplosion {
+				transform-origin: 250px 250px;
+				transform: scale(0.02);
+				stroke: #dd4688;
+				fill: none;
+				opacity: 0;
+				stroke-width: 1;
+				transform-origin: 250px 250px;
+			}
+
+			.c-favorite-button__svgParticleLayer {
+				opacity: 0;
+			}
+			.c-favorite-button__svgParticleLayer circle {
+				opacity: 0;
+				transform-origin: 250px 250px;
+			}
+
+			.c-favorite-button__svgHeart {
+				fill: #ccc;
+				transform-origin: 250px 250px;
+			}
+
+			/* アウトライン */
+			.c-favorite-button:focus {
+				outline: solid 2px rgba(221, 70, 136, 0.4);
+			}
+			/* クリック後の挙動 */
+			.c-favorite-button.is-clicked {
+				background-color: rgba(221, 70, 136, 0.1);
+				border-color: rgba(221, 70, 136, 0.4);
+			}
+			.c-favorite-button.is-clicked .c-favorite-button__svgExplosion {
+				animation: explosionAnime 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked .c-favorite-button__svgHeart {
+				animation: heartAnime 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked .c-favorite-button__svgParticleLayer {
+				animation: particleLayerAnime 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(1) {
+				animation: particleAnimate1 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(2) {
+				animation: particleAnimate2 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(3) {
+				animation: particleAnimate3 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(4) {
+				animation: particleAnimate4 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(5) {
+				animation: particleAnimate5 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(6) {
+				animation: particleAnimate6 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(7) {
+				animation: particleAnimate7 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(8) {
+				animation: particleAnimate8 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(9) {
+				animation: particleAnimate9 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(10) {
+				animation: particleAnimate10 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(11) {
+				animation: particleAnimate11 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(12) {
+				animation: particleAnimate12 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(13) {
+				animation: particleAnimate13 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			.c-favorite-button.is-clicked
+				.c-favorite-button__svgParticleLayer
+				circle:nth-child(14) {
+				animation: particleAnimate14 800ms;
+				animation-fill-mode: forwards;
+			}
+
+			@keyframes explosionAnime {
+				0% {
+					opacity: 0;
+					-webkit-transform: scale(0.01);
+					transform: scale(0.01);
+				}
+				1% {
+					opacity: 1;
+					-webkit-transform: scale(0.01);
+					transform: scale(0.01);
+				}
+				5% {
+					stroke-width: 200;
+				}
+				20% {
+					stroke-width: 300;
+				}
+				50% {
+					stroke: #cc8ef5;
+					-webkit-transform: scale(1.1);
+					transform: scale(1.1);
+					stroke-width: 1;
+				}
+				50.1% {
+					stroke-width: 0;
+				}
+				100% {
+					stroke: #cc8ef5;
+					-webkit-transform: scale(1.1);
+					transform: scale(1.1);
+					stroke-width: 0;
+				}
+			}
+
+			@keyframes particleLayerAnime {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+					opacity: 0;
+				}
+				30% {
+					opacity: 0;
+				}
+				31% {
+					opacity: 1;
+				}
+				60% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				70% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+					-webkit-transform: translate(0, -20px);
+					transform: translate(0, -20px);
+				}
+			}
+
+			@keyframes particleAnimate1 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(-16px, -59px);
+					transform: translate(-16px, -59px);
+				}
+				90% {
+					-webkit-transform: translate(-16px, -59px);
+					transform: translate(-16px, -59px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(-16px, -59px);
+					transform: translate(-16px, -59px);
+				}
+			}
+
+			@keyframes particleAnimate2 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(41px, 43px);
+					transform: translate(41px, 43px);
+				}
+				90% {
+					-webkit-transform: translate(41px, 43px);
+					transform: translate(41px, 43px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(41px, 43px);
+					transform: translate(41px, 43px);
+				}
+			}
+
+			@keyframes particleAnimate3 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(50px, -48px);
+					transform: translate(50px, -48px);
+				}
+				90% {
+					-webkit-transform: translate(50px, -48px);
+					transform: translate(50px, -48px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(50px, -48px);
+					transform: translate(50px, -48px);
+				}
+			}
+
+			@keyframes particleAnimate4 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(-39px, 36px);
+					transform: translate(-39px, 36px);
+				}
+				90% {
+					-webkit-transform: translate(-39px, 36px);
+					transform: translate(-39px, 36px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(-39px, 36px);
+					transform: translate(-39px, 36px);
+				}
+			}
+
+			@keyframes particleAnimate5 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(-39px, 32px);
+					transform: translate(-39px, 32px);
+				}
+				90% {
+					-webkit-transform: translate(-39px, 32px);
+					transform: translate(-39px, 32px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(-39px, 32px);
+					transform: translate(-39px, 32px);
+				}
+			}
+
+			@keyframes particleAnimate6 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(48px, 6px);
+					transform: translate(48px, 6px);
+				}
+				90% {
+					-webkit-transform: translate(48px, 6px);
+					transform: translate(48px, 6px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(48px, 6px);
+					transform: translate(48px, 6px);
+				}
+			}
+
+			@keyframes particleAnimate7 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(-69px, -36px);
+					transform: translate(-69px, -36px);
+				}
+				90% {
+					-webkit-transform: translate(-69px, -36px);
+					transform: translate(-69px, -36px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(-69px, -36px);
+					transform: translate(-69px, -36px);
+				}
+			}
+
+			@keyframes particleAnimate8 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(-12px, -52px);
+					transform: translate(-12px, -52px);
+				}
+				90% {
+					-webkit-transform: translate(-12px, -52px);
+					transform: translate(-12px, -52px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(-12px, -52px);
+					transform: translate(-12px, -52px);
+				}
+			}
+
+			@keyframes particleAnimate9 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(-43px, -21px);
+					transform: translate(-43px, -21px);
+				}
+				90% {
+					-webkit-transform: translate(-43px, -21px);
+					transform: translate(-43px, -21px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(-43px, -21px);
+					transform: translate(-43px, -21px);
+				}
+			}
+
+			@keyframes particleAnimate10 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(-10px, 47px);
+					transform: translate(-10px, 47px);
+				}
+				90% {
+					-webkit-transform: translate(-10px, 47px);
+					transform: translate(-10px, 47px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(-10px, 47px);
+					transform: translate(-10px, 47px);
+				}
+			}
+
+			@keyframes particleAnimate11 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(66px, -9px);
+					transform: translate(66px, -9px);
+				}
+				90% {
+					-webkit-transform: translate(66px, -9px);
+					transform: translate(66px, -9px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(66px, -9px);
+					transform: translate(66px, -9px);
+				}
+			}
+
+			@keyframes particleAnimate12 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(40px, -45px);
+					transform: translate(40px, -45px);
+				}
+				90% {
+					-webkit-transform: translate(40px, -45px);
+					transform: translate(40px, -45px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(40px, -45px);
+					transform: translate(40px, -45px);
+				}
+			}
+
+			@keyframes particleAnimate13 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(29px, 24px);
+					transform: translate(29px, 24px);
+				}
+				90% {
+					-webkit-transform: translate(29px, 24px);
+					transform: translate(29px, 24px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(29px, 24px);
+					transform: translate(29px, 24px);
+				}
+			}
+
+			@keyframes particleAnimate14 {
+				0% {
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				30% {
+					opacity: 1;
+					-webkit-transform: translate(0, 0);
+					transform: translate(0, 0);
+				}
+				80% {
+					-webkit-transform: translate(-10px, 50px);
+					transform: translate(-10px, 50px);
+				}
+				90% {
+					-webkit-transform: translate(-10px, 50px);
+					transform: translate(-10px, 50px);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translate(-10px, 50px);
+					transform: translate(-10px, 50px);
+				}
+			}
+
+			@keyframes heartAnime {
+				0% {
+					-webkit-transform: scale(0);
+					transform: scale(0);
+					fill: #e2264d;
+				}
+				39% {
+					-webkit-transform: scale(0);
+					transform: scale(0);
+				}
+				60% {
+					-webkit-transform: scale(1.2, 1.2);
+					transform: scale(1.2, 1.2);
+				}
+				70% {
+					-webkit-transform: scale(1, 1) translate(0%, -10%);
+					transform: scale(1, 1) translate(0%, -10%);
+				}
+				75% {
+					-webkit-transform: scale(1.1, 0.9) translate(0%, 5%);
+					transform: scale(1.1, 0.9) translate(0%, 5%);
+				}
+				80% {
+					-webkit-transform: scale(0.95, 1.05) translate(0%, -3%);
+					transform: scale(0.95, 1.05) translate(0%, -3%);
+				}
+				100% {
+					-webkit-transform: scale(1, 1) translate(0%, 0%);
+					transform: scale(1, 1) translate(0%, 0%);
+					fill: #e2264d;
+				}
 			}
 		</style>
-		<button class="c-favorite_button js-favorite-button">♥</button>
+
+		<button class="c-favorite-button js-favorite-button" type="button">
+			<svg
+				class="c-favorite-button__svg js-favorite-svg"
+				width="60px"
+				height="60px"
+				viewBox="0 0 500 500"
+			>
+				<circle
+					class="c-favorite-button__svgExplosion"
+					r="150"
+					cx="250"
+					cy="250"
+				></circle>
+				<g class="c-favorite-button__svgParticleLayer">
+					<circle fill="#8CE8C3" cx="130" cy="126.5" r="12.5"></circle>
+					<circle fill="#8CE8C3" cx="411" cy="313.5" r="12.5"></circle>
+					<circle fill="#91D2FA" cx="279" cy="86.5" r="12.5"></circle>
+					<circle fill="#91D2FA" cx="155" cy="390.5" r="12.5"></circle>
+					<circle fill="#CC8EF5" cx="89" cy="292.5" r="10.5"></circle>
+					<circle fill="#9BDFBA" cx="414" cy="282.5" r="10.5"></circle>
+					<circle fill="#9BDFBA" cx="115" cy="149.5" r="10.5"></circle>
+					<circle fill="#9FC7FA" cx="250" cy="80.5" r="10.5"></circle>
+					<circle fill="#9FC7FA" cx="78" cy="261.5" r="10.5"></circle>
+					<circle fill="#96D8E9" cx="182" cy="402.5" r="10.5"></circle>
+					<circle fill="#CC8EF5" cx="401.5" cy="166" r="13"></circle>
+					<circle fill="#DB92D0" cx="379" cy="141.5" r="10.5"></circle>
+					<circle fill="#DB92D0" cx="327" cy="397.5" r="10.5"></circle>
+					<circle fill="#DD99B8" cx="296" cy="392.5" r="10.5"></circle>
+				</g>
+				<path
+					class="c-favorite-button__svgHeart"
+					d="M250,187.4c-31.8-47.8-95.5-19.8-95.5,32.2c0,35.2,31.8,60.3,55.7,79.2c24.9,19.7,31.8,23.9,39.8,31.8 c7.9-7.9,14.6-12.6,39.8-31.8c24.3-18.5,55.7-44.4,55.7-79.6C345.5,167.6,281.8,139.7,250,187.4z"
+				></path>
+			</svg>
+		</button>
+
 		<script>
-			$(".js-favorite-button").click(function () {
-				$(".js-favorite-button").toggleClass("is-bookmark");
-			});
-			// localStorage.setItem(
-			// 	"favorite-item",
-			// 	$(".js-favorite-button").hasClass("is-bookmark")
-			// );
-
-			// $(".js-favorite-button").click(function () {
-			// 	$(".js-favorite-button").toggleClass("is-bookmark");
-
-			// 	localStorage.setItem(
-			// 		"favorite-item",
-			// 		$(".js-favorite-button").hasClass("is-bookmark")
-			// 	);
-			// });
-
-			// // window.localStorage.setItem('keyname','内容です。');
-			// if (window.localStorage.getItem("favorite-item")) {
-			// 	$(".js-favorite-button").addClass("is-bookmarke");
-			// }
-			// if (localStorage.getItem("favorite-item") === "true") {
-			// 	$(".js-favorite-button").addClass("is-bookmarke");
-			// }
-		</script>
-
-		<script>
-			// ウェブストレージに対応している場合
-			if (window.localStorage) {
-				// 保存するオブジェクト
-				const obj = {
-					str: "Hello",
+			const favorite_button =
+				document.getElementsByClassName("js-favorite-button");
+			for (let i = 0; i < favorite_button.length; i++) {
+				favorite_button[i].onclick = function () {
+					favorite_button[i].classList.toggle("is-clicked");
 				};
-				// オブジェクトをjsonに変換
-				const txt = JSON.stringify(obj);
-				// jsonデータをlocalStorageに保存
-				localStorage.setItem("hoge", txt);
-				// localStorageに保存されたものをキーを指定して取得
-				const item = localStorage.getItem("hoge");
-				// コンソールに出力
-				console.log(item);
 			}
+
+			localStorage.favorite = favorite_button;
+			localStorage.キー;
+
+			// 読込
+			function load() {
+				var mydata = "";
+				if (!localStorage.getItem("mydata")) {
+					mydata = "データがありません";
+				} else {
+					mydata = localStorage.getItem("mydata");
+				}
+				console.log(`mydata= ${mydata}`);
+				document.getElementById("mydata_out").innerHTML = mydata;
+			}
+			// 保存
+			function save() {
+				var mydata = document.getElementById("mydata_in").value;
+				console.log(`mydata_in = ${mydata_in}`);
+				localStorage.setItem("mydata", mydata);
+			}
+
+			// var str = document.fm.dat.value;
+			// sessionStorage.setItem("test", str); //Storageに書き込み
+			// alert("「" + str + "」を保存しました。");
 		</script>
 	</body>
 </html>
