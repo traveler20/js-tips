@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				background-color: #333;
+				color: #fff;
+				font-family: "Teko", sans-serif;
+			}
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+
+			.section {
+				padding: 5rem 4rem;
+			}
+
+			.scroll {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+			}
+
+			.title {
+				font-size: 4rem;
+				color: #b4e570;
+			}
+
+			.flex {
+				display: flex;
+				align-items: center;
+			}
+			.flex .content {
+				width: 50%;
+			}
+			.flex .example {
+				width: 50%;
+				height: 240px;
+				margin-top: 4.625rem;
+				margin-left: 2rem;
+				overflow: hidden;
+			}
+			.flex .example img {
+				display: block;
+				width: 400px;
+				margin: 0 auto;
+			}
+			.flex--revers {
+				flex-direction: row-reverse;
+			}
+			.flex--revers .example {
+				margin-right: 2rem;
+				margin-left: 0;
+			}
+
+			.gallery {
+				position: relative;
+				height: 100%;
+				overflow: hidden;
+			}
+			.gallery::before {
+				content: "";
+				display: block;
+				width: 100%;
+				padding-top: 37.5%;
+			}
+			.gallery img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				min-width: 650px;
+				margin: auto;
+			}
+
+			.end {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+
+		<div class="scroll">
+			<h1 class="title">Scroll↓</h1>
+		</div>
+		<section class="section">
+			<div class="flex">
+				<div class="content">
+					<h2>Heading</h2>
+					<p>
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id atque
+						officia aut facere quidem necessitatibus natus corrupti, quo quas
+						nesciunt facilis, ex, beatae. Sint officiis iste fugiat,
+						necessitatibus. Soluta, commodi dolore consequatur alias similique,
+						vel obcaecati iure repellendus ea vero blanditiis, nihil minima
+						inventore doloremque non quos consequuntur voluptatibus optio.
+						Mollitia harum beatae nostrum, iure pariatur odit voluptates, enim
+						fuga explicabo recusandae, expedita possimus eius exercitationem nam
+						nihil illo alias veniam provident temporibus deleniti? Totam, vitae
+						incidunt corrupti architecto temporibus molestias quo tempore, eos
+						exercitationem cum nostrum tenetur aut quibusdam expedita ea porro
+						nisi odio minima officiis magnam nihil praesentium saepe natus,
+						iusto laboriosam. Perspiciatis, amet maiores voluptates molestiae
+						illum. A doloremque exercitationem consequuntur iusto, excepturi
+						debitis voluptatum, quam, provident libero porro facilis dolor ea
+						odio eum vitae accusamus sapiente accusantium quos delectus
+						doloribus animi pariatur laboriosam. Rem non debitis blanditiis cum
+						harum, aliquam quas, id ullam inventore perferendis ipsam tempora
+						suscipit numquam vel a expedita, assumenda, nostrum recusandae iure
+						impedit? Laboriosam aspernatur reprehenderit rerum id in repellat
+						accusamus odio dolorum officiis architecto, temporibus asperiores ex
+						nulla, ratione fugit nesciunt voluptates. Ab facilis autem, aliquid
+						ea ex? Eius eligendi et itaque quod fugiat, non, voluptates maiores
+						dolores vero impedit ex!
+					</p>
+				</div>
+				<div class="example js-parallax">
+					<img
+						src="https://www.evoworx.co.jp/wp3/wp-content/uploads/2021/12/parallax_img1.jpg"
+						alt=""
+					/>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="flex flex--revers">
+				<div class="content">
+					<h2>Heading</h2>
+					<p>
+						Lorem ipsum dolor, sit, amet consectetur adipisicing elit.
+						Consectetur illo soluta animi veniam repudiandae cum eligendi, ipsa
+						numquam nulla possimus porro obcaecati asperiores. Obcaecati porro
+						voluptates eos non, excepturi officiis nostrum, neque, asperiores
+						rerum nesciunt illo nihil odit blanditiis dolor doloribus
+						repellendus unde dolore, sequi dicta. Accusamus corrupti aliquid
+						inventore maxime ad itaque praesentium delectus tempore quisquam
+						harum, molestias rem, ex commodi non repudiandae, fugiat dolores
+						facilis quas illo adipisci obcaecati dolorum. Non vel culpa libero
+						nobis maiores eos nisi quas harum quod consectetur. Asperiores,
+						dolores maxime. Quae aut nobis quibusdam distinctio expedita
+						exercitationem nihil vitae sint, quod a nulla deserunt,
+						necessitatibus ratione quis officiis minima consequuntur rerum non
+						deleniti illo. Eos quos, earum alias. Et repudiandae repellendus est
+						consectetur. Odio dolore laborum, neque, rem, error ducimus
+						perferendis repellendus dolorem ad quod maiores assumenda nihil
+						consequuntur quo aperiam libero. Veritatis harum nostrum delectus
+						quisquam veniam libero corporis cum asperiores quam placeat possimus
+						autem rerum ipsum maiores ad, ipsa atque inventore sunt assumenda id
+						qui? Obcaecati tempore repellendus sunt fugit hic veritatis,
+						debitis, laborum aspernatur minima, dolores rerum. Dicta earum
+						repudiandae nam minus quidem velit id eligendi quo nihil sequi ex
+						facilis dolorem ut libero, consectetur, asperiores autem natus
+						excepturi obcaecati, porro impedit doloremque quam sunt! Quo quidem
+						consequuntur, sequi placeat sit nulla ad odio fuga facere
+						consectetur vel maiores unde nam illum omnis id reiciendis mollitia
+						dolores eligendi error iste. Ipsa corporis nulla quis itaque
+						nesciunt, placeat sapiente quia doloremque praesentium amet odio
+						dignissimos laborum quos repellendus vitae hic accusamus?
+					</p>
+				</div>
+				<div class="example js-parallax">
+					<img
+						src="https://www.evoworx.co.jp/wp3/wp-content/uploads/2021/12/parallax_img2.jpg"
+						alt=""
+					/>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<h2>Heading</h2>
+			<p>
+				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id atque
+				officia aut facere quidem necessitatibus natus corrupti, quo quas
+				nesciunt facilis, ex, beatae. Sint officiis iste fugiat, necessitatibus.
+				Soluta, commodi dolore consequatur alias similique, vel obcaecati iure
+				repellendus ea vero blanditiis, nihil minima inventore doloremque non
+				quos consequuntur voluptatibus optio. Mollitia harum beatae nostrum,
+				iure pariatur odit voluptates, enim fuga explicabo recusandae, expedita
+				possimus eius exercitationem nam nihil illo alias veniam provident
+				temporibus deleniti? Totam, vitae incidunt corrupti architecto
+				temporibus molestias quo tempore, eos exercitationem cum nostrum tenetur
+				aut quibusdam expedita ea porro nisi odio minima officiis magnam nihil
+				praesentium saepe natus, iusto laboriosam. Perspiciatis, amet maiores
+				voluptates molestiae illum. A doloremque exercitationem consequuntur
+				iusto, excepturi debitis voluptatum, quam, provident libero porro
+				facilis dolor ea odio eum vitae accusamus sapiente accusantium quos
+				delectus doloribus animi pariatur laboriosam. Rem non debitis blanditiis
+				cum harum, aliquam quas, id ullam inventore perferendis ipsam tempora
+				suscipit numquam vel a expedita, assumenda, nostrum recusandae iure
+				impedit? Laboriosam aspernatur reprehenderit rerum id in repellat
+				accusamus odio dolorum officiis architecto, temporibus asperiores ex
+				nulla, ratione fugit nesciunt voluptates. Ab facilis autem, aliquid ea
+				ex? Eius eligendi et itaque quod fugiat, non, voluptates maiores dolores
+				vero impedit ex!
+			</p>
+		</section>
+
+		<div class="gallery js-parallax">
+			<img
+				src="https://www.evoworx.co.jp/wp3/wp-content/uploads/2021/12/parallax_img3.jpg"
+				alt=""
+			/>
+		</div>
+
+		<section class="section">
+			<p>
+				Lorem ipsum dolor, sit, amet consectetur adipisicing elit. Consectetur
+				illo soluta animi veniam repudiandae cum eligendi, ipsa numquam nulla
+				possimus porro obcaecati asperiores. Obcaecati porro voluptates eos non,
+				excepturi officiis nostrum, neque, asperiores rerum nesciunt illo nihil
+				odit blanditiis dolor doloribus repellendus unde dolore, sequi dicta.
+				Accusamus corrupti aliquid inventore maxime ad itaque praesentium
+				delectus tempore quisquam harum, molestias rem, ex commodi non
+				repudiandae, fugiat dolores facilis quas illo adipisci obcaecati
+				dolorum. Non vel culpa libero nobis maiores eos nisi quas harum quod
+				consectetur. Asperiores, dolores maxime. Quae aut nobis quibusdam
+				distinctio expedita exercitationem nihil vitae sint, quod a nulla
+				deserunt, necessitatibus ratione quis officiis minima consequuntur rerum
+				non deleniti illo. Eos quos, earum alias. Et repudiandae repellendus est
+				consectetur. Odio dolore laborum, neque, rem, error ducimus perferendis
+				repellendus dolorem ad quod maiores assumenda nihil consequuntur quo
+				aperiam libero. Veritatis harum nostrum delectus quisquam veniam libero
+				corporis cum asperiores quam placeat possimus autem rerum ipsum maiores
+				ad, ipsa atque inventore sunt assumenda id qui? Obcaecati tempore
+				repellendus sunt fugit hic veritatis, debitis, laborum aspernatur
+				minima, dolores rerum. Dicta earum repudiandae nam minus quidem velit id
+				eligendi quo nihil sequi ex facilis dolorem ut libero, consectetur,
+				asperiores autem natus excepturi obcaecati, porro impedit doloremque
+				quam sunt! Quo quidem consequuntur, sequi placeat sit nulla ad odio fuga
+				facere consectetur vel maiores unde nam illum omnis id reiciendis
+				mollitia dolores eligendi error iste. Ipsa corporis nulla quis itaque
+				nesciunt, placeat sapiente quia doloremque praesentium amet odio
+				dignissimos laborum quos repellendus vitae hic accusamus?
+			</p>
+		</section>
+
+		<section class="section end">
+			<h1 class="title">END</h1>
+		</section>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
+		<script>
+			const targets = document.querySelectorAll(".js-parallax");
+
+			targets.forEach((target) => {
+				gsap.fromTo(
+					target.querySelector("img"),
+					{
+						y: 0,
+					},
+					{
+						y: -60, // y方向-に60px移動させる
+						ease: "none", // イージングなし
+						scrollTrigger: {
+							trigger: target, // ScrollTriggerの開始位置を計算するために使用される要素
+							start: "top bottom", // 1つ目の値がtriggerで指定した要素の開始位置　2つ目の値が画面の開始位置
+							end: "bottom top", // 1つ目の値がtriggerで指定した要素の終了位置　2つ目の値が画面の終了位置
+							scrub: 1, // 要素を1秒遅れで追従させる
+							// markers: true, // 開始位置、終了位置を調整確認する際に使用します
+						},
+					}
+				);
+			});
+		</script>
+	</body>
+</html>
