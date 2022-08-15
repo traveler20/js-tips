@@ -5,75 +5,90 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<!-- reset.css destyle -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+		/>
 	</head>
 	<body>
 		<style>
 			body {
-				background-color: #333;
-				color: #fff;
+				color: #333;
+				/* background-color: #333;
+				color: #fff; */
 				font-family: "Teko", sans-serif;
+				line-height: 1.6;
+			}
+			img {
+				max-width: 100%;
 			}
 
-			img {
+			/* img {
 				width: 100%;
 				height: auto;
-			}
+			} */
 
-			.section {
-				padding: 5rem 4rem;
+			/* ──────────────────────────────
+			 * 共通
+			 ────────────────────────────── */
+			.c-section-heading1 {
+				padding: 200px 16px;
+				font-size: 52px;
+				text-align: center;
 			}
-
-			.scroll {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				height: 100vh;
+			.c-section {
+				padding: 100px 16px;
 			}
-
-			.title {
-				font-size: 4rem;
-				color: #b4e570;
-			}
-
-			.flex {
-				display: flex;
-				align-items: center;
-			}
-			.flex .content {
-				width: 50%;
-			}
-			.flex .example {
-				width: 50%;
-				height: 240px;
-				margin-top: 4.625rem;
-				margin-left: 2rem;
-				overflow: hidden;
-			}
-			.flex .example img {
-				display: block;
-				width: 400px;
+			.c-section__inner {
+				max-width: 900px;
 				margin: 0 auto;
 			}
-			.flex--revers {
-				flex-direction: row-reverse;
+			.c-section__title {
+				font-size: 40px;
+				font-weight: 700;
+				letter-spacing: 0.05em;
 			}
-			.flex--revers .example {
-				margin-right: 2rem;
-				margin-left: 0;
+			.c-section__lead {
+				font-size: 20px;
+				margin-top: 16px;
 			}
 
-			.gallery {
-				position: relative;
-				height: 100%;
+			.c-section__figure,
+			.c-section__figure--reverse {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+				gap: 16px;
+			}
+			.c-section__figure--reverse {
+				flex-direction: row-reverse;
+			}
+			.c-section__figureFigcaption {
+				flex: 1;
+			}
+			.c-section__figurePicture {
+				/* flex: 1; */
+				max-width: 400px;
+				height: 240px;
 				overflow: hidden;
 			}
-			.gallery::before {
-				content: "";
-				display: block;
-				width: 100%;
-				padding-top: 37.5%;
+			.c-section__figurePicture img {
+				min-width: 650px;
 			}
-			.gallery img {
+
+			/* ──────────────────────────────
+			 * 画像のパララックス
+			 ────────────────────────────── */
+			.p-parallax-picture {
+				display: block;
+				height: 240px;
+				overflow: hidden;
+
+				position: relative;
+			}
+			.p-parallax-picture img {
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -81,180 +96,80 @@
 				min-width: 650px;
 				margin: auto;
 			}
-
-			.end {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
 		</style>
 
-		<div class="scroll">
-			<h1 class="title">Scroll↓</h1>
-		</div>
-		<section class="section">
-			<div class="flex">
-				<div class="content">
-					<h2>Heading</h2>
-					<p>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id atque
-						officia aut facere quidem necessitatibus natus corrupti, quo quas
-						nesciunt facilis, ex, beatae. Sint officiis iste fugiat,
-						necessitatibus. Soluta, commodi dolore consequatur alias similique,
-						vel obcaecati iure repellendus ea vero blanditiis, nihil minima
-						inventore doloremque non quos consequuntur voluptatibus optio.
-						Mollitia harum beatae nostrum, iure pariatur odit voluptates, enim
-						fuga explicabo recusandae, expedita possimus eius exercitationem nam
-						nihil illo alias veniam provident temporibus deleniti? Totam, vitae
-						incidunt corrupti architecto temporibus molestias quo tempore, eos
-						exercitationem cum nostrum tenetur aut quibusdam expedita ea porro
-						nisi odio minima officiis magnam nihil praesentium saepe natus,
-						iusto laboriosam. Perspiciatis, amet maiores voluptates molestiae
-						illum. A doloremque exercitationem consequuntur iusto, excepturi
-						debitis voluptatum, quam, provident libero porro facilis dolor ea
-						odio eum vitae accusamus sapiente accusantium quos delectus
-						doloribus animi pariatur laboriosam. Rem non debitis blanditiis cum
-						harum, aliquam quas, id ullam inventore perferendis ipsam tempora
-						suscipit numquam vel a expedita, assumenda, nostrum recusandae iure
-						impedit? Laboriosam aspernatur reprehenderit rerum id in repellat
-						accusamus odio dolorum officiis architecto, temporibus asperiores ex
-						nulla, ratione fugit nesciunt voluptates. Ab facilis autem, aliquid
-						ea ex? Eius eligendi et itaque quod fugiat, non, voluptates maiores
-						dolores vero impedit ex!
-					</p>
-				</div>
-				<div class="example js-parallax">
-					<img
-						src="https://www.evoworx.co.jp/wp3/wp-content/uploads/2021/12/parallax_img1.jpg"
-						alt=""
-					/>
-				</div>
+		<h1 class="c-section-heading1">GSAP&nbsp;画像のパララックス</h1>
+
+		<section class="c-section">
+			<div class="c-section__inner">
+				<figure class="c-section__figure">
+					<figcaption class="c-section__figureFigcaption">
+						<h2 class="c-section__title">タイトルテキスト</h2>
+						<p class="c-section__lead">
+							複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+						</p>
+					</figcaption>
+					<picture class="c-section__figurePicture js-parallax-picture">
+						<img
+							src="https://www.evoworx.co.jp/wp3/wp-content/uploads/2021/12/parallax_img1.jpg"
+							alt=""
+						/>
+					</picture>
+				</figure>
 			</div>
 		</section>
 
-		<section class="section">
-			<div class="flex flex--revers">
-				<div class="content">
-					<h2>Heading</h2>
-					<p>
-						Lorem ipsum dolor, sit, amet consectetur adipisicing elit.
-						Consectetur illo soluta animi veniam repudiandae cum eligendi, ipsa
-						numquam nulla possimus porro obcaecati asperiores. Obcaecati porro
-						voluptates eos non, excepturi officiis nostrum, neque, asperiores
-						rerum nesciunt illo nihil odit blanditiis dolor doloribus
-						repellendus unde dolore, sequi dicta. Accusamus corrupti aliquid
-						inventore maxime ad itaque praesentium delectus tempore quisquam
-						harum, molestias rem, ex commodi non repudiandae, fugiat dolores
-						facilis quas illo adipisci obcaecati dolorum. Non vel culpa libero
-						nobis maiores eos nisi quas harum quod consectetur. Asperiores,
-						dolores maxime. Quae aut nobis quibusdam distinctio expedita
-						exercitationem nihil vitae sint, quod a nulla deserunt,
-						necessitatibus ratione quis officiis minima consequuntur rerum non
-						deleniti illo. Eos quos, earum alias. Et repudiandae repellendus est
-						consectetur. Odio dolore laborum, neque, rem, error ducimus
-						perferendis repellendus dolorem ad quod maiores assumenda nihil
-						consequuntur quo aperiam libero. Veritatis harum nostrum delectus
-						quisquam veniam libero corporis cum asperiores quam placeat possimus
-						autem rerum ipsum maiores ad, ipsa atque inventore sunt assumenda id
-						qui? Obcaecati tempore repellendus sunt fugit hic veritatis,
-						debitis, laborum aspernatur minima, dolores rerum. Dicta earum
-						repudiandae nam minus quidem velit id eligendi quo nihil sequi ex
-						facilis dolorem ut libero, consectetur, asperiores autem natus
-						excepturi obcaecati, porro impedit doloremque quam sunt! Quo quidem
-						consequuntur, sequi placeat sit nulla ad odio fuga facere
-						consectetur vel maiores unde nam illum omnis id reiciendis mollitia
-						dolores eligendi error iste. Ipsa corporis nulla quis itaque
-						nesciunt, placeat sapiente quia doloremque praesentium amet odio
-						dignissimos laborum quos repellendus vitae hic accusamus?
-					</p>
-				</div>
-				<div class="example js-parallax">
-					<img
-						src="https://www.evoworx.co.jp/wp3/wp-content/uploads/2021/12/parallax_img2.jpg"
-						alt=""
-					/>
-				</div>
+		<section class="c-section">
+			<div class="c-section__inner">
+				<figure class="c-section__figure--reverse">
+					<figcaption class="c-section__figureFigcaption">
+						<h2 class="c-section__title">タイトルテキスト</h2>
+						<p class="c-section__lead">
+							複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+						</p>
+					</figcaption>
+					<picture class="c-section__figurePicture js-parallax-picture">
+						<img
+							src="https://www.evoworx.co.jp/wp3/wp-content/uploads/2021/12/parallax_img2.jpg"
+							alt=""
+						/>
+					</picture>
+				</figure>
 			</div>
 		</section>
 
-		<section class="section">
-			<h2>Heading</h2>
-			<p>
-				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id atque
-				officia aut facere quidem necessitatibus natus corrupti, quo quas
-				nesciunt facilis, ex, beatae. Sint officiis iste fugiat, necessitatibus.
-				Soluta, commodi dolore consequatur alias similique, vel obcaecati iure
-				repellendus ea vero blanditiis, nihil minima inventore doloremque non
-				quos consequuntur voluptatibus optio. Mollitia harum beatae nostrum,
-				iure pariatur odit voluptates, enim fuga explicabo recusandae, expedita
-				possimus eius exercitationem nam nihil illo alias veniam provident
-				temporibus deleniti? Totam, vitae incidunt corrupti architecto
-				temporibus molestias quo tempore, eos exercitationem cum nostrum tenetur
-				aut quibusdam expedita ea porro nisi odio minima officiis magnam nihil
-				praesentium saepe natus, iusto laboriosam. Perspiciatis, amet maiores
-				voluptates molestiae illum. A doloremque exercitationem consequuntur
-				iusto, excepturi debitis voluptatum, quam, provident libero porro
-				facilis dolor ea odio eum vitae accusamus sapiente accusantium quos
-				delectus doloribus animi pariatur laboriosam. Rem non debitis blanditiis
-				cum harum, aliquam quas, id ullam inventore perferendis ipsam tempora
-				suscipit numquam vel a expedita, assumenda, nostrum recusandae iure
-				impedit? Laboriosam aspernatur reprehenderit rerum id in repellat
-				accusamus odio dolorum officiis architecto, temporibus asperiores ex
-				nulla, ratione fugit nesciunt voluptates. Ab facilis autem, aliquid ea
-				ex? Eius eligendi et itaque quod fugiat, non, voluptates maiores dolores
-				vero impedit ex!
-			</p>
+		<section class="c-section">
+			<div class="c-section__inner">
+				<h2 class="c-section__title">タイトルテキスト</h2>
+				<p class="c-section__lead">
+					複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+				</p>
+				<picture class="p-parallax-picture js-parallax-picture">
+					<img
+						src="https://www.evoworx.co.jp/wp3/wp-content/uploads/2021/12/parallax_img3.jpg"
+						alt=""
+					/>
+				</picture>
+			</div>
 		</section>
 
-		<div class="gallery js-parallax">
-			<img
-				src="https://www.evoworx.co.jp/wp3/wp-content/uploads/2021/12/parallax_img3.jpg"
-				alt=""
-			/>
-		</div>
-
-		<section class="section">
-			<p>
-				Lorem ipsum dolor, sit, amet consectetur adipisicing elit. Consectetur
-				illo soluta animi veniam repudiandae cum eligendi, ipsa numquam nulla
-				possimus porro obcaecati asperiores. Obcaecati porro voluptates eos non,
-				excepturi officiis nostrum, neque, asperiores rerum nesciunt illo nihil
-				odit blanditiis dolor doloribus repellendus unde dolore, sequi dicta.
-				Accusamus corrupti aliquid inventore maxime ad itaque praesentium
-				delectus tempore quisquam harum, molestias rem, ex commodi non
-				repudiandae, fugiat dolores facilis quas illo adipisci obcaecati
-				dolorum. Non vel culpa libero nobis maiores eos nisi quas harum quod
-				consectetur. Asperiores, dolores maxime. Quae aut nobis quibusdam
-				distinctio expedita exercitationem nihil vitae sint, quod a nulla
-				deserunt, necessitatibus ratione quis officiis minima consequuntur rerum
-				non deleniti illo. Eos quos, earum alias. Et repudiandae repellendus est
-				consectetur. Odio dolore laborum, neque, rem, error ducimus perferendis
-				repellendus dolorem ad quod maiores assumenda nihil consequuntur quo
-				aperiam libero. Veritatis harum nostrum delectus quisquam veniam libero
-				corporis cum asperiores quam placeat possimus autem rerum ipsum maiores
-				ad, ipsa atque inventore sunt assumenda id qui? Obcaecati tempore
-				repellendus sunt fugit hic veritatis, debitis, laborum aspernatur
-				minima, dolores rerum. Dicta earum repudiandae nam minus quidem velit id
-				eligendi quo nihil sequi ex facilis dolorem ut libero, consectetur,
-				asperiores autem natus excepturi obcaecati, porro impedit doloremque
-				quam sunt! Quo quidem consequuntur, sequi placeat sit nulla ad odio fuga
-				facere consectetur vel maiores unde nam illum omnis id reiciendis
-				mollitia dolores eligendi error iste. Ipsa corporis nulla quis itaque
-				nesciunt, placeat sapiente quia doloremque praesentium amet odio
-				dignissimos laborum quos repellendus vitae hic accusamus?
-			</p>
-		</section>
-
-		<section class="section end">
-			<h1 class="title">END</h1>
+		<section class="c-section">
+			<div class="c-section__inner">
+				<h2 class="c-section__title">タイトルテキスト</h2>
+				<p class="c-section__lead">
+					複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+				</p>
+			</div>
 		</section>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
 		<script>
-			const targets = document.querySelectorAll(".js-parallax");
+			const parallax_picture = document.querySelectorAll(
+				".js-parallax-picture"
+			);
 
-			targets.forEach((target) => {
+			parallax_picture.forEach((target) => {
 				gsap.fromTo(
 					target.querySelector("img"),
 					{

@@ -80,6 +80,7 @@ html-svgUse.html
 - [CSS sticky で簡易なパララックス](css-sticky-section.html)
 - CSS でのパララックスは position:sticky で簡易的に実装することも可能
 - JS でパララックス効果を用いる
+- [GSAP でパララックス](js-gsap-parallax.html)
 - [横スクロールのサイト](js-gsap-sidescroll.html)
 - [スクロールで画像がズームになる](js-contents-zoom.html)
 
@@ -92,6 +93,7 @@ css-customscrollbar.html
 css-parallax.html
 css-sticky-section.html
 js-parallax.html(*)
+js-gsap-parallax.html
 js-gsap-sidescroll.html
 js-contents-zoom.html
 ```
@@ -286,8 +288,8 @@ css-container.html
 - [ジェネレータ](js-generator.html)
 - [文字が反転する](css-invert.html)
 - [お気に入り登録ボタン](js-favorite.html)
-- [](css-svg-favorite.html)
-- [](css-svg-progress.html)
+- [お気に入りボタン](css-svg-favorite.html)
+- [スキルセット円表現](css-svg-progress.html)
 
 ```
 css-timeline.html
@@ -310,6 +312,7 @@ css-svg-progress.html
 - [パーティクルアニメーション](js-canvas-particle.html)
 - [スペースアニメーション](js-canvas-space.html)
 - [液体系のアニメーション](js-canvas-liquid.html)
+- [canvas でつくる花火](js-canvas-fireworks.html)
 
 ```
 js-canvas-staranimation.html
@@ -317,6 +320,7 @@ js-canvas-wavesection.html
 js-canvas-particle.html
 js-canvas-space.html
 js-canvas-liquid.html
+js-canvas-fireworks.html
 ```
 
 ## GSAP アニメーション
@@ -328,6 +332,7 @@ js-canvas-liquid.html
 - [スクロール](js-gsap-scroll-fixed.html)
 - [スクロール](js-gsap-scroll-scrab.html)
 - [スクロール](js-gsap-scroll-trigger.html)
+- [GSAP でパララックス](js-gsap-parallax.html)
 
 ```
 js-gsap-typography.html
@@ -337,6 +342,7 @@ js-gsap-scrollchat.html
 js-gsap-scroll-fixed.html
 js-gsap-scroll-scrab.html
 js-gsap-scroll-trigger.html
+js-gsap-parallax.html
 ```
 
 ## project
@@ -358,6 +364,7 @@ project/fv_css-animation-star-shooting
 - [グーグル検索](gimmick-site/js-search-google)
 - [CSS でつくる花火](css-fireworks.html)
 - [CSS でつくる花火](css-fireworks-colorful.html)
+- [canvas でつくる花火](js-canvas-fireworks.html)
 
 ```
 gimmick-site/css-animation-star-shooting
@@ -368,15 +375,16 @@ gimmick-site/js-mouse-rotate-effect
 gimmick-site/js-search-google
 css-fireworks.html
 css-fireworks-colorful.html
+js-canvas-fireworks.html
 ```
 
 ---
 
 <!-- - CSS でできるタブメニュー -->
-  <!-- - HTML だけでできるアコーディオン -->
-  <!-- - CSS1 行でできるスムーズスクロール -->
-  <!-- - CSS でできるハンバーガーメニュー -->
-  <!-- - CSS でできるモーダルウィンドウ -->
+<!-- - HTML だけでできるアコーディオン -->
+<!-- - CSS1 行でできるスムーズスクロール -->
+<!-- - CSS でできるハンバーガーメニュー -->
+<!-- - CSS でできるモーダルウィンドウ -->
 
 - テキストが長いときだけ左寄せ
 - CSS でつくるタイムライン

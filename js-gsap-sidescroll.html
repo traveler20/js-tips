@@ -5,41 +5,33 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<!-- reset.css destyle -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+		/>
 	</head>
 	<body>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
-
 		<style>
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-			}
-			ul,
-			li {
-				list-style: none;
-			}
 			body {
-				background-color: #eeebdd;
-				color: #1b1717;
-				font-family: Avenir, "Helvetica neue", Helvetica, sans-serif;
+				/* background-color: #eeebdd;
+				color: #1b1717; 
+				font-family: Avenir, "Helvetica neue", Helvetica, sans-serif;*/
+				color: #333;
 			}
 
 			/* ──────────────────────────────
 			 * 共通
 			 ────────────────────────────── */
 			.c-section-heading1 {
-				padding: 200px 0 20px;
+				padding: 200px 16px;
 				font-size: 52px;
 				text-align: center;
 			}
 			.c-section {
-				width: 100%;
-				padding: 100px 0;
+				padding: 100px 16px;
 			}
 			.c-section__inner {
-				width: 80%;
 				max-width: 900px;
 				margin: 0 auto;
 			}
@@ -50,38 +42,36 @@
 			}
 			.c-section__lead {
 				font-size: 20px;
-				margin-top: 60px;
+				margin-top: 16px;
 			}
 
 			/* ──────────────────────────────
 			 * 横スクロールセクション
 			 ────────────────────────────── */
 			.p-scroll {
+				color: #eeebdd;
 				background-color: #1b1717;
 				display: flex;
 				justify-content: center;
 				align-items: center;
 			}
-
-			.p-scroll__heading {
-				color: #eeebdd;
+			.p-scroll__inner {
+				width: 100%;
 			}
 
-			.p-scroll__list-wrapper {
+			.p-scroll__lists {
 				position: relative;
 				width: 100%;
 				height: 700px;
 			}
-
-			.p-scroll__list {
+			.p-scroll__listsUl {
 				position: absolute;
 				top: 60px;
 				left: 0;
 				display: flex;
 				gap: 0 60px;
 			}
-
-			.p-scroll__card {
+			.p-scroll__listsCard {
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -93,8 +83,7 @@
 				background-color: #eeebdd;
 				color: #1b1717;
 			}
-
-			.p-scroll__text {
+			.p-scroll__listsText {
 				width: 400px;
 				font-size: 20px;
 				letter-spacing: 0.08em;
@@ -103,7 +92,7 @@
 			}
 		</style>
 
-		<h1 class="c-section-heading1">GSAP Pinning Side Scroll</h1>
+		<h1 class="c-section-heading1">GSAP&nbsp;横スクロール</h1>
 		<section class="c-section">
 			<div class="c-section__inner">
 				<h2 class="c-section__title">普通のセクション</h2>
@@ -114,35 +103,33 @@
 		</section>
 
 		<section class="p-scroll c-section js-sideScroll">
-			<div class="p-scroll__container c-section__inner">
-				<h2 class="p-scroll__heading c-section__title">
-					横にスクロールするセクション
-				</h2>
-				<div class="p-scroll__list-wrapper">
-					<ul class="p-scroll__list js-sideScrollLists">
-						<li class="p-scroll__item">
-							<div class="p-scroll__card">Card</div>
-							<p class="p-scroll__text">テキストが入りますよ</p>
+			<div class="p-scroll__inner c-section__inner">
+				<h2 class="c-section__title">横にスクロールするセクション</h2>
+				<div class="p-scroll__lists">
+					<ul class="p-scroll__listsUl js-side-scroll">
+						<li class="">
+							<div class="p-scroll__listsCard">Card</div>
+							<p class="p-scroll__listsText">テキストが入りますよ</p>
 						</li>
-						<li class="p-scroll__item">
-							<div class="p-scroll__card">Card</div>
-							<p class="p-scroll__text">テキストが入りますよ</p>
+						<li class="">
+							<div class="p-scroll__listsCard">Card</div>
+							<p class="p-scroll__listsText">テキストが入りますよ</p>
 						</li>
-						<li class="p-scroll__item">
-							<div class="p-scroll__card">Card</div>
-							<p class="p-scroll__text">テキストが入りますよ</p>
+						<li class="">
+							<div class="p-scroll__listsCard">Card</div>
+							<p class="p-scroll__listsText">テキストが入りますよ</p>
 						</li>
-						<li class="p-scroll__item">
-							<div class="p-scroll__card">Card</div>
-							<p class="p-scroll__text">テキストが入りますよ</p>
+						<li class="">
+							<div class="p-scroll__listsCard">Card</div>
+							<p class="p-scroll__listsText">テキストが入りますよ</p>
 						</li>
-						<li class="p-scroll__item">
-							<div class="p-scroll__card">Card</div>
-							<p class="p-scroll__text">テキストが入りますよ</p>
+						<li class="">
+							<div class="p-scroll__listsCard">Card</div>
+							<p class="p-scroll__listsText">テキストが入りますよ</p>
 						</li>
-						<li class="p-scroll__item">
-							<div class="p-scroll__card">Card</div>
-							<p class="p-scroll__text">テキストが入りますよ</p>
+						<li class="">
+							<div class="p-scroll__listsCard">Card</div>
+							<p class="p-scroll__listsText">テキストが入りますよ</p>
 						</li>
 					</ul>
 				</div>
@@ -158,16 +145,18 @@
 			</div>
 		</section>
 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 		<script>
-			const el = document.querySelector(".js-sideScrollLists");
+			const side_scroll = document.querySelector(".js-side-scroll");
 
-			gsap.to(el, {
+			gsap.to(side_scroll, {
 				xPercent: -80,
 				ease: "none",
 				scrollTrigger: {
 					trigger: ".js-sideScroll",
 					start: "top top", // 要素の上端（top）が、ビューポートの上端（top）にきた時
-					end: `+=${el.clientWidth}`, // リストの横幅分移動したら終わり
+					end: `+=${side_scroll.clientWidth}`, // リストの横幅分移動したら終わり
 					scrub: true,
 					pin: true,
 				},
