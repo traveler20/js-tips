@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<!-- reset.css destyle -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+		/>
+	</head>
+	<body
+		style="padding: 80px; display: flex; gap: 18px; justify-content: center"
+	>
+		<style>
+			/* ──────────────────────────────
+             * これだと.c-buttonにもホバー時の色変更や下線が適用されてしまう… */
+			a {
+				color: #006cd8;
+				text-decoration: none;
+			}
+			a:hover {
+				color: #2f90f4;
+				text-decoration: underline;
+			}
+
+			/* ────────────────────────────── */
+
+			/* クラス付与していないaタグのみ適用 */
+			a:not([class]) {
+				color: #006cd8;
+				text-decoration: none;
+			}
+			a:not([class]):hover {
+				color: #2f90f4;
+				text-decoration: underline;
+			}
+
+			/* .c-button */
+			.c-button {
+				color: #fff;
+				background-color: #333;
+				border: solid 2px #333;
+				border-radius: 8px;
+				padding: 8px 24px;
+			}
+			.c-button:hover {
+				background-color: #888;
+				border-color: #888;
+				/* ──────────────────────────────
+                クラスがあるので以下の指定は不要
+				color: #fff; 
+				text-decoration: none;
+                ────────────────────────────── */
+			}
+		</style>
+
+		<a href="#url">テキストリンク</a>
+		<a href="#url" class="c-button">ボタンリンク</a>
+	</body>
+</html>
