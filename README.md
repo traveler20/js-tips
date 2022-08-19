@@ -43,10 +43,12 @@ css-title-flow.html
 
 - [リストの 2 行目以降を下げたい](css-indent-annotation.html)
 - [番号リストで 1 以外の数字からスタートさせたい](html-list.html)
+- [CSS の上書きなしでクラス指定の無いタグのみに適用](css-selector.html)
 
 ```
 css-indent-annotation.html
 html-list.html
+css-selector.html
 ```
 
 # 画像
@@ -202,7 +204,8 @@ js-animation-menu.html
 - [モーダルウィンドウ](css-modal.html)
 - [ホバーで補足説明を出したい（ツールチップ）](css-tooltip.html)
 - [タイマーで表示を切り替えたい](php-timer.html)
-- [パラメータ](js-parameter.html)
+- [パラメータからページの表示を切り替える](js-parameter.html)
+- [a タグに現在の URL のパラメータを付与する](js-parameter-add.html)
 - [表示速度の向上](css-speedup.html)
 - [問い合わせフォーム（formspree）](html-formspree.html)
 - [問い合わせフォーム（googleform）](html-googleform.html)
@@ -221,6 +224,7 @@ css-modal.html
 css-tooltip.html
 php-timer.html
 js-parameter.html
+js-parameter-add.html
 css-speedup.html
 html-formspree.html
 html-googleform.html
