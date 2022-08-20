@@ -204,7 +204,8 @@ js-animation-menu.html
 - [モーダルウィンドウ](css-modal.html)
 - [ホバーで補足説明を出したい（ツールチップ）](css-tooltip.html)
 - [タイマーで表示を切り替えたい](php-timer.html)
-- [パラメータからページの表示を切り替える](js-parameter.html)
+- [パラメータ系まとめ](js-parameter.html)
+- [パラメータからページの表示を切り替える](js-parameter-identifier.html)
 - [a タグに現在の URL のパラメータを付与する](js-parameter-add.html)
 - [表示速度の向上](css-speedup.html)
 - [問い合わせフォーム（formspree）](html-formspree.html)
@@ -224,6 +225,7 @@ css-modal.html
 css-tooltip.html
 php-timer.html
 js-parameter.html
+js-parameter-identifier.html
 js-parameter-add.html
 css-speedup.html
 html-formspree.html
