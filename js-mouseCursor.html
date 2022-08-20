@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div>
+			<style>
+				.spring.imgBox {
+					height: 100vh;
+				}
+				.summer.imgBox {
+					clip-path: ellipse(50px 50px at 0px 0px);
+					transition: all 0.1s;
+				}
+				.imgBox {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100vw;
+					height: auto;
+					z-index: 1;
+				}
+				.imgBox img {
+					width: 100%;
+					height: auto;
+					max-height: 80vh;
+					object-fit: cover;
+				}
+			</style>
+			<div class="spring imgBox">
+				<img
+					src="https://dl.dropbox.com/s/trv8n3bvp0yt94l/season1.jpg?dl=0"
+					alt=""
+				/>
+			</div>
+			<div class="summer imgBox">
+				<img
+					src="https://dl.dropbox.com/s/ck7a0jxb2lukclv/season2.jpg?dl=0"
+					alt=""
+				/>
+			</div>
+			<div style="height: 100vh; margin-top: 100vh"></div>
+			<script>
+				const area = window;
+
+				area.addEventListener("mousemove", function (e) {
+					clipStalker(e);
+				});
+
+				function clipStalker(e) {
+					const mousePosX = e.clientX;
+					const mousePosY = e.clientY;
+					const summer = document.querySelector(".summer");
+					let clip = `ellipse(100px 100px at ${mousePosX}px ${mousePosY}px)`;
+					summer.style.clipPath = clip;
+				}
+			</script>
+		</div>
+
+		<div>
+			<style>
+				.translate {
+					position: relative;
+				}
+				.translate .en {
+					position: absolute;
+					top: 0;
+					left: 0;
+					font-size: 50px;
+					background-color: rgba(200, 200, 200, 0.4);
+					color: grey;
+				}
+				.translate .ja {
+					position: absolute;
+					top: 0;
+					left: 0;
+					font-size: 50px;
+					background-color: white;
+					clip-path: ellipse(30px 30px at 0px 0px);
+					transition: all 0.1s;
+				}
+			</style>
+			<div class="translate">
+				<div class="en clip">
+					<p>Spring Spring Spring Spring Spring</p>
+					<p>Summer Summer Summer Summer Summer</p>
+					<p>Autumn Autumn Autumn Autumn Autumn</p>
+					<p>Winter Winter Winter Winter Winter</p>
+				</div>
+				<div class="ja clip">
+					<p>これはきっと「春」なんじゃないでしょうか</p>
+					<p>これはきっと「夏」なんじゃないでしょうか</p>
+					<p>これはきっと「秋」なんじゃないでしょうか</p>
+					<p>これはきっと「冬」なんじゃないでしょうか</p>
+				</div>
+			</div>
+			<script>
+				const en_area = window;
+
+				function translateStalker(e) {
+					const mousePosX = e.clientX;
+					const mousePosY = e.clientY - 50;
+					const ja = document.querySelector(".ja");
+					let clip = `ellipse(50px 50px at ${mousePosX}px ${mousePosY}px)`;
+					ja.style.clipPath = clip;
+				}
+
+				en_area.addEventListener("mousemove", function (e) {
+					translateStalker(e);
+				});
+			</script>
+		</div>
+		<div style="height: 100vh; margin-top: 100vh"></div>
+	</body>
+</html>
