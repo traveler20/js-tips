@@ -16,21 +16,33 @@
 		>
 
 		<script>
-			const parameter_url = location.href;
-			const parameter_host = location.host;
-			const parameter_path = location.pathname;
-			// const parameter_search = location.search;
-			const parameter_cta = document.querySelectorAll(".c-cta-button");
-			for (let i = 0; i < parameter_cta.length; i++) {
-				// if (parameter_cta[i].href) {
-				// 	parameter_cta[i].href = parameter_cta[i].href + "?" + parameter_path;
-				// }
-				if (parameter_cta[i].href.indexOf("?") == -1) {
-					parameter_cta[i].href =
-						parameter_cta[i].href + "?code=" + parameter_host + parameter_path;
+			// const page_parameter_url = location.href;
+			// const page_parameter_host = location.host;
+			// const page_parameter_path = location.pathname;
+			// const page_parameter_search = location.search;
+			// const page_parameter_cta = document.querySelectorAll(".c-cta-button");
+			// for (let i = 0; i < page_parameter_cta.length; i++) {
+			// 	if (page_parameter_cta[i].href) {
+			// 		page_parameter_cta[i].href = page_parameter_cta[i].href + "?" + page_parameter_path;
+			// 	}
+			// }
+
+			const page_parameter_host = location.host;
+			const page_parameter_path = location.pathname;
+			const page_parameter_cta = document.querySelectorAll(".c-cta-button");
+			for (let i = 0; i < page_parameter_cta.length; i++) {
+				if (page_parameter_cta[i].href.indexOf("?") == -1) {
+					page_parameter_cta[i].href =
+						page_parameter_cta[i].href +
+						"?page=" +
+						page_parameter_host +
+						page_parameter_path;
 				} else {
-					parameter_cta[i].href =
-						parameter_cta[i].href + "&code=" + parameter_host + parameter_path;
+					page_parameter_cta[i].href =
+						page_parameter_cta[i].href +
+						"&page=" +
+						page_parameter_host +
+						page_parameter_path;
 				}
 			}
 		</script>

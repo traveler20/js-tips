@@ -7,51 +7,53 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<div class="pram"></div>
-		<div class="hash"></div>
+		<div class="js-prameter"></div>
+		<div class="js-hash"></div>
 		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script>
-			// --------------------------
-			// parameter
-			// --------------------------
+			// ──────────────────────────────
+			// パラメータ
+			// ──────────────────────────────
+			// id=osaka
 			// URLのパラメータを取得
-			const urlParam = location.search.substring(1);
+			const page_parameter_url = location.search.substring(1);
 
 			// URLにパラメータが存在する場合
-			if (urlParam) {
+			if (page_parameter_url) {
 				// 「&」が含まれている場合は「&」で分割
-				const param = urlParam.split("&");
+				const page_parameter_split = page_parameter_url.split("&");
 
 				// パラメータを格納する用の配列を用意
-				const paramArray = [];
+				const page_parameter_array = [];
 
 				// 用意した配列にパラメータを格納
-				for (i = 0; i < param.length; i++) {
-					const paramItem = param[i].split("=");
-					paramArray[paramItem[0]] = paramItem[1];
+				for (i = 0; i < page_parameter_split.length; i++) {
+					const page_parameter_item = page_parameter_split[i].split("=");
+					page_parameter_array[page_parameter_item[0]] = page_parameter_item[1];
 				}
 
 				// パラメータidがosakaかどうかを判断する
-				if (paramArray.id == "osaka") {
-					$(".pram").append("<p>大阪です</p>");
+				if (page_parameter_array.id == "osaka") {
+					$(".js-prameter").append("大阪です");
 				} else {
-					document.getElementsByClassName("pram")[0].innerHTML = "not Osaka";
+					$(".js-parameter").append("#大阪ではない");
 				}
 			}
 
-			// --------------------------
-			// anchor
-			// --------------------------
+			// ──────────────────────────────
+			// ハッシュ
+			// ──────────────────────────────
+			// #osaka
 			// URLのアンカー（#以降の部分）を取得
-			const urlHash = location.hash;
+			const page_parameter_hash = location.hash;
 
 			// URLにアンカーが存在する場合
-			if (urlHash) {
+			if (page_parameter_hash) {
 				// アンカーが#osakaかどうかを判断する
-				if (urlHash == "#osaka") {
-					$(".hash").append("<p>#大阪です</p>");
+				if (page_parameter_hash == "#osaka") {
+					$(".js-hash").append("#大阪です");
 				} else {
-					document.getElementsByClassName("pram")[0].innerHTML = "# Not Osaka";
+					$(".js-hash").append("#大阪ではない");
 				}
 			}
 		</script>
@@ -66,24 +68,32 @@
 			</p>
 		</details>
 		<script>
-			// parameter ?open=faq1 で開く
-			const url =
+			// ──────────────────────────────
+			// パラメータ
+			// ──────────────────────────────
+			// ?open=faq1
+			const page_url =
 				location.protocol +
 				"//" +
 				location.host +
 				location.pathname +
 				location.search;
-			const param = url.split("?");
-			const params = param.length > 1 && param[1].split("&");
-			const paramArray = [];
-			for (let i = 0; i < params.length; i++) {
-				const parameters = params[i].split("=");
-				paramArray.push(parameters[0]);
-				paramArray[parameters[0]] = parameters[1];
+			const page_parameter_split = page_url.split("?");
+			const page_parameter_search =
+				page_parameter_split.length > 1 && page_parameter_split[1].split("&");
+			const page_parameter_array = [];
+			for (let i = 0; i < page_parameter_search.length; i++) {
+				const page_parameter_item = page_parameter_search[i].split("=");
+				page_parameter_array.push(page_parameter_item[0]);
+				page_parameter_array[page_parameter_item[0]] = page_parameter_item[1];
 
-				const details = decodeURIComponent(parameters[1]);
+				const page_parameter_details = decodeURIComponent(
+					page_parameter_item[1]
+				);
 
-				document.getElementById(details).setAttribute("open", "");
+				document
+					.getElementById(page_parameter_details)
+					.setAttribute("open", "");
 			}
 		</script>
 	</body>

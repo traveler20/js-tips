@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="js-prameter"></div>
+		<div class="js-hash"></div>
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script>
+			// ──────────────────────────────
+			// パラメータ
+			// ──────────────────────────────
+			// id=osaka
+			// URLのパラメータを取得
+			const page_parameter_url = location.search.substring(1);
+
+			// URLにパラメータが存在する場合
+			if (page_parameter_url) {
+				// 「&」が含まれている場合は「&」で分割
+				const page_parameter_split = page_parameter_url.split("&");
+
+				// パラメータを格納する用の配列を用意
+				const page_parameter_array = [];
+
+				// 用意した配列にパラメータを格納
+				for (i = 0; i < page_parameter_split.length; i++) {
+					const page_parameter_item = page_parameter_split[i].split("=");
+					page_parameter_array[page_parameter_item[0]] = page_parameter_item[1];
+				}
+
+				// パラメータidがosakaかどうかを判断する
+				if (page_parameter_array.id == "osaka") {
+					$(".js-prameter").append("大阪です");
+				} else {
+					$(".js-parameter").append("#大阪ではない");
+				}
+			}
+
+			// ──────────────────────────────
+			// ハッシュ
+			// ──────────────────────────────
+			// #osaka
+			// URLのアンカー（#以降の部分）を取得
+			const page_parameter_hash = location.hash;
+
+			// URLにアンカーが存在する場合
+			if (page_parameter_hash) {
+				// アンカーが#osakaかどうかを判断する
+				if (page_parameter_hash == "#osaka") {
+					$(".js-hash").append("#大阪です");
+				} else {
+					$(".js-hash").append("#大阪ではない");
+				}
+			}
+		</script>
+
+		<details id="faq1">
+			<summary>open属性ありの場合</summary>
+			<p>
+				QS とは Quality Start の略であり、1985年にスポーツライター John Lowe
+				により提唱された。これは先発投手が少なくとも6イニングを投げ、ER (Earned
+				Runs＝自責点)
+				を3以下に抑えた場合に達成される指標で、いわゆる「試合を作れた
+			</p>
+		</details>
+		<script>
+			// ──────────────────────────────
+			// パラメータ
+			// ──────────────────────────────
+			// ?open=faq1
+			const page_url =
+				location.protocol +
+				"//" +
+				location.host +
+				location.pathname +
+				location.search;
+			const page_parameter_split = page_url.split("?");
+			const page_parameter_search =
+				page_parameter_split.length > 1 && page_parameter_split[1].split("&");
+			const page_parameter_array = [];
+			for (let i = 0; i < page_parameter_search.length; i++) {
+				const page_parameter_item = page_parameter_search[i].split("=");
+				page_parameter_array.push(page_parameter_item[0]);
+				page_parameter_array[page_parameter_item[0]] = page_parameter_item[1];
+
+				const page_parameter_details = decodeURIComponent(
+					page_parameter_item[1]
+				);
+
+				document
+					.getElementById(page_parameter_details)
+					.setAttribute("open", "");
+			}
+		</script>
+	</body>
+</html>
