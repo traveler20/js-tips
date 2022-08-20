@@ -67,6 +67,15 @@
 				を3以下に抑えた場合に達成される指標で、いわゆる「試合を作れた
 			</p>
 		</details>
+		<details id="faq2">
+			<summary>open属性ありの場合</summary>
+			<p>
+				QS とは Quality Start の略であり、1985年にスポーツライター John Lowe
+				により提唱された。これは先発投手が少なくとも6イニングを投げ、ER (Earned
+				Runs＝自責点)
+				を3以下に抑えた場合に達成される指標で、いわゆる「試合を作れた
+			</p>
+		</details>
 		<script>
 			// ──────────────────────────────
 			// パラメータ
@@ -94,6 +103,34 @@
 				document
 					.getElementById(page_parameter_details)
 					.setAttribute("open", "");
+			}
+		</script>
+
+		<a id="js-cta" class="c-cta-button" href="/index.html">リンクテキスト</a>
+		<a id="js-cta" class="c-cta-button" href="/index.html?ga=test"
+			>リンクテキスト</a
+		>
+		<a id="js-cta" class="c-cta-button" href="/service/index.html"
+			>リンクテキスト</a
+		>
+		<script>
+			const page_parameter_host = location.host;
+			const page_parameter_path = location.pathname;
+			const page_parameter_cta = document.querySelectorAll(".c-cta-button");
+			for (let i = 0; i < page_parameter_cta.length; i++) {
+				if (page_parameter_cta[i].href.indexOf("?") == -1) {
+					page_parameter_cta[i].href =
+						page_parameter_cta[i].href +
+						"?page=" +
+						page_parameter_host +
+						page_parameter_path;
+				} else {
+					page_parameter_cta[i].href =
+						page_parameter_cta[i].href +
+						"&page=" +
+						page_parameter_host +
+						page_parameter_path;
+				}
 			}
 		</script>
 	</body>
