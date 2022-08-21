@@ -9,14 +9,14 @@
 	<body>
 		<div>
 			<style>
-				.spring.imgBox {
+				.p-cursor-clip--on.p-cursor-clip {
 					height: 100vh;
 				}
-				.summer.imgBox {
+				.p-cursor-clip--bg.p-cursor-clip {
 					clip-path: ellipse(50px 50px at 0px 0px);
 					transition: all 0.1s;
 				}
-				.imgBox {
+				.p-cursor-clip {
 					position: absolute;
 					top: 0;
 					left: 0;
@@ -24,20 +24,20 @@
 					height: auto;
 					z-index: 1;
 				}
-				.imgBox img {
+				.p-cursor-clip img {
 					width: 100%;
 					height: auto;
 					max-height: 80vh;
 					object-fit: cover;
 				}
 			</style>
-			<div class="spring imgBox">
+			<div class="p-cursor-clip--on p-cursor-clip js-cursor_on">
 				<img
 					src="https://dl.dropbox.com/s/trv8n3bvp0yt94l/season1.jpg?dl=0"
 					alt=""
 				/>
 			</div>
-			<div class="summer imgBox">
+			<div class="p-cursor-clip--bg p-cursor-clip js-cursor_bg">
 				<img
 					src="https://dl.dropbox.com/s/ck7a0jxb2lukclv/season2.jpg?dl=0"
 					alt=""
@@ -45,28 +45,29 @@
 			</div>
 			<div style="height: 100vh; margin-top: 100vh"></div>
 			<script>
-				const area = window;
+				// const cursor_area = window;
+				const cursor_area = window.document.querySelector(".js-cursor_on");
 
-				area.addEventListener("mousemove", function (e) {
+				cursor_area.addEventListener("mousemove", function (e) {
 					clipStalker(e);
 				});
 
 				function clipStalker(e) {
-					const mousePosX = e.clientX;
-					const mousePosY = e.clientY;
-					const summer = document.querySelector(".summer");
-					let clip = `ellipse(100px 100px at ${mousePosX}px ${mousePosY}px)`;
-					summer.style.clipPath = clip;
+					const cursor_positionX = e.clientX;
+					const cursor_positionY = e.clientY;
+					const cursor_bg = document.querySelector(".js-cursor_bg");
+					let cursor_clip = `ellipse(100px 100px at ${cursor_positionX}px ${cursor_positionY}px)`;
+					cursor_bg.style.clipPath = cursor_clip;
 				}
 			</script>
 		</div>
 
 		<div>
 			<style>
-				.translate {
+				.p-cursor-translate {
 					position: relative;
 				}
-				.translate .en {
+				.p-cursor-translate__en {
 					position: absolute;
 					top: 0;
 					left: 0;
@@ -74,7 +75,7 @@
 					background-color: rgba(200, 200, 200, 0.4);
 					color: grey;
 				}
-				.translate .ja {
+				.p-cursor-translate__ja {
 					position: absolute;
 					top: 0;
 					left: 0;
@@ -84,14 +85,14 @@
 					transition: all 0.1s;
 				}
 			</style>
-			<div class="translate">
-				<div class="en clip">
+			<div class="p-cursor-translate js-cursor_translate">
+				<div class="p-cursor-translate__en">
 					<p>Spring Spring Spring Spring Spring</p>
 					<p>Summer Summer Summer Summer Summer</p>
 					<p>Autumn Autumn Autumn Autumn Autumn</p>
 					<p>Winter Winter Winter Winter Winter</p>
 				</div>
-				<div class="ja clip">
+				<div class="p-cursor-translate__ja">
 					<p>これはきっと「春」なんじゃないでしょうか</p>
 					<p>これはきっと「夏」なんじゃないでしょうか</p>
 					<p>これはきっと「秋」なんじゃないでしょうか</p>
@@ -99,17 +100,20 @@
 				</div>
 			</div>
 			<script>
-				const en_area = window;
+				// const en_area = window;
+				const cursor_translate = window.document.querySelector(
+					".js-cursor_translate"
+				);
 
 				function translateStalker(e) {
-					const mousePosX = e.clientX;
-					const mousePosY = e.clientY - 50;
-					const ja = document.querySelector(".ja");
-					let clip = `ellipse(50px 50px at ${mousePosX}px ${mousePosY}px)`;
-					ja.style.clipPath = clip;
+					const cursor_positionX = e.clientX;
+					const cursor_positionY = e.clientY - 50;
+					const cursor_ja = document.querySelector(".p-cursor-translate__ja");
+					let cursor_clip = `ellipse(50px 50px at ${cursor_positionX}px ${cursor_positionY}px)`;
+					cursor_ja.style.clipPath = cursor_clip;
 				}
 
-				en_area.addEventListener("mousemove", function (e) {
+				cursor_translate.addEventListener("mousemove", function (e) {
 					translateStalker(e);
 				});
 			</script>
