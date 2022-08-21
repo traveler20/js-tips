@@ -146,10 +146,12 @@ html-google-icon.html
 
 - [カーソルを自由に変形したい](css-cursor.html)
 - [カーソルを自由に変形したい(JS で文字列回転)](js-mouseCursorChange.html)
+- [カーソルを自由に変形したい](js-mouseCursor.html)
 
 ```
 css-cursor.html
 js-mouseCursorChange.html
+js-mouseCursor.html
 ```
 
 # ボタン・リンク
