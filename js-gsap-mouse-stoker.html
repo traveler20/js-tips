@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="color-scheme" content="dark" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+		<script>
+			window.addEventListener("DOMContentLoaded", () => {
+				const stalker = document.querySelector(".stalker");
+				const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+				const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+				const speed = 0.15;
+
+				const xSet = gsap.quickSetter(stalker, "x", "px");
+				const ySet = gsap.quickSetter(stalker, "y", "px");
+
+				window.addEventListener("mousemove", (event) => {
+					const rectSize = 10;
+					mouse.x = event.x - rectSize / 2;
+					mouse.y = event.y - rectSize / 2;
+				});
+
+				gsap.ticker.add(() => {
+					if (mouseLock === true) {
+						return;
+					}
+					const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+
+					// いわゆるイージングの公式
+					pos.x += (mouse.x - pos.x) * dt;
+					pos.y += (mouse.y - pos.y) * dt;
+
+					xSet(pos.x);
+					ySet(pos.y);
+				});
+
+				let mouseLock = false;
+
+				document.querySelectorAll("button").forEach((element) => {
+					element.addEventListener("mouseenter", () => {
+						const rect = element.getBoundingClientRect();
+						mouseLock = true;
+
+						const size = 10;
+						const x = (mouse.x = pos.x = rect.x - size);
+						const y = (mouse.y = pos.y = rect.y - size);
+
+						gsap.to(stalker, {
+							x,
+							y,
+							width: rect.width + size * 2,
+							height: rect.height + size * 2,
+							duration: 0.35,
+							ease: "back.out",
+							overwrite: true,
+						});
+					});
+					element.addEventListener("mouseleave", () => {
+						mouseLock = false;
+
+						gsap.to(stalker, {
+							width: 10,
+							height: 10,
+							duration: 1,
+							ease: "power4.out",
+							overwrite: true,
+						});
+					});
+				});
+			});
+		</script>
+		<style>
+			html {
+				height: 100%;
+			}
+
+			body {
+				margin: 0;
+				padding: 0;
+				color: white;
+				background: #000;
+				font-family: sans-serif;
+			}
+
+			.container {
+				justify-content: center;
+				margin-top: 10vh;
+				padding: 32px;
+			}
+
+			button {
+				appearance: none;
+				border: 1px solid white;
+				color: white;
+				background: none;
+				user-select: none;
+				padding: 8px 16px;
+				transition: 0.2s;
+				cursor: pointer;
+			}
+			button:hover {
+				color: black;
+				background: white;
+			}
+
+			.stalker {
+				width: 10px;
+				height: 10px;
+				display: block;
+				border: 2px solid #ccc;
+				position: fixed;
+				pointer-events: none;
+				top: 0;
+				left: 0;
+				box-sizing: border-box;
+			}
+			.flex {
+				display: flex;
+				gap: 24px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<h1>Mouse Stalker Example</h1>
+			<button>quickSetter</button>
+			<p>
+				If you find yourself calling gsap.set() many times on the same object
+				(or set of objects), like in a "mousemove" event, you can boost
+				performance 50% - 250% by creating a quickSetter function and using that
+				instead of gsap.set().
+			</p>
+
+			<div class="flex">
+				<button>Button A</button>
+				<button>Button B</button>
+				<button>Button C</button>
+				<button>Button D</button>
+				<button>Button E</button>
+			</div>
+		</div>
+
+		<div class="stalker"></div>
+	</body>
+</html>
