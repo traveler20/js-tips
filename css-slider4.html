@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      /* RESET RULES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+      :root {
+        --white: #fff;
+        --red: #e74c3c;
+        --black: #000;
+        --img-color: #ededed;
+        --overlay: rgba(0, 0, 0, 0.75);
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        background-color: var(--img-color);
+      }
+
+      label {
+        display: block;
+        cursor: pointer;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      input[type="radio"] {
+        position: absolute;
+        bottom: 0;
+        left: -9999px;
+      }
+
+      body {
+        color: var(--white);
+        margin: 20px 0;
+        font-family: sans-serif;
+      }
+
+      .container {
+        max-width: 450px;
+        padding: 0 20px;
+        margin: 0 auto;
+      }
+
+      /* SLIDESHOW
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+      .featured-wrapper {
+        position: relative;
+      }
+
+      .featured-wrapper .featured-list {
+        display: grid;
+      }
+
+      .featured-wrapper .featured-list li {
+        grid-column: 1;
+        grid-row: 1;
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+
+      .featured-wrapper .arrows label::before,
+      .featured-wrapper .arrows label::after {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: var(--black);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 24px 24px;
+        background-color: var(--white);
+        opacity: 0.5;
+        transition: opacity 0.25s;
+      }
+
+      .featured-wrapper .arrows label::before {
+        left: 10px;
+      }
+
+      .featured-wrapper .arrows label::after {
+        right: 10px;
+      }
+
+      .featured-wrapper .dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+      }
+
+      .featured-wrapper .dots li:not(:last-child) {
+        margin-right: 8px;
+      }
+
+      .featured-wrapper .dots label {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 1px solid var(--white);
+        transition: background 0.25s;
+      }
+
+      .featured-wrapper .dots label:hover {
+        background: currentColor;
+      }
+
+      .thumb-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 20px;
+        margin-top: 20px;
+      }
+
+      .thumb-list label {
+        display: grid;
+      }
+
+      .thumb-list img,
+      .thumb-list .outer {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .thumb-list .outer {
+        display: grid;
+        place-items: center;
+        transition: background 0.25s;
+      }
+
+      .thumb-list .inner {
+        font-size: 18px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.25s;
+      }
+
+      /* MIMIC CLICK EVENT
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+      [id="image1"]:checked ~ .container .featured-list li:nth-child(1),
+      [id="image2"]:checked ~ .container .featured-list li:nth-child(2),
+      [id="image3"]:checked ~ .container .featured-list li:nth-child(3),
+      [id^="image"]:checked ~ .container .arrows [for^="image"]:hover::before,
+      [id^="image"]:checked ~ .container .arrows [for^="image"]:hover::after {
+        opacity: 1;
+      }
+
+      [id="image1"]:checked ~ .container .arrows [for="image3"]::before,
+      [id="image2"]:checked ~ .container .arrows [for="image1"]::before,
+      [id="image3"]:checked ~ .container .arrows [for="image2"]::before {
+        content: "";
+        background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow-prev-slideshow.svg);
+      }
+
+      [id="image1"]:checked ~ .container .arrows [for="image2"]::after,
+      [id="image2"]:checked ~ .container .arrows [for="image3"]::after,
+      [id="image3"]:checked ~ .container .arrows [for="image1"]::after {
+        content: "";
+        background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow-next-slideshow.svg);
+      }
+
+      [id="image1"]:checked ~ .container .dots [for="image1"],
+      [id="image2"]:checked ~ .container .dots [for="image2"],
+      [id="image3"]:checked ~ .container .dots [for="image3"] {
+        background: currentColor;
+      }
+
+      [id="image1"]:checked ~ .container [for="image1"] .outer,
+      [id="image2"]:checked ~ .container [for="image2"] .outer,
+      [id="image3"]:checked ~ .container [for="image3"] .outer {
+        background: var(--overlay);
+      }
+
+      [id="image1"]:checked ~ .container [for="image1"] .inner,
+      [id="image2"]:checked ~ .container [for="image2"] .inner,
+      [id="image3"]:checked ~ .container [for="image3"] .inner {
+        opacity: 1;
+        transform: none;
+      }
+    </style>
+
+    <input type="radio" id="image1" name="image" checked />
+    <input type="radio" id="image2" name="image" />
+    <input type="radio" id="image3" name="image" />
+
+    <div class="container">
+      <div class="featured-wrapper">
+        <ul class="featured-list">
+          <li>
+            <figure>
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature4.jpg"
+                alt=""
+              />
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature11.jpg"
+                alt=""
+              />
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature6.jpg"
+                alt=""
+              />
+            </figure>
+          </li>
+        </ul>
+        <ul class="arrows">
+          <li>
+            <label for="image1"></label>
+          </li>
+          <li>
+            <label for="image2"></label>
+          </li>
+          <li>
+            <label for="image3"></label>
+          </li>
+        </ul>
+        <ul class="dots">
+          <li>
+            <label for="image1"></label>
+          </li>
+          <li>
+            <label for="image2"></label>
+          </li>
+          <li>
+            <label for="image3"></label>
+          </li>
+        </ul>
+      </div>
+      <ul class="thumb-list">
+        <li>
+          <label for="image1">
+            <img
+              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature4.jpg"
+              alt=""
+            />
+            <span class="outer">
+              <span class="inner">Caption1</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label for="image2">
+            <img
+              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature11.jpg"
+              alt=""
+            />
+            <span class="outer">
+              <span class="inner">Caption2</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label for="image3">
+            <img
+              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature6.jpg"
+              alt=""
+            />
+            <span class="outer">
+              <span class="inner">Caption3</span>
+            </span>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

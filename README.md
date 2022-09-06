@@ -13,6 +13,7 @@ html-head.html
 # テキスト・フォント
 
 - [テキストを途中まで表示させて...と表示させたい](css-truncatetext.html)
+- [テキストを途中まで表示させてグラデーション表示](css-webkit-mask.html)
 - [テキストを選択したときの色を変えたい](css-selection.html)
 - [テキストフォントのデザインを凝りたい](css-title.html)
 - [各 WEB フォントの表示を確認する](css-typography.html)
@@ -199,7 +200,7 @@ js-animation-menu.html
 # サイトでよく実装する機能
 
 - [スワイプでスライドするギャラリー](js-swiper.html)
-- スライドする機能
+- [スライドする機能](css-slider4.html)
 - [アコーディオンメニュー](css-details.html)
 - [タブメニュー](css-tab.html)
 - [ハンバーガーメニュー](css-hamburger.html)
@@ -220,6 +221,7 @@ js-swiper.html
 css-slider.html(\*)
 css-slider2.html(\*)
 css-slider3.html(\*)
+css-slider4.html
 css-details.html(css-details-accordion.html)
 css-tab.html
 css-hamburger.html
