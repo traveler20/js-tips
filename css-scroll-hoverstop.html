@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      /* Marquee styles */
+      .marquee {
+        --gap: 1rem;
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        user-select: none;
+        gap: var(--gap);
+      }
+
+      .marquee__content {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: space-around;
+        gap: var(--gap);
+        min-width: 100%;
+      }
+
+      @keyframes scroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(calc(-100% - var(--gap)));
+        }
+      }
+
+      /* Pause animation when reduced-motion is set */
+      @media (prefers-reduced-motion: reduce) {
+        .marquee__content {
+          animation-play-state: paused !important;
+        }
+      }
+
+      /* Enable animation */
+      .enable-animation .marquee__content {
+        animation: scroll 10s linear infinite;
+      }
+
+      /* Pause on hover */
+      .marquee--hover-pause:hover .marquee__content {
+        animation-play-state: paused;
+      }
+
+      @keyframes scroll-abs {
+        from {
+          transform: translateX(calc(100% + var(--gap)));
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      /* Other page demo styles */
+      .marquee__content > * {
+        flex: 0 0 auto;
+        color: white;
+        background: dodgerblue;
+        margin: 2px;
+        padding: 1rem 2rem;
+        border-radius: 0.25rem;
+        text-align: center;
+      }
+
+      .marquee {
+        border: 2px dashed lightgray;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        padding: 2rem;
+        width: 100%;
+        min-height: 100vh;
+        font-family: system-ui, sans-serif;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-block: 2rem 1rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      section {
+        margin-block: 3rem;
+      }
+
+      section > * + * {
+        margin-block-start: 0.5rem;
+      }
+    </style>
+
+    <main>
+      <section class="enable-animation">
+        <h2>インフィニティ</h2>
+
+        <div class="marquee">
+          <ul class="marquee__content">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+          </ul>
+
+          <ul aria-hidden="true" class="marquee__content">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="enable-animation">
+        <h2>マウスホバーで停止</h2>
+
+        <div class="marquee marquee--hover-pause">
+          <ul class="marquee__content">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+          </ul>
+
+          <ul aria-hidden="true" class="marquee__content">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

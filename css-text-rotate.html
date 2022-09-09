@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      @import url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&amp;display=swap);
+      /* BASIC STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #edeae4;
+        font-family: "Ubunty", sans-serif;
+        font-size: 25px;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      p {
+        margin: 40px 0;
+      }
+
+      section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 0 30px;
+      }
+
+      section.hero-section {
+        color: white;
+        background: #588157;
+      }
+
+      section div {
+        position: relative;
+        max-width: 1200px;
+      }
+
+      section.hero-section div {
+        text-align: center;
+      }
+
+      section a {
+        text-decoration: none;
+        padding-bottom: 3px;
+        border-bottom: 1px solid;
+      }
+
+      /* MAIN STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+      [data-split],
+      [data-split] span {
+        display: inline-block;
+      }
+
+      [data-split] .inner {
+        display: block;
+        position: relative;
+        overflow: hidden;
+      }
+
+      [data-split] .back {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      [data-split] .char {
+        transition: all 0.4s cubic-bezier(0.2, 0.63, 0.4, 1.02);
+        transition-delay: calc(0.015s * var(--index));
+      }
+
+      [data-split] .back .char {
+        opacity: 0;
+        /*we use 101% instead of 100% just to be safe that the characters won't appear depending on the font family*/
+        transform: translateY(101%) skewX(55deg);
+      }
+
+      [data-split-type="hover"] .char {
+        transition-duration: 0.25s;
+      }
+
+      [data-split-type="scroll"].is-animated .back .char,
+      [data-split-type="hover"]:hover .back .char {
+        opacity: 1;
+        transform: none;
+      }
+
+      [data-split-type="scroll"].is-animated .front .char,
+      [data-split-type="hover"]:hover .front .char {
+        opacity: 0;
+        transform: translateY(-101%) skewX(-55deg);
+      }
+
+      /* FOOTER STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+      .page-footer {
+        position: fixed;
+        right: 0;
+        bottom: 50px;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        z-index: 1;
+        font-size: 16px;
+        color: black;
+        background: white;
+      }
+
+      .page-footer a {
+        display: flex;
+        margin-left: 4px;
+      }
+    </style>
+
+    <main>
+      <section class="hero-section">
+        <div>
+          <h1>Animate Twisting Text With CSS and JavaScript</h1>
+          <p>👇 Scroll down</p>
+        </div>
+      </section>
+      <section>
+        <div>
+          <h2 data-split data-split-type="scroll">A nice heading</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+            voluptate. Voluptates quia cumque nihil, tempora aliquid tempore
+            eligendi accusantium quidem delectus illum ullam molestiae magnam
+            dolore asperiores placeat iure vero!
+          </p>
+          <a href="" data-split data-split-type="hover">Hover over me →</a>
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <h2 data-split data-split-type="scroll">Another thing here</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio,
+            id quisquam illo tenetur nihil sunt maxime incidunt? Quae officiis
+            molestiae ut ducimus inventore amet libero rerum illum. Aperiam,
+            ipsa. Inventore!
+          </p>
+          <a href="" data-split data-split-type="hover">Hover over me →</a>
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <h2 data-split data-split-type="scroll">What about this?</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+            eos praesentium voluptatum iusto dolorum explicabo aliquid? Nulla
+            magnam temporibus deleniti aliquid voluptatem eum soluta, corrupti
+            reiciendis nemo facilis quod amet.
+          </p>
+          <a href="" data-split data-split-type="hover">Hover over me →</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      animateOnScroll();
+
+      function splitCharacters() {
+        const targets = document.querySelectorAll("[data-split]");
+
+        for (const target of targets) {
+          let string = '<span class="inner"><span class="front">';
+          let counter = 0;
+
+          const targetContent = target.textContent;
+          const words = targetContent.trim().split(" ");
+
+          words.forEach(function (word, wordIndex, wordArray) {
+            const chars = word.split("");
+            chars.forEach(function (char, charIndex, charArray) {
+              string += `<span class="char" style="--index: ${++counter};">${char}</span>`;
+
+              // if we're on the last character of the last word, reset the counter
+              if (
+                wordIndex === wordArray.length - 1 &&
+                charIndex === charArray.length - 1
+              ) {
+                counter = 0;
+              }
+            });
+
+            // add a space between each word unless it's the last one
+            if (wordIndex !== wordArray.length - 1) {
+              string += "<span>&nbsp;</span>";
+            }
+          });
+          string += "</span>"; //end front
+
+          string += '<span class="back">';
+          words.forEach(function (word, wordIndex, wordArray) {
+            const chars = word.split("");
+            chars.forEach(function (char) {
+              string += `<span class="char" style="--index: ${++counter};">${char}</span>`;
+            });
+            if (wordIndex !== wordArray.length - 1) {
+              string += "<span>&nbsp;</span>";
+            }
+          });
+
+          string += "</span>"; // end back
+          string += "</span>"; // end inner
+          target.innerHTML = string;
+        }
+      }
+
+      function animateOnScroll() {
+        const targets = document.querySelectorAll('[data-split-type="scroll"]');
+        const isAnimatedClass = "is-animated";
+        const threshold = 0.5;
+
+        function callback(entries, observer) {
+          entries.forEach((entry) => {
+            const elem = entry.target;
+            if (entry.intersectionRatio >= threshold) {
+              elem.classList.add(isAnimatedClass);
+            } else {
+              elem.classList.remove(isAnimatedClass);
+            }
+          });
+        }
+
+        const observer = new IntersectionObserver(callback, { threshold });
+        for (const target of targets) {
+          observer.observe(target);
+        }
+      }
+    </script>
+  </body>
+</html>
