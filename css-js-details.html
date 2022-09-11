@@ -8,7 +8,7 @@
   </head>
   <body>
     <style>
-      summary {
+      .c-details__summary {
         cursor: pointer;
         /* display: list-item;以外を指定してデフォルトの三角形アイコンを消します */
         display: flex;
@@ -21,7 +21,7 @@
         color: #002255;
       }
 
-      summary::-webkit-details-marker {
+      .c-details__summary::-webkit-details-marker {
         /* Safariで表示されるデフォルトの三角形アイコンを消します */
         display: none;
       }
@@ -41,7 +41,7 @@
       /*}*/
 
       /* is-openedクラスが付与されたときのスタイル */
-      details.is-opened .icon {
+      .c-details.is-opened .icon {
         transform: rotate(180deg);
       }
 
@@ -67,40 +67,27 @@
       }
 
       /* --------アコーディオンの中身のスタイル-------- */
-      .content {
+      .c-details__content {
         overflow: hidden;
         background-color: #f0f2ff;
 
         /* details直下のタグにpaddingを設定すると挙動がおかしくなるので、ここには指定しない */
       }
 
-      .content_inner {
+      .c-details__contentInner {
         padding: 24px 48px;
         display: flex;
         flex-direction: column;
         gap: 16px;
       }
-
-      /* --------レイアウト用のスタイル-------- */
-      .wrapper {
-        width: 700px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      @media (max-width: 760px) {
-        .wrapper {
-          width: 100%;
-        }
-      }
     </style>
 
-    <details class="js-details">
-      <summary class="js-summary">概要<span class="icon"></span></summary>
-      <div class="content js-content">
-        <div class="content_inner">折りたたまれている部分です。</div>
+    <details class="c-details js-details">
+      <summary class="c-details__summary js-summary">
+        概要<span class="icon"></span>
+      </summary>
+      <div class="c-details__content js-content">
+        <div class="c-details__contentInner">折りたたまれている部分です。</div>
       </div>
     </details>
 
