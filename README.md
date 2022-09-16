@@ -228,7 +228,7 @@ css-slider.html(\*)
 css-slider2.html(\*)
 css-slider3.html(\*)
 css-slider4.html
-css-details.html(css-details-accordion.html)
+css-details.html(css-details-accordion.html/css-js-details.html)
 css-tab.html
 css-hamburger.html
 css-modal.html
@@ -448,6 +448,16 @@ portfolio
 - js-gsap-mouse-storker.html
 - js-gsap-sidescroll.html
 - css-svg-progress.html
+
+- fv
+  - フォント(js-gsap-timeline.html)
+- feature
+- skill
+- work
+- service
+- about
+  - timeline
+- contact
 
 ---
 
