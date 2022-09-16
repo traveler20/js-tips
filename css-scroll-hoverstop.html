@@ -10,20 +10,33 @@
     <style>
       /* Marquee styles */
       .marquee {
-        --gap: 1rem;
+        --gap: 100px;
         position: relative;
         display: flex;
         overflow: hidden;
         user-select: none;
         gap: var(--gap);
+        /* }
+      .marquee { */
+        border: 2px dashed lightgray;
       }
 
       .marquee__content {
         flex-shrink: 0;
         display: flex;
         justify-content: space-around;
+        justify-content: space-between;
         gap: var(--gap);
+        padding: 0;
         min-width: 100%;
+        /* }
+      .marquee__content { */
+        animation: scroll 10s linear infinite;
+      }
+
+      /* Pause on hover */
+      .marquee--hover-pause:hover .marquee__content {
+        animation-play-state: paused;
       }
 
       @keyframes scroll {
@@ -40,16 +53,6 @@
         .marquee__content {
           animation-play-state: paused !important;
         }
-      }
-
-      /* Enable animation */
-      .enable-animation .marquee__content {
-        animation: scroll 10s linear infinite;
-      }
-
-      /* Pause on hover */
-      .marquee--hover-pause:hover .marquee__content {
-        animation-play-state: paused;
       }
 
       @keyframes scroll-abs {
@@ -70,10 +73,7 @@
         padding: 1rem 2rem;
         border-radius: 0.25rem;
         text-align: center;
-      }
-
-      .marquee {
-        border: 2px dashed lightgray;
+        list-style: none;
       }
 
       * {
@@ -111,7 +111,7 @@
     </style>
 
     <main>
-      <section class="enable-animation">
+      <section class="">
         <h2>インフィニティ</h2>
 
         <div class="marquee">
@@ -135,7 +135,7 @@
         </div>
       </section>
 
-      <section class="enable-animation">
+      <section class="">
         <h2>マウスホバーで停止</h2>
 
         <div class="marquee marquee--hover-pause">
