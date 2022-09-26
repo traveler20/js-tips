@@ -84,6 +84,7 @@
           .querySelector("#js-camera-mode")
           .addEventListener("click", () => {
             const camera_mode = false;
+            const mode = camera_mode ? "environment" : "user";
             // フロントカメラをそのまま使うと、左右反転してしまうので、activeクラスとcssでミラー処理
             camera_mode
               ? document.querySelector("video").classList.remove("active")
