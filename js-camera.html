@@ -39,7 +39,7 @@
           video: {
             width: 300,
             height: 200,
-            facingMode: "user", // フロントカメラを利用する
+            // facingMode: "user", // フロントカメラを利用する
             // facingMode: { exact: "environment" }, // リアカメラを利用する場合
           },
         };
@@ -84,7 +84,7 @@
           .querySelector("#js-camera-mode")
           .addEventListener("click", () => {
             const camera_mode = false;
-            const mode = camera_mode ? "environment" : "user";
+            const camera_mode_face = camera_mode ? "environment" : "user";
             // フロントカメラをそのまま使うと、左右反転してしまうので、activeクラスとcssでミラー処理
             camera_mode
               ? document.querySelector("video").classList.remove("active")
@@ -99,8 +99,8 @@
 
             // カメラ切り替え
             navigator.mediaDevices
-              .getUserMedia({ video: { facingMode: mode } })
-              .then((stream) => (vi.srcObject = stream))
+              .getUserMedia({ video: { facingMode: camera_mode_face } })
+              .then((stream) => (video.srcObject = stream))
               .catch((err) => alert(`${err.name} ${err.message}`));
           });
         // videoセッション一時停止
