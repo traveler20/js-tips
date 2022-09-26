@@ -15,24 +15,23 @@
     </style>
 
     <div>
-      <h1>HTML5カメラ</h1>
-
-      <video id="camera" width="300" height="200"></video>
-      <canvas id="picture" width="300" height="200"></canvas>
+      <video id="js-camera-video" width="300" height="200"></video>
+      <canvas id="js-camera-picture" width="300" height="200"></canvas>
       <form>
-        <button type="button" id="shutter">シャッター</button>
+        <button id="js-camera-mode" type="button">反転する</button>
+        <button id="js-camera-shutter" type="button">シャッター</button>
       </form>
 
-      <audio id="se" preload="auto">
+      <audio id="js-camera-sound" preload="auto">
         <source src="camera-shutter1.mp3" type="audio/mp3" />
       </audio>
     </div>
 
     <script>
       window.onload = () => {
-        const video = document.querySelector("#camera");
-        const canvas = document.querySelector("#picture");
-        const se = document.querySelector("#se");
+        const video = document.querySelector("#js-camera-video");
+        const canvas = document.querySelector("#js-camera-picture");
+        const se = document.querySelector("#js-camera-sound");
 
         /** カメラ設定 */
         const constraints = {
@@ -41,7 +40,7 @@
             width: 300,
             height: 200,
             facingMode: "user", // フロントカメラを利用する
-            // facingMode: { exact: "environment" }  // リアカメラを利用する場合
+            // facingMode: { exact: "environment" }, // リアカメラを利用する場合
           },
         };
 
@@ -63,19 +62,57 @@
         /**
          * シャッターボタン
          */
-        document.querySelector("#shutter").addEventListener("click", () => {
-          const ctx = canvas.getContext("2d");
+        document
+          .querySelector("#js-camera-shutter")
+          .addEventListener("click", () => {
+            const ctx = canvas.getContext("2d");
 
-          // 演出的な目的で一度映像を止めてSEを再生する
-          video.pause(); // 映像を停止
-          se.play(); // シャッター音
-          setTimeout(() => {
-            video.play(); // 0.5秒後にカメラ再開
-          }, 500);
+            // 演出的な目的で一度映像を止めてSEを再生する
+            video.pause(); // 映像を停止
+            se.play(); // シャッター音
+            setTimeout(() => {
+              video.play(); // 0.5秒後にカメラ再開
+            }, 500);
 
-          // canvasに画像を貼り付ける
-          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        });
+            // canvasに画像を貼り付ける
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          });
+        /**
+         * モード反転
+         */
+        document
+          .querySelector("#js-camera-mode")
+          .addEventListener("click", () => {
+            const camera_mode = false;
+            // フロントカメラをそのまま使うと、左右反転してしまうので、activeクラスとcssでミラー処理
+            camera_mode
+              ? document.querySelector("video").classList.remove("active")
+              : document.querySelector("video").classList.add("active");
+            // canvasはAR.jsを使っている時
+            camera_mode
+              ? document.querySelector("canvas").classList.remove("active")
+              : document.querySelector("canvas").classList.add("active");
+
+            // Android Chromeでは、セッションを一時停止しないとエラーが出ることがある
+            stopStreamedVideo(video);
+
+            // カメラ切り替え
+            navigator.mediaDevices
+              .getUserMedia({ video: { facingMode: mode } })
+              .then((stream) => (vi.srcObject = stream))
+              .catch((err) => alert(`${err.name} ${err.message}`));
+          });
+        // videoセッション一時停止
+        function stopStreamedVideo(videoElem) {
+          let stream = videoElem.srcObject;
+          let tracks = stream.getTracks();
+
+          tracks.forEach(function (track) {
+            track.stop();
+          });
+
+          videoElem.srcObject = null;
+        }
       };
     </script>
   </body>
