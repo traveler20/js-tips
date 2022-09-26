@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf8" />
-    <title>Camera Test</title>
-    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
   </head>
   <body>
-    <div id="contents">
+    <style>
+      canvas,
+      video {
+        border: 1px solid gray;
+      }
+    </style>
+
+    <div>
       <!-- カメラ映像 -->
-      <video id="js-camera-video" width="640" height="480"></video>
+      <video id="js-camera-video" width="300" height="200"></video>
+      <canvas id="js-camera-picture" width="300" height="200"></canvas>
 
       <!-- 切り替えボタン -->
       <button type="button" id="js-camera-mode">反転する</button>
+      <button id="js-camera-shutter" type="button">シャッター</button>
+
+      <audio id="js-camera-sound" preload="auto">
+        <source src="camera-shutter1.mp3" type="audio/mp3" />
+      </audio>
     </div>
 
     <script>
       //---------------------------------------------
       // グローバル変数
       //---------------------------------------------
+
+      const video = document.querySelector("#js-camera-video");
+      const canvas = document.querySelector("#js-camera-picture");
+      const se = document.querySelector("#js-camera-sound");
+
       // カメラのデフォルト設定
       const CONSTRAINTS = {
         audio: false,
@@ -39,7 +58,6 @@
       // [event] ページ読み込み完了
       //---------------------------------------------
       window.onload = () => {
-        const video = document.querySelector("#js-camera-video");
         let useFront = true; // フロントカメラ:true, バックカメラ:false
 
         // 縦横の解像度を調整
@@ -114,6 +132,25 @@
           video.style.height = longside;
         }
       }
+
+      /**
+       * シャッターボタン
+       */
+      document
+        .querySelector("#js-camera-shutter")
+        .addEventListener("click", () => {
+          const ctx = canvas.getContext("2d");
+
+          // 演出的な目的で一度映像を止めてSEを再生する
+          video.pause(); // 映像を停止
+          se.play(); // シャッター音
+          setTimeout(() => {
+            video.play(); // 0.5秒後にカメラ再開
+          }, 500);
+
+          // canvasに画像を貼り付ける
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        });
     </script>
   </body>
 </html>
