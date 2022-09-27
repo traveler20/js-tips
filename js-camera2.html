@@ -8,20 +8,48 @@
   </head>
   <body>
     <style>
-      canvas,
-      video {
-        border: 1px solid gray;
+      /* .c-camera {
+      } */
+      .c-camera-video,
+      .c-camera-picture {
+        width: 300px;
+        height: 200px;
+        border: solid 1px #ccc;
       }
+      .c-camera-button--mode,
+      .c-camera-button--shutter {
+        text-indent: 110%;
+        white-space: nowrap;
+        overflow: hidden;
+
+        width: 64px;
+        height: 64px;
+        background-color: #fff;
+        border: solid 1px #333;
+        border-radius: 50%;
+      }
+      /* .c-camera-button--mode {
+      }
+      .c-camera-button--shutter {
+      } */
     </style>
 
-    <div>
+    <div class="c-camera">
       <!-- カメラ映像 -->
-      <video id="js-camera-video" width="300" height="200"></video>
-      <canvas id="js-camera-picture" width="300" height="200"></canvas>
+      <video id="js-camera-video" class="c-camera-video"></video>
+      <canvas id="js-camera-picture" class="c-camera-picture"></canvas>
 
       <!-- 切り替えボタン -->
-      <button type="button" id="js-camera-mode">反転する</button>
-      <button id="js-camera-shutter" type="button">シャッター</button>
+      <button id="js-camera-mode" class="c-camera-button--mode" type="button">
+        反転する
+      </button>
+      <button
+        id="js-camera-shutter"
+        class="c-camera-button--shutter"
+        type="button"
+      >
+        シャッター
+      </button>
 
       <audio id="js-camera-sound" preload="auto">
         <source src="camera-shutter1.mp3" type="audio/mp3" />
@@ -41,8 +69,8 @@
       const CONSTRAINTS = {
         audio: false,
         video: {
-          width: 640,
-          height: 480,
+          width: 600,
+          height: 400,
           facingMode: null, // どのカメラを利用するか
 
           // facingModeには最終的に以下のいずれかの値を入れる
