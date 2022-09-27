@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- Google font Icon -->
+    <!-- <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
   </head>
   <body>
     <style>
@@ -16,18 +25,20 @@
         height: 200px;
         border: solid 1px #ccc;
       }
+
       .c-camera-button--mode,
       .c-camera-button--shutter,
       .c-camera-button--download {
-        text-indent: 110%;
-        white-space: nowrap;
-        overflow: hidden;
-
         width: 64px;
         height: 64px;
         background-color: #fff;
         border: solid 1px #333;
         border-radius: 50%;
+      }
+      .c-camera-button--mode:hover,
+      .c-camera-button--shutter:hover,
+      .c-camera-button--download:hover {
+        cursor: pointer;
       }
       /* .c-camera-button--mode {
       }
@@ -44,21 +55,21 @@
 
       <!-- 切り替えボタン -->
       <button id="js-camera-mode" class="c-camera-button--mode" type="button">
-        反転する
+        <span class="material-symbols-outlined"> flip_camera_android </span>
       </button>
       <button
         id="js-camera-shutter"
         class="c-camera-button--shutter"
         type="button"
       >
-        シャッター
+        <span class="material-symbols-outlined"> photo_camera </span>
       </button>
       <button
         id="js-camera-download"
         class="c-camera-button--download"
         type="button"
       >
-        ダウンロード
+        <span class="material-symbols-outlined"> file_download </span>
       </button>
 
       <audio id="js-camera-sound" preload="auto">

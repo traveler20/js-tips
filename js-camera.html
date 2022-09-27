@@ -1,120 +1,323 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- Google font Icon -->
+    <!-- <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <!-- reset.css destyle -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+    />
   </head>
   <body>
     <style>
-      canvas,
-      video {
-        border: 1px solid gray;
+      .c-camera {
+        padding: 16px;
       }
+      .c-camera-movie {
+        position: relative;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      .c-camera-video,
+      .c-camera-picture {
+        /* width: 300px;
+        height: 200px; */
+        border: solid 1px #ccc;
+      }
+      .c-camera-video {
+        /* width: 300px;
+        height: 200px; */
+        /* width: 320px;
+        height: 180px; */
+        /* width: 180px;
+        height: 320px; */
+        /* width: 270px;
+        height: 480px; */
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 9/16;
+      }
+      .c-camera-picture {
+        /* width: 100%;
+        height: 100%; */
+        /* aspect-ratio: 3/2; */
+        /* aspect-ratio: 16/9; */
+        /* aspect-ratio: 9/16; */
+        position: absolute;
+        bottom: 3px;
+        right: 0;
+        width: 64px;
+        height: 64px;
+      }
+
+      .c-camera-switch {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .c-camera-button--mode,
+      .c-camera-button--shutter,
+      .c-camera-button--download {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 64px;
+        height: 64px;
+        background-color: #fff;
+        border: solid 1px #333;
+        border-radius: 50%;
+      }
+      .c-camera-button--mode:hover,
+      .c-camera-button--shutter:hover,
+      .c-camera-button--download:hover {
+        cursor: pointer;
+      }
+      /* .c-camera-button--mode {
+      }
+      .c-camera-button--shutter {
+      } */
+      /* .c-camera-button--download{ 
+      } */
     </style>
 
-    <div>
-      <video id="js-camera-video" width="300" height="200"></video>
-      <canvas id="js-camera-picture" width="300" height="200"></canvas>
-      <form>
-        <button id="js-camera-mode" type="button">反転する</button>
-        <button id="js-camera-shutter" type="button">シャッター</button>
-      </form>
+    <div class="c-camera">
+      <!-- カメラ映像 -->
+      <div class="c-camera-movie">
+        <video id="js-camera-video" class="c-camera-video"></video>
+        <canvas id="js-camera-picture" class="c-camera-picture"></canvas>
+      </div>
 
-      <audio id="js-camera-sound" preload="auto">
-        <source src="camera-shutter1.mp3" type="audio/mp3" />
-      </audio>
+      <!-- 切り替えボタン -->
+      <div class="c-camera-switch">
+        <button id="js-camera-mode" class="c-camera-button--mode" type="button">
+          <span class="material-symbols-outlined"> flip_camera_android </span>
+        </button>
+        <button
+          id="js-camera-shutter"
+          class="c-camera-button--shutter"
+          type="button"
+        >
+          <span class="material-symbols-outlined"> photo_camera </span>
+        </button>
+        <button
+          id="js-camera-download"
+          class="c-camera-button--download"
+          type="button"
+        >
+          <span class="material-symbols-outlined"> file_download </span>
+        </button>
+
+        <audio id="js-camera-sound" preload="auto">
+          <source src="camera-shutter1.mp3" type="audio/mp3" />
+        </audio>
+      </div>
     </div>
 
     <script>
+      //---------------------------------------------
+      // グローバル変数
+      //---------------------------------------------
+
+      const video = document.querySelector("#js-camera-video");
+      const canvas = document.querySelector("#js-camera-picture");
+      const se = document.querySelector("#js-camera-sound");
+
+      // カメラのデフォルト設定
+      const CONSTRAINTS = {
+        audio: false,
+        video: {
+          width: 540,
+          height: 960,
+          facingMode: null, // どのカメラを利用するか
+
+          // facingModeには最終的に以下のいずれかの値を入れる
+          //   facingMode: "user"                    // フロントカメラを利用する
+          //   facingMode: { exact: "environment" }  // リアカメラを利用する
+        },
+      };
+
+      // 現在のStream
+      let curSTREAM = null;
+
+      //---------------------------------------------
+      // [event] ページ読み込み完了
+      //---------------------------------------------
       window.onload = () => {
-        const video = document.querySelector("#js-camera-video");
-        const canvas = document.querySelector("#js-camera-picture");
-        const se = document.querySelector("#js-camera-sound");
+        let useFront = true; // フロントカメラ:true, バックカメラ:false
 
-        /** カメラ設定 */
-        const constraints = {
-          audio: false,
-          video: {
-            width: 300,
-            height: 200,
-            // facingMode: "user", // フロントカメラを利用する
-            // facingMode: { exact: "environment" }, // リアカメラを利用する場合
-          },
-        };
+        // 縦横の解像度を調整
+        // adjustCameraSize(video, 640, 480);
+        adjustCameraSize(video, 540, 960);
 
-        /**
-         * カメラを<video>と同期
-         */
+        // カメラと同期開始
+        syncCamera(video, useFront);
+        useFront = !useFront; // boolean値を反転
+
+        //-------------------------------
+        // [event] 切り替えボタン押下
+        //-------------------------------
+        document
+          .querySelector("#js-camera-mode")
+          .addEventListener("click", () => {
+            syncCamera(video, useFront);
+            useFront = !useFront; // boolean値を反転
+          });
+      };
+
+      /**
+       * カメラを<video>と同期
+       *
+       * @param {object} video
+       * @param {boolean} [is_front=true]
+       */
+      function syncCamera(video, is_front = true) {
+        // 前後カメラの設定
+        CONSTRAINTS.video.facingMode = is_front
+          ? "user"
+          : { exact: "environment" };
+
+        // すでにカメラと接続していたら停止
+        if (curSTREAM !== null) {
+          curSTREAM.getVideoTracks().forEach((camera) => {
+            camera.stop();
+          });
+        }
+
+        // カメラと接続する
         navigator.mediaDevices
-          .getUserMedia(constraints)
+          .getUserMedia(CONSTRAINTS)
           .then((stream) => {
+            curSTREAM = stream; // 前後の切り替え用に保持
+
+            // <video>とStremaを接続
             video.srcObject = stream;
             video.onloadedmetadata = (e) => {
               video.play();
             };
           })
           .catch((err) => {
-            console.log(err.name + ": " + err.message);
+            console.log(`${err.name}: ${err.message}`);
+            alert("カメラとの接続時にエラーが発生しました");
           });
+      }
 
-        /**
-         * シャッターボタン
-         */
-        document
-          .querySelector("#js-camera-shutter")
-          .addEventListener("click", () => {
-            const ctx = canvas.getContext("2d");
-
-            // 演出的な目的で一度映像を止めてSEを再生する
-            video.pause(); // 映像を停止
-            se.play(); // シャッター音
-            setTimeout(() => {
-              video.play(); // 0.5秒後にカメラ再開
-            }, 500);
-
-            // canvasに画像を貼り付ける
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-          });
-        /**
-         * モード反転
-         */
-        document
-          .querySelector("#js-camera-mode")
-          .addEventListener("click", () => {
-            const camera_mode = false;
-            const camera_mode_face = camera_mode ? "environment" : "user";
-            // フロントカメラをそのまま使うと、左右反転してしまうので、activeクラスとcssでミラー処理
-            camera_mode
-              ? document.querySelector("video").classList.remove("active")
-              : document.querySelector("video").classList.add("active");
-            // canvasはAR.jsを使っている時
-            camera_mode
-              ? document.querySelector("canvas").classList.remove("active")
-              : document.querySelector("canvas").classList.add("active");
-
-            // Android Chromeでは、セッションを一時停止しないとエラーが出ることがある
-            stopStreamedVideo(video);
-
-            // カメラ切り替え
-            navigator.mediaDevices
-              .getUserMedia({ video: { facingMode: camera_mode_face } })
-              .then((stream) => (video.srcObject = stream))
-              .catch((err) => alert(`${err.name} ${err.message}`));
-          });
-        // videoセッション一時停止
-        function stopStreamedVideo(videoElem) {
-          let stream = videoElem.srcObject;
-          let tracks = stream.getTracks();
-
-          tracks.forEach(function (track) {
-            track.stop();
-          });
-
-          videoElem.srcObject = null;
+      /**
+       * 解像度に合わせて<video>サイズを調整する
+       *
+       * @param {object}  video
+       * @param {integer} longside   長辺のピクセル数
+       * @param {integer} shortside  短辺のピクセル数
+       **/
+      function adjustCameraSize(video, longside, shortside) {
+        if (window.innerWidth < window.innerHeight) {
+          // getUserMediaに食わせる値
+          CONSTRAINTS.video.width = shortside;
+          CONSTRAINTS.video.height = longside;
+          // videoタグのサイズ
+          video.style.width = shortside;
+          video.style.height = longside;
         }
-      };
+      }
+
+      /**
+       * シャッターボタン
+       */
+      document
+        .querySelector("#js-camera-shutter")
+        .addEventListener("click", () => {
+          const ctx = canvas.getContext("2d");
+
+          // 演出的な目的で一度映像を止めてSEを再生する
+          video.pause(); // 映像を停止
+          se.play(); // シャッター音
+          setTimeout(() => {
+            video.play(); // 0.5秒後にカメラ再開
+          }, 500);
+
+          // canvasに画像を貼り付ける
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        });
+
+      /**
+       * ダウンロードボタン
+       */
+      document
+        .querySelector("#js-camera-download")
+        .addEventListener("click", () => {
+          canvasDownload("#js-camera-picture");
+        });
+      /**
+       * Canvasを画像としてダウンロード
+       *
+       * @param {string} id          対象とするcanvasのid
+       * @param {string} [type]      画像フォーマット
+       * @param {string} [filename]  DL時のデフォルトファイル名
+       * @return {void}
+       */
+      function canvasDownload(id, type = "image/png", filename = "photo") {
+        const blob = getBlobFromCanvas(id, type); // canvasをBlobデータとして取得
+        const dataURI = window.URL.createObjectURL(blob); // Blobデータを「URI」に変換
+
+        // JS内部でクリックイベントを発動→ダウンロード
+        const event = document.createEvent("MouseEvents");
+        event.initMouseEvent(
+          "click",
+          true,
+          false,
+          window,
+          0,
+          0,
+          0,
+          0,
+          0,
+          false,
+          false,
+          false,
+          false,
+          0,
+          null
+        );
+        const a = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+        a.href = dataURI; // URI化した画像
+        a.download = filename; // デフォルトのファイル名
+        a.dispatchEvent(event); // イベント発動
+      }
+      /**
+       * 現状のCanvasを画像データとして返却
+       *
+       * @param {string}  id     対象とするcanvasのid
+       * @param {string}  [type] MimeType
+       * @return {blob}
+       */
+      function getBlobFromCanvas(id, type = "image/png") {
+        const canvas = document.querySelector(id);
+        const base64 = canvas.toDataURL(type); // "data:image/png;base64,iVBORw0k～"
+        const tmp = base64.split(","); // ["data:image/png;base64,", "iVBORw0k～"]
+        const data = atob(tmp[1]); // 右側のデータ部分(iVBORw0k～)をデコード
+        const mime = tmp[0].split(":")[1].split(";")[0]; // 画像形式(image/png)を取り出す
+
+        // Blobのコンストラクタに食わせる値を作成
+        let buff = new Uint8Array(data.length);
+        for (let i = 0; i < data.length; i++) {
+          buff[i] = data.charCodeAt(i);
+        }
+
+        return new Blob([buff], { type: mime });
+      }
     </script>
   </body>
 </html>
