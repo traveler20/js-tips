@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="content"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      document.getElementById("content").innerHTML = marked.parse(
+        "# Markdown sample\n\n- Markdownのテキスト\n\n## 見出し -> 「#」\n\n- 「#」はタイトル   \n\n - 「#」の後に、スペースを1つあけて、タイトルの文字を書く   \n\n - 「#」の個数で大きさが変わる（個数が多くなるほど小さくなる）\n\n# タイトル１\n\n## タイトル２\n\n### タイトル３\n\n#### タイトル４"
+      );
+      // 改行の反映有無
+      // marked.setOptions({ breaks: true });
+    </script>
+  </body>
+</html>

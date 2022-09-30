@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+
+<!-- ★マークダウン変換用 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.2.2/markdown-it.min.js"></script>
+
+<!-- ◆シンタックスハイライト用 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+<!-- ◆VBをシンタックスハイライトする必要があるならこれ↓も入れる -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/vbnet.min.js"></script> -->
+<!-- ◆シンタックスハイライト用 css （好きなテーマを選んで指定する） -->
+<!-- ◇https://highlightjs.org/static/demo/                          -->
+<!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/ir-black.min.css"> -->
+
+<script>
+    $(function() {
+        // ★markdown-it の設定
+        var markdownit = window.markdownit({
+            html   : true,
+            breaks : true,
+
+            // highlight.js でハイライトする
+            // highlight: function (str, lang) {
+            //   if (lang && hljs.getLanguage(lang)) {
+            //     try {
+            //       return hljs.highlight(lang, str).value;
+            //     } catch (__) {}
+            //   }
+            //   return ''; // use external default escaping
+            // }
+        });
+
+        // highlight.js の初期処理
+        // hljs.initHighlightingOnLoad();
+
+        // ★マークダウンを HTML に変換して再セット
+        var md = markdownit.render(getHtml(".js-marked-editer"));
+        $(".js-marked-editer").html(md);
+    });
+
+    // 比較演算子が &lt; 等になるので置換
+    function getHtml(selector) {
+        var html = $(selector).html();
+        html = html.replace(/&lt;/g, '<');
+        html = html.replace(/&gt;/g, '>');
+        html = html.replace(/&amp;/g, '&');
+
+        return html;
+    }
+
+</script>
+<style>
+    table  { border-collapse: collapse; }
+    th, td { border:1px solid #999; padding:2px 5px; }
+    th     { background:#e0e0e0; }
+</style>
+</head>
+<body>
+
+<header style="display: flex;justify-content: space-between;">
+    <a href="/">logo</a>
+    <nav>menu</nav>
+</header>
+
+<main class="l-main-editer js-marked-editer">
+# テスト
+
+## HTMLタグを混在させる
+
+HTML タグを混在させたいです。
+セルの内容が多い時は、マークダウンのテーブルだと逆に見づらいし…
+rowspan とかもできないし
+
+-----
+
+↓ これはマークダウンで書いたテーブルです。
+
+|分類       |ID   |商品名   |
+|:----------|:----|:--------|
+|くだもの   |A001 |りんご   |
+|くだもの   |B002 |バナナ   |
+|やさい     |C003 |キャベツ |
+
+↑ これはマークダウンで書いたテーブルです。
+
+
+↓ これはHTMLタグで書いたテーブルです。
+
+<table>
+  <tr>
+    <th>分類</th>
+    <th>ID</th>
+    <th>商品名</th>
+  </tr>
+  <tr>
+    <td>くだもの</td>
+    <td>A001</td>
+    <td>りんご</td>
+  </tr>
+  <tr>
+    <td>くだもの</td>
+    <td>B002</td>
+    <td>バナナ</td>
+  </tr>
+  <tr>
+    <td>やさい</td>
+    <td>C003</td>
+    <td>キャベツ</td>
+  </tr>
+</table>
+
+↑ これはHTMLタグで書いたテーブルです。
+</main>
+</body>
+</html>
