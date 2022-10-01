@@ -30,13 +30,13 @@
         max-width: 400px;
         margin: 0 auto;
       }
-      .c-camera-video,
-      .c-camera-picture {
+      .c-camera-movie__video,
+      .c-camera-movie__picture {
         /* width: 300px;
         height: 200px; */
         border: solid 1px #ccc;
       }
-      .c-camera-video {
+      .c-camera-movie__video {
         /* width: 300px;
         height: 200px; */
         /* width: 320px;
@@ -49,7 +49,7 @@
         height: 100%;
         aspect-ratio: 9/16;
       }
-      .c-camera-picture {
+      .c-camera-movie__picture {
         /* width: 100%;
         height: 100%; */
         /* aspect-ratio: 3/2; */
@@ -97,19 +97,25 @@
     <div class="c-camera">
       <!-- カメラ映像 -->
       <div class="c-camera-movie">
-        <video id="js-camera-video" class="c-camera-video"></video>
-        <canvas id="js-camera-picture" class="c-camera-picture"></canvas>
+        <video id="js-camera-video" class="c-camera-movie__video"></video>
+        <canvas id="js-camera-picture" class="c-camera-movie__picture"></canvas>
       </div>
 
       <!-- 切り替えボタン -->
       <div class="c-camera-switch">
-        <button id="js-camera-mode" class="c-camera-button--mode" type="button">
+        <button
+          id="js-camera-mode"
+          class="c-camera-button--mode"
+          type="button"
+          aria-label="カメラ反転"
+        >
           <span class="material-symbols-outlined"> flip_camera_android </span>
         </button>
         <button
           id="js-camera-shutter"
           class="c-camera-button--shutter"
           type="button"
+          aria-label="カメラ撮影"
         >
           <span class="material-symbols-outlined"> photo_camera </span>
         </button>
@@ -117,6 +123,7 @@
           id="js-camera-download"
           class="c-camera-button--download"
           type="button"
+          aria-label="ダウンロード"
         >
           <span class="material-symbols-outlined"> file_download </span>
         </button>
