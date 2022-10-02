@@ -112,6 +112,18 @@
       .l-main-editer > table td {
         border: dashed 1px #333;
       }
+      /* コード */
+      .l-main-editer p code{
+          background-color: #efefef;
+          border-radius: 4px;
+          padding: 2px 4px;
+      }
+      .l-main-editer pre{
+        color: #fff;
+        background-color: #333;
+        border-radius: 4px;
+        padding: 8px 16px;
+      }
     </style>
 
     <header class="l-header">
@@ -156,7 +168,53 @@
 HTMLをそのまま埋め込むことも可能。
 
 <h2>HTMLタイプのh2テキスト</h2>
-        
+
+## コード
+
+`html`のコードはこんな感じ。
+
+```js
+var foo = function (bar) {
+    return bar++;
+};
+
+console.log(foo(5));
+```
+
+<!--
+## 絵文字
+:smile:
+
+## 注釈
+注釈1へのリンク[^first].
+
+[^first]: 注釈1 **注釈もマークアップできる**
+
+## テキストのハイライト
+==ハイライト==
+
+## チェックリスト
+- [ ] 牛乳を買う
+- [x] パンを買う
+
+## 説明リスト
+名前 1
+
+:   定義1
+定義1の改行
+
+名前2 *名前のマークアッップ*
+
+:   定義2
+
+## ワーニング
+::: warning
+これは注意文言です
+:::
+
+## 目次
+[[toc]]
+-->
     </main>
     <!-- /マークダウン記述箇所 -->
 
@@ -166,19 +224,20 @@ HTMLをそのまま埋め込むことも可能。
 
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.2.2/markdown-it.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
     <script>
       $(function () {
+        // マークダウンの基本設定
         const markdown_setting = window.markdownit({
-          html: true,
-          breaks: true,
+          html: true, // htmlタグを有効にする
+          breaks: true, // md内の改行を<br>に変換
         });
 
+        // マークダウンの設定をjs-marked-editerにHTMLとして反映させる
         const markdown_editer = markdown_setting.render(getHtml(".js-marked-editer"));
         $(".js-marked-editer").html(markdown_editer);
       });
 
-      // 比較演算子が &lt; 等になるので置換
+      // 比較演算子（=，<>，<，<=，>，>=）をそのまま置換する
       function getHtml(selector) {
         let markdown_text = $(selector).html();
         markdown_text = markdown_text.replace(/&lt;/g, "<");
