@@ -122,7 +122,7 @@
         color: #fff;
         background-color: #333;
         border-radius: 4px;
-        padding: 8px 16px;
+        padding: 16px;
       }
     </style>
 
@@ -131,7 +131,7 @@
     </header>
 
     <!-- マークダウン記述箇所 -->
-    <main class="l-main-editer js-marked-editer">
+    <main class="l-main-editer js-markdown-editer">
 # h1タイトル
 
 ## h2タイトルタイトルタイトルタイトル
@@ -156,6 +156,22 @@
 > 引用ブロックはこのようになる。
 改行もこのように組み込まれる。
 
+## コード
+
+`css`のコードブロックはこんな感じ。
+
+```css
+/* クラス付与していないaタグのみ適用 */
+a:not([class]) {
+  color: #006cd8;
+  text-decoration: none;
+}
+a:not([class]):hover {
+  color: #2f90f4;
+  text-decoration: underline;
+}
+```
+
 ## テーブル
 
 | No | 名前 | 年齢 |
@@ -167,19 +183,25 @@
 
 HTMLをそのまま埋め込むことも可能。
 
-<h2>HTMLタイプのh2テキスト</h2>
+<h2>HTMLタイプのh2テキストとテーブル</h2>
 
-## コード
-
-`html`のコードはこんな感じ。
-
-```js
-var foo = function (bar) {
-    return bar++;
-};
-
-console.log(foo(5));
-```
+<table>
+  <tr>
+    <th>No</th>
+    <th>名前</th>
+    <th>年齢</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>山田</td>
+    <td>24</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>田中</td>
+    <td>48</td>
+  </tr>
+</table>
 
 <!--
 ## 絵文字
@@ -225,21 +247,22 @@ console.log(foo(5));
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.2.2/markdown-it.min.js"></script>
     <script>
-      $(function () {
-        // マークダウンの基本設定
-        const markdown_setting = window.markdownit({
-          html: true, // htmlタグを有効にする
-          breaks: true, // md内の改行を<br>に変換
-        });
-
-        // マークダウンの設定をjs-marked-editerにHTMLとして反映させる
-        const markdown_editer = markdown_setting.render(getHtml(".js-marked-editer"));
-        $(".js-marked-editer").html(markdown_editer);
+      // マークダウンの基本設定
+      const markdown_setting = window.markdownit({
+        html: true, // htmlタグを有効にする
+        breaks: true, // md内の改行を<br>に変換
       });
 
+      const markdown_editer = $(".js-markdown-editer");
+
+      // マークダウンの設定をjs-markdown-editerにHTMLとして反映させる
+      const markdown_html = markdown_setting.render(getHtml(markdown_editer));
+      markdown_editer.html(markdown_html);
+        
       // 比較演算子（=，<>，<，<=，>，>=）をそのまま置換する
       function getHtml(selector) {
         let markdown_text = $(selector).html();
+        // let markdown_text = document.querySelectorAll(selector)[1].innerHTML;
         markdown_text = markdown_text.replace(/&lt;/g, "<");
         markdown_text = markdown_text.replace(/&gt;/g, ">");
         markdown_text = markdown_text.replace(/&amp;/g, "&");

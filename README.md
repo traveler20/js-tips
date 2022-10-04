@@ -306,6 +306,9 @@ css-container.html
 - [お気に入り登録ボタン](js-favorite.html)
 - [お気に入りボタン](css-svg-favorite.html)
 - [スキルセット円表現](css-svg-progress.html)
+- [マークダウンを HTML に変換する](js-markedjs.html)
+- [マークダウンを HTML に変換する](js-markdown-it.html)
+- [マークダウンを HTML に変換する（メイン）](js-markdown.html)
 
 ```
 css-timeline.html
@@ -319,6 +322,9 @@ css-invert.html
 js-favorite.html
 css-svg-favorite.html
 css-svg-progress.html
+js-markedjs.html
+js-markdown-it.html
+js-markdown.html
 ```
 
 ## canvas アニメーション
