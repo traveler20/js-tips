@@ -4,25 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>ポートフォリオサイト</title>
   </head>
   <body class="l-body">
     <!-- .l-header -->
     <header class="l-header">
       <div class="l-header__inner">
         <a href="/" class="l-header__logo"></a>
-        <nav class="l-header__nav"></nav>
+        <nav class="l-header-gnavi">
+          <ul class="l-header-gnavi__ul">
+            <li class="l-header-gnavi__list">
+              <a href="" class="l-header-gnavi__link"></a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
     <!-- /.l-header -->
 
     <!-- .l-body-main -->
     <main class="l-body-main">
-      <!-- .p-fv -->
-      <section class="p-fv">
+      <!-- #fv -->
+      <section id="fv" class="p-fv">
         <h1 class="p-fv__title"></h1>
       </section>
-      <!-- /.p-fv -->
+      <!-- /#fv -->
 
       <section class="l-section">
         <div class="l-section__inner">
@@ -44,7 +50,20 @@
       <section id="skill" class="l-section">
         <div class="l-section__inner">
           <h2 class="l-section__heading2"></h2>
-          <div class="l-section__grid4"></div>
+          <div class="l-section__grid4 mt-8">
+            <figure class="c-card-figure">
+              <picture class="c-card-figure__picture">
+                <img src="" alt="" class="c-card-figure__img" />
+              </picture>
+              <figcaption class="c-card-figure__figcaption">
+                <h3 class="c-card-figure__title"></h3>
+                <p class="c-card-figure__paragraph"></p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="c-cta mt-8">
+            <a href="" class="c-cta-button">詳しく見る</a>
+          </div>
         </div>
       </section>
       <!-- /#skill -->
@@ -53,9 +72,14 @@
       <section id="work" class="l-section">
         <div class="l-section__inner">
           <h2 class="l-section__heading2"></h2>
-          <div class="p-work-content">
+          <div class="p-work-content mt-8">
             <ul class="p-work-content__ul">
-              <li class="p-work-content__list"></li>
+              <li class="p-work-content__list">
+                <picture class="p-work-content__picture">
+                  <img src="" alt="" class="p-work-content__img" />
+                </picture>
+                <h3 class="p-work-content__title"></h3>
+              </li>
             </ul>
           </div>
         </div>
@@ -75,7 +99,17 @@
       <section id="about" class="l-section">
         <div class="l-section__inner">
           <h2 class="l-section__heading2"></h2>
-          <div class="l-section__grid3"></div>
+          <div class="mt-8">
+            <figure class="p-about-figure mt-8">
+              <picture class="p-about-figure__picture">
+                <img src="" alt="" class="p-about-figure__img" />
+              </picture>
+              <figcaption class="p-about-figure__figcaption">
+                <h3 class="p-about-figure__title"></h3>
+                <p class="p-about-figure__paragraph"></p>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </section>
       <!-- /#about -->
@@ -84,7 +118,11 @@
       <section id="contact" class="l-section">
         <div class="l-section__inner">
           <h2 class="l-section__heading2"></h2>
-          <div class="l-section__grid1"></div>
+          <div class="l-section__grid1 mt-8">
+            <div class="p-contact-content">
+              <form action="" class="p-contact-content__form"></form>
+            </div>
+          </div>
         </div>
       </section>
       <!-- /#contact -->
