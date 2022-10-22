@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMLとCSSでつくるスマイリー</title>
+    <!-- reset.css destyle -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+      }
+      .smiley {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 64px;
+        width: 300px;
+        height: 300px;
+        padding: 40px;
+        background-color: #fff;
+        border: solid 16px #1a1a1a;
+        border-radius: 50%;
+      }
+      .smiley_eye {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 56px;
+        width: 100%;
+        margin-left: -20px;
+      }
+      .smiley_eye_right {
+        width: 48px;
+        height: 60px;
+        background-color: #1a1a1a;
+        border-radius: 50%;
+      }
+      /* .smiley_eye_left,
+      .smiley_eye_left:before {
+        transform: rotate(45deg);
+      } */
+      .smiley_eye_left {
+        width: 16px;
+        height: 48px;
+        background-color: #1a1a1a;
+        border-radius: 16px;
+        position: relative;
+        /* width: 40px;
+        height: 40px;
+        display: inline-block;
+        border-width: 16px 16px 0 0;
+        border-color: #1a1a1a;
+        border-style: solid;
+        border-radius: 8px;
+        transform: rotate(-135deg); */
+        transform: rotate(45deg);
+        margin-top: -20px;
+      }
+      .smiley_eye_left:before {
+        position: absolute;
+        top: 32px;
+        left: 0;
+        content: "";
+        /* width: 16px;
+        height: 48px; */
+        width: 48px;
+        height: 16px;
+        background-color: #1a1a1a;
+        border-radius: 16px;
+        /* transform: rotate(90deg); */
+      }
+      .smiley_mouse {
+        position: relative;
+        height: 20px;
+      }
+      .smiley_mouse_border {
+        position: absolute;
+        top: -44px;
+        left: -80px;
+        margin: auto;
+        width: 160px;
+        height: 81px;
+        border: solid 16px #1a1a1a;
+        border-radius: 0 0 800px 800px;
+        border-top: 0;
+      }
+      .smiley_mouse_border:after {
+        position: absolute;
+        content: "";
+        top: -2px;
+        right: -24px;
+        width: 24px;
+        height: 16px;
+        background-color: #1a1a1a;
+        border-radius: 16px;
+        transform: rotate(18deg);
+      }
+    </style>
+
+    <div class="smiley">
+      <div class="smiley_eye">
+        <div class="smiley_eye_right"></div>
+        <div class="smiley_eye_left"></div>
+      </div>
+      <div class="smiley_mouse">
+        <div class="smiley_mouse_border"></div>
+      </div>
+    </div>
+  </body>
+</html>
