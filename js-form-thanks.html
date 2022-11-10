@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <!-- 入力フォーム -->
+      <form action="#" id="js-confirm-form">
+        <input type="number" name="id" placeholder="例）0123456789" />
+        <input type="text" name="name" placeholder="例）山田 太郎" />
+        <input type="email" name="email" placeholder="例）example@email.com" />
+        <input
+          type="address"
+          name="address"
+          placeholder="例）東京都港区芝公園 芝公園ビル　909号室"
+        />
+        <button type="submit">入力内容を表示する</button>
+      </form>
+      <!-- 入力結果を出力 -->
+      <div>
+        <p id="js-confirm-id"></p>
+        <p id="js-confirm-name"></p>
+        <p id="js-confirm-email"></p>
+        <p id="js-confirm-address"></p>
+      </div>
+    </main>
+
+    <script>
+      const confirm_form = document.getElementById("js-confirm-form");
+
+      const confirm_output_id = document.getElementById("js-confirm-id");
+      const confirm_output_name = document.getElementById("js-confirm-name");
+      const confirm_output_email = document.getElementById("js-confirm-email");
+      const confirm_output_address =
+        document.getElementById("js-confirm-address");
+
+      // submit時にイベント実行をする関数
+      confirm_form.onsubmit = function (event) {
+        // 再読み込み防止
+        event.preventDefault();
+        // 入力フォームの内容を取得
+        const confirm_input_id = confirm_form.id.value;
+        const confirm_input_name = confirm_form.name.value;
+        const confirm_input_email = confirm_form.email.value;
+        const confirm_input_address = confirm_form.address.value;
+
+        // 入力内容を画面に出力
+        confirm_output_id.textContent = `${confirm_input_id}`;
+        confirm_output_name.textContent = `${confirm_input_name}`;
+        confirm_output_email.textContent = `${confirm_input_email}`;
+        confirm_output_address.textContent = `${confirm_input_address}`;
+      };
+    </script>
+  </body>
+</html>

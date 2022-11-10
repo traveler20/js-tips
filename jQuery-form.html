@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style></style>
+
+    <form id="form">
+      <div class="fm_table">
+        <dl class="fm_tr">
+          <dt class="fm_th"><span class="fred def">※</span>テキスト</dt>
+          <dd class="fm_td">
+            <input
+              name="str"
+              type="text"
+              id="str"
+              size="35"
+              maxlength="30"
+              class="def fm"
+              required="required"
+            />
+          </dd>
+        </dl>
+
+        <dl class="fm_tr">
+          <dt class="fm_th">パスワード</dt>
+          <dd class="fm_td">
+            <input
+              name="pass"
+              type="password"
+              id="pass"
+              size="35"
+              maxlength="30"
+              class="def fm"
+            />
+          </dd>
+        </dl>
+
+        <dl class="fm_tr">
+          <dt class="fm_th">セレクト</dt>
+          <dd class="fm_td">
+            <select name="sel" id="sel" class="def fm">
+              <option value=""></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </dd>
+        </dl>
+
+        <dl class="fm_tr">
+          <dt class="fm_th">ラジオ</dt>
+          <dd class="fm_td">
+            <input
+              type="radio"
+              name="radio"
+              id="radio1"
+              value="赤"
+              class="def fm"
+            /><label for="radio1" class="def"> 赤</label>
+            <input
+              type="radio"
+              name="radio"
+              id="radio2"
+              value="青"
+              class="def fm"
+            /><label for="radio2" class="def"> 青</label>
+          </dd>
+        </dl>
+
+        <dl class="fm_tr">
+          <dt class="fm_th">チェックボックス</dt>
+          <dd class="fm_td">
+            <input
+              type="checkbox"
+              name="checkbox1"
+              id="checkbox1"
+              value="桃"
+              class="def fm"
+            /><label for="checkbox1" class="def"> 桃 </label>
+            <input
+              type="checkbox"
+              name="checkbox2"
+              id="checkbox2"
+              value="緑"
+              class="def fm"
+            /><label for="checkbox2" class="def"> 緑 </label>
+          </dd>
+        </dl>
+
+        <dl class="fm_tr">
+          <dt class="fm_th">テキストエリア</dt>
+          <dd class="fm_td">
+            <textarea name="text" id="text" class="def fm"></textarea>
+          </dd>
+        </dl>
+      </div>
+      <div class="fm_button">
+        <input type="button" id="reset" value="リセット" class="def" />
+        <input
+          type="button"
+          id="check"
+          value="送信内容の確認 &gt;&gt;"
+          class="def"
+        />
+        <input type="button" id="back" value="&lt;&lt; 訂正" class="hide" />
+        <input type="button" id="send" value="送信 &gt;&gt;" class="hide" />
+      </div>
+    </form>
+
+    <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        /*
+         * 確認ボタンが押されたら
+         */
+        $(document).on("click", "#check", function () {
+          $(".fm").each(function () {
+            var id = $(this).attr("id");
+            var fm = $("#" + id);
+            //フォームのタイプによって処理を分岐
+            switch (fm.prop("type")) {
+              case "text":
+              case "password":
+              case "select-one":
+                $(fm).after('<span class="hide del">' + fm.val() + "</span>");
+                break;
+              case "radio":
+                var val = $("#" + id + ":checked");
+                if ($(val).prop("checked")) {
+                  $(fm).after(
+                    '<span class="hide del">' + val.val() + "</span>"
+                  );
+                }
+                break;
+              case "checkbox":
+                var val = $("#" + id + ":checked");
+                if ($(val).prop("checked")) {
+                  $(fm).after(
+                    '<span class="hide del">' + val.val() + "</span>"
+                  );
+                }
+                break;
+              case "textarea":
+                var val = fm.val();
+                val = val.replace(/\n/g, "<br />");
+                $(fm).after('<span class="hide del">' + val + "</span>");
+                break;
+            }
+          });
+
+          change(true);
+        });
+        /*
+         * リセットボタンが押されたら
+         */
+        $(document).on("click", "#reset", function () {
+          reset();
+        });
+        /*
+         * 訂正ボタンが押されたら
+         */
+        $(document).on("click", "#back", function () {
+          change();
+        });
+        /*
+         * 送信ボタンが押されたら
+         */
+        $(document).on("click", "#send", function () {
+          var data = $("#form").serialize();
+          console.log(data);
+
+          $.ajax({
+            type: "POST",
+            url: "form.php",
+            data: data,
+            success: function (callback) {},
+          });
+          $("#form").html("送信しました");
+          reset();
+        });
+        /*
+         * フォームを初期化する
+         */
+        var reset = function (type) {
+          $("input,textarea")
+            .not(
+              'input[type="radio"],input[type="checkbox"],:hidden, :button, :submit,:reset'
+            )
+            .val("");
+          $('input[type="radio"], input[type="checkbox"],select')
+            .removeAttr("checked")
+            .removeAttr("selected");
+          $("option").attr("selected", false);
+        };
+        /*
+         * 表示・非表示を制御する
+         */
+        var change = function (type) {
+          if (type === true) {
+            $(".def").hide();
+            $(".hide").show();
+          } else {
+            $(".def").show();
+            $(".hide").hide();
+            $(".del").remove();
+          }
+        };
+      });
+    </script>
+  </body>
+</html>
