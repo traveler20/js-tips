@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .c-table-border {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        width: max-content;
+        max-width: 100%;
+        padding: 20px;
+        line-height: 2;
+      }
+      .c-table-border__dt {
+        padding: 0 16px;
+        text-align-last: justify;
+      }
+      .c-table-border__dd {
+        padding: 0 16px;
+      }
+      .c-table-border__dt:nth-of-type(n + 2),
+      .c-table-border__dd:nth-of-type(n + 2) {
+        border-top: 1px solid #000;
+      }
+    </style>
+
+    <dl class="c-table-border">
+      <dt class="c-table-border__dt">うどん</dt>
+      <dd class="c-table-border__dd">説明が入ります</dd>
+      <dt class="c-table-border__dt">そば</dt>
+      <dd class="c-table-border__dd">説明が入ります</dd>
+      <dt class="c-table-border__dt">ラーメン</dt>
+      <dd class="c-table-border__dd">説明が入ります</dd>
+    </dl>
+  </body>
+</html>
