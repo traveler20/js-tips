@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:200"
+      rel="stylesheet"
+    />
+    <style>
+      @-webkit-keyframes up-in {
+        from {
+          opacity: 0;
+          bottom: 0%;
+        }
+        to {
+          opacity: 1;
+          bottom: 50%;
+        }
+      }
+      @keyframes up-in {
+        from {
+          opacity: 0;
+          bottom: 0%;
+        }
+        to {
+          opacity: 1;
+          bottom: 50%;
+        }
+      }
+      .fill {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      body,
+      html {
+        height: 100%;
+        min-width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-family: "Raleway", sans-serif;
+      }
+      .flex-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 100%;
+        min-height: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: white;
+        position: relative;
+      }
+      .container.no-scroll {
+        overflow: hidden;
+      }
+      .page {
+        width: 80%;
+        padding: 10px;
+        background-color: white;
+      }
+      @media (max-width: 600px) {
+        .page {
+          width: 90%;
+        }
+      }
+      .grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      .grid .grid-item {
+        width: 33%;
+        position: relative;
+      }
+      .grid .grid-item:after {
+        content: "";
+        display: block;
+        margin-top: 100%;
+      }
+      @media (max-width: 600px) {
+        .grid .grid-item {
+          width: 50%;
+        }
+      }
+      .box {
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        background-color: white;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center top;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .box img {
+        width: 100%;
+        transition: transform 0.6s ease;
+      }
+      .box.selected {
+        opacity: 0;
+      }
+      .box.on-top {
+        cursor: default;
+        transition: all 0.4s ease;
+        box-shadow: 2px 2px 19px -2px rgba(0, 0, 0, 0.44);
+      }
+      .box.image-out img {
+        transform: translateY(-100%);
+      }
+      .content {
+        position: absolute;
+        padding: 20px 40px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      .show .content {
+        opacity: 1;
+      }
+      @media (max-width: 600px) {
+        .content {
+          padding: 10px 20px;
+        }
+      }
+      .scroller {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+      }
+      .scroller h1 {
+        color: white;
+        width: 100%;
+        margin-bottom: 30px;
+        position: absolute;
+        bottom: 50%;
+        text-align: center;
+        -webkit-animation: up-in 1s ease;
+        animation: up-in 1s ease;
+      }
+      .top-up.ng-hide-add,
+      .top-up.ng-hide-remove {
+        transition: 0s ease top;
+      }
+      .top-up.ng-hide-add-active,
+      .top-up.ng-hide-remove-active {
+        transition: 0.6s ease top;
+      }
+      .top-up.ng-hide-add {
+        top: 0;
+      }
+      .top-up.ng-hide-add.ng-hide-add-active {
+        top: 100%;
+      }
+      .top-up.ng-hide-remove {
+        top: 100%;
+      }
+      .top-up.ng-hide-remove.ng-hide-remove-active {
+        top: 0;
+      }
+      .fullscreen-background {
+        overflow-y: auto;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #333;
+        transition: top 0.5s ease;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      .fullscreen-background.show {
+        top: 0;
+      }
+      .close-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        color: white;
+        cursor: pointer;
+      }
+      .close-button i {
+        font-size: 35px;
+      }
+      .close-button:hover {
+        color: #ddd;
+      }
+    </style>
+
+    <div
+      class="container"
+      ng-class="{'no-scroll': selected.length}"
+      ng-app="app"
+      ng-controller="mainCtrl"
+    >
+      <div class="page">
+        <div class="grid">
+          <div class="grid-item" ng-repeat="item in boxes">
+            <box
+              class="box"
+              item="item"
+              on-select="selectBox"
+              ng-class="{'selected': selected[0].item.name == item.name}"
+            ></box>
+          </div>
+        </div>
+      </div>
+      <div
+        class="fullscreen-background top-up"
+        ng-show="selected.length"
+        ng-style="{'background-image': 'url(' + selected[0].item.image + ')'}"
+      ></div>
+      <div class="scroller" ng-show="selected.length">
+        <a class="close-button" ng-click="clearSelection()">
+          <i class="material-icons">close</i>
+        </a>
+        <h1>{{selected[0].item.name}}</h1>
+        <div
+          big-box
+          ng-repeat="item in selected"
+          class="box on-top"
+          position="item.position"
+          selected="item.item"
+        >
+          <img ng-src="{{item.item.image}}" alt="" />
+          <div class="content">
+            <h2>タイトルテキスト</h2>
+            <img ng-src="{{item.item.image}}" alt="" />
+            <p>
+              複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+            </p>
+            <p>
+              複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+            </p>
+            <p>
+              複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+            </p>
+            <p>
+              複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js"></script>
+    <script>
+      var app = angular.module("app", ["ngAnimate"]);
+
+      app.controller("mainCtrl", function ($scope) {
+        $scope.boxes = [
+          {
+            name: "Friends",
+            image: "https://source.unsplash.com/uAgLGG1WBd4/900x900",
+          },
+          {
+            name: "Free",
+            image: "https://source.unsplash.com/Cp-LUHPRpWM/900x900",
+          },
+          {
+            name: "Explore",
+            image: "https://source.unsplash.com/7BjmDICVloE/900x900",
+          },
+          {
+            name: "Vast",
+            image: "https://source.unsplash.com/WLUHO9A_xik/900x900",
+          },
+          {
+            name: "Playful",
+            image: "https://source.unsplash.com/b2-fBVrfx0o/900x900",
+          },
+          {
+            name: "Grand",
+            image: "https://source.unsplash.com/Ixp4YhCKZkI/900x900",
+          },
+          {
+            name: "Mist",
+            image: "https://source.unsplash.com/8BmNurlVR6M/900x900",
+          },
+          {
+            name: "Sea",
+            image: "https://source.unsplash.com/6YqpFWWQsno/900x900",
+          },
+          {
+            name: "Reach",
+            image: "https://source.unsplash.com/zFnk_bTLApo/900x900",
+          },
+          {
+            name: "Awe",
+            image: "https://source.unsplash.com/j4PaE7E2_Ws/900x900",
+          },
+          {
+            name: "Surf",
+            image: "https://source.unsplash.com/uohGiEVhWiQ/900x900",
+          },
+          {
+            name: "Thrill",
+            image: "https://source.unsplash.com/ssrbaKvxaos/900x900",
+          },
+        ];
+
+        $scope.selected = [];
+        $scope.selectBox = function (item, position) {
+          $scope.selected = [
+            {
+              item: item,
+              position: position,
+            },
+          ];
+          $scope.$apply();
+        };
+        $scope.clearSelection = function () {
+          $scope.selected = [];
+        };
+      });
+
+      app.directive("box", function () {
+        return {
+          restrict: "E",
+          scope: {},
+          bindToController: {
+            onSelect: "=",
+            item: "=",
+          },
+          controllerAs: "box",
+          controller: function () {
+            var box = this;
+
+            box.goFullscreen = function (e) {
+              box.onSelect(box.item, e.target.getBoundingClientRect());
+            };
+          },
+          link: function (scope, element) {
+            element.bind("click", scope.box.goFullscreen);
+            element.css({
+              "background-image": "url(" + scope.box.item.image + ")",
+            });
+          },
+        };
+      });
+
+      app.directive("bigBox", function ($timeout) {
+        return {
+          restrict: "AE",
+          scope: {},
+          bindToController: {
+            position: "=",
+            selected: "=",
+            onSelect: "=",
+          },
+          controllerAs: "box",
+          controller: function () {
+            var box = this;
+          },
+          link: function (scope, element) {
+            var css = {};
+            for (var key in scope.box.position) {
+              css[key] = scope.box.position[key] + "px";
+            }
+
+            element.css(css);
+
+            $timeout(function () {
+              element.css({
+                top: "50%",
+                left: "10%",
+              });
+              element.addClass("image-out");
+            }, 200);
+
+            $timeout(function () {
+              element.css({
+                width: "80%",
+                height: "100%",
+              });
+            }, 500);
+
+            $timeout(function () {
+              element.addClass("show");
+            }, 800);
+          },
+        };
+      });
+    </script>
+  </body>
+</html>
