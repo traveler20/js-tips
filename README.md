@@ -1,3 +1,5 @@
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,wasm)](https://skillicons.dev)
+
 # tips
 
 github のコードは[こちら](https://github.com/traveler20/tips)。
@@ -189,6 +191,7 @@ html-share-plugin.html
 - [背景がグワンっと上がる](css-bgup.html)
 - [ぐるぐる動く系のアニメーション](css-infinityanimation.html)
 - [ぐわんとうごくメニュー](js-animation-menu.html)
+- [アニメーションオフの場合アニメーションを効かせない](css-prefers-reduced-motion.html)
 
 ```
 js-animation.html
@@ -203,6 +206,7 @@ css-fadein.html
 css-bgup.html
 css-infinityanimation.html
 js-animation-menu.html
+css-prefers-reduced-motion.html
 ```
 
 # サイトでよく実装する機能

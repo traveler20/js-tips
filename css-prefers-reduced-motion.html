@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      body {
+        text-align: center;
+        padding: 2rem;
+      }
+      a {
+        font-size: 1.5rem;
+        color: #fff;
+        background: #0bd;
+        display: inline-block;
+        padding: 1.5rem 2rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: 1s;
+      }
+      a:hover {
+        background: #333;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        ::before,
+        ::after {
+          transition-duration: 1ms !important;
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+
+    <a href="#">アニメーション？</a>
+  </body>
+</html>
