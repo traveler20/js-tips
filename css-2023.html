@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>【2023年版】HTML/CSSでつくる年賀状</title>
     <!-- reset.css destyle -->
     <link
       rel="stylesheet"
@@ -31,16 +31,10 @@
       .rabbit {
         width: 80px;
         height: 50px;
-        background: #ffffff;
+        background: #fff;
         border-radius: 80% 80% 60% 60%;
         position: relative;
-        /* box-shadow: -0.2em 1em 0 -0.75em #b78e81; */
-        /* z-index: 1; */
         animation: rabbit_jamp 2s 1.4s linear forwards;
-        /* transform: rotate(-10deg) translate(8px, -8px); */
-        /* transform: rotate(10deg) translate(8px, -8px); */
-        /* transform: rotate(180deg) translateX(-180px) rotate(-180deg); */
-        /* transform: rotate(0deg) translate(80px, -80px); */
         transform: rotate(-16deg) translate(-80px, 80px);
       }
       /* うさぎのしっぽ */
@@ -49,7 +43,7 @@
         position: absolute;
         width: 18px;
         height: 18px;
-        background: white;
+        background: #fff;
         border-radius: 100%;
         top: 8px;
         left: -8px;
@@ -61,48 +55,23 @@
         position: absolute;
         width: 12px;
         height: 28px;
-        background: white;
+        background: #fff;
         border-radius: 100%;
         transform: rotate(-30deg);
         right: 16px;
         top: -18px;
         border-top: 2px solid #f7f5f4;
         border-left: 2px solid #f7f5f4;
-        box-shadow: -10px -2px 0 -1px white;
+        box-shadow: -10px -2px 0 -1px #fff;
       }
-      /* @keyframes hop {
-        20% {
-          transform: rotate(-10deg) translate(8px, -8px);
-          box-shadow: -0.2em 3em 0 -1em #b78e81;
-        }
-        40% {
-          transform: rotate(10deg) translate(8px, -8em);
-          box-shadow: -0.2em 3.25em 0 -1.1em #b78e81;
-        }
-        60%,
-        75% {
-          transform: rotate(0) translate(80px, 0);
-          box-shadow: -0.2em 1em 0 -0.75em #b78e81;
-        }
-      } */
       @keyframes rabbit_jamp {
         0% {
         }
-        /* 40% {
-          transform: rotate(-10deg) translate(80px, -80px);
-        } */
         50% {
           transform: rotate(8deg) translate(80px, -80px);
         }
-        /* 60% {
-          transform: rotate(10deg) translate(80px, -80px);
-        } */
         100% {
-          transform: rotate(4deg) translate(100px, -60px);
-          transform: rotate(-4deg) translate(96px, -48px);
-
           transform: rotate(-4deg) translate(88px, -40px);
-          /* transform: rotate(-4deg) translate(120px, -48px); */
         }
       }
 
@@ -115,11 +84,6 @@
         position: relative;
       }
       .year_2 {
-        /* position: absolute;
-
-        top: 0;
-        right: 0; */
-
         animation: year_animation_2 2s 1.4s linear forwards;
         display: inline-block;
       }
@@ -143,38 +107,23 @@
       .year_3 {
         position: absolute;
 
-        /*  */
         top: 0;
         right: 0;
 
         transform: rotate(-24deg) translate(-96px, 32px);
         transform: rotate(-24deg) translate(-180px, 100px);
-        /* animation: year_animation_3 2s 1.4s linear forwards,
-          year_animation_3_2 0.6s 3.4s linear forwards; */
         animation: year_animation_3 2s 1.4s linear forwards;
       }
       @keyframes year_animation_3 {
         0% {
-          /* transform: rotate(-24deg) translate(-96px, 32px); */
         }
         50% {
           transform: rotate(-20deg) translate(0px, 0px);
         }
-        /* 100% {
-          transform: rotate(-20deg) translate(0px, 0px);
-        } */
         100% {
           transform: rotate(0deg) translate(0px, 0px);
         }
       }
-      /* @keyframes year_animation_3_2 {
-        0% {
-          transform: rotate(-20deg) translate(0px, 0px);
-        }
-        100% {
-          transform: rotate(0deg) translate(0px, 0px);
-        }
-      } */
 
       .message {
         font-size: 40px;
