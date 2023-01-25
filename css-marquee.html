@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .c-marquee {
+        display: flex;
+        white-space: nowrap;
+        overflow: hidden;
+        gap: 1rem;
+        font-size: 3rem;
+      }
+      .c-marquee__inner {
+        animation: marquee 20s linear infinite;
+      }
+      @keyframes marquee {
+        0% {
+          translate: 0;
+        }
+        100% {
+          translate: calc(-100% - 1rem);
+        }
+      }
+    </style>
+
+    <div class="c-marquee">
+      <div class="c-marquee__inner">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt
+        fermentum volutpat.
+      </div>
+      <div class="c-marquee__inner" aria-hidden="true">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt
+        fermentum volutpat.
+      </div>
+    </div>
+  </body>
+</html>
