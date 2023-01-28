@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- reset.css destyle -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+    />
+  </head>
+  <body>
+    <style>
+      section {
+        color: #fff;
+        padding-bottom: 150px;
+      }
+      #section1 {
+        background-color: #5ba4cf;
+      }
+      #section2 {
+        background-color: #cf6a80;
+      }
+      #section3 {
+        background-color: #61c06a;
+      }
+      section:after {
+        content: "";
+        background-repeat: no-repeat;
+        display: block;
+        height: 150px;
+        position: absolute;
+        width: 100%;
+      }
+      #section1:after {
+        background: url("./asset/img/css-section-hr1.svg");
+      }
+      #section2:after {
+        background: url("./asset/img/css-section-hr2.svg");
+      }
+      #section3:after {
+        background: url("svg/separate3.svg");
+      }
+    </style>
+
+    <section id="section1">
+      <div class="inner">
+        <h2>Section First</h2>
+      </div>
+    </section>
+    <section id="section2">
+      <div class="inner">
+        <h2>Section Second</h2>
+      </div>
+    </section>
+    <section id="section3">
+      <div class="inner">
+        <h2>Section Third</h2>
+      </div>
+    </section>
+  </body>
+</html>
