@@ -1,155 +1,157 @@
 <!DOCTYPE html>
 <html lang="ja">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-	</head>
-	<body>
-		<style>
-			/* 下線 */
-			.underline {
-				text-decoration: underline;
-			}
-			/* 打ち消し線 */
-			.line-through {
-				text-decoration: line-through;
-			}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      /* 下線 */
+      .underline {
+        text-decoration: underline;
+      }
+      /* 打ち消し線 */
+      .line-through {
+        text-decoration: line-through;
+      }
 
-			/* 線に色 */
-			.underline-blue {
-				text-decoration: underline;
-				text-decoration-color: blue;
-			}
-			/* 波線 */
-			.underline-wavy {
-				text-decoration: underline;
-				text-decoration-style: wavy;
-			}
-			/* 二重線 */
-			.underline-double {
-				text-decoration: underline;
-				text-decoration-style: double;
-			}
-			/* 破線 */
-			.underline-dashed {
-				text-decoration: underline;
-				text-decoration-style: dashed;
-			}
-			/* 点線 */
-			.underline-dotted {
-				text-decoration: underline;
-				text-decoration-style: dotted;
-			}
-			/* 太線 */
-			.underline-bold {
-				text-decoration: underline;
-				text-decoration-thickness: 3px;
-			}
-			/* 線と隙間 */
-			.underline-spaced {
-				text-decoration: underline;
-				text-underline-offset: 15px;
-			}
-		</style>
-		<p class="underline">テキストテキストテキストテキスト</p>
-		<p class="line-through">テキストテキストテキストテキスト</p>
-		<p class="underline-blue">テキストテキストテキストテキスト</p>
-		<p class="underline-wavy">テキストテキストテキストテキスト</p>
-		<p class="underline-double">テキストテキストテキストテキスト</p>
-		<p class="underline-dashed">テキストテキストテキストテキスト</p>
-		<p class="underline-dotted">テキストテキストテキストテキスト</p>
-		<p class="underline-bold">テキストテキストテキストテキスト</p>
-		<p class="underline-spaced">テキストテキストテキストテキスト</p>
+      /* 線に色 */
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: blue;
+        /* text-decoration: underline blue 1px; */
+      }
+      /* 波線 */
+      .underline-wavy {
+        text-decoration: underline;
+        text-decoration-style: wavy;
+      }
+      /* 二重線 */
+      .underline-double {
+        text-decoration: underline;
+        text-decoration-style: double;
+      }
+      /* 破線 */
+      .underline-dashed {
+        text-decoration: underline;
+        text-decoration-style: dashed;
+      }
+      /* 点線 */
+      .underline-dotted {
+        text-decoration: underline;
+        text-decoration-style: dotted;
+      }
+      /* 太線 */
+      .underline-bold {
+        text-decoration: underline;
+        text-decoration-thickness: 3px;
+      }
+      /* 線と隙間 */
+      .underline-spaced {
+        text-decoration: underline;
+        text-underline-offset: 15px;
+      }
+    </style>
+    <p class="underline">テキストテキストテキストテキスト</p>
+    <p class="line-through">テキストテキストテキストテキスト</p>
+    <p class="underline-blue">テキストテキストテキストテキスト</p>
+    <p class="underline-wavy">テキストテキストテキストテキスト</p>
+    <p class="underline-double">テキストテキストテキストテキスト</p>
+    <p class="underline-dashed">テキストテキストテキストテキスト</p>
+    <p class="underline-dotted">テキストテキストテキストテキスト</p>
+    <p class="underline-bold">テキストテキストテキストテキスト</p>
+    <p class="underline-spaced">テキストテキストテキストテキスト</p>
 
-		<hr style="margin: 60px 0 30px" />
+    <hr style="margin: 60px 0 30px" />
 
-		<!-- アレンジバージョン -->
-		<style>
-			.underline-arrange {
-				color: #333;
-				font-size: 20px;
-				font-weight: bold;
-				text-decoration: underline;
-				text-decoration-style: wavy;
-				text-decoration-thickness: 2px;
-				text-underline-offset: 3px;
-				text-decoration-color: goldenrod;
-			}
-		</style>
-		<p class="underline-arrange">テキストテキストテキストテキスト</p>
+    <!-- アレンジバージョン -->
+    <style>
+      .underline-arrange {
+        color: #333;
+        font-size: 20px;
+        font-weight: bold;
+        text-decoration: underline;
+        text-decoration-style: wavy;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+        text-decoration-color: goldenrod;
+      }
+    </style>
+    <p class="underline-arrange">テキストテキストテキストテキスト</p>
 
-		<!-- 下線アニメーション（疑似要素を使用） -->
-		<style>
-			/* base */
-			.container {
-				display: flex;
-				height: 100vh;
-				justify-content: center;
-				align-items: center;
-				margin: 0;
-				font-family: "Yu Gothic Medium", "游ゴシック Medium", "Yu Gothic",
-					"游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3",
-					"Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo";
-				line-height: 1.4;
-				font-size: 20px;
-				background-color: #333;
-			}
-			.container li {
-				list-style: none;
-				margin: 10px 0;
-			}
+    <!-- 下線アニメーション（疑似要素を使用） -->
+    <style>
+      /* base */
+      .container {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-family: "Yu Gothic Medium", "游ゴシック Medium", "Yu Gothic",
+          "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3",
+          "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo";
+        line-height: 1.4;
+        font-size: 20px;
+        background-color: #ccc;
+      }
+      .container li {
+        list-style: none;
+        margin: 10px 0;
+      }
 
-			.underline-anime {
-				display: inline-block;
-				position: relative;
-				overflow: hidden;
-				color: #fff;
-				text-decoration: none;
-			}
-			.underline-anime:after {
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-				height: 1px;
-				background-color: #fff;
-				transform: translate(-100%, 0);
-				transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s;
-				content: "";
-			}
-			.underline-anime:hover:after {
-				transform: translate(0, 0);
-			}
-		</style>
-		<div class="container">
-			<ul>
-				<li><a class="underline-anime" href="#">ホーム</a></li>
-				<li><a class="underline-anime" href="#">選ぶメリット</a></li>
-				<li><a class="underline-anime" href="#">楽しむためのコツ</a></li>
-				<li><a class="underline-anime" href="#">導入事例</a></li>
-				<li><a class="underline-anime" href="#">お問い合わせ</a></li>
-			</ul>
-		</div>
+      .underline-anime {
+        color: #333;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+      }
+      .underline-anime:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #333;
+        transform: translate(-100%, 0);
+        transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s;
+        content: "";
+      }
+      .underline-anime:hover:after {
+        transform: translate(0, 0);
+      }
+    </style>
+    <div class="container">
+      <ul>
+        <li><a class="underline-anime" href="#">ホーム</a></li>
+        <li><a class="underline-anime" href="#">選ぶメリット</a></li>
+        <li><a class="underline-anime" href="#">楽しむためのコツ</a></li>
+        <li><a class="underline-anime" href="#">導入事例</a></li>
+        <li><a class="underline-anime" href="#">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <a href="" class="underline-anime"> テキストテキストテキストテキスト </a>
 
-		<!-- コンテンツだけ下線（fit-content） -->
-		<style>
-			.headline-title {
-				width: fit-content;
-				margin-left: auto;
-				margin-right: auto;
-				box-shadow: inset 0 -6px 0 0 lightgrey;
-			}
-		</style>
-		<h1 class="headline-title">Headline content</h1>
+    <!-- コンテンツだけ下線（fit-content） -->
+    <style>
+      .headline-title {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: inset 0 -6px 0 0 lightgrey;
+      }
+    </style>
+    <h1 class="headline-title">Headline content</h1>
 
-		<!-- マーカー -->
-		<style>
-			.marker-title {
-				background: linear-gradient(transparent 70%, #a7d6ff 70%);
-			}
-		</style>
-		<h1 class="marker-title">タイトルタイトル</h1>
-	</body>
+    <!-- マーカー -->
+    <style>
+      .marker-title {
+        background: linear-gradient(transparent 70%, #a7d6ff 70%);
+      }
+    </style>
+    <h1 class="marker-title">タイトルタイトル</h1>
+  </body>
 </html>
