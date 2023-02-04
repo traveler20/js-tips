@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- reset.css destyle -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        justify-content: center;
+        gap: 80px;
+
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+    </style>
+
+    <!--  -->
+    <style>
+      @media (min-width: 572px) {
+        .sp-only {
+          display: none;
+        }
+      }
+    </style>
+    <p>
+      こちらは長めのテキストの文章になります。<br
+        class="sp-only"
+      />スマホになるとここで改行します。
+    </p>
+
+    <!--  -->
+    <style>
+      .inline-block {
+        display: inline-block;
+      }
+    </style>
+    <p>
+      <span class="inline-block">こちらは長めのテキストの文章になります。</span
+      ><span class="inline-block">スマホになるとここで改行します。</span>
+    </p>
+
+    <!--  -->
+    <style>
+      .whitespace-nowrap {
+        white-space: nowrap;
+      }
+    </style>
+    <p class="whitespace-nowrap">
+      こちらは長めのテキストの文章になります。<wbr />スマホになるとここで改行します。
+    </p>
+  </body>
+</html>
