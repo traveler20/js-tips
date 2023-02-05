@@ -52,13 +52,22 @@
       ><span class="inline-block">スマホになるとここで改行します。</span>
     </p>
 
-    <!--  -->
+    <!-- (safari非対応…) -->
     <style>
       .whitespace-nowrap {
         white-space: nowrap;
       }
     </style>
     <p class="whitespace-nowrap">
+      こちらは長めのテキストの文章になります。<wbr />スマホになるとここで改行します。
+    </p>
+
+    <style>
+      .break-keep {
+        word-break: keep-all;
+      }
+    </style>
+    <p class="break-keep">
       こちらは長めのテキストの文章になります。<wbr />スマホになるとここで改行します。
     </p>
   </body>
