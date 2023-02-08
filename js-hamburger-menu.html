@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      a {
+        font-family: sans-serif;
+        text-decoration: none;
+      }
+      .humberger {
+        display: block;
+        height: 60px;
+        margin-left: auto;
+        position: relative;
+        z-index: 10;
+        width: 60px;
+        border: none;
+        background-color: transparent;
+      }
+      .humberger.-active .humberger__line {
+        background-color: transparent;
+      }
+      .humberger.-active .humberger__line::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+      .humberger.-active .humberger__line::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+      .humberger.-active .humberger__text::before {
+        content: "閉じる";
+      }
+      .humberger__line {
+        display: block;
+        height: 2px;
+        position: absolute;
+        top: 23px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 24px;
+        background-color: #172e59;
+        transition: 0.4s;
+      }
+      .humberger__line:before,
+      .humberger__line:after {
+        content: "";
+        display: block;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        background-color: #172e59;
+        transition: inherit;
+      }
+      .humberger__line:before {
+        top: -6px;
+      }
+      .humberger__line:after {
+        top: 6px;
+      }
+      .humberger__text {
+        position: absolute;
+        bottom: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+      }
+      .humberger__text::before {
+        content: "メニュー";
+        text-align: center;
+        color: #172e59;
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .header {
+        width: 300px;
+      }
+      .header__nav-area {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 9;
+        height: 100vh;
+        width: 300px;
+        visibility: hidden;
+        padding-top: 60px;
+        background-color: #fff;
+        transition: 0.4s;
+      }
+      .header__nav-area.-active {
+        left: 0;
+        visibility: visible;
+      }
+      .global-navigation {
+        padding-top: 40px;
+        padding-right: 25px;
+        padding-bottom: 120px;
+        padding-left: 25px;
+      }
+      .global-navigation__list > li {
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e7e9ee;
+      }
+      .global-navigation__list > li + li {
+        margin-top: 20px;
+      }
+      .global-navigation__link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #172e59;
+        font-weight: 900;
+        transition: color 0.4s;
+        font-size: 0.875rem;
+      }
+      .global-navigation__link.-accordion {
+        position: relative;
+        background: none;
+        border: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 100%;
+        padding: 0;
+      }
+      .global-navigation__link.-accordion::after {
+        content: "";
+        display: block;
+        height: 12px;
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        width: 2px;
+        background-color: #ed3242;
+        transform: translateY(-50%);
+        transition: transform 0.4s;
+      }
+      .global-navigation__link.-accordion::before {
+        content: "";
+        display: block;
+        height: 2px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 12px;
+        background-color: #ed3242;
+        transform: translateY(-50%);
+      }
+      .global-navigation__link.-active::after {
+        transform: translateY(-50%) rotate(-90deg);
+      }
+      .accordion {
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transition: 0.4s;
+      }
+      .accordion.-active {
+        height: auto;
+        padding-top: 30px;
+        visibility: visible;
+      }
+      .accordion__list li {
+        font-size: 0.75rem;
+      }
+      .accordion__list li + li {
+        margin-top: 21px;
+      }
+      .accordion__link {
+        color: #172e59;
+      }
+    </style>
+
+    <header class="header">
+      <div class="header__inner">
+        <button
+          id="js-humberger"
+          type="button"
+          class="humberger"
+          aria-controls="navigation"
+          aria-expanded="false"
+        >
+          <span class="humberger__line"></span>
+          <span class="humberger__text"></span>
+        </button>
+        <div class="header__nav-area js-nav-area" id="navigation">
+          <nav id="js-global-navigation" class="global-navigation">
+            <ul class="global-navigation__list">
+              <li>
+                <a href="#" class="global-navigation__link"> メニュー </a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="global-navigation__link -accordion js-sp-accordion-trigger"
+                  aria-expanded="false"
+                  aria-controls="accordion1"
+                >
+                  親メニュー
+                </button>
+                <div id="accordion1" class="accordion js-accordion">
+                  <ul class="accordion__list">
+                    <li>
+                      <a href="#" class="accordion__link"> 子メニュー </a>
+                    </li>
+                    <li>
+                      <a href="#" class="accordion__link"> 子メニュー </a>
+                    </li>
+                    <li>
+                      <a href="#" class="accordion__link"> 子メニュー </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="global-navigation__link"> メニュー </a>
+              </li>
+            </ul>
+            <div id="js-focus-trap" tabindex="0"></div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      // メニュー展開時に背景を固定
+      const backgroundFix = (bool) => {
+        const scrollingElement = () => {
+          const browser = window.navigator.userAgent.toLowerCase();
+          if ("scrollingElement" in document) return document.scrollingElement;
+          return document.documentElement;
+        };
+
+        const scrollY = bool
+          ? scrollingElement().scrollTop
+          : parseInt(document.body.style.top || "0");
+
+        const fixedStyles = {
+          height: "100vh",
+          position: "fixed",
+          top: `${scrollY * -1}px`,
+          left: "0",
+          width: "100vw",
+        };
+
+        Object.keys(fixedStyles).forEach((key) => {
+          document.body.style[key] = bool ? fixedStyles[key] : "";
+        });
+
+        if (!bool) {
+          window.scrollTo(0, scrollY * -1);
+        }
+      };
+
+      // 変数定義
+      const CLASS = "-active";
+      let flg = false;
+      let accordionFlg = false;
+
+      let humberger = document.getElementById("js-humberger");
+      let focusTrap = document.getElementById("js-focus-trap");
+      let menu = document.querySelector(".js-nav-area");
+      let accordionTrigger = document.querySelectorAll(
+        ".js-sp-accordion-trigger"
+      );
+      let accordion = document.querySelectorAll(".js-sp-accordion");
+
+      // メニュー開閉制御
+      humberger.addEventListener("click", (e) => {
+        //ハンバーガーボタンが選択されたら
+        e.currentTarget.classList.toggle(CLASS);
+        menu.classList.toggle(CLASS);
+        if (flg) {
+          // flgの状態で制御内容を切り替え
+          backgroundFix(false);
+          humberger.setAttribute("aria-expanded", "false");
+          humberger.focus();
+          flg = false;
+        } else {
+          backgroundFix(true);
+          humberger.setAttribute("aria-expanded", "true");
+          flg = true;
+        }
+      });
+      window.addEventListener("keydown", () => {
+        //escキー押下でメニューを閉じられるように
+        if (event.key === "Escape") {
+          humberger.classList.remove(CLASS);
+          menu.classList.remove(CLASS);
+
+          backgroundFix(false);
+          humberger.focus();
+          humberger.setAttribute("aria-expanded", "false");
+          flg = false;
+        }
+      });
+
+      // メニュー内アコーディオン制御
+      accordionTrigger.forEach((item) => {
+        item.addEventListener("click", (e) => {
+          e.currentTarget.classList.toggle(CLASS);
+          e.currentTarget.nextElementSibling.classList.toggle(CLASS);
+          if (accordionFlg) {
+            e.currentTarget.setAttribute("aria-expanded", "false");
+            accordionFlg = false;
+          } else {
+            e.currentTarget.setAttribute("aria-expanded", "true");
+            accordionFlg = true;
+          }
+        });
+      });
+
+      // フォーカストラップ制御
+      focusTrap.addEventListener("focus", (e) => {
+        humberger.focus();
+      });
+    </script>
+  </body>
+</html>
