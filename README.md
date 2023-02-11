@@ -23,6 +23,9 @@ html-head.html
 - [フォントを流動的に変化させたい](css-fluidTypography.html)
 - [フォントのカーニング](css-font-feature-settings.html)
 - [1 行のテキストを両端揃えする](css-text-align-last.html)
+- [テキストを横にスクロールさせる](css-marquee.html)
+- [強調したいテキストにドットをあてる](css-dot-text.html)
+- [テキストの改行のレスポンシブ対応](html-br.html)
 
 ```
 css-truncatetext.html
@@ -33,6 +36,8 @@ css-underline.html
 css-fluidTypography.html
 css-font-feature-settings.html
 css-text-align-last.html
+css-marquee.html
+css-dot-text.html
 ```
 
 ```
@@ -192,6 +197,8 @@ html-share-plugin.html
 - [ぐるぐる動く系のアニメーション](css-infinityanimation.html)
 - [ぐわんとうごくメニュー](js-animation-menu.html)
 - [アニメーションオフの場合アニメーションを効かせない](css-prefers-reduced-motion.html)
+- [2023 年の年賀状的なページ](css-2023.html)
+- [電光掲示板](css-electric-bulletin-board.html)
 
 ```
 js-animation.html
@@ -207,6 +214,8 @@ css-bgup.html
 css-infinityanimation.html
 js-animation-menu.html
 css-prefers-reduced-motion.html
+css-2023.html
+css-electric-bulletin-board.html
 ```
 
 # サイトでよく実装する機能
@@ -216,6 +225,7 @@ css-prefers-reduced-motion.html
 - [アコーディオンメニュー](css-details.html)
 - [タブメニュー](css-tab.html)
 - [ハンバーガーメニュー](css-hamburger.html)
+- [ハンバーガーメニュー](js-hamburger-menu.html)
 - [モーダルウィンドウ](css-modal.html)
 - [ホバーで補足説明を出したい（ツールチップ）](css-tooltip.html)
 - [タイマーで表示を切り替えたい](php-timer.html)
@@ -237,6 +247,7 @@ css-slider4.html
 css-details.html(css-details-accordion.html/css-js-details.html)
 css-tab.html
 css-hamburger.html
+js-hamburger-menu.html
 css-modal.html
 css-tooltip.html
 php-timer.html
@@ -312,6 +323,7 @@ css-container.html
 - [お気に入り登録ボタン](js-favorite.html)
 - [お気に入りボタン](css-svg-favorite.html)
 - [スキルセット円表現](css-svg-progress.html)
+- [セクションの区切りを斜めにする](css-section-hr.html)
 - [マークダウンを HTML に変換する](js-markedjs.html)
 - [マークダウンを HTML に変換する](js-markdown-it.html)
 - [マークダウンを HTML に変換する（メイン）](js-markdown.html)
@@ -328,6 +340,7 @@ css-invert.html
 js-favorite.html
 css-svg-favorite.html
 css-svg-progress.html
+css-section-hr.html
 js-markedjs.html
 js-markdown-it.html
 js-markdown.html
