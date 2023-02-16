@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      body {
+        font-family: system-ui, serif;
+        padding: 3rem;
+      }
+
+      .container {
+        container-type: inline-size;
+        width: 100%;
+        max-width: 750px;
+        margin: 0 auto;
+      }
+
+      .visual {
+        aspect-ratio: 1/1;
+        background-color: #ccc;
+      }
+
+      .desc {
+        display: none;
+      }
+
+      .card {
+        text-align: center;
+        padding: 0.5rem;
+        border: solid 1px #ccc;
+      }
+
+      .card h2 {
+        font-size: clamp(1.5rem, 15cqi, 3rem);
+      }
+
+      @container (min-width: 350px) {
+        .card {
+          display: grid;
+          grid-template-columns: 40% 1fr;
+          align-items: center;
+          gap: 1rem;
+          text-align: left;
+        }
+
+        .card h2 {
+          font-size: clamp(1.5rem, 15cqi, 2rem);
+        }
+      }
+      @container (min-width: 500px) {
+        .desc {
+          display: block;
+        }
+      }
+      .parent-grid {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 30% 1fr 20%;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+    </style>
+
+    <div class="parent-grid">
+      <div class="container">
+        <div class="card">
+          <div class="visual"></div>
+          <div>
+            <div class="meta">
+              <h2>Card Title</h2>
+              <h3 class="subtitle">Subtitle</h3>
+            </div>
+            <p class="desc">
+              Here is some descriptive text. It's optional text to support the
+              main idea of the card, and it will be hidden when this card has
+              less inline space.
+            </p>
+            <button>I'm a button</button>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="card">
+          <div class="visual"></div>
+          <div>
+            <div class="meta">
+              <h2>Card Title</h2>
+              <h3 class="subtitle">Subtitle</h3>
+            </div>
+            <p class="desc">
+              Here is some descriptive text. It's optional text to support the
+              main idea of the card, and it will be hidden when this card has
+              less inline space.
+            </p>
+            <button>I'm a button</button>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="card">
+          <div class="visual"></div>
+          <div>
+            <div class="meta">
+              <h2>Card Title</h2>
+              <h3 class="subtitle">Subtitle</h3>
+            </div>
+            <p class="desc">
+              Here is some descriptive text. It's optional text to support the
+              main idea of the card, and it will be hidden when this card has
+              less inline space.
+            </p>
+            <button>I'm a button</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
