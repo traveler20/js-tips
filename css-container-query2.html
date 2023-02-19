@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--  -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <style>
+      .reaction-bar {
+        container-type: inline-size;
+      }
+
+      @container (max-width: 560px) {
+        .reaction-bar .text {
+          display: none;
+        }
+      }
+
+      /* その他のスタイル */
+
+      :root {
+        --main-color: 139, 152, 165;
+        --padding: 16px;
+      }
+
+      body {
+        font-family: "游ゴシック Medium", YuGothic, YuGothicM,
+          "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+        line-height: 1.7;
+        color: rgb(var(--main-color));
+        background-color: rgb(32, 43, 54);
+      }
+
+      .material-symbols-rounded {
+        color: currentColor;
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+      }
+
+      .wrapper {
+        display: grid;
+        align-content: start;
+        height: calc(100svh - 16px * 2);
+        padding: var(--padding);
+        grid-template:
+          "nav main" 1fr /
+          200px 1fr;
+      }
+
+      @media (max-width: 650px) {
+        .wrapper {
+          grid-template:
+            "nav" auto
+            "main" auto
+            / 1fr;
+        }
+      }
+
+      nav {
+        display: grid;
+        background-color: rgba(var(--main-color), 0.2);
+        writing-mode: vertical-rl;
+        place-content: center;
+      }
+
+      @media (max-width: 650px) {
+        nav {
+          height: 70px;
+          writing-mode: horizontal-tb;
+        }
+      }
+
+      .main {
+        padding: var(--padding);
+      }
+
+      .section-inner {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      }
+
+      .section-inner > .tweet {
+        padding: var(--padding);
+        border: 1px solid rgba(var(--main-color), 0.3);
+        border-radius: 3px;
+      }
+
+      .reaction-bar {
+        font-size: 14px;
+        display: flex;
+        gap: 20px;
+      }
+
+      .reaction {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      button {
+        width: var(--size);
+        height: var(--size);
+        padding: 0;
+        cursor: pointer;
+        transition: 0.3s;
+        border: none;
+        border-radius: calc(var(--size) / 2);
+        background-color: transparent;
+        --size: 40px;
+      }
+
+      button:hover {
+        color: rgb(242, 43, 131);
+        background-color: rgba(242, 43, 131, 0.3);
+      }
+    </style>
+
+    <div class="wrapper">
+      <nav>ナビゲーションエリア</nav>
+      <main class="main">
+        <h2>メインエリア</h2>
+        <div class="tweet">
+          <p>
+            よく晴れた気持ちのいい朝。飼い猫の💩の強烈なかほりで私の目は覚めた。ふと見ると、彼はらんらんとした瞳で私を見つめ、彼の創造物を片付けることを期待していた。
+          </p>
+          <div class="reaction-bar">
+            <div class="reaction">
+              <button class="material-symbols-rounded">chat_bubble</button>
+              <span class="text">返信する</span>
+              <span class="count">60</span>
+            </div>
+            <div class="reaction">
+              <button class="material-symbols-rounded">favorite</button>
+              <span class="text">いいね</span>
+              <span class="count">120</span>
+            </div>
+            <div class="reaction">
+              <button class="material-symbols-rounded">bar_chart</button>
+              <span class="text">View数</span>
+              <span class="count">1.2K</span>
+            </div>
+            <div class="reaction">
+              <button class="material-symbols-rounded">share</button>
+              <span class="text">シェアする</span>
+            </div>
+          </div>
+        </div>
+        <section>
+          <h3>1カラム・2カラムが切り替わるエリア</h3>
+          <div class="section-inner">
+            <div class="tweet">
+              <p>
+                「やれやれ…」私は立ち上がり、スコップを手に取る。そう、私は"Splendid
+                cleaner of cat
+                creations"（猫の創造物の華麗な掃除屋）。今日も我が家の秩序のために闘うのだ。
+              </p>
+              <div class="reaction-bar">
+                <div class="reaction">
+                  <button class="material-symbols-rounded">chat_bubble</button>
+                  <span class="text">返信する</span>
+                  <span class="count">12</span>
+                </div>
+                <div class="reaction">
+                  <button class="material-symbols-rounded">favorite</button>
+                  <span class="text">いいね</span>
+                  <span class="count">30</span>
+                </div>
+                <div class="reaction">
+                  <button class="material-symbols-rounded">bar_chart</button>
+                  <span class="text">View数</span>
+                  <span class="count">980</span>
+                </div>
+                <div class="reaction">
+                  <button class="material-symbols-rounded">share</button>
+                  <span class="text">シェアする</span>
+                </div>
+              </div>
+            </div>
+            <div class="tweet">
+              <p>
+                その創造物は想像を超えていたーーー。まるでジャック・ライアンがスレイマンに追い詰められ、右手の手榴弾のピンを外したときのように、私の緊張感は最高潮に達していた。
+              </p>
+              <div class="reaction-bar">
+                <div class="reaction">
+                  <button class="material-symbols-rounded">chat_bubble</button>
+                  <span class="text">返信する</span>
+                  <span class="count">10.4K</span>
+                </div>
+                <div class="reaction">
+                  <button class="material-symbols-rounded">favorite</button>
+                  <span class="text">いいね</span>
+                  <span class="count">120</span>
+                </div>
+
+                <div class="reaction">
+                  <button class="material-symbols-rounded">bar_chart</button>
+                  <span class="text">View数</span>
+                  <span class="count">20K</span>
+                </div>
+                <div class="reaction">
+                  <button class="material-symbols-rounded">share</button>
+                  <span class="text">シェアする</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
