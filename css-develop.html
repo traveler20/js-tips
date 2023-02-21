@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- https://coliss.com/articles/build-websites/operation/css/inside-frontend-developer-mind.html -->
+
+    <style>
+      .hero {
+        position: relative;
+      }
+
+      .hero:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, #000 35%, transparent) left
+          center/100% no-repeat;
+      }
+
+      /* コンテンツをグラデーションの上に配置するには、これが必要です。 */
+      .hero__content {
+        position: relative;
+        z-index: 1;
+      }
+    </style>
+
+    <section class="hero">
+      <div class="hero__wrapper">
+        <div class="hero__content"></div>
+        <img src="beriies.jpg" alt="" />
+      </div>
+    </section>
+  </body>
+</html>
