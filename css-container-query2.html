@@ -13,6 +13,35 @@
   </head>
   <body>
     <style>
+      .container1 {
+        container-type: inline-size;
+        /* 要素をリサイズ可能にする設定 */
+        resize: horizontal;
+        overflow: auto;
+        min-width: 240px;
+      }
+      @container (min-width: 300px) {
+        .container1 p {
+          color: #f4481a;
+          font-size: 26px;
+          font-weight: bold;
+        }
+      }
+
+      /** その他のスタイル */
+      .container1 {
+        border: dotted 1px #aba6a6;
+        padding: 12px;
+        box-sizing: border-box;
+        width: 240px;
+        text-align: center;
+      }
+    </style>
+    <div class="container1">
+      <p>リサイズしてください</p>
+    </div>
+
+    <style>
       .reaction-bar {
         container-type: inline-size;
       }
