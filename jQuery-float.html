@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .c-float {
+        position: fixed;
+        bottom: 8px;
+        right: 8px;
+        width: 150px;
+        max-width: 100%;
+      }
+      .c-float__link {
+        display: block;
+        transition: 0.3s;
+      }
+      .c-float__link:hover {
+        opacity: 0.6;
+      }
+      .c-float__close {
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        right: 0;
+        top: -16px;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+      }
+      .c-float__close span {
+        position: absolute;
+        background-color: #000;
+        transform: rotate(45deg);
+      }
+      .c-float__close span:nth-of-type(1) {
+        top: 8px;
+        right: 0;
+        width: 16px;
+        height: 1px;
+      }
+      .c-float__close span:nth-of-type(2) {
+        top: 0;
+        right: 8px;
+        width: 1px;
+        height: 16px;
+      }
+    </style>
+
+    <div class="c-float" id="js-float-banner">
+      <a href="" class="c-float__link"> 追従するバナー </a>
+      <button type="button" class="c-float__close" id="js-float-close">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      // ×を押すと閉じる
+      $(function () {
+        $("#js-float-close").on("click", function () {
+          $("#js-float-banner").fadeOut(300);
+        });
+      });
+
+      // 途中で追従バナーを固定
+      $(function () {
+        $(window).on("scroll", function () {
+          $("#js-float-banner").css({
+            position: "fixed",
+            bottom: 8,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
