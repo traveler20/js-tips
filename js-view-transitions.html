@@ -5,19 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- reset.css destyle -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+    />
   </head>
   <body>
     <style>
-      .sub_category1 {
-        view-transition-name: sub_category1;
+      .page_category1 {
+        view-transition-name: page_category1;
         contain: paint;
       }
-      .sub_category2 {
-        view-transition-name: sub_category2;
+      .page_category2 {
+        view-transition-name: page_category2;
         contain: paint;
       }
 
-      .base_page {
+      .page_base {
         position: fixed;
         top: 0;
         left: 0;
@@ -28,70 +33,77 @@
         overflow: auto;
       }
 
-      .top_page {
+      .page_top {
         background: #fff;
       }
-      .sub_page1 {
+      .page_sub1 {
         background: #def;
       }
-      .sub_page2 {
+      .page_sub2 {
         background: #fed;
+      }
+
+      .page_thumbnail {
+        width: 100%;
+        max-width: 240px;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+      }
+      .page_image {
+        width: 100%;
+        max-width: 600px;
+        aspect-ratio: 4/3;
+        object-fit: cover;
       }
     </style>
 
-    <div class="base_page top_page" data-page="home">
+    <section class="page_base page_top" data-page="home">
       <h1>Top page</h1>
       <ul>
         <li>
-          <a href="#sub_page1" data-to="sub_page1">
+          <a href="#page_sub1" data-to="page_sub1">
             <img
-              class="sub_category1"
-              src="https://placekitten.com/300/300"
-              width="64"
-              height="64"
+              class="page_category1 page_thumbnail"
+              src="https://placekitten.com/800/600"
             />
             Sub page 1
           </a>
         </li>
         <li>
-          <a href="#sub_page2" data-to="sub_page2">
+          <a href="#page_sub2" data-to="page_sub2">
             <img
-              class="sub_category2"
-              src="https://placekitten.com/400/400"
-              width="64"
-              height="64"
+              class="page_category2 page_thumbnail"
+              src="https://placekitten.com/800/500"
             />
             Sub page 2
           </a>
         </li>
       </ul>
-    </div>
+    </section>
 
-    <div class="base_page sub_page1" data-page="sub_page1" hidden>
+    <section class="page_base page_sub1" data-page="page_sub1" hidden>
       <h2>Sub page 1</h2>
       <p>
         <img
-          class="sub_category1"
-          src="https://placekitten.com/300/300"
-          width="300"
-          height="300"
+          class="page_category1 page_image"
+          src="https://placekitten.com/800/600"
+          loading="lazy"
         />
       </p>
       <p><a href="#home" data-to="home">Back</a></p>
-    </div>
+    </section>
 
-    <div class="base_page sub_page2" data-page="sub_page2" hidden>
+    <section class="page_base page_sub2" data-page="page_sub2" hidden>
       <h2>Sub page 2</h2>
       <p>
         <img
-          class="sub_category2"
-          src="https://placekitten.com/400/400"
-          width="300"
-          height="300"
+          class="page_category2 page_image"
+          src="https://placekitten.com/800/500"
+          loading="lazy"
         />
       </p>
       <p><a href="#home" data-to="home">Back</a></p>
-    </div>
+    </section>
 
     <script>
       document.querySelectorAll("a[data-to]").forEach((a) => {
