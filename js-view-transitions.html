@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .sub_category1 {
+        view-transition-name: sub_category1;
+        contain: paint;
+      }
+      .sub_category2 {
+        view-transition-name: sub_category2;
+        contain: paint;
+      }
+
+      .base_page {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        box-sizing: border-box;
+        padding: 20px;
+        overflow: auto;
+      }
+
+      .top_page {
+        background: #fff;
+      }
+      .sub_page1 {
+        background: #def;
+      }
+      .sub_page2 {
+        background: #fed;
+      }
+    </style>
+
+    <div class="base_page top_page" data-page="home">
+      <h1>Top page</h1>
+      <ul>
+        <li>
+          <a href="#sub_page1" data-to="sub_page1">
+            <img
+              class="sub_category1"
+              src="https://placekitten.com/300/300"
+              width="64"
+              height="64"
+            />
+            Sub page 1
+          </a>
+        </li>
+        <li>
+          <a href="#sub_page2" data-to="sub_page2">
+            <img
+              class="sub_category2"
+              src="https://placekitten.com/400/400"
+              width="64"
+              height="64"
+            />
+            Sub page 2
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="base_page sub_page1" data-page="sub_page1" hidden>
+      <h2>Sub page 1</h2>
+      <p>
+        <img
+          class="sub_category1"
+          src="https://placekitten.com/300/300"
+          width="300"
+          height="300"
+        />
+      </p>
+      <p><a href="#home" data-to="home">Back</a></p>
+    </div>
+
+    <div class="base_page sub_page2" data-page="sub_page2" hidden>
+      <h2>Sub page 2</h2>
+      <p>
+        <img
+          class="sub_category2"
+          src="https://placekitten.com/400/400"
+          width="300"
+          height="300"
+        />
+      </p>
+      <p><a href="#home" data-to="home">Back</a></p>
+    </div>
+
+    <script>
+      document.querySelectorAll("a[data-to]").forEach((a) => {
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          const to = e.currentTarget.dataset.to;
+
+          document.startViewTransition(() => {
+            document.querySelectorAll("[data-page]").forEach((page) => {
+              page.hidden = to !== page.dataset.page;
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
