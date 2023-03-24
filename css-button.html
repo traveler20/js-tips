@@ -28,7 +28,7 @@
     --accent_color : #B08E00 ; */
       }
 
-      .button {
+      .effect_button1 {
         position: relative;
         display: flex;
         justify-content: center;
@@ -44,8 +44,8 @@
         color: var(--main_color);
         background: var(--base_color);
       }
-      .button::before,
-      .button::after {
+      .effect_button1::before,
+      .effect_button1::after {
         content: "";
         position: absolute;
         z-index: 3;
@@ -55,16 +55,16 @@
         background: var(--main_color);
         transition: all 0.2s ease;
       }
-      .button::before {
+      .effect_button1::before {
         top: calc(50% - 4px);
         transform: skew(45deg);
       }
-      .button::after {
+      .effect_button1::after {
         bottom: calc(50% - 4px);
         transform: skew(-45deg);
       }
-      .button__cloud1,
-      .button__cloud2 {
+      .effect_button1__cloud1,
+      .effect_button1__cloud2 {
         position: absolute;
         z-index: 4;
         width: 8px;
@@ -73,18 +73,18 @@
         transition: all ease-in-out 0.6s;
         opacity: 0;
       }
-      .button__cloud1 {
+      .effect_button1__cloud1 {
         top: -4px;
         left: -48px;
       }
-      .button__cloud2 {
+      .effect_button1__cloud2 {
         bottom: -4px;
         right: -48px;
       }
-      .button__cloud1::before,
-      .button__cloud1::after,
-      .button__cloud2::before,
-      .button__cloud2::after {
+      .effect_button1__cloud1::before,
+      .effect_button1__cloud1::after,
+      .effect_button1__cloud2::before,
+      .effect_button1__cloud2::after {
         content: "";
         position: absolute;
         width: 48px;
@@ -92,23 +92,23 @@
         border-radius: 4px;
         background: var(--sub_color);
       }
-      .button__cloud1::before {
+      .effect_button1__cloud1::before {
         top: -8px;
         left: -16px;
       }
-      .button__cloud1::after {
+      .effect_button1__cloud1::after {
         bottom: -8px;
         right: -12px;
       }
-      .button__cloud2::before {
+      .effect_button1__cloud2::before {
         top: -8px;
         left: -24px;
       }
-      .button__cloud2::after {
+      .effect_button1__cloud2::after {
         bottom: -8px;
         right: -24px;
       }
-      .button__inner {
+      .effect_button1__inner {
         position: relative;
         display: flex;
         justify-content: center;
@@ -118,7 +118,7 @@
         box-sizing: border-box;
         border: solid 1px var(--main_color);
       }
-      .button__inner::before {
+      .effect_button1__inner::before {
         content: "";
         position: absolute;
         z-index: 2;
@@ -130,7 +130,7 @@
         height: calc(100% - 4px);
         background: var(--main_color);
       }
-      .button__pattern {
+      .effect_button1__pattern {
         position: absolute;
         z-index: 1;
         top: 0;
@@ -160,35 +160,35 @@
         background-position: 0 0, 8px 8px;
         background-size: 16px 16px;
       }
-      .button__text {
+      .effect_button1__text {
         position: relative;
         z-index: 3;
         transition: all 0.6s ease;
       }
-      .button:hover::before,
-      .button:hover::after {
+      .effect_button1:hover::before,
+      .effect_button1:hover::after {
         background: var(--base_color);
       }
-      .button:hover .button__cloud1 {
+      .effect_button1:hover .effect_button1__cloud1 {
         left: -8px;
         opacity: 1;
       }
-      .button:hover .button__cloud2 {
+      .effect_button1:hover .effect_button1__cloud2 {
         right: -8px;
         opacity: 1;
       }
-      .button:hover .button__text {
+      .effect_button1:hover .effect_button1__text {
         color: var(--base_color);
       }
-      .button:hover .button__inner::before {
+      .effect_button1:hover .effect_button1__inner::before {
         animation: bg 1.2s ease;
         animation-fill-mode: forwards;
       }
-      .button:hover .button__inner::before {
+      .effect_button1:hover .effect_button1__inner::before {
         animation: bg 1.2s ease;
         animation-fill-mode: forwards;
       }
-      .button:hover .button__pattern {
+      .effect_button1:hover .effect_button1__pattern {
         animation: pattern 1.2s ease;
         animation-fill-mode: forwards;
       }
@@ -233,12 +233,12 @@
     </style>
 
     <div class="container">
-      <a href="#" class="button">
-        <div class="button__cloud1"></div>
-        <div class="button__cloud2"></div>
-        <div class="button__inner">
-          <span class="button__text">登録する</span>
-          <div class="button__pattern"></div>
+      <a href="#" class="effect_button1">
+        <div class="effect_button1__cloud1"></div>
+        <div class="effect_button1__cloud2"></div>
+        <div class="effect_button1__inner">
+          <span class="effect_button1__text">登録する</span>
+          <div class="effect_button1__pattern"></div>
         </div>
       </a>
     </div>
