@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .matched-radius {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+      .matched-radius__inner {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+      }
+
+      .matched-radius {
+        --matched-radius-padding: 8px;
+        --matched-radius-inner-size: 12px;
+
+        padding: var(--matched-radius-padding);
+        border-radius: calc(
+          var(--matched-radius-inner-size) + var(--matched-radius-padding)
+        );
+      }
+
+      .matched-radius__inner {
+        border-radius: var(--matched-radius-inner-size);
+      }
+    </style>
+
+    <div class="matched-radius">
+      <div class="matched-radius__inner"></div>
+    </div>
+  </body>
+</html>
