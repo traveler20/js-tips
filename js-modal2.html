@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body class="js-body">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 1000px;
+      }
+      body.is-modalopen {
+        position: fixed;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .c-modal-window {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s opacity ease, 0s visibility 0.3s linear;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .c-modal-window.is-open {
+        transition: 0.3s opacity ease, 0s visibility 0s linear;
+        opacity: 1;
+        visibility: visible;
+      }
+      .c-modal-window__content {
+        position: relative;
+        z-index: 2;
+        padding: 20px;
+        background-color: #fff;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        flex: 0 1 1000px;
+        width: 100%;
+        max-width: 1000px;
+        max-height: 100%;
+      }
+      .js-modal-window__bg {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      .c-modal-open,
+      .c-modal-close {
+        display: block;
+        width: 300px;
+        height: 50px;
+        margin: 20px auto;
+      }
+    </style>
+
+    <div
+      class="c-modal-window"
+      data-modal="modal1"
+      aria-hidden="true"
+      tabindex="-1"
+      aria-labelledby="modal1_title"
+      aria-describedby="modal1_description"
+    >
+      <div class="c-modal-window__content">
+        <h2 id="modal1_title">モーダルウィンドウ1</h2>
+        <p id="modal1_description">モーダルウィンドウ1の説明</p>
+        <p>
+          あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+          またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。
+        </p>
+        <button class="js-modal-open c-modal-open" data-modal="modal2">
+          モーダル2オープン
+        </button>
+        <button class="c-modal-close js-modal-close">モーダルクローズ</button>
+      </div>
+    </div>
+    <div
+      class="c-modal-window"
+      data-modal="modal2"
+      aria-hidden="true"
+      tabindex="-1"
+      aria-labelledby="modal2_title"
+      aria-describedby="modal2_description"
+    >
+      <div class="c-modal-window__content">
+        <h2 id="modal2_title">モーダルウィンドウ2</h2>
+        <p id="modal2_description">モーダルウィンドウ2の説明</p>
+        <button class="js-modal-open c-modal-open" data-modal="modal1">
+          モーダル1オープン
+        </button>
+        <button class="c-modal-close js-modal-close">モーダルクローズ</button>
+      </div>
+    </div>
+    <button class="js-modal-open c-modal-open" data-modal="modal1">
+      モーダル1オープン
+    </button>
+    <button class="js-modal-open c-modal-open" data-modal="modal2">
+      モーダル2オープン
+    </button>
+
+    <script>
+      (function () {
+        const openbtns = document.querySelectorAll(".js-modal-open");
+        const closebtns = document.querySelectorAll(".js-modal-close");
+        const wrapper = document.querySelector(".js-body");
+
+        const modalOpen = (btn) => {
+          modalClose();
+          const modalId = btn.dataset.modal;
+          const modal = document.querySelector(
+            `.c-modal-window[data-modal="${modalId}"]`
+          );
+          modal.insertAdjacentHTML(
+            "beforeend",
+            '<i class="js-modal-window__bg"></i>'
+          );
+          modal.classList.add("is-open");
+          const top = window.pageYOffset;
+          wrapper.classList.add("is-modalopen");
+          wrapper.style.top = `-${top}px`;
+          // START アクセシビリティ考慮
+          modal.setAttribute("aria-modal", "true");
+          modal.setAttribute("role", "dialog");
+          modal.setAttribute("aria-hidden", "false");
+          modal.setAttribute("tabindex", "0");
+          modal.focus();
+          // END アクセシビリティ考慮
+          const modalbg = document.querySelector(".js-modal-window__bg");
+          modalbg.addEventListener("click", () => {
+            modalClose();
+          });
+        };
+
+        const modalClose = () => {
+          const modal = document.querySelector(`.c-modal-window.is-open`);
+          if (modal == null) {
+            return false;
+          }
+          // START アクセシビリティ考慮
+          modal.removeAttribute("aria-modal");
+          modal.removeAttribute("role");
+          modal.setAttribute("aria-hidden", "true");
+          modal.setAttribute("tabindex", "-1");
+          // END アクセシビリティ考慮
+          const getY = (callback) => {
+            modal.classList.remove("is-open");
+            const modalbg = document.querySelector(".js-modal-window__bg");
+            const top = wrapper.style.top;
+            const y = top.slice(1, -2);
+            wrapper.style.top = "";
+            wrapper.classList.remove("is-modalopen");
+            modalbg.parentNode.removeChild(modalbg);
+            callback(y);
+          };
+          getY((y) => {
+            window.scrollTo(0, y);
+          });
+        };
+
+        openbtns.forEach((openbtn) => {
+          openbtn.addEventListener("click", (event) => {
+            const btn = event.currentTarget;
+            modalOpen(btn);
+          });
+        });
+
+        closebtns.forEach((closebtn) => {
+          closebtn.addEventListener("click", () => {
+            modalClose();
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
