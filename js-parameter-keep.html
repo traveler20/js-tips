@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="./cdn-simplecss.html">リンクテキスト</a>
+    <a href="./cdn-simplecss.html">リンクテキスト</a>
+
+    <script>
+      // 内部リンクで遷移してもパラメータを維持
+      (function () {
+        //クエリ付与対象とするリンクのドメイン一覧
+        const domainsToDecorate = ["http://127.0.0.1:5502/", "domain2.net"],
+          //保持対象のパラメータ一覧
+          queryParams = [
+            "utm_medium",
+            "utm_source",
+            "utm_campaign",
+            "gclid",
+            "code",
+          ];
+
+        //ページ内のリンク（aタグ）をすべて取得
+        const links = document.querySelectorAll("a");
+
+        //ページ内のリンク毎の処理
+        for (var linkIndex = 0; linkIndex < links.length; linkIndex++) {
+          for (
+            var domainIndex = 0;
+            domainIndex < domainsToDecorate.length;
+            domainIndex++
+          ) {
+            //ページ内のリンクが対象ドメインの場合、リンクURLを置き換え
+            if (
+              links[linkIndex].href.indexOf(domainsToDecorate[domainIndex]) >
+                -1 &&
+              links[linkIndex].href.indexOf("#") === -1
+            ) {
+              links[linkIndex].href = decorateUrl(links[linkIndex].href);
+            }
+          }
+        }
+
+        //ページ内のリンクURLに、現在のURLのクエリパラメータを連結
+        function decorateUrl(urlToDecorate) {
+          urlToDecorate =
+            urlToDecorate.indexOf("?") === -1
+              ? urlToDecorate + "?"
+              : urlToDecorate + "&";
+          var collectedQueryParams = [];
+          for (
+            var queryIndex = 0;
+            queryIndex < queryParams.length;
+            queryIndex++
+          ) {
+            if (getQueryParam(queryParams[queryIndex])) {
+              collectedQueryParams.push(
+                queryParams[queryIndex] +
+                  "=" +
+                  getQueryParam(queryParams[queryIndex])
+              );
+            }
+          }
+          //クエリパラメータがない場合はURL末尾の?を削除
+          return collectedQueryParams.length === 0
+            ? urlToDecorate.slice(0, -1)
+            : urlToDecorate + collectedQueryParams.join("&");
+        }
+
+        //現在のURLのクエリパラメータを取得
+        function getQueryParam(name) {
+          if (
+            (name = new RegExp(
+              "[?&]" + encodeURIComponent(name) + "=([^&]*)"
+            ).exec(window.location.search))
+          )
+            return decodeURIComponent(name[1]);
+        }
+      })();
+    </script>
+  </body>
+</html>
