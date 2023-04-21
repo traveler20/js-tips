@@ -47,6 +47,7 @@ css-gradationfont.html
 css-bgclip.html
 css-neon-text.html
 css-title-flow.html
+css-clip-text.html
 ```
 
 # リスト
@@ -70,6 +71,7 @@ css-selector.html
 - [png 画像を背景に同化させて影をつけたい](css-dropshadow.html)
 - [画像にエフェクトをかけたい](css-backdropfilter.html)
 - [SVG 画像を HTML や CSS で色を変えたい](html-svgUse.html)
+- [ホバーでアイコンが飛び出す CSS](css-icon-hover.html)
 
 ```
 html-image.html
@@ -170,6 +172,7 @@ js-mouseCursor.html
 
 # ボタン・リンク
 
+- [CSS デザインでいろいろなボタン](css-button.html)
 - [トップスクロールボタン](css-topscroll.html)
 - [Twitter シェアボタン](html-twittershare.html)
 - [各種共有ボタン(クリップボードも)](html-share.html)
@@ -227,11 +230,14 @@ css-electric-bulletin-board.html
 - [ハンバーガーメニュー](css-hamburger.html)
 - [ハンバーガーメニュー](js-hamburger-menu.html)
 - [モーダルウィンドウ](css-modal.html)
+- [モーダルウィンドウ](js-modal.html)
+- [モーダルウィンドウ](js-modalwindow.html)
 - [ホバーで補足説明を出したい（ツールチップ）](css-tooltip.html)
 - [タイマーで表示を切り替えたい](php-timer.html)
 - [パラメータ系まとめ](js-parameter.html)
 - [パラメータからページの表示を切り替える](js-parameter-identifier.html)
 - [a タグに現在の URL のパラメータを付与する](js-parameter-add.html)
+- [内部リンクでもパラメータを保持する](js-parameter-keep.html)
 - [表示速度の向上](css-speedup.html)
 - [問い合わせフォーム（formspree）](html-formspree.html)
 - [問い合わせフォーム（googleform）](html-googleform.html)
@@ -249,11 +255,14 @@ css-tab.html
 css-hamburger.html
 js-hamburger-menu.html
 css-modal.html
+js-modal.html
+js-modalwindow.html
 css-tooltip.html
 php-timer.html
 js-parameter.html
 js-parameter-identifier.html
 js-parameter-add.html
+js-parameter-keep.html
 css-speedup.html
 html-formspree.html
 html-googleform.html
