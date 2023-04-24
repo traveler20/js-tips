@@ -1,137 +1,176 @@
 <!DOCTYPE html>
 <html lang="ja">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-	</head>
-	<body>
-		<div class="js-prameter"></div>
-		<div class="js-hash"></div>
-		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script>
-			// ──────────────────────────────
-			// パラメータ
-			// ──────────────────────────────
-			// id=osaka
-			// URLのパラメータを取得
-			const page_parameter_url = location.search.substring(1);
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="js-prameter"></div>
+    <div class="js-hash"></div>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+      // ──────────────────────────────
+      // パラメータ
+      // ──────────────────────────────
+      // id=osaka
+      // URLのパラメータを取得
+      const page_parameter_url = location.search.substring(1);
 
-			// URLにパラメータが存在する場合
-			if (page_parameter_url) {
-				// 「&」が含まれている場合は「&」で分割
-				const page_parameter_split = page_parameter_url.split("&");
+      // URLにパラメータが存在する場合
+      if (page_parameter_url) {
+        // 「&」が含まれている場合は「&」で分割
+        const page_parameter_split = page_parameter_url.split("&");
 
-				// パラメータを格納する用の配列を用意
-				const page_parameter_array = [];
+        // パラメータを格納する用の配列を用意
+        const page_parameter_array = [];
 
-				// 用意した配列にパラメータを格納
-				for (i = 0; i < page_parameter_split.length; i++) {
-					const page_parameter_item = page_parameter_split[i].split("=");
-					page_parameter_array[page_parameter_item[0]] = page_parameter_item[1];
-				}
+        // 用意した配列にパラメータを格納
+        for (i = 0; i < page_parameter_split.length; i++) {
+          const page_parameter_item = page_parameter_split[i].split("=");
+          page_parameter_array[page_parameter_item[0]] = page_parameter_item[1];
+        }
 
-				// パラメータidがosakaかどうかを判断する
-				if (page_parameter_array.id == "osaka") {
-					$(".js-prameter").append("大阪です");
-				} else {
-					$(".js-parameter").append("#大阪ではない");
-				}
-			}
+        // パラメータidがosakaかどうかを判断する
+        if (page_parameter_array.id == "osaka") {
+          $(".js-prameter").append("大阪です");
+        } else {
+          $(".js-parameter").append("#大阪ではない");
+        }
+      }
 
-			// ──────────────────────────────
-			// ハッシュ
-			// ──────────────────────────────
-			// #osaka
-			// URLのアンカー（#以降の部分）を取得
-			const page_parameter_hash = location.hash;
+      // ──────────────────────────────
+      // ハッシュ
+      // ──────────────────────────────
+      // #osaka
+      // URLのアンカー（#以降の部分）を取得
+      const page_parameter_hash = location.hash;
 
-			// URLにアンカーが存在する場合
-			if (page_parameter_hash) {
-				// アンカーが#osakaかどうかを判断する
-				if (page_parameter_hash == "#osaka") {
-					$(".js-hash").append("#大阪です");
-				} else {
-					$(".js-hash").append("#大阪ではない");
-				}
-			}
-		</script>
+      // URLにアンカーが存在する場合
+      if (page_parameter_hash) {
+        // アンカーが#osakaかどうかを判断する
+        if (page_parameter_hash == "#osaka") {
+          $(".js-hash").append("#大阪です");
+        } else {
+          $(".js-hash").append("#大阪ではない");
+        }
+      }
+    </script>
 
-		<details id="faq1">
-			<summary>open属性ありの場合</summary>
-			<p>
-				QS とは Quality Start の略であり、1985年にスポーツライター John Lowe
-				により提唱された。これは先発投手が少なくとも6イニングを投げ、ER (Earned
-				Runs＝自責点)
-				を3以下に抑えた場合に達成される指標で、いわゆる「試合を作れた
-			</p>
-		</details>
-		<details id="faq2">
-			<summary>open属性ありの場合</summary>
-			<p>
-				QS とは Quality Start の略であり、1985年にスポーツライター John Lowe
-				により提唱された。これは先発投手が少なくとも6イニングを投げ、ER (Earned
-				Runs＝自責点)
-				を3以下に抑えた場合に達成される指標で、いわゆる「試合を作れた
-			</p>
-		</details>
-		<script>
-			// ──────────────────────────────
-			// パラメータ
-			// ──────────────────────────────
-			// ?open=faq1
-			const page_url =
-				location.protocol +
-				"//" +
-				location.host +
-				location.pathname +
-				location.search;
-			const page_parameter_split = page_url.split("?");
-			const page_parameter_search =
-				page_parameter_split.length > 1 && page_parameter_split[1].split("&");
-			const page_parameter_array = [];
-			for (let i = 0; i < page_parameter_search.length; i++) {
-				const page_parameter_item = page_parameter_search[i].split("=");
-				page_parameter_array.push(page_parameter_item[0]);
-				page_parameter_array[page_parameter_item[0]] = page_parameter_item[1];
+    <details id="faq1">
+      <summary>open属性ありの場合</summary>
+      <p>
+        QS とは Quality Start の略であり、1985年にスポーツライター John Lowe
+        により提唱された。これは先発投手が少なくとも6イニングを投げ、ER (Earned
+        Runs＝自責点)
+        を3以下に抑えた場合に達成される指標で、いわゆる「試合を作れた
+      </p>
+    </details>
+    <details id="faq2">
+      <summary>open属性ありの場合</summary>
+      <p>
+        QS とは Quality Start の略であり、1985年にスポーツライター John Lowe
+        により提唱された。これは先発投手が少なくとも6イニングを投げ、ER (Earned
+        Runs＝自責点)
+        を3以下に抑えた場合に達成される指標で、いわゆる「試合を作れた
+      </p>
+    </details>
+    <script>
+      // ──────────────────────────────
+      // パラメータ
+      // ──────────────────────────────
+      // ?open=faq1
+      const page_url =
+        location.protocol +
+        "//" +
+        location.host +
+        location.pathname +
+        location.search;
+      const page_parameter_split = page_url.split("?");
+      const page_parameter_search =
+        page_parameter_split.length > 1 && page_parameter_split[1].split("&");
+      const page_parameter_array = [];
+      for (let i = 0; i < page_parameter_search.length; i++) {
+        const page_parameter_item = page_parameter_search[i].split("=");
+        page_parameter_array.push(page_parameter_item[0]);
+        page_parameter_array[page_parameter_item[0]] = page_parameter_item[1];
 
-				const page_parameter_details = decodeURIComponent(
-					page_parameter_item[1]
-				);
+        const page_parameter_details = decodeURIComponent(
+          page_parameter_item[1]
+        );
 
-				document
-					.getElementById(page_parameter_details)
-					.setAttribute("open", "");
-			}
-		</script>
+        document
+          .getElementById(page_parameter_details)
+          .setAttribute("open", "");
+      }
+    </script>
 
-		<a id="js-cta" class="c-cta-button" href="/index.html">リンクテキスト</a>
-		<a id="js-cta" class="c-cta-button" href="/index.html?ga=test"
-			>リンクテキスト</a
-		>
-		<a id="js-cta" class="c-cta-button" href="/service/index.html"
-			>リンクテキスト</a
-		>
-		<script>
-			const page_parameter_host = location.host;
-			const page_parameter_path = location.pathname;
-			const page_parameter_cta = document.querySelectorAll(".c-cta-button");
-			for (let i = 0; i < page_parameter_cta.length; i++) {
-				if (page_parameter_cta[i].href.indexOf("?") == -1) {
-					page_parameter_cta[i].href =
-						page_parameter_cta[i].href +
-						"?page=" +
-						page_parameter_host +
-						page_parameter_path;
-				} else {
-					page_parameter_cta[i].href =
-						page_parameter_cta[i].href +
-						"&page=" +
-						page_parameter_host +
-						page_parameter_path;
-				}
-			}
-		</script>
-	</body>
+    <a id="js-cta" class="c-cta-button" href="/index.html">リンクテキスト</a>
+    <a id="js-cta" class="c-cta-button" href="/index.html?ga=test"
+      >リンクテキスト</a
+    >
+    <a id="js-cta" class="c-cta-button" href="/service/index.html"
+      >リンクテキスト</a
+    >
+    <script>
+      const page_parameter_host = location.host;
+      const page_parameter_path = location.pathname;
+      const page_parameter_cta = document.querySelectorAll(".c-cta-button");
+      for (let i = 0; i < page_parameter_cta.length; i++) {
+        if (page_parameter_cta[i].href.indexOf("?") == -1) {
+          page_parameter_cta[i].href =
+            page_parameter_cta[i].href +
+            "?page=" +
+            page_parameter_host +
+            page_parameter_path;
+        } else {
+          page_parameter_cta[i].href =
+            page_parameter_cta[i].href +
+            "&page=" +
+            page_parameter_host +
+            page_parameter_path;
+        }
+      }
+    </script>
+
+    <script>
+      // 1. 現在表示しているURLのパラメータを取得
+      const queryString = window.location.search;
+
+      // 2. 取得したパラメータごとに分割（utm_source / utm_term など）
+      const urlParams = new URLSearchParams(queryString);
+
+      // 3. 分割したパラメータごとに変数を定義
+      const parameter_utm_campaign = urlParams.get("utm_campaign");
+      const parameter_utm_content = urlParams.get("utm_content");
+      const parameter_utm_expid = urlParams.get("utm_expid");
+      const parameter_utm_medium = urlParams.get("utm_medium");
+      const parameter_utm_referrer = urlParams.get("utm_referrer");
+      const parameter_utm_source = urlParams.get("utm_source");
+      const parameter_utm_term = urlParams.get("utm_term");
+      const parameter_device = urlParams.get("device");
+      const parameter_matchtype = urlParams.get("matchtype");
+      const parameter_code = urlParams.get("code");
+
+      window.MTNetFormDataLayer = window.MTNetFormDataLayer || [];
+      function MTNetForm() {
+        MTNetFormDataLayer.push(arguments);
+      }
+      MTNetForm("updateValues", {
+        ページタイトル: document.title,
+        ページURL: window.location.href,
+        utm_campaign: parameter_utm_campaign,
+        utm_content: parameter_utm_content,
+        utm_expid: parameter_utm_expid,
+        utm_medium: parameter_utm_medium,
+        utm_referrer: parameter_utm_referrer,
+        utm_source: parameter_utm_source,
+        utm_term: parameter_utm_term,
+        device: parameter_device,
+        matchtype: parameter_matchtype,
+        code: parameter_code,
+      });
+    </script>
+  </body>
 </html>
