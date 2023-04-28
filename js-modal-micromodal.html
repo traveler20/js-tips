@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .section {
+        height: 90vh;
+      }
+      .section1 {
+        background-color: #ccccff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      }
+      .section2 {
+        background-color: #99ccff;
+      }
+      .section3 {
+        background-color: #ffccff;
+      }
+
+      /**************************\
+  Basic Modal Styles
+\**************************/
+
+      .c-modal-window__overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .c-modal-window__dialog {
+        background-color: #fff;
+        padding: 30px;
+        max-width: 500px;
+        max-height: 100vh;
+        border-radius: 4px;
+        overflow-y: auto;
+        box-sizing: border-box;
+      }
+
+      @media screen and (max-width: 480px) {
+        .c-modal-window__dialog {
+          max-height: 90vh;
+          max-width: 300px;
+        }
+      }
+
+      .c-modal-window__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .c-modal-window__title {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 600;
+        font-size: 1.25rem;
+        line-height: 1.25;
+        color: #00449e;
+        box-sizing: border-box;
+      }
+
+      .c-modal-window__close {
+        background: transparent;
+        border: 0;
+      }
+
+      .c-modal-window__header .c-modal-window__close:before {
+        content: "\2715";
+      }
+
+      .c-modal-window__content {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        line-height: 1.5;
+        color: rgba(0, 0, 0, 0.8);
+      }
+
+      .c-modal-button {
+        font-size: 0.875rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        background-color: #e6e6e6;
+        color: rgba(0, 0, 0, 0.8);
+        border-radius: 0.25rem;
+        border-style: none;
+        border-width: 0;
+        cursor: pointer;
+        -webkit-appearance: button;
+        text-transform: none;
+        overflow: visible;
+        line-height: 1.15;
+        margin: 0;
+        will-change: transform;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        transition: -webkit-transform 0.25s ease-out;
+        transition: transform 0.25s ease-out;
+        transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
+
+        background-color: #00449e;
+        color: #fff;
+      }
+
+      .c-modal-button:focus,
+      .c-modal-button:hover {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+      }
+
+      /**************************\
+  Demo Animation Style
+\**************************/
+      @keyframes mmfadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes mmfadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+
+      @keyframes mmslideIn {
+        from {
+          transform: translateY(15%);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes mmslideOut {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-10%);
+        }
+      }
+
+      .c-modal-window {
+        display: none;
+      }
+
+      .c-modal-window.is-open {
+        display: block;
+      }
+
+      .c-modal-window[aria-hidden="false"] .c-modal-window__overlay {
+        animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+      }
+
+      .c-modal-window[aria-hidden="false"] .c-modal-window__dialog {
+        animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+      }
+
+      .c-modal-window[aria-hidden="true"] .c-modal-window__overlay {
+        animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+      }
+
+      .c-modal-window[aria-hidden="true"] .c-modal-window__dialog {
+        animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+      }
+
+      .c-modal-window .c-modal-window__dialog,
+      .c-modal-window .c-modal-window__overlay {
+        will-change: transform;
+      }
+    </style>
+
+    <main class="">
+      <section class="section section1">
+        <button
+          class="c-modal-button"
+          data-micromodal-trigger="modal-1"
+          role="button"
+        >
+          モーダル1
+        </button>
+        <button
+          class="c-modal-button"
+          data-micromodal-trigger="modal-2"
+          role="button"
+        >
+          モーダル2
+        </button>
+        <button
+          class="c-modal-button"
+          data-micromodal-trigger="modal-3"
+          role="button"
+        >
+          モーダル3
+        </button>
+      </section>
+      <section class="section section2"></section>
+      <section class="section section3"></section>
+
+      <!-- ここからモーダルエリアです。 -->
+      <div class="c-modal-window" id="modal-1" aria-hidden="true">
+        <div
+          class="c-modal-window__overlay"
+          tabindex="-1"
+          data-micromodal-close
+        >
+          <div
+            class="c-modal-window__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-1-title"
+          >
+            <header class="c-modal-window__header">
+              <h2 class="c-modal-window__title" id="modal-1-title">
+                １つめのモーダル
+              </h2>
+              <button
+                class="c-modal-window__close"
+                aria-label="Close modal"
+                data-micromodal-close
+              ></button>
+            </header>
+            <main class="c-modal-window__content" id="modal-1-content">
+              <p>
+                このモーダルを開いているときはスクロールができないようにオプションを指定しています。<br />閉じるとスクロールができるようになります。
+              </p>
+            </main>
+            <footer class="">
+              <button
+                class="c-modal-button"
+                data-micromodal-close
+                aria-label="Close this dialog window"
+              >
+                わかった！
+              </button>
+            </footer>
+          </div>
+        </div>
+      </div>
+      <div class="c-modal-window" id="modal-2" aria-hidden="true">
+        <div
+          class="c-modal-window__overlay"
+          tabindex="-1"
+          data-micromodal-close
+        >
+          <div
+            class="c-modal-window__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-2-title"
+          >
+            <header class="c-modal-window__header">
+              <h2 class="c-modal-window__title" id="modal-2-title">
+                2つめのモーダル
+              </h2>
+              <button
+                class="c-modal-window__close"
+                aria-label="Close modal"
+                data-micromodal-close
+              ></button>
+            </header>
+            <main class="c-modal-window__content" id="modal-1-content">
+              <p>
+                このモーダルを開いているときはスクロールができないようにオプションを指定しています。<br />閉じるとスクロールができるようになります。
+              </p>
+            </main>
+            <footer class="">
+              <button
+                class="c-modal-button"
+                data-micromodal-close
+                aria-label="Close this dialog window"
+              >
+                わかった！
+              </button>
+            </footer>
+          </div>
+        </div>
+      </div>
+      <div class="c-modal-window" id="modal-3" aria-hidden="true">
+        <div
+          class="c-modal-window__overlay"
+          tabindex="-1"
+          data-micromodal-close
+        >
+          <div
+            class="c-modal-window__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-3-title"
+          >
+            <header class="c-modal-window__header">
+              <h2 class="c-modal-window__title" id="modal-3-title">
+                3つめのモーダル
+              </h2>
+              <button
+                class="c-modal-window__close"
+                aria-label="Close modal"
+                data-micromodal-close
+              ></button>
+            </header>
+            <main class="c-modal-window__content" id="modal-1-content">
+              <p>
+                このモーダルを開いているときはスクロールができないようにオプションを指定しています。<br />閉じるとスクロールができるようになります。
+              </p>
+            </main>
+            <footer class="">
+              <button
+                class="c-modal-button"
+                data-micromodal-close
+                aria-label="Close this dialog window"
+              >
+                わかった！
+              </button>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+    <script>
+      MicroModal.init({
+        disableScroll: true,
+        awaitCloseAnimation: true,
+        awaitOpenAnimation: true,
+      });
+    </script>
+  </body>
+</html>
