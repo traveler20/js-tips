@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .c-tab {
+        max-width: 600px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .c-tab-tablist {
+        display: flex;
+        column-gap: 2px;
+      }
+
+      .c-tab-button {
+        cursor: pointer;
+        flex: 1;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border: 1px solid #666;
+      }
+      .c-tab-button.is-active {
+        background-color: #fff;
+      }
+
+      .c-tab-panel {
+        padding: 20px;
+        display: none;
+        border: 1px solid #666;
+        line-height: 1.75;
+      }
+      .c-tab-panel.is-active {
+        display: block;
+      }
+    </style>
+
+    <div class="c-tab">
+      <h2 id="tablist-label">タブ見本項目一覧</h2>
+      <div class="c-tab-tablist" role="tablist" aria-labelledby="tablist-label">
+        <button
+          class="c-tab-button is-active js-tab-button"
+          type="button"
+          role="tab"
+          id="tab1"
+          aria-controls="tab-panel1"
+          aria-selected="true"
+        >
+          タブ1
+        </button>
+        <button
+          class="c-tab-button js-tab-button"
+          type="button"
+          role="tab"
+          id="tab2"
+          aria-controls="tab-panel2"
+          aria-selected="false"
+          tabindex="-1"
+        >
+          タブ2
+        </button>
+        <button
+          class="c-tab-button js-tab-button"
+          type="button"
+          role="tab"
+          id="tab3"
+          aria-controls="tab-panel3"
+          aria-selected="false"
+          tabindex="-1"
+        >
+          タブ3
+        </button>
+      </div>
+      <div
+        id="tab-panel1"
+        class="c-tab-panel js-tab-panel is-active"
+        role="tabpanel"
+        tabindex="0"
+        aria-labelledby="tab1"
+      >
+        <p>タブパネル1の内容</p>
+      </div>
+      <div
+        id="tab-panel2"
+        class="c-tab-panel js-tab-panel"
+        role="tabpanel"
+        tabindex="0"
+        aria-labelledby="tab2"
+      >
+        <p>タブパネル2の内容</p>
+      </div>
+      <div
+        id="tab-panel3"
+        class="c-tab-panel js-tab-panel"
+        role="tabpanel"
+        tabindex="0"
+        aria-labelledby="tab3"
+      >
+        <p>タブパネル3の内容</p>
+      </div>
+    </div>
+
+    <script>
+      const tabs = document.querySelectorAll(".js-tab-button");
+      function tabSwitch() {
+        let tabsArray = Array.prototype.slice.call(tabs);
+        let index = tabsArray.indexOf(this);
+        const resetTab = function () {
+          document
+            .querySelector(".js-tab-button.is-active")
+            .classList.remove("is-active");
+          document
+            .querySelector(".js-tab-button[aria-selected=true]")
+            .removeAttribute("aria-selected");
+          document.querySelectorAll(".js-tab-button").forEach((elm) => {
+            elm.tabIndex = -1;
+          });
+          document
+            .querySelector(".js-tab-panel.is-active")
+            .classList.remove("is-active");
+        };
+        const setTab = function (tab, tabpanel) {
+          tab.classList.add("is-active");
+          tab.tabIndex = 0;
+          tab.setAttribute("aria-selected", true);
+          tabpanel.classList.add("is-active");
+        };
+        if (event.type == "keyup") {
+          if (event.key === "ArrowRight") {
+            if (tabsArray[index + 1]) {
+              tabsArray[index + 1].focus();
+              resetTab();
+              setTab(
+                tabsArray[index + 1],
+                document.querySelectorAll(".js-tab-panel")[index + 1]
+              );
+            } else {
+              tabsArray[0].focus();
+              resetTab();
+              setTab(
+                tabsArray[0],
+                document.querySelectorAll(".js-tab-panel")[0]
+              );
+            }
+          }
+          if (event.key === "ArrowLeft") {
+            if (tabsArray[index - 1]) {
+              tabsArray[index - 1].focus();
+              resetTab();
+              setTab(
+                tabsArray[index - 1],
+                document.querySelectorAll(".js-tab-panel")[index - 1]
+              );
+            } else {
+              let lastTab = tabsArray.pop();
+              lastTab.focus();
+              resetTab();
+              setTab(
+                lastTab,
+                Array.prototype.slice
+                  .call(document.querySelectorAll(".js-tab-panel"))
+                  .pop()
+              );
+            }
+          }
+        }
+        if (event.type == "click") {
+          resetTab();
+          setTab(this, document.querySelectorAll(".js-tab-panel")[index]);
+        }
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", tabSwitch);
+        tab.addEventListener("keyup", tabSwitch);
+      });
+    </script>
+  </body>
+</html>
