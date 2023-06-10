@@ -232,6 +232,7 @@ css-electric-bulletin-board.html
 - [モーダルウィンドウ](css-modal.html)
 - [モーダルウィンドウ](js-modal.html)
 - [モーダルウィンドウ](js-modalwindow.html)
+- [ポップオーバー・ポップアップ](css-popover.html)
 - [ホバーで補足説明を出したい（ツールチップ）](css-tooltip.html)
 - [タイマーで表示を切り替えたい](php-timer.html)
 - [パラメータ系まとめ](js-parameter.html)
@@ -257,6 +258,7 @@ js-hamburger-menu.html
 css-modal.html
 js-modal.html
 js-modalwindow.html
+css-popover.html
 css-tooltip.html
 php-timer.html
 js-parameter.html
