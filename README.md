@@ -26,6 +26,7 @@ html-head.html
 - [テキストを横にスクロールさせる](css-marquee.html)
 - [強調したいテキストにドットをあてる](css-dot-text.html)
 - [テキストの改行のレスポンシブ対応](html-br.html)
+- [テキストの行のバランスを自動調整](css-max-inline-size.html)
 
 ```
 css-truncatetext.html
@@ -38,6 +39,7 @@ css-font-feature-settings.html
 css-text-align-last.html
 css-marquee.html
 css-dot-text.html
+css-max-inline-size.html
 ```
 
 ```
