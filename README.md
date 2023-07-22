@@ -140,6 +140,7 @@ css-extended.html
 - [ファイルアップロードボタン](css-upload.html)
 - [柔軟なテキストエリア](js-textareaFlexible.html)
 - [チェックボックスに色をつける](css-accent-color.html)
+- [フロートする input タグ](css-input-float.html)
 
 ```
 css-checkbox.html
@@ -148,6 +149,7 @@ css-toggle.html
 css-upload.html
 js-textareaFlexible.html
 css-accent-color.html
+css-input-float.html
 ```
 
 # アイコン
@@ -337,6 +339,7 @@ css-container.html
 - [お気に入りボタン](css-svg-favorite.html)
 - [スキルセット円表現](css-svg-progress.html)
 - [セクションの区切りを斜めにする](css-section-hr.html)
+- [CSS で三角形をつくる](css-triangle.html)
 - [マークダウンを HTML に変換する](js-markedjs.html)
 - [マークダウンを HTML に変換する](js-markdown-it.html)
 - [マークダウンを HTML に変換する（メイン）](js-markdown.html)
@@ -354,6 +357,7 @@ js-favorite.html
 css-svg-favorite.html
 css-svg-progress.html
 css-section-hr.html
+css-triangle.html
 js-markedjs.html
 js-markdown-it.html
 js-markdown.html
