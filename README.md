@@ -253,6 +253,7 @@ css-electric-bulletin-board.html
 - [問い合わせフォーム（formspree）](html-formspree.html)
 - [問い合わせフォーム（googleform）](html-googleform.html)
 - [問い合わせフォーム（noway）](html-noway.html)
+- [タグ検索（フィルター）](js-filter.html)
 - [jQuery で Cookie ボタン](jQuery-cookie.html)
 
 ```
@@ -279,6 +280,7 @@ css-speedup.html
 html-formspree.html
 html-googleform.html
 html-noway.html
+js-filter.html
 jQuery-cookie.html
 ```
 
