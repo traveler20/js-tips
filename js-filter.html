@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>カテゴリフィルタリング</title>
+  </head>
+  <body>
+    <div class="js-filter-category">
+      <input
+        id="2"
+        class="js-filter-category__input"
+        type="checkbox"
+        data-filter="vegetable"
+      />
+      <label for="2">野菜</label>
+      <input
+        id="3"
+        class="js-filter-category__input"
+        type="checkbox"
+        data-filter="drink"
+      />
+      <label for="3">飲み物</label>
+      <input
+        id="4"
+        class="js-filter-category__input"
+        type="checkbox"
+        data-filter="fruit"
+      />
+      <label for="4">フルーツ</label>
+    </div>
+
+    <ul class="js-filter-lists">
+      <li class="js-filter-lists__list" data-category="vegetable">
+        にんじん（野菜カテゴリ）
+      </li>
+      <li class="js-filter-lists__list" data-category="fruit">
+        りんご（果物カテゴリ）
+      </li>
+      <li class="js-filter-lists__list" data-category="fruit drink">
+        リンゴジュース（果物カテゴリと飲み物カテゴリ両方）
+      </li>
+      <li class="js-filter-lists__list" data-category="drink">
+        牛乳（飲み物カテゴリ）
+      </li>
+    </ul>
+
+    <script>
+      function filterList() {
+        const selectedCategories = document.querySelectorAll(
+          ".js-filter-category__input:checked"
+        );
+        const itemList = document.querySelectorAll(".js-filter-lists__list");
+
+        for (const item of itemList) {
+          let isVisible = false;
+          if (selectedCategories.length === 0) {
+            isVisible = true; // 何も選択されていない場合は全件表示
+          } else {
+            for (const category of selectedCategories) {
+              if (item.dataset.category.includes(category.dataset.filter)) {
+                isVisible = true;
+                break;
+              }
+            }
+          }
+
+          item.style.display = isVisible ? "block" : "none";
+        }
+      }
+
+      // クラス名がjs-filter-category__inputの要素に対してクリックイベントを追加
+      const filterInputs = document.querySelectorAll(
+        ".js-filter-category__input"
+      );
+      filterInputs.forEach((input) => {
+        input.addEventListener("click", filterList);
+      });
+
+      // ページ読み込み時にフィルタリングを実行
+      filterList();
+    </script>
+  </body>
+</html>
