@@ -152,6 +152,9 @@
       const parameter_device = urlParams.get("device");
       const parameter_matchtype = urlParams.get("matchtype");
       const parameter_code = urlParams.get("code");
+      const parameter_fbclid = urlParams.get("fbclid");
+      const parameter_yclid = urlParams.get("yclid");
+      const parameter_gclid = urlParams.get("gclid");
 
       window.MTNetFormDataLayer = window.MTNetFormDataLayer || [];
       function MTNetForm() {
@@ -170,6 +173,9 @@
         device: parameter_device,
         matchtype: parameter_matchtype,
         code: parameter_code,
+        fbclid: parameter_fbclid,
+        yclid: parameter_yclid,
+        gclid: parameter_gclid,
       });
     </script>
   </body>
