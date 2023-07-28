@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      @import "https://unpkg.com/open-props" layer(design.system);
+      @import "https://unpkg.com/open-props/normalize.min.css"
+        layer(demo.support);
+
+      ::view-transition-group(*) {
+        animation-timing-function: var(--ease-squish-1);
+        animation-duration: 0.75s;
+      }
+
+      @layer demo {
+        .bento {
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          gap: var(--size-3);
+
+          min-inline-size: 50vh;
+          aspect-ratio: var(--ratio-widescreen);
+
+          & > :not(legend) {
+            border-radius: var(--radius-3);
+            background: var(--surface-2);
+
+            @media (prefers-reduced-motion: no-preference) {
+              &:nth-child(1) {
+                view-transition-name: opt-1;
+                & > label {
+                  view-transition-name: opt-1-label;
+                }
+                & > input {
+                  view-transition-name: opt-1-input;
+                }
+              }
+              &:nth-child(2) {
+                view-transition-name: opt-2;
+                & > label {
+                  view-transition-name: opt-2-label;
+                }
+                & > input {
+                  view-transition-name: opt-2-input;
+                }
+              }
+              &:nth-child(3) {
+                view-transition-name: opt-3;
+                & > label {
+                  view-transition-name: opt-3-label;
+                }
+                & > input {
+                  view-transition-name: opt-3-input;
+                }
+              }
+
+              & :is(label, input) {
+                width: fit-content;
+              }
+            }
+          }
+
+          & > div:has(input:checked) {
+            grid-row: 1 / -1;
+            grid-column: 1;
+          }
+        }
+      }
+
+      @layer demo.support {
+        body {
+          display: grid;
+          place-content: center;
+          padding: var(--size-5);
+          gap: var(--size-5);
+        }
+
+        fieldset {
+          border: none;
+
+          > div {
+            display: grid;
+            grid: 1fr / 1fr;
+            padding: var(--size-3);
+
+            & > label {
+              grid-area: 1 / 1;
+            }
+          }
+        }
+      }
+    </style>
+
+    <fieldset id="radiento" class="bento">
+      <div>
+        <input type="radio" id="huey" name="drone" value="huey" checked />
+        <label for="huey">Huey</label>
+      </div>
+
+      <div>
+        <input type="radio" id="dewey" name="drone" value="dewey" />
+        <label for="dewey">Dewey</label>
+      </div>
+
+      <div>
+        <input type="radio" id="louie" name="drone" value="louie" />
+        <label for="louie">Louie</label>
+      </div>
+    </fieldset>
+
+    <script>
+      document.querySelectorAll("#radiento input").forEach((radio) => {
+        radio.onclick = (e) => {
+          if (!document.startViewTransition) return;
+
+          e.preventDefault();
+
+          document.startViewTransition(() => {
+            e.target.checked = true;
+          });
+        };
+      });
+    </script>
+  </body>
+</html>
