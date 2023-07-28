@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ポップオーバーのネスト</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        font-family: sans-serif;
+        font-size: 16px;
+        color: #2f2f2f;
+        background-color: #fafafa;
+      }
+
+      ul {
+        list-style: none;
+        border: none;
+      }
+
+      a {
+        display: block;
+        color: #2f2f2f;
+        text-decoration: none;
+        transition: color 0.1s;
+      }
+
+      a:hover {
+        color: #fe8964;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        height: 60px;
+        padding: 0 24px;
+        background: #fff;
+        box-shadow: 10px 0 10px #e5e5e5;
+      }
+
+      nav {
+        height: 100%;
+      }
+
+      .navigation-list {
+        display: flex;
+        height: 100%;
+      }
+
+      .navigation-list-item > a {
+        height: 100%;
+        padding: 0 12px;
+        line-height: 60px;
+      }
+
+      .child-list-item {
+        height: 40px;
+      }
+
+      .child-list-item > a {
+        height: 100%;
+        padding: 0 12px;
+        line-height: 40px;
+      }
+
+      .popover {
+        width: 174px;
+        border: none;
+        box-shadow: 10px 0 10px #e5e5e5;
+      }
+
+      .popover-portfolio {
+        top: 60px;
+        left: 167px;
+      }
+
+      .popover-webdesign {
+        top: 60px;
+        left: 341px;
+      }
+
+      .popover-uidesign {
+        top: 100px;
+        left: 341px;
+      }
+
+      .arrow {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .arrow::after {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        margin-left: 4px;
+        content: "";
+        background: url("./images/i_arrow_down.svg");
+        background-repeat: no-repeat;
+        background-size: 18px;
+      }
+
+      .arrow__right::after {
+        transform: rotate(-90deg);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="navigation-list">
+          <li class="navigation-list-item"><a href="#">Home</a></li>
+          <li class="navigation-list-item"><a href="#">About</a></li>
+          <li class="navigation-list-item js-popover-list">
+            <a href="#" class="arrow">Portfolio</a>
+            <!-- 1つめのポップオーバー -->
+            <div class="popover popover-portfolio" popover>
+              <ul class="child-list">
+                <li class="child-list-item js-popover-list">
+                  <a href="#" class="arrow arrow__right">Web Design</a>
+                  <!-- 2つめのポップオーバー -->
+                  <div class="popover popover-webdesign" popover>
+                    <ul class="child-list">
+                      <li class="child-list-item">
+                        <a href="#">Shopping site</a>
+                      </li>
+                      <li class="child-list-item">
+                        <a href="#">Corporate site</a>
+                      </li>
+                      <li class="child-list-item"><a href="#">Blog</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="child-list-item js-popover-list">
+                  <a href="#" class="arrow arrow__right">UI Design</a>
+                  <!-- 3つめのポップオーバー -->
+                  <div class="popover popover-uidesign" popover>
+                    <ul class="child-list">
+                      <li class="child-list-item"><a href="#">SNS</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="navigation-list-item"><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <script>
+      const popoverContainers = document.querySelectorAll(".js-popover-list");
+      const withoutPopovers = document.querySelectorAll(
+        ".navigation-list > li:not(.js-popover-list)"
+      );
+      const popovers = document.querySelectorAll(".popover");
+
+      popoverContainers.forEach((container) => {
+        // マウス操作の制御
+        container.addEventListener("mouseenter", () =>
+          openPopoverOf(container)
+        );
+        container.addEventListener("mouseleave", () =>
+          closePopoverOf(container)
+        );
+        // キーボード操作の制御
+        container.addEventListener("focusin", () => openPopoverOf(container));
+        withoutPopovers.forEach((item) => {
+          item.addEventListener("focusin", () => closePopoverAll());
+        });
+      });
+
+      const openPopoverOf = (container) => {
+        // containerから一番近いポップオーバーを取得する
+        const popover = container.querySelector(".popover");
+        if (popover == null) {
+          return;
+        }
+        // まだ開いていない場合だけshowPopoverを呼ぶ
+        if (!popover.matches(":popover-open")) {
+          popover.showPopover();
+        }
+      };
+
+      const closePopoverOf = (container) => {
+        // containerから一番近いポップオーバーを取得する
+        const popover = container.querySelector(".popover");
+        if (popover == null) {
+          return;
+        }
+        // まだ閉じていない場合だけhidePopoverを呼ぶ
+        if (popover.matches(":popover-open")) {
+          popover.hidePopover();
+        }
+      };
+
+      const closePopoverAll = () => {
+        popovers.forEach((popover) => {
+          // まだ閉じていないpopoverを全て閉じる
+          if (popover.matches(":popover-open")) {
+            popover?.hidePopover();
+          }
+        });
+      };
+    </script>
+  </body>
+</html>
