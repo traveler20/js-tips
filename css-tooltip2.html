@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="anchor" popovertarget="tooltip">Anchor</button>
+    <div id="tooltip" class="tooltip" popover anchor="anchor">Tooltip</div>
+
+    <style>
+      /* .tooltip {
+        top: anchor(bottom);
+        left: anchor(center);
+        translate: -50% 0;
+      } */
+
+      @position-fallback --bottom-to-top {
+        /* アンカー要素の下にtooltipを表示する */
+        @try {
+          top: anchor(bottom);
+          left: anchor(center);
+        }
+        /*
+  アンカー要素の下にtooltipを表示する領域がViewport上にない場合は、
+  アンカー要素の上にtooltipを表示する
+  */
+        @try {
+          bottom: anchor(top);
+          left: anchor(center);
+        }
+      }
+
+      .tooltip {
+        position-fallback: --bottom-to-top;
+        translate: -50% 0;
+      }
+    </style>
+  </body>
+</html>
