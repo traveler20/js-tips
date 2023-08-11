@@ -351,6 +351,7 @@ css-container.html
 - [マークダウンを HTML に変換する](js-markedjs.html)
 - [マークダウンを HTML に変換する](js-markdown-it.html)
 - [マークダウンを HTML に変換する（メイン）](js-markdown.html)
+- [JS で電卓](js-calculator.html)
 
 ```
 css-timeline.html
@@ -369,6 +370,7 @@ css-triangle.html
 js-markedjs.html
 js-markdown-it.html
 js-markdown.html
+js-calculator.html
 ```
 
 ## canvas アニメーション
