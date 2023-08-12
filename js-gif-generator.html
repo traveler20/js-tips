@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- https://blog.ver001.com/javascript-animation-gif/ -->
+    <script src="https://blog.ver001.com/js/b64.js"></script>
+    <script src="https://blog.ver001.com/js/LZWEncoder.js"></script>
+    <script src="https://blog.ver001.com/js/NeuQuant.js"></script>
+    <script src="https://blog.ver001.com/js/GIFEncoder.js"></script>
+
+    <div id="anime">
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_01.jpg"
+        width="80"
+      />
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_02.jpg"
+        width="80"
+      />
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_03.jpg"
+        width="80"
+      />
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_04.jpg"
+        width="80"
+      />
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_05.jpg"
+        width="80"
+      />
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_06.jpg"
+        width="80"
+      />
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_07.jpg"
+        width="80"
+      />
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_08.jpg"
+        width="80"
+      />
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_09.jpg"
+        width="80"
+      />
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_10.jpg"
+        width="80"
+      />
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_11.jpg"
+        width="80"
+      />
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_12.jpg"
+        width="80"
+      />
+      <img
+        src="https://blog.ver001.com/uploads/s/20190813_animation_13.jpg"
+        width="80"
+      />
+    </div>
+
+    <p>
+      速度：<input
+        type="range"
+        id="anime_speed"
+        value="500"
+        min="100"
+        max="500"
+      />
+    </p>
+    <p><button onclick="createGIF();">アニメGIFを作成する</button></p>
+
+    <canvas id="canvas" style="display: none"></canvas>
+
+    <p>
+      <img
+        id="anime_gif"
+        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+      />
+    </p>
+
+    <p>
+      <button id="download" onclick="downloadGIF();" style="display: none">
+        ダウンロード
+      </button>
+    </p>
+
+    <script>
+      var encoder;
+
+      function createGIF() {
+        //canvasの取得
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        //GIFEncoderの初期処理
+        encoder = new GIFEncoder();
+        encoder.setRepeat(0); //繰り返し回数 0=無限ループ
+        encoder.setDelay(document.getElementById("anime_speed").value); //1コマあたりの待機秒数（ミリ秒）
+        encoder.start();
+        //画像ファイル一覧を取得
+        frames = document.getElementById("anime").getElementsByTagName("img");
+        //canvasのサイズを1枚目のコマに合わせる
+        canvas.width = frames[0].naturalWidth;
+        canvas.height = frames[0].naturalHeight;
+        //全ての画像をcanvasへ描画
+        for (var frame_no = 0; frame_no < frames.length; frame_no++) {
+          ctx.drawImage(frames[frame_no], 0, 0);
+          encoder.addFrame(ctx); //コマ追加
+        }
+        //アニメGIFの生成
+        encoder.finish();
+        document.getElementById("anime_gif").src =
+          "data:image/gif;base64," + encode64(encoder.stream().getData());
+        //ダウンロードボタンを表示
+        document.getElementById("download").style.display = "block";
+      }
+      function downloadGIF() {
+        encoder.download("download.gif");
+      }
+
+      var bin = new Uint8Array(encoder.stream().bin);
+      var blob = new Blob([bin.buffer], { type: "image/gif" });
+      var dataUrl = window.URL.createObjectURL(blob);
+      var anchor = document.createElement("a");
+      anchor.download = "download.gif";
+      anchor.href = dataUrl;
+    </script>
+  </body>
+</html>
