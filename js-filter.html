@@ -4,41 +4,41 @@
     <title>カテゴリフィルタリング</title>
   </head>
   <body>
-    <div class="js-filter-category">
+    <div>
       <input
         id="2"
-        class="js-filter-category__input"
+        class="js-filter-category"
         type="checkbox"
         data-filter="vegetable"
       />
       <label for="2">野菜</label>
       <input
         id="3"
-        class="js-filter-category__input"
+        class="js-filter-category"
         type="checkbox"
         data-filter="drink"
       />
       <label for="3">飲み物</label>
       <input
         id="4"
-        class="js-filter-category__input"
+        class="js-filter-category"
         type="checkbox"
         data-filter="fruit"
       />
       <label for="4">フルーツ</label>
     </div>
 
-    <ul class="js-filter-lists">
-      <li class="js-filter-lists__list" data-category="vegetable">
+    <ul>
+      <li class="js-filter-lists" data-category="vegetable">
         にんじん（野菜カテゴリ）
       </li>
-      <li class="js-filter-lists__list" data-category="fruit">
+      <li class="js-filter-lists" data-category="fruit">
         りんご（果物カテゴリ）
       </li>
-      <li class="js-filter-lists__list" data-category="fruit drink">
+      <li class="js-filter-lists" data-category="fruit drink">
         リンゴジュース（果物カテゴリと飲み物カテゴリ両方）
       </li>
-      <li class="js-filter-lists__list" data-category="drink">
+      <li class="js-filter-lists" data-category="drink">
         牛乳（飲み物カテゴリ）
       </li>
     </ul>
@@ -46,9 +46,9 @@
     <script>
       function filterList() {
         const selectedCategories = document.querySelectorAll(
-          ".js-filter-category__input:checked"
+          ".js-filter-category:checked"
         );
-        const itemList = document.querySelectorAll(".js-filter-lists__list");
+        const itemList = document.querySelectorAll(".js-filter-lists");
 
         for (const item of itemList) {
           let isVisible = false;
@@ -67,10 +67,8 @@
         }
       }
 
-      // クラス名がjs-filter-category__inputの要素に対してクリックイベントを追加
-      const filterInputs = document.querySelectorAll(
-        ".js-filter-category__input"
-      );
+      // クラス名がjs-filter-categoryの要素に対してクリックイベントを追加
+      const filterInputs = document.querySelectorAll(".js-filter-category");
       filterInputs.forEach((input) => {
         input.addEventListener("click", filterList);
       });
