@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="ABTEST"></div>
+
+    <script>
+      (function () {
+        if (document.querySelector("#ABTEST")) {
+          const ABTEST_CONTENT = document.querySelector("#ABTEST");
+
+          const ABTEST_BANNER = [
+            {
+              // Aパターンのリンク先
+              testHref: "http://example.com/?pattern=a",
+              // Aパターンの識別用
+              testId: "testA",
+              // AパターンバナーURL
+              imgUrl: "http://example.com/img/a.webp",
+              // AパターンバナーALT
+              imgAlt: "バナーA",
+            },
+            {
+              // Bパターンのリンク先
+              testHref: "http://example.com/?pattern=b",
+              // Bパターンの識別用
+              testId: "testB",
+              // BパターンバナーURL
+              imgUrl: "http://example.com/img/b.webp",
+              // BパターンバナーALT
+              imgAlt: "バナーB",
+            },
+          ];
+
+          // キャッシュからバナー情報を取得
+          const cachedBanner = sessionStorage.getItem("cachedBanner");
+
+          // キャッシュがある場合はそれを表示
+          if (cachedBanner) {
+            ABTEST_CONTENT.innerHTML = cachedBanner;
+            console.log("キャッシュ動いてるよ");
+          } else {
+            const randomNumber = Math.floor(Math.random() * 2);
+
+            const bannerHtml =
+              '<a class="test_link" href="' +
+              ABTEST_BANNER[randomNumber].testHref +
+              '" testBanner="' +
+              ABTEST_BANNER[randomNumber].testId +
+              '"><img src="' +
+              ABTEST_BANNER[randomNumber].imgUrl +
+              '" alt="' +
+              ABTEST_BANNER[randomNumber].imgAlt +
+              '"></a>';
+
+            // バナーAまたはバナーBのHTMLを挿入
+            ABTEST_CONTENT.insertAdjacentHTML("afterbegin", bannerHtml);
+
+            // 表示したバナーをキャッシュに保存
+            sessionStorage.setItem("cachedBanner", ABTEST_CONTENT.innerHTML);
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

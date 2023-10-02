@@ -255,6 +255,7 @@ css-electric-bulletin-board.html
 - [問い合わせフォーム（noway）](html-noway.html)
 - [タグ検索（フィルター）](js-filter.html)
 - [jQuery で Cookie ボタン](jQuery-cookie.html)
+- [JavaScript で A/B テスト（キャッシュつき）](js-abtest.html)
 
 ```
 js-swiper.html
@@ -282,6 +283,7 @@ html-googleform.html
 html-noway.html
 js-filter.html
 jQuery-cookie.html
+js-abtest.html
 ```
 
 # コーディングの効率化でよく実装する機能
