@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      @keyframes reveal {
+        /* from {
+          opacity: 0;
+          clip-path: inset(45% 20% 45% 20%);
+        }
+        to {
+          opacity: 1;
+          clip-path: inset(0% 0% 0% 0%);
+        } */
+
+        0% {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        50% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .revealing-image {
+        /* Create View Timeline */
+        view-timeline-name: --revealing-image;
+        view-timeline-axis: block;
+
+        /* Attach animation, linked to the  View Timeline */
+        animation: linear reveal both;
+        animation-timeline: --revealing-image;
+
+        /* Tweak range when effect should run*/
+        animation-range: entry 30% cover 50%;
+      }
+    </style>
+
+    <h1>Naming and etymology</h1>
+    <p>
+      Constantine John Phipps was the first to describe the polar bear as a
+      distinct species in 1774 in his report about his 1773 expedition towards
+      the North Pole. He chose the scientific name Ursus maritimus, the Latin
+      for "maritime bear", due to the animal's native habitat. The Inuit refer
+      to the animal as nanook (transliterated as nanuq in the Inupiat language).
+      The Yupik also refer to the bear as nanuuk in Siberian Yupik. In the
+      Chukotko-Kamchatkan languages of Alyutor and Koryak, the name of the polar
+      bear is umqa, while in the related Chukchi, it is umqə. In Russian, it is
+      usually called бе́лый медве́дь (bélyj medvédj, 'white bear'), though an
+      older word still in use is ошку́й (Oshkúj, which comes from the Komi oski,
+      "bear"). In Quebec, the polar bear is referred to by the french terms ours
+      blanc ('white bear') or ours polaire ('polar bear'). In Norwegian, one of
+      the primary languages of the Svalbard archipelago, the polar bear is
+      referred to as isbjørn ('ice bear') or kvitbjørn ('white bear').
+    </p>
+    <p>
+      The polar bear was previously considered to be in its own genus,
+      Thalarctos. However, evidence of hybrids between polar bears and brown
+      bears, and of the recent evolutionary divergence of the two species, does
+      not support the establishment of this separate genus, and the accepted
+      scientific name is now therefore Ursus maritimus, as Phipps originally
+      proposed.
+    </p>
+    <p>
+      Constantine John Phipps was the first to describe the polar bear as a
+      distinct species in 1774 in his report about his 1773 expedition towards
+      the North Pole. He chose the scientific name Ursus maritimus, the Latin
+      for "maritime bear", due to the animal's native habitat. The Inuit refer
+      to the animal as nanook (transliterated as nanuq in the Inupiat language).
+      The Yupik also refer to the bear as nanuuk in Siberian Yupik. In the
+      Chukotko-Kamchatkan languages of Alyutor and Koryak, the name of the polar
+      bear is umqa, while in the related Chukchi, it is umqə. In Russian, it is
+      usually called бе́лый медве́дь (bélyj medvédj, 'white bear'), though an
+      older word still in use is ошку́й (Oshkúj, which comes from the Komi oski,
+      "bear"). In Quebec, the polar bear is referred to by the french terms ours
+      blanc ('white bear') or ours polaire ('polar bear'). In Norwegian, one of
+      the primary languages of the Svalbard archipelago, the polar bear is
+      referred to as isbjørn ('ice bear') or kvitbjørn ('white bear').
+    </p>
+    <p>
+      The polar bear was previously considered to be in its own genus,
+      Thalarctos. However, evidence of hybrids between polar bears and brown
+      bears, and of the recent evolutionary divergence of the two species, does
+      not support the establishment of this separate genus, and the accepted
+      scientific name is now therefore Ursus maritimus, as Phipps originally
+      proposed.
+    </p>
+    <p>
+      Constantine John Phipps was the first to describe the polar bear as a
+      distinct species in 1774 in his report about his 1773 expedition towards
+      the North Pole. He chose the scientific name Ursus maritimus, the Latin
+      for "maritime bear", due to the animal's native habitat. The Inuit refer
+      to the animal as nanook (transliterated as nanuq in the Inupiat language).
+      The Yupik also refer to the bear as nanuuk in Siberian Yupik. In the
+      Chukotko-Kamchatkan languages of Alyutor and Koryak, the name of the polar
+      bear is umqa, while in the related Chukchi, it is umqə. In Russian, it is
+      usually called бе́лый медве́дь (bélyj medvédj, 'white bear'), though an
+      older word still in use is ошку́й (Oshkúj, which comes from the Komi oski,
+      "bear"). In Quebec, the polar bear is referred to by the french terms ours
+      blanc ('white bear') or ours polaire ('polar bear'). In Norwegian, one of
+      the primary languages of the Svalbard archipelago, the polar bear is
+      referred to as isbjørn ('ice bear') or kvitbjørn ('white bear').
+    </p>
+    <p>
+      The polar bear was previously considered to be in its own genus,
+      Thalarctos. However, evidence of hybrids between polar bears and brown
+      bears, and of the recent evolutionary divergence of the two species, does
+      not support the establishment of this separate genus, and the accepted
+      scientific name is now therefore Ursus maritimus, as Phipps originally
+      proposed.
+    </p>
+
+    <figure>
+      <img
+        src="https://scroll-driven-animations.style/shared/img/photo-1610570311113-79ba0e69768d.jpeg"
+        alt=""
+        title=""
+        width="1080"
+        height="720"
+        class="revealing-image"
+        id="revealing-image-2"
+      />
+    </figure>
+
+    <p>
+      Constantine John Phipps was the first to describe the polar bear as a
+      distinct species in 1774 in his report about his 1773 expedition towards
+      the North Pole. He chose the scientific name Ursus maritimus, the Latin
+      for "maritime bear", due to the animal's native habitat. The Inuit refer
+      to the animal as nanook (transliterated as nanuq in the Inupiat language).
+      The Yupik also refer to the bear as nanuuk in Siberian Yupik. In the
+      Chukotko-Kamchatkan languages of Alyutor and Koryak, the name of the polar
+      bear is umqa, while in the related Chukchi, it is umqə. In Russian, it is
+      usually called бе́лый медве́дь (bélyj medvédj, 'white bear'), though an
+      older word still in use is ошку́й (Oshkúj, which comes from the Komi oski,
+      "bear"). In Quebec, the polar bear is referred to by the french terms ours
+      blanc ('white bear') or ours polaire ('polar bear'). In Norwegian, one of
+      the primary languages of the Svalbard archipelago, the polar bear is
+      referred to as isbjørn ('ice bear') or kvitbjørn ('white bear').
+    </p>
+    <p>
+      The polar bear was previously considered to be in its own genus,
+      Thalarctos. However, evidence of hybrids between polar bears and brown
+      bears, and of the recent evolutionary divergence of the two species, does
+      not support the establishment of this separate genus, and the accepted
+      scientific name is now therefore Ursus maritimus, as Phipps originally
+      proposed.
+    </p>
+    <p>
+      Constantine John Phipps was the first to describe the polar bear as a
+      distinct species in 1774 in his report about his 1773 expedition towards
+      the North Pole. He chose the scientific name Ursus maritimus, the Latin
+      for "maritime bear", due to the animal's native habitat. The Inuit refer
+      to the animal as nanook (transliterated as nanuq in the Inupiat language).
+      The Yupik also refer to the bear as nanuuk in Siberian Yupik. In the
+      Chukotko-Kamchatkan languages of Alyutor and Koryak, the name of the polar
+      bear is umqa, while in the related Chukchi, it is umqə. In Russian, it is
+      usually called бе́лый медве́дь (bélyj medvédj, 'white bear'), though an
+      older word still in use is ошку́й (Oshkúj, which comes from the Komi oski,
+      "bear"). In Quebec, the polar bear is referred to by the french terms ours
+      blanc ('white bear') or ours polaire ('polar bear'). In Norwegian, one of
+      the primary languages of the Svalbard archipelago, the polar bear is
+      referred to as isbjørn ('ice bear') or kvitbjørn ('white bear').
+    </p>
+    <p>
+      The polar bear was previously considered to be in its own genus,
+      Thalarctos. However, evidence of hybrids between polar bears and brown
+      bears, and of the recent evolutionary divergence of the two species, does
+      not support the establishment of this separate genus, and the accepted
+      scientific name is now therefore Ursus maritimus, as Phipps originally
+      proposed.
+    </p>
+  </body>
+</html>
