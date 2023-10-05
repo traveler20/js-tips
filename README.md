@@ -106,6 +106,7 @@ html-svgUse.html
 - [CSS でスクロールアニメーション](css-scroll-site.html)
 - [CSS でスクロールアニメーション](css-scroll-animation.html)
 - [CSS でスクロールしたらボタン表示](css-scroll-top.html)
+- [CSS でスクロールしたらフェードインする](css-scroll-fadein.html)
 
 ```
 css-smoothscrollbehavior.html
@@ -126,6 +127,7 @@ css-scroll-view.html
 css-scroll-site.html
 css-scroll-animation.html
 css-scroll-top.html
+css-scroll-fadein.html
 ```
 
 # 背景
@@ -216,6 +218,7 @@ html-share-plugin.html
 - [アニメーションオフの場合アニメーションを効かせない](css-prefers-reduced-motion.html)
 - [2023 年の年賀状的なページ](css-2023.html)
 - [電光掲示板](css-electric-bulletin-board.html)
+- [CSS でスクロールしたらフェードインする](css-scroll-fadein.html)
 
 ```
 js-animation.html
@@ -233,6 +236,7 @@ js-animation-menu.html
 css-prefers-reduced-motion.html
 css-2023.html
 css-electric-bulletin-board.html
+css-scroll-fadein.html
 ```
 
 # サイトでよく実装する機能
