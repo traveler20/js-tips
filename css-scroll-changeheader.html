@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- reset.css destyle -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+    />
+  </head>
+  <body>
+    <style>
+      @keyframes sticky-parallax-header-move-and-size {
+        from {
+          background-position: 50% 0;
+          background-color: #888;
+          height: 80vh;
+          font-size: calc(4vw + 1em);
+        }
+        to {
+          background-position: 50% 100%;
+          background-color: #333;
+          height: 10vh;
+          /* font-size: 2em; */
+          font-size: 20px;
+        }
+      }
+
+      #sticky-parallax-header {
+        position: fixed;
+        /* position: sticky; */
+        top: 0px;
+        z-index: 1;
+
+        animation: sticky-parallax-header-move-and-size linear forwards;
+        animation-timeline: scroll();
+        animation-range: 0vh 80vh;
+
+        display: grid;
+        place-items: center;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+        height: 80vh;
+        width: 100%;
+        /* background-image: url(https://source.unsplash.com/tZpmdFfU5gQ); */
+        background-size: cover;
+        background-position: 50% 50%;
+        background-blend-mode: soft-light;
+      }
+
+      body {
+        padding-top: 80vh;
+      }
+      .l-content {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: 140px 16px;
+        max-width: 500px;
+        margin-inline: auto;
+        line-height: 1.7;
+      }
+    </style>
+    <style>
+      html {
+        font-size: 16px;
+        font-family: -system-ui, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #efefef;
+        -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
+
+        scroll-timeline: --scroll-timeline y;
+        animation: detect-scroll;
+        animation-timeline: --scroll-timeline;
+        animation-fill-mode: none;
+      }
+
+      .l-footer-scroll {
+        position: sticky;
+        bottom: 16px;
+        right: 16px;
+        width: 64px;
+        height: 64px;
+        margin: auto 0 16px auto;
+        border-radius: 50%;
+
+        animation-name: reveal;
+        animation-timeline: --scroll-timeline;
+        animation-fill-mode: both;
+        animation-range: 80vh 40px;
+
+        --visibility-if-can-scroll: var(--can-scroll) visible;
+        --visibility-if-cant-scroll: hidden;
+        visibility: var(
+          --visibility-if-can-scroll,
+          var(--visibility-if-cant-scroll)
+        );
+      }
+      .l-footer-scroll__link {
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        display: block;
+        margin: 0 0 0 auto;
+        position: relative;
+        background-color: #333;
+        border: solid 1px #999;
+        border-radius: 50%;
+      }
+      .l-footer-scroll__link:before {
+        content: "";
+        position: absolute;
+        z-index: 10;
+        top: 55%;
+        left: 50%;
+        width: 16px;
+        height: 16px;
+        border-style: solid;
+        border-color: #fff;
+        border-width: 4px 0 0 4px;
+        transform: translate(-50%, -50%) rotate(45deg);
+        transition: border-color ease 0.1s;
+      }
+      .l-footer-scroll__link:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 80px;
+        height: 80px;
+        background-color: #fff;
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0, 0);
+        transition: transform ease 0.4s;
+      }
+
+      @keyframes detect-scroll {
+        from,
+        to {
+          --can-scroll: ;
+        }
+      }
+      @keyframes reveal {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+    <style>
+      @keyframes reveal-image {
+        0% {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        50% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .revealing-image {
+        /* Create View Timeline */
+        view-timeline-name: --revealing-image;
+        view-timeline-axis: block;
+
+        /* Attach animation, linked to the  View Timeline */
+        animation: linear reveal-image both;
+        animation-timeline: --revealing-image;
+
+        /* Tweak range when effect should run*/
+        animation-range: entry 30% cover 50%;
+      }
+    </style>
+
+    <div id="sticky-parallax-header">ヘッダータイトル</div>
+
+    <div class="l-content">
+      <p>
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+      </p>
+      <p>
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+      </p>
+      <p>
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+      </p>
+      <p>
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+      </p>
+      <figure>
+        <img
+          src="https://traveler20.github.io/practice/03/img/menu3.jpg"
+          alt=""
+          class="revealing-image"
+          style="max-width: 100%; aspect-ratio: 3/2; object-fit: cover"
+        />
+      </figure>
+      <p>
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+      </p>
+      <p>
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+      </p>
+
+      <figure>
+        <img
+          src="https://traveler20.github.io/practice/03/img/menu2.jpg"
+          alt=""
+          class="revealing-image"
+          style="max-width: 100%; aspect-ratio: 3/2; object-fit: cover"
+        />
+      </figure>
+      <p>
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+      </p>
+      <p>
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+      </p>
+      <p>
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+      </p>
+      <p>
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+        複素数体であれば、任意のCM-タイプのAは、実際、数体である定義体（英語版）(fieldofdefinition)を持つ。自己準同型環の可能なタイプは、対合（ロサチの対合（英語版）(Rosatiinvolution）をもつ環として既に分類される。
+      </p>
+    </div>
+
+    <div class="l-footer-scroll">
+      <a class="l-footer-scroll__link" href="#">ページの先頭に戻る</a>
+    </div>
+  </body>
+</html>

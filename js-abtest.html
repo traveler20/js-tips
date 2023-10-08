@@ -13,7 +13,7 @@
         if (document.querySelector("#ABTEST")) {
           const ABTEST_CONTENT = document.querySelector("#ABTEST");
 
-          const ABTEST_BANNER = [
+          const ABTEST_PATTERN = [
             {
               // Aパターンのリンク先
               testHref: "http://example.com/?pattern=a",
@@ -37,31 +37,40 @@
           ];
 
           // キャッシュからバナー情報を取得
-          const cachedBanner = sessionStorage.getItem("cachedBanner");
+          const ABTEST_CACHED = sessionStorage.getItem("ABTEST_CACHED");
 
           // キャッシュがある場合はそれを表示
-          if (cachedBanner) {
-            ABTEST_CONTENT.innerHTML = cachedBanner;
+          if (ABTEST_CACHED) {
+            ABTEST_CONTENT.innerHTML = ABTEST_CACHED;
             console.log("キャッシュ動いてるよ");
           } else {
-            const randomNumber = Math.floor(Math.random() * 2);
+            // const ABTEST_RANDOM = Math.floor(Math.random() * 2);
+            const ABTEST_RANDOM = Math.random(); // 0から1のランダムな数値を生成
+
+            // Aパターンを70％、Bパターンを30％で表示
+            let ABTEST_SELECTED;
+            if (ABTEST_RANDOM < 0.7) {
+              ABTEST_SELECTED = ABTEST_PATTERN[0]; // Aパターン
+            } else {
+              ABTEST_SELECTED = ABTEST_PATTERN[1]; // Bパターン
+            }
 
             const bannerHtml =
               '<a class="test_link" href="' +
-              ABTEST_BANNER[randomNumber].testHref +
+              ABTEST_SELECTED.testHref +
               '" testBanner="' +
-              ABTEST_BANNER[randomNumber].testId +
+              ABTEST_SELECTED.testId +
               '"><img src="' +
-              ABTEST_BANNER[randomNumber].imgUrl +
+              ABTEST_SELECTED.imgUrl +
               '" alt="' +
-              ABTEST_BANNER[randomNumber].imgAlt +
+              ABTEST_SELECTED.imgAlt +
               '"></a>';
 
             // バナーAまたはバナーBのHTMLを挿入
             ABTEST_CONTENT.insertAdjacentHTML("afterbegin", bannerHtml);
 
             // 表示したバナーをキャッシュに保存
-            sessionStorage.setItem("cachedBanner", ABTEST_CONTENT.innerHTML);
+            sessionStorage.setItem("ABTEST_CACHED", ABTEST_CONTENT.innerHTML);
           }
         }
       })();
