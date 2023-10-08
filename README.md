@@ -107,6 +107,8 @@ html-svgUse.html
 - [CSS でスクロールアニメーション](css-scroll-animation.html)
 - [CSS でスクロールしたらボタン表示](css-scroll-top.html)
 - [CSS でスクロールしたらフェードインする](css-scroll-fadein.html)
+- [CSS でスクロールにあわせてプログレスバー](css-scroll-progress.html)
+- [CSS でスクロールでヘッダー変化](css-scroll-changeheader.html)
 
 ```
 css-smoothscrollbehavior.html
@@ -128,6 +130,8 @@ css-scroll-site.html
 css-scroll-animation.html
 css-scroll-top.html
 css-scroll-fadein.html
+css-scroll-progress.html
+css-scroll-changeheader.html
 ```
 
 # 背景
