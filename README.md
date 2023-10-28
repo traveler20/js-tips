@@ -265,6 +265,7 @@ css-scroll-fadein.html
 - [問い合わせフォーム（formspree）](html-formspree.html)
 - [問い合わせフォーム（googleform）](html-googleform.html)
 - [問い合わせフォーム（noway）](html-noway.html)
+- [問い合わせフォーム（SSGform）](html-ssgform.html)
 - [タグ検索（フィルター）](js-filter.html)
 - [jQuery で Cookie ボタン](jQuery-cookie.html)
 - [JavaScript で A/B テスト（キャッシュつき）](js-abtest.html)
@@ -293,6 +294,7 @@ css-speedup.html
 html-formspree.html
 html-googleform.html
 html-noway.html
+html-ssgform.html
 js-filter.html
 jQuery-cookie.html
 js-abtest.html
