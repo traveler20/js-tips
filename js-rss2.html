@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zennブログフィード表示</title>
+  </head>
+  <body>
+    <div id="blogFeed"></div>
+
+    <script>
+      // フィードのURL
+      const feedUrl = "https://zenn.dev/yurukei20/feed";
+
+      // フィードの取得と表示
+      const blogFeed = document.getElementById("blogFeed");
+
+      fetch(feedUrl)
+        .then((response) => response.text())
+        .then((str) => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then((data) => {
+          const items = data.querySelectorAll("item"); // フィード内のアイテム要素を取得
+
+          // アイテムをHTMLに挿入
+          items.forEach((item) => {
+            const title = item.querySelector("title").textContent;
+            const link = item.querySelector("link").textContent;
+
+            const itemHtml = `<a href="${link}" target="_blank">${title}</a><br>`;
+            blogFeed.innerHTML += itemHtml;
+          });
+        })
+        .catch((err) => console.log("フィードを取得できませんでした", err));
+    </script>
+  </body>
+</html>
