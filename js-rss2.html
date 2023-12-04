@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Zennブログフィード表示</title>
+    <title>ブログフィード表示</title>
   </head>
   <body>
-    <div id="blogFeed"></div>
+    <ul class="c-lists-check" id="js-blog-feed"></ul>
 
     <script>
       // フィードのURL
-      const feedUrl = "https://zenn.dev/yurukei20/feed";
+      const feedUrl = "https://traveler20.site/note/feed/";
 
       // フィードの取得と表示
-      const blogFeed = document.getElementById("blogFeed");
+      const blogFeed = document.getElementById("js-blog-feed");
 
       fetch(feedUrl)
         .then((response) => response.text())
@@ -19,13 +19,16 @@
         .then((data) => {
           const items = data.querySelectorAll("item"); // フィード内のアイテム要素を取得
 
-          // アイテムをHTMLに挿入
+          let count = 0;
           items.forEach((item) => {
-            const title = item.querySelector("title").textContent;
-            const link = item.querySelector("link").textContent;
+            if (count < 3) {
+              const title = item.querySelector("title").textContent;
+              const link = item.querySelector("link").textContent;
 
-            const itemHtml = `<a href="${link}" target="_blank">${title}</a><br>`;
-            blogFeed.innerHTML += itemHtml;
+              const itemHtml = `<li class="c-lists-check__list"><a href="${link}" target="_blank" rel="nofollow noopener noreferrer">${title}</a></li>`;
+              blogFeed.innerHTML += itemHtml;
+              count++;
+            }
           });
         })
         .catch((err) => console.log("フィードを取得できませんでした", err));
