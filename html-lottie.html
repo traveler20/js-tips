@@ -15,7 +15,107 @@
       controls
       style="width: 300px; height: 300px"
     ></lottie-player>
+    <lottie-player
+      id="lottie-click"
+      src="./html-lottie.json"
+      style="width: 300px; height: 300px"
+    ></lottie-player>
+    <lottie-player
+      id="lottie-scroll-driven"
+      src="./html-lottie.json"
+      style="width: 300px; height: 300px"
+    ></lottie-player>
 
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
+
+    <script>
+      // クリックしてアニメーションのスピードが上がっていく作例
+      LottieInteractivity.create({
+        player: "#lottie-click", // lottie-playerに追加したid
+        mode: "chain",
+        actions: [
+          {
+            state: "loop",
+            transition: "click", // クリックした時に次のセグメントへ
+          },
+          {
+            state: "loop",
+            transition: "click", // クリックした時に次のセグメントへ
+            speed: 2,
+          },
+          //   // ループ再生
+          //   {
+          //     state: "loop",
+          //     transition: "click", // クリックした時に次のセグメントへ
+          //     frames: [0, 61],
+          //   },
+          //   // 繋ぎのアニメーション
+          //   {
+          //     state: "autoplay",
+          //     transition: "onComplete", // 指定フレームまでの再生終了後、次のセグメントへ
+          //     frames: [61, 113],
+          //   },
+          //   // ループ再生
+          //   {
+          //     state: "loop",
+          //     transition: "click",
+          //     frames: [113, 174],
+          //     speed: 2, // 倍速に変更してみる
+          //   },
+          //   // 繋ぎのアニメーション
+          //   {
+          //     state: "autoplay",
+          //     transition: "onComplete",
+          //     frames: [174, 217],
+          //     speed: 2,
+          //   },
+          //   {
+          //     state: "loop",
+          //     transition: "click",
+          //     frames: [0, 61],
+          //     speed: 3,
+          //   },
+          //   {
+          //     state: "autoplay",
+          //     transition: "onComplete",
+          //     frames: [61, 100],
+          //     speed: 3,
+          //   },
+          //   {
+          //     state: "loop",
+          //     transition: "click",
+          //     frames: [100, 161],
+          //     speed: 4,
+          //   },
+          //   {
+          //     state: "autoplay",
+          //     transition: "onComplete",
+          //     frames: [161, 217],
+          //     speed: 4,
+          //   },
+          //   {
+          //     state: "loop",
+          //     transition: "click",
+          //     frames: [0, 61],
+          //     speed: 7,
+          //   },
+        ],
+      });
+
+      // スクロール量と連動するアニメーションの作例
+      LottieInteractivity.create({
+        player: "#lottie-scroll-driven", // lottie-playerに追加したid
+        mode: "scroll", // スクロールイベント
+        actions: [
+          {
+            visibility: [0, 1],
+            type: "seek",
+            frames: [0, 220],
+            // frames: [0, 61],
+          },
+        ],
+      });
+    </script>
   </body>
 </html>
