@@ -74,6 +74,7 @@ css-selector.html
 - [画像にエフェクトをかけたい](css-backdropfilter.html)
 - [SVG 画像を HTML や CSS で色を変えたい](html-svgUse.html)
 - [ホバーでアイコンが飛び出す CSS](css-icon-hover.html)
+- [背景画像にオーバーレイを当てる](css-border-image.html)
 
 ```
 html-image.html
@@ -83,6 +84,7 @@ css-bgmultiply.html
 css-dropshadow.html
 css-backdropfilter.html
 html-svgUse.html
+css-border-image.html
 ```
 
 # スクロール
@@ -223,6 +225,7 @@ html-share-plugin.html
 - [2023 年の年賀状的なページ](css-2023.html)
 - [電光掲示板](css-electric-bulletin-board.html)
 - [CSS でスクロールしたらフェードインする](css-scroll-fadein.html)
+- [Lottie アニメーション](html-lottie.html)
 
 ```
 js-animation.html
@@ -241,6 +244,7 @@ css-prefers-reduced-motion.html
 css-2023.html
 css-electric-bulletin-board.html
 css-scroll-fadein.html
+html-lottie.html
 ```
 
 # サイトでよく実装する機能
