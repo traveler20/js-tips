@@ -111,6 +111,7 @@ css-border-image.html
 - [CSS でスクロールしたらフェードインする](css-scroll-fadein.html)
 - [CSS でスクロールにあわせてプログレスバー](css-scroll-progress.html)
 - [CSS でスクロールでヘッダー変化](css-scroll-changeheader.html)
+- [CSS でアップルのような Web サイト](css-apple.html)
 
 ```
 css-smoothscrollbehavior.html
@@ -134,6 +135,7 @@ css-scroll-top.html
 css-scroll-fadein.html
 css-scroll-progress.html
 css-scroll-changeheader.html
+css-apple.html
 ```
 
 # 背景
