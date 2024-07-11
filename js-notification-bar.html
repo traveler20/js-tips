@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notification Example</title>
+    <!-- reset.css destyle -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+    />
+    <style>
+      .notification {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 8px;
+        background-color: #333;
+        position: relative;
+        border-bottom: solid 0.5px rgba(51, 51, 51, 0.4);
+      }
+      .notification::after {
+        content: "";
+        width: 28px;
+        height: 48px;
+      }
+      .notification_close {
+        color: #fff;
+        font-size: 20px;
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 14px;
+      }
+      .notification_text {
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1036px;
+        text-decoration: none;
+        padding: 10px 8px;
+        word-break: keep-all;
+      }
+    </style>
+  </head>
+  <body style="background-color: #efefef; height: 200vh">
+    <div id="js-notification_content" class="notification">
+      <button id="js-notification_close" class="notification_close">
+        &times;
+      </button>
+      <a class="notification_text" href="#" target="_blank"
+        >お知らせの通知バー</a
+      >
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const notification_content = document.getElementById(
+          "js-notification_content"
+        );
+        const notification_close = document.getElementById(
+          "js-notification_close"
+        );
+
+        // 初期表示チェック
+        if (localStorage.getItem("notificationClosed") === "true") {
+          notification_content.style.display = "none";
+        }
+
+        // クリックイベントリスナーの設定
+        notification_close.addEventListener("click", function (event) {
+          event.preventDefault(); // デフォルトの動作を防ぐ（ページ遷移を防ぐ）
+          notification_content.style.display = "none";
+          localStorage.setItem("notificationClosed", "true"); // 通知が閉じられたことを保存
+        });
+      });
+    </script>
+  </body>
+</html>
