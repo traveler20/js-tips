@@ -199,12 +199,14 @@ js-mouseCursor.html
 - [Twitter シェアボタン](html-twittershare.html)
 - [各種共有ボタン(クリップボードも)](html-share.html)
 - [各種共有ボタンプラグイン版](html-share-plugin.html)
+- [通知バーとローカルストレージで削除](js-notification-bar.html)
 
 ```
 css-topscroll.html
 html-twittershare.html
 html-share.html
 html-share-plugin.html
+js-notification-bar.html
 ```
 
 # アニメーション
