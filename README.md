@@ -291,6 +291,7 @@ js-hamburger-menu.html
 css-modal.html
 js-modal.html
 js-modalwindow.html
+js-modal-micromodal.html
 css-popover.html
 css-tooltip.html
 php-timer.html
