@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .c_rotation {
+        position: relative;
+        width: 320px;
+        height: 320px;
+        margin-inline: auto;
+        overflow: hidden;
+      }
+      .c_rotation:after {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+
+        content: "";
+        display: block;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 25%;
+        padding-top: 25%;
+        background-color: #ffffff;
+        background-image: url(https://placehold.jp/160x160.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 60%;
+        z-index: 2;
+      }
+      .c_rotation_content:before,
+      .c_rotation_content:after {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+
+        content: "";
+        display: block;
+        border-radius: 50%;
+
+        transform: translate(-50%, -50%);
+        /* z-index: 0; */
+      }
+      .c_rotation_content:after {
+        width: 55%;
+        padding-top: 55%;
+        background-color: #ffead1;
+      }
+      .c_rotation_content::before {
+        width: 85%;
+        padding-top: 85%;
+        background-color: #fff6e8;
+      }
+      .c_rotation_content {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+      }
+      .c_rotation_content_inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        animation: 100s linear big-circle infinite; /* 大枠を回転させているアニメーション */
+      }
+      .c_rotation_box {
+        position: absolute;
+        width: 100px;
+        height: 50%;
+        transform-origin: 50% 100%;
+      }
+      /* 各コンテンツの文字を上向きにする */
+      .c_rotation_box.c_rotation_box-1 {
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+      .c_rotation_box.c_rotation_box-2 {
+        left: 50%;
+        transform: translate(-50%, 0) rotate(60deg);
+      }
+      .c_rotation_box.c_rotation_box-3 {
+        left: 50%;
+        transform: translate(-50%, 0) rotate(120deg);
+      }
+      .c_rotation_box.c_rotation_box-4 {
+        left: 50%;
+        transform: translate(-50%, 0) rotate(180deg);
+      }
+      .c_rotation_box.c_rotation_box-5 {
+        left: 50%;
+        transform: translate(-50%, 0) rotate(240deg);
+      }
+      .c_rotation_box.c_rotation_box-6 {
+        left: 50%;
+        transform: translate(-50%, 0) rotate(300deg);
+      }
+      .c_rotation_parts {
+        /* position: relative;
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px 0;
+        background: #eee; */
+        text-align: center;
+      }
+      .c_rotation_image {
+        width: 64%;
+        border-radius: 50%;
+      }
+      /* 各コンテンツを回転させるアニメーション */
+      .c_rotation_box.c_rotation_box-1 .c_rotation_parts {
+        animation: 100s linear circle1 infinite;
+      }
+      .c_rotation_box.c_rotation_box-2 .c_rotation_parts {
+        animation: 100s linear circle2 infinite;
+      }
+      .c_rotation_box.c_rotation_box-3 .c_rotation_parts {
+        animation: 100s linear circle3 infinite;
+      }
+      .c_rotation_box.c_rotation_box-4 .c_rotation_parts {
+        animation: 100s linear circle4 infinite;
+      }
+      .c_rotation_box.c_rotation_box-5 .c_rotation_parts {
+        animation: 100s linear circle5 infinite;
+      }
+      .c_rotation_box.c_rotation_box-6 .c_rotation_parts {
+        animation: 100s linear circle6 infinite;
+      }
+
+      /* keyframesは下に記述 */
+      @keyframes big-circle {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes circle1 {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(-360deg);
+        }
+      }
+      @keyframes circle2 {
+        0% {
+          transform: rotate(300deg);
+        }
+        100% {
+          transform: rotate(-60deg);
+        }
+      }
+      @keyframes circle3 {
+        0% {
+          transform: rotate(240deg);
+        }
+        100% {
+          transform: rotate(-120deg);
+        }
+      }
+      @keyframes circle4 {
+        0% {
+          transform: rotate(180deg);
+        }
+        100% {
+          transform: rotate(-180deg);
+        }
+      }
+      @keyframes circle5 {
+        0% {
+          transform: rotate(120deg);
+        }
+        100% {
+          transform: rotate(-240deg);
+        }
+      }
+      @keyframes circle6 {
+        0% {
+          transform: rotate(60deg);
+        }
+        100% {
+          transform: rotate(-300deg);
+        }
+      }
+    </style>
+    <div class="c_rotation">
+      <div class="c_rotation_content">
+        <div class="c_rotation_content_inner">
+          <div class="c_rotation_box c_rotation_box-1">
+            <div class="c_rotation_parts">
+              <img
+                class="c_rotation_image"
+                src="https://placehold.jp/160x160.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="c_rotation_box c_rotation_box-2">
+            <div class="c_rotation_parts">
+              <img
+                class="c_rotation_image"
+                src="https://placehold.jp/160x160.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="c_rotation_box c_rotation_box-3">
+            <div class="c_rotation_parts">
+              <img
+                class="c_rotation_image"
+                src="https://placehold.jp/160x160.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="c_rotation_box c_rotation_box-4">
+            <div class="c_rotation_parts">
+              <img
+                class="c_rotation_image"
+                src="https://placehold.jp/160x160.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="c_rotation_box c_rotation_box-5">
+            <div class="c_rotation_parts">
+              <img
+                class="c_rotation_image"
+                src="https://placehold.jp/160x160.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="c_rotation_box c_rotation_box-6">
+            <div class="c_rotation_parts">
+              <img
+                class="c_rotation_image"
+                src="https://placehold.jp/160x160.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <!-- <div class="c_rotation_box c_rotation_box-7"><div class="c_rotation_parts">07</div></div>
+          <div class="c_rotation_box c_rotation_box-8"><div class="c_rotation_parts">08</div></div> -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
