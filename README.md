@@ -230,6 +230,7 @@ js-notification-bar.html
 - [電光掲示板](css-electric-bulletin-board.html)
 - [CSS でスクロールしたらフェードインする](css-scroll-fadein.html)
 - [Lottie アニメーション](html-lottie.html)
+- [CSS で観覧車](css-rotation.html)
 
 ```
 js-animation.html
@@ -249,6 +250,7 @@ css-2023.html
 css-electric-bulletin-board.html
 css-scroll-fadein.html
 html-lottie.html
+css-rotation.html
 ```
 
 # サイトでよく実装する機能
@@ -377,6 +379,7 @@ css-container.html
 - [マークダウンを HTML に変換する](js-markdown-it.html)
 - [マークダウンを HTML に変換する（メイン）](js-markdown.html)
 - [JS で電卓](js-calculator.html)
+- [JS でブラウザバック制御](js-browser-back.html)
 
 ```
 css-timeline.html
@@ -396,6 +399,7 @@ js-markedjs.html
 js-markdown-it.html
 js-markdown.html
 js-calculator.html
+js-browser-back.html
 ```
 
 ## canvas アニメーション
